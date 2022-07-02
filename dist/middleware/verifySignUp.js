@@ -14,10 +14,22 @@ checkDuplicatedUsernameOrEmail = (req, res, next) => {
             });
             return;
         }
+        // check email is not duplicate
         User.findOne({
             where: {
                 email: req.body.email
             }
+        }).then((user) => {
+            if (user) {
+                res.status(400).send({
+                    message: 'Duplicated email'
+                });
+                return;
+            }
+            next();
         });
     });
+};
+let checkRolesExisted;
+checkRolesExisted = (req, res, next) => {
 };
