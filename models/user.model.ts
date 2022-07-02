@@ -1,6 +1,6 @@
 import sequelize, {DataTypes} from "sequelize";
 
-module.exports = (sequelize: sequelize.Sequelize, Sequelize: DataTypes) => {
+module.exports = (sequelize: sequelize.Sequelize, Sequelize: typeof DataTypes) => {
     // TODO: Address sequelize types
     return sequelize.define('users', {
         username: {
