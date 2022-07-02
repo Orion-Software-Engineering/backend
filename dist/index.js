@@ -13,6 +13,27 @@ const corsOptions = {
 app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
+const db = require("./models");
+const Role = db.role;
+db.sequelize.sync({ force: true })
+    .then(() => {
+    console.log('Drop and Resync DB');
+    initial();
+});
+function initial() {
+    Role.create({
+        id: 1,
+        name: "user"
+    });
+    Role.create({
+        id: 2,
+        name: "moderator"
+    });
+    Role.create({
+        id: 3,
+        name: "admin"
+    });
+}
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to Orion Meet' });
 });
