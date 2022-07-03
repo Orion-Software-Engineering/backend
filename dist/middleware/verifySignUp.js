@@ -49,4 +49,3 @@ exports.verifySignUp = {
     checkDuplicatedUsernameOrEmail: checkDuplicatedUsernameOrEmail,
     checkRolesExisted: checkRolesExisted
 };
-module.exports = exports.verifySignUp;

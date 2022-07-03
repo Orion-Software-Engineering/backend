@@ -52,5 +52,3 @@ export const verifySignUp = {
     checkDuplicatedUsernameOrEmail: checkDuplicatedUsernameOrEmail,
     checkRolesExisted: checkRolesExisted
 }
-
-module.exports = verifySignUp

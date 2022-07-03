@@ -1,6 +1,8 @@
 import express, {Express, Request, Response} from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import userRoutes from "./routes/user.routes";
+import authRoutes from "./routes/auth.routes";
 
 const app = express();
 const corsOptions = {
@@ -39,8 +41,8 @@ app.get('/', (req: Request, res: Response) => {
     res.json({message: 'Welcome to Orion Meet'})
 })
 
-require('./routes/auth.routes')
-require('./routes/user.routes')
+userRoutes(app)
+authRoutes(app)
 
 const PORT = process.env.PORT || 8000
 

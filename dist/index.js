@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
+const user_routes_1 = __importDefault(require("./routes/user.routes"));
+const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const app = (0, express_1.default)();
 const corsOptions = {
     origin: 'https://localhost:8000'
@@ -37,8 +39,8 @@ function initial() {
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to Orion Meet' });
 });
-require('./routes/auth.routes');
-require('./routes/user.routes');
+(0, user_routes_1.default)(app);
+(0, auth_routes_1.default)(app);
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

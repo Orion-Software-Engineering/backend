@@ -82,4 +82,3 @@ exports.authJwt = {
     isModerator: isModerator,
     isModeratorOrAdmin: isModeratorOrAdmin
 };
-module.exports = exports.authJwt;
