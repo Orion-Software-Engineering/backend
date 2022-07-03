@@ -39,6 +39,9 @@ app.get('/', (req: Request, res: Response) => {
     res.json({message: 'Welcome to Orion Meet'})
 })
 
+require('./routes/auth.routes')
+require('./routes/user.routes')
+
 const PORT = process.env.PORT || 8000
 
 app.listen(PORT, () => {

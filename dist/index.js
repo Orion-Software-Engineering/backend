@@ -37,6 +37,8 @@ function initial() {
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to Orion Meet' });
 });
+require('./routes/auth.routes');
+require('./routes/user.routes');
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
