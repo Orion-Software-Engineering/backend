@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+import {Request, Response} from "express";
 
 const db = require('../models')
 const ROLES = db.ROLES
