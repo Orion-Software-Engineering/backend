@@ -48,5 +48,17 @@ db.user.belongsToMany(db.role, {
     otherKey: "roleId"
 });
 // @ts-ignore
+db.interest.belongsToMany(db.user, {
+    through: "user_interests",
+    foreignKey: "userId",
+    otherKey: "roleId"
+});
+//@ts-ignore
+db.user.belongsToMany(db.interest, {
+    through: "user_interests",
+    foreignKey: "userId",
+    otherKey: "roleId"
+});
+// @ts-ignore
 db.ROLES = ["user", "admin", "moderator"];
 module.exports = db;
