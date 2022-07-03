@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 });
 (0, user_routes_1.default)(app);
 (0, auth_routes_1.default)(app);
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT;
+app.listen(PORT || 8000, () => {
     console.log(`Server running on port ${PORT}`);
 });
