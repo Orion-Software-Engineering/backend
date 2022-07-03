@@ -48,7 +48,7 @@ checkRolesExisted = (req: Request, res: Response, next: Function) => {
     next()
 }
 
-const verifySignUp = {
+export const verifySignUp = {
     checkDuplicatedUsernameOrEmail: checkDuplicatedUsernameOrEmail,
     checkRolesExisted: checkRolesExisted
 }

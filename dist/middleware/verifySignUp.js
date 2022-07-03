@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.verifySignUp = void 0;
 const db = require('../models');
 const ROLES = db.ROLES;
 const User = db.user;
@@ -44,8 +45,8 @@ checkRolesExisted = (req, res, next) => {
     }
     next();
 };
-const verifySignUp = {
+exports.verifySignUp = {
     checkDuplicatedUsernameOrEmail: checkDuplicatedUsernameOrEmail,
     checkRolesExisted: checkRolesExisted
 };
-module.exports = verifySignUp;
+module.exports = exports.verifySignUp;
