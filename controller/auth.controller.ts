@@ -12,5 +12,25 @@ exports.signup = (req: Request, res: Response) => {
         username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
+    }).then(user => {
+        if (req.body.roles) {
+            Role.findAll({
+                where: {
+                    name: {
+                        [Op.or]: req.body.roles
+                    }
+                }
+            }).then(roles => {
+                user.setRoles(roles).then(() => {
+                    res.send({
+                        message: "User registered successfully!"
+                    })
+                })
+            })
+        } else {
+            user.setRoles([1]).then(() => {
+                res.send({message: "User registered successfully!"})
+            })
+        }
     })
 }
