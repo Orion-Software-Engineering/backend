@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const config = require('../config/db.config');
 const sequelize = process.env.DATABASE_URL ?
-    new sequelize_1.Sequelize(process.env.DATABASE_URL, 'srfhkukgjhckhl', '5ee52b0f6a75f7c445e9c5ea009d233eb090948b0003d281cef116f78f333737', {
+    new sequelize_1.Sequelize(process.env.DATABASE_URL, {
         "dialect": "postgres",
         "dialectOptions": {
             "ssl": {
