@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifySignUp = void 0;
 const db = require('../models');
 const ROLES = db.ROLES;
+const INTERESTS = db.INTERESTS;
 const User = db.user;
 let checkDuplicatedUsernameOrEmail;
 checkDuplicatedUsernameOrEmail = (req, res, next) => {
