@@ -15,10 +15,12 @@
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
-        "password": null,
-        "database": "database_production",
+        "username": "postgres",
+        "password": "root",
+        "database": "testdb",
         "host": "127.0.0.1",
-        "dialect": "mysql"
+        "dialect": "postgres",
+        "operatorsAliases": false,
+        "use_env_variable": "DATABASE_URL"
     }
 }
