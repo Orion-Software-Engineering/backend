@@ -2,17 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const config = require('../config/db.config');
-const sequelize = new sequelize_1.Sequelize(config.DB, config.USER, config.PASSWORD, {
-    host: config.HOST,
-    dialect: config.dialect,
-    // @ts-ignore
-    pool: {
-        max: config.pool.max,
-        min: config.pool.min,
-        acquire: config.pool.acquire,
-        idle: config.pool.idle,
-    }
-});
+const sequelize = process.env.DATABASE_URL ? new sequelize_1.Sequelize(process.env.DATABASE_URL) :
+    new sequelize_1.Sequelize(config.DB, config.USER, config.PASSWORD, {
+        host: config.HOST,
+        dialect: config.dialect,
+        // @ts-ignore
+        pool: {
+            max: config.pool.max,
+            min: config.pool.min,
+            acquire: config.pool.acquire,
+            idle: config.pool.idle,
+        }
+    });
 const db = {};
 // @ts-ignore
 db.Sequelize = sequelize_1.Sequelize;

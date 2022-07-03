@@ -1,22 +1,23 @@
 import {Sequelize} from 'sequelize'
 
 const config = require('../config/db.config');
-const sequelize = new Sequelize(
-    config.DB,
-    config.USER,
-    config.PASSWORD,
-    {
-        host: config.HOST,
-        dialect: config.dialect,
-        // @ts-ignore
-        pool: {
-            max: config.pool.max,
-            min: config.pool.min,
-            acquire: config.pool.acquire,
-            idle: config.pool.idle,
+const sequelize = process.env.DATABASE_URL ? new Sequelize(process.env.DATABASE_URL) :
+    new Sequelize(
+        config.DB,
+        config.USER,
+        config.PASSWORD,
+        {
+            host: config.HOST,
+            dialect: config.dialect,
+            // @ts-ignore
+            pool: {
+                max: config.pool.max,
+                min: config.pool.min,
+                acquire: config.pool.acquire,
+                idle: config.pool.idle,
+            }
         }
-    }
-)
+    )
 
 const db = {};
 // @ts-ignore
