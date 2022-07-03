@@ -32,5 +32,19 @@ exports.signup = (req: Request, res: Response) => {
                 res.send({message: "User registered successfully!"})
             })
         }
+    }).catch(err => {
+        res.status(500).send({message: err.message})
+    })
+}
+
+exports.signin = (req: Request, res: Response) => {
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(user => {
+        if (!user) {
+
+        }
     })
 }
