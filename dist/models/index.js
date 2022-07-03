@@ -34,6 +34,8 @@ db.user = require("../models/user.model.js")(sequelize, sequelize_1.Sequelize);
 // @ts-ignore
 db.role = require("../models/role.model.js")(sequelize, sequelize_1.Sequelize);
 // @ts-ignore
+db.interest = require("../models/interest.model.js")(sequelize, sequelize_1.Sequelize);
+// @ts-ignore
 db.role.belongsToMany(db.user, {
     through: "user_roles",
     foreignKey: "roleId",
