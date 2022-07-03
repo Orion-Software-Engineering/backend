@@ -2,20 +2,21 @@ import {Sequelize} from 'sequelize'
 
 const config = require('../config/db.config');
 const sequelize = new Sequelize(
-    config.DB,
-    config.USER,
-    config.PASSWORD,
-    {
-        host: config.HOST,
-        dialect: config.dialect,
-        // @ts-ignore
-        pool: {
-            max: config.pool.max,
-            min: config.pool.min,
-            acquire: config.pool.acquire,
-            idle: config.pool.idle,
-        }
-    }
+    // config.DB,
+    // config.USER,
+    // config.PASSWORD,
+    // {
+    //     host: config.HOST,
+    //     dialect: config.dialect,
+    //     // @ts-ignore
+    //     pool: {
+    //         max: config.pool.max,
+    //         min: config.pool.min,
+    //         acquire: config.pool.acquire,
+    //         idle: config.pool.idle,
+    //     }
+    // }
+    'postgres://srfhkukgjhckhl:5ee52b0f6a75f7c445e9c5ea009d233eb090948b0003d281cef116f78f333737@ec2-44-195-162-77.compute-1.amazonaws.com:5432/denreqm0425nca'
 )
 
 const db = {};
