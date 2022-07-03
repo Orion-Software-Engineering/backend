@@ -71,4 +71,5 @@ db.ROLES = ["user", "admin", "moderator"];
 db.INTERESTS = ["art", "anime", "business", "cars", "cooking", "comedy", "dance", "education", "entertainment",
     "food", "fashion", "gaming", "health", "beauty", "law", "music", "movies", "news", "pets", "photography",
     "people", "science", "sports", "spirituality", "travel", "tiktok", "memes", "volunteering"]
+
 module.exports = db;
