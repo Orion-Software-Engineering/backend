@@ -40,4 +40,18 @@ const isAdmin = (req, res, next) => {
     });
 };
 const isModerator = (req, res, next) => {
+    // @ts-ignore
+    User.findByPk(req.userId).then(user => {
+        user.getRoles().then(roles => {
+            for (let i = 0; i < roles.length; i++) {
+                if (roles[i].name === "moderator") {
+                    next();
+                    return;
+                }
+            }
+            res.status(403).send({
+                message: "Requires Moderator Role"
+            });
+        });
+    });
 };
