@@ -1,5 +1,4 @@
-import express, {Request, Response} from "express";
-import {JwtPayload} from "jsonwebtoken";
+import {Request, Response} from "express";
 
 const jwt = require('jsonwebtoken')
 const config = require('../config/auth.config')
@@ -83,7 +82,7 @@ const isModeratorOrAdmin = (req: Request, res: Response, next: Function) => {
     })
 }
 
-const authJwt = {
+export const authJwt = {
     verifyToken: verifyToken,
     isAdmin: isAdmin,
     isModerator: isModerator,

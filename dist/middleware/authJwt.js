@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.authJwt = void 0;
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config');
 const db = require('../models');
@@ -75,10 +76,10 @@ const isModeratorOrAdmin = (req, res, next) => {
         });
     });
 };
-const authJwt = {
+exports.authJwt = {
     verifyToken: verifyToken,
     isAdmin: isAdmin,
     isModerator: isModerator,
     isModeratorOrAdmin: isModeratorOrAdmin
 };
-module.exports = authJwt;
+module.exports = exports.authJwt;
