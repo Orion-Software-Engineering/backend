@@ -1,7 +1,20 @@
 import {Sequelize} from 'sequelize'
 
 const config = require('../config/db.config');
-const sequelize = process.env.DATABASE_URL ? new Sequelize(process.env.DATABASE_URL) :
+const sequelize = process.env.DATABASE_URL ?
+    new Sequelize(process.env.DATABASE_URL,
+        'srfhkukgjhckhl',
+        '5ee52b0f6a75f7c445e9c5ea009d233eb090948b0003d281cef116f78f333737',
+        {
+            "dialect": "postgres",
+            "dialectOptions": {
+                "ssl": {
+                    "require": true,
+                    "rejectUnauthorized": false
+                }
+            },
+        })
+    :
     new Sequelize(
         config.DB,
         config.USER,
