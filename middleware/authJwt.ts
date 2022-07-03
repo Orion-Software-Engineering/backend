@@ -83,3 +83,11 @@ const isModeratorOrAdmin = (req: Request, res: Response, next: Function) => {
     })
 }
 
+const authJwt = {
+    verifyToken: verifyToken,
+    isAdmin: isAdmin,
+    isModerator: isModerator,
+    isModeratorOrAdmin: isModeratorOrAdmin
+}
+
+module.exports = authJwt
