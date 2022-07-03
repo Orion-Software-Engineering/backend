@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   roles.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'roles',
