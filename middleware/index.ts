@@ -1,7 +1,7 @@
 const authJwt = require('authJwt')
 const verifySignUp = require("./verifySignUp")
 
-module.exports = {
+export default {
     authJwt,
     verifySignUp
 }
