@@ -2,6 +2,8 @@ import {verifySignUp} from "../middleware/verifySignUp"
 
 const controller = require("../controller/auth.controller")
 
+// routes for authentication functions
+
 export default (app) => {
     app.use(function (req, res, next) {
         res.header(
@@ -11,6 +13,7 @@ export default (app) => {
         next()
     })
 
+    // the signup controller
     app.post("/api/auth/signup",
         [
             verifySignUp.checkDuplicatedUsernameOrEmail,
@@ -19,5 +22,6 @@ export default (app) => {
         controller.signup
     )
 
+    // the sign in controller
     app.post("/api/auth/signin", controller.signin)
 }
