@@ -8,6 +8,11 @@ const Op = db.Sequelize.Op
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
+const SibApiV3Sdk = require('sib-api-v3-sdk'); // sdk for mailing api
+const dotenv = require('dotenv');
+dotenv.config();
+
+
 exports.signup = (req: Request, res: Response) => {
     User.create({
         username: req.body.username,
@@ -79,14 +84,30 @@ exports.signin = (req: Request, res: Response) => {
         })
     })
 }
-/** 
-exports.verify = (req: Request, res: Response) => {
-    User.findOne({
-        where:{
-            'username' : req.body.username,
-        }
-    }).then(user => {
-        if (!user)
-    })
 
-}**/
+exports.verify = (req: Request, res: Response) => {
+    let defaultClient = SibApiV3Sdk.ApiClient.instance;
+
+    let apiKey = defaultClient.authentications['api-key'];
+    apiKey.apiKey = process.env.SMTP_API_KEY;
+
+    let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+
+    let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
+    var link = "https://orion-meet.heroku.app/auth/checkUser"
+
+    sendSmtpEmail.subject = "Verify your email address.";
+    sendSmtpEmail.htmlContent = "<html><body><h1>Use the link to verify your email {{params.parameter}}</h1></body></html>";
+    sendSmtpEmail.sender = {"name":"Orion","email":"support@orion.com"};
+    sendSmtpEmail.to = [{"email":req.body.email}]; //
+    sendSmtpEmail.replyTo = {"email":"replyto@domain.com","name":"Orion"};
+    sendSmtpEmail.headers = {"Some-Custom-Name":"unique-id-1234"};
+    sendSmtpEmail.params = {"parameter":link,"subject":"New Subject"};
+
+    apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+    }, function(error) {
+        console.error(error);
+    });
+};
