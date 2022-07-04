@@ -11,4 +11,5 @@ exports.default = (app) => {
     app.get('/api/test/user', [authJwt_1.authJwt.verifyToken], controller.userBoard);
     app.get('/api/test/mod', [authJwt_1.authJwt.verifyToken, authJwt_1.authJwt.isModerator], controller.moderatorBoard);
     app.get('/api/test/admin', [authJwt_1.authJwt.verifyToken, authJwt_1.authJwt.isAdmin], controller.adminBoard);
+    app.get('/api/test/users', [authJwt_1.authJwt.verifyToken, authJwt_1.authJwt.isAdmin], controller.showAll);
 };

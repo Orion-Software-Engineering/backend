@@ -34,6 +34,8 @@ db.user = require("../models/user.model.js")(sequelize, sequelize_1.Sequelize);
 // @ts-ignore
 db.role = require("../models/role.model.js")(sequelize, sequelize_1.Sequelize);
 // @ts-ignore
+db.interest = require("../models/interest.model.js")(sequelize, sequelize_1.Sequelize);
+// @ts-ignore
 db.role.belongsToMany(db.user, {
     through: "user_roles",
     foreignKey: "roleId",
@@ -46,5 +48,20 @@ db.user.belongsToMany(db.role, {
     otherKey: "roleId"
 });
 // @ts-ignore
+db.interest.belongsToMany(db.user, {
+    through: "user_interests",
+    foreignKey: "userId",
+    otherKey: "roleId"
+});
+//@ts-ignore
+db.user.belongsToMany(db.interest, {
+    through: "user_interests",
+    foreignKey: "userId",
+    otherKey: "roleId"
+});
+// @ts-ignore
 db.ROLES = ["user", "admin", "moderator"];
+// @ts-ignore
+db.INTERESTS = ["art", "business", "cars", "comedy", "education", "entertainment",
+    "food", "fashion", "gaming", "health", "beauty", "news", "photography", "science", "sports",];
 module.exports = db;

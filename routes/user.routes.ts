@@ -26,4 +26,9 @@ export default (app) => {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
     )
+
+    app.get('/api/test/users',
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.showAll
+    )
 }

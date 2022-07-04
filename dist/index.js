@@ -17,10 +17,10 @@ app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 const db = require("./models");
 const Role = db.role;
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
     .then(() => {
-    console.log('Drop and Resync DB');
-    initial();
+    console.log('Syncing DB');
+    //initial()
 });
 function initial() {
     Role.create({

@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 const db = require("./models")
 const Role = db.role
 
-db.sequelize.sync({force: true})
+db.sequelize.sync({force: false})
     .then(() => {
-        console.log('Drop and Resync DB')
-        initial()
+        console.log('Syncing DB')
+        //initial()
     })
 
 function initial() {

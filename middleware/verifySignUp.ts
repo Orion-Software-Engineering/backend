@@ -2,6 +2,7 @@ import {Request, Response} from "express";
 
 const db = require('../models')
 const ROLES = db.ROLES
+const INTERESTS = db.INTERESTS
 const User = db.user
 
 let checkDuplicatedUsernameOrEmail;
