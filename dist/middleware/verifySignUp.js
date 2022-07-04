@@ -46,7 +46,15 @@ checkRolesExisted = (req, res, next) => {
     }
     next();
 };
+let checkInterestsExisted;
+checkInterestsExisted = (req, res, next) => {
+    if (req.body.interests) {
+        for (let i = 0; i < req.body.interests.length; i++) {
+        }
+    }
+};
 exports.verifySignUp = {
     checkDuplicatedUsernameOrEmail: checkDuplicatedUsernameOrEmail,
-    checkRolesExisted: checkRolesExisted
+    checkRolesExisted: checkRolesExisted,
+    checkInterestsExisted: checkInterestsExisted
 };

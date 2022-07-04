@@ -49,7 +49,17 @@ checkRolesExisted = (req: Request, res: Response, next: Function) => {
     next()
 }
 
+let checkInterestsExisted;
+checkInterestsExisted = (req: Request, res: Response, next: Function) => {
+    if (req.body.interests) {
+        for (let i = 0; i < req.body.interests.length; i++) {
+
+        }
+    }
+}
+
 export const verifySignUp = {
     checkDuplicatedUsernameOrEmail: checkDuplicatedUsernameOrEmail,
-    checkRolesExisted: checkRolesExisted
+    checkRolesExisted: checkRolesExisted,
+    checkInterestsExisted: checkInterestsExisted
 }
