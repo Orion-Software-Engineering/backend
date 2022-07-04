@@ -24,10 +24,11 @@ const verifyToken = (req, res, next) => {
             }
             // @ts-ignore
             req.userId = decoded.id; // add a new entry called userId, needed later
-            next();
+            next(); // simply invokes the next middleware function
         });
     }
 };
+// middleware function to check if user is an admin
 const isAdmin = (req, res, next) => {
     // @ts-ignore
     User.findByPk(req.userId).then(user => {
@@ -45,6 +46,7 @@ const isAdmin = (req, res, next) => {
         });
     });
 };
+// middleware function to check if user is a moderator
 const isModerator = (req, res, next) => {
     // @ts-ignore
     User.findByPk(req.userId).then(user => {
@@ -61,6 +63,7 @@ const isModerator = (req, res, next) => {
         });
     });
 };
+// check if user is either admin or moderator
 const isModeratorOrAdmin = (req, res, next) => {
     // @ts-ignore
     User.findByPk(req.userId).then(user => {
@@ -81,6 +84,7 @@ const isModeratorOrAdmin = (req, res, next) => {
         });
     });
 };
+// export the functions
 exports.authJwt = {
     verifyToken: verifyToken,
     isAdmin: isAdmin,
