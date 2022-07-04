@@ -7,6 +7,7 @@ const Role = db.role;
 const Op = db.Sequelize.Op;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+// this controller manages sign up and sign in authorization with JWT
 exports.signup = (req, res) => {
     User.create({
         username: req.body.username,
