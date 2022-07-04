@@ -62,7 +62,6 @@ db.user.belongsToMany(db.interest, {
 // @ts-ignore
 db.ROLES = ["user", "admin", "moderator"];
 // @ts-ignore
-db.INTERESTS = ["art", "anime", "business", "cars", "cooking", "comedy", "dance", "education", "entertainment",
-    "food", "fashion", "gaming", "health", "beauty", "law", "music", "movies", "news", "pets", "photography",
-    "people", "science", "sports", "spirituality", "travel", "tiktok", "memes", "volunteering"];
+db.INTERESTS = ["art", "anime", "business", "cars", "cooking", "comedy", "education", "entertainment",
+    "food", "fashion", "gaming", "health", "beauty", "news", "pets", "photography", "science", "sports", "tiktok",];
 module.exports = db;
