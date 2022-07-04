@@ -31,7 +31,7 @@ export default (app) => {
     )
 
     app.get('/api/test/users',
-        [authJwt.verifyToken, authJwt.isAdmin],
+        [authJwt.verifyToken],
         controller.showAll
     )
 }
