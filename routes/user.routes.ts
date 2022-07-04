@@ -2,6 +2,8 @@ import {authJwt} from '../middleware/authJwt'
 
 const controller = require('../controller/user.controller')
 
+// routes for user functions
+
 export default (app) => {
     app.use(function (req, res, next) {
         res.header(
@@ -10,6 +12,7 @@ export default (app) => {
         )
         next()
     })
+
     app.get('/api/test/all', controller.allAccess)
 
     app.get('/api/test/user',
