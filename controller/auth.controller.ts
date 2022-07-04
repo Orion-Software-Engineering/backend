@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs')
 
 // this controller manages sign up and sign in authorization with JWT
 
+// module for signing up new users
 exports.signup = (req: Request, res: Response) => {
     // per the Sequelize docs, create is synonymous to an INSERT operation with the given params
     User.create({
@@ -47,16 +48,20 @@ exports.signup = (req: Request, res: Response) => {
     })
 }
 
+// module for logging in users
 exports.signin = (req: Request, res: Response) => {
     User.findOne({
         where: {
+            // we want only one user with the passed username (there cant be duplicate usernames anyway)
             username: req.body.username
         }
     }).then(user => {
         if (!user) {
+            // user is null
             return res.status(404).send({message: "User not found"})
         }
         const passwordIsValid = bcrypt.compareSync(
+            // use bcrypt to compare given password to stored password
             req.body.password,
             user.password
         )
@@ -66,6 +71,7 @@ exports.signin = (req: Request, res: Response) => {
                 message: "Invalid Password."
             })
         }
+        // generate the token with JWT with 60 days expiration
         const token = jwt.sign({id: user.id}, config.secret, {
             expiresIn: 5184000
         })
@@ -74,6 +80,7 @@ exports.signin = (req: Request, res: Response) => {
             for (let i = 0; i < roles.length; i++) {
                 authorities.push("ROLE_" + roles[i].name.toUpperCase())
             }
+            // return the user's credentials and access token
             res.status(200).send({
                 id: user.id,
                 username: user.username,
@@ -83,6 +90,7 @@ exports.signin = (req: Request, res: Response) => {
             })
         })
     }).catch(err => {
+        // what happened to our promise? oops
         res.status(500).send({
             message: err.message
         })
