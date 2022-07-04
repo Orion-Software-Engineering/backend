@@ -12,4 +12,6 @@ exports.default = (app) => {
         verifySignUp_1.verifySignUp.checkRolesExisted
     ], controller.signup);
     app.post("/api/auth/signin", controller.signin);
+
+    // app.post("/api/auth/verify", controller.verify) 
 };
