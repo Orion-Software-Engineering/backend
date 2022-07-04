@@ -19,10 +19,10 @@ const Interest = db.interest;
 const INTERESTS = db.INTERESTS;
 const ROLES = db.ROLES;
 
-db.sequelize.sync({force: true})   // force: true forces dropping and resyncing the database
+db.sequelize.sync({force: false})   // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB')
-        initial()
+        //initial()
     })
 
 // this function initializes the roles, run only once on a new database else there'll be errors
