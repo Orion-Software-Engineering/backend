@@ -9,19 +9,24 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 // this controller manages sign up and sign in authorization with JWT
 exports.signup = (req, res) => {
+    // per the Sequelize docs, create is synonymous to an INSERT operation with the given params
     User.create({
         username: req.body.username,
         email: req.body.email,
+        // don't store the raw password, encrypt it with bcrypt
         password: bcrypt.hashSync(req.body.password, 8)
     }).then(user => {
+        // if request has 'roles' element
         if (req.body.roles) {
             Role.findAll({
                 where: {
                     name: {
+                        // find the role in the 'role' table
                         [Op.or]: req.body.roles
                     }
                 }
             }).then(roles => {
+                // roles found, assign to the user
                 user.setRoles(roles).then(() => {
                     res.send({
                         message: "User registered successfully!"
@@ -30,11 +35,13 @@ exports.signup = (req, res) => {
             });
         }
         else {
+            // the user has no roles, hence default is 'user'
             user.setRoles([1]).then(() => {
                 res.send({ message: "User registered successfully!" });
             });
         }
     }).catch(err => {
+        // unhandled promise: server error
         res.status(500).send({ message: err.message });
     });
 };
