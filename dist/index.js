@@ -17,23 +17,41 @@ app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 const db = require("./models");
 const Role = db.role;
-db.sequelize.sync({ force: false })
+const Interest = db.interest;
+const INTERESTS = db.INTERESTS;
+const ROLES = db.ROLES;
+db.sequelize.sync({ force: false }) // force: true forces dropping and resyncing the database
     .then(() => {
     console.log('Syncing DB');
     //initial()
 });
+// this function initializes the roles, run only once on a new database else there'll be errors
 function initial() {
-    Role.create({
-        id: 1,
-        name: "user"
+    // Role.create({
+    //     id: 1,
+    //     name: "user"
+    // });
+    //
+    // Role.create({
+    //     id: 2,
+    //     name: "moderator"
+    // });
+    //
+    // Role.create({
+    //     id: 3,
+    //     name: "admin"
+    // });
+    ROLES.forEach((role, index) => {
+        Role.create({
+            id: index + 1,
+            name: role
+        });
     });
-    Role.create({
-        id: 2,
-        name: "moderator"
-    });
-    Role.create({
-        id: 3,
-        name: "admin"
+    INTERESTS.forEach((interest, index) => {
+        Interest.create({
+            id: index + 1,
+            name: interest
+        });
     });
 }
 app.get('/', (req, res) => {

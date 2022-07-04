@@ -4,6 +4,7 @@ const db = require('../models')
 require('../config/auth.config');
 const User = db.user
 
+// basic controllers for content
 export const allAccess = (req: Request, res: Response) => {
     res.status(200).send("Public Content")
 }
@@ -20,6 +21,7 @@ export const moderatorBoard = (req: Request, res: Response) => {
     res.status(200).send("Moderator Content.");
 };
 
+// show all registered users
 export const showAll = (req: Request, res: Response) => {
     User.findAll().then(users => {
         res.status(200).send({
