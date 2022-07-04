@@ -1,15 +1,32 @@
-import sequelize, {DataTypes} from "sequelize";
+import {CreationOptional, DataTypes, Model, Optional} from 'sequelize';
+import {sequelize} from './';
 
 // define the database model for interests
-
-module.exports = (sequelize: sequelize.Sequelize, Sequelize: typeof DataTypes) => {
-    return sequelize.define('interests', {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true
-        },
-        name: {
-            type: Sequelize.STRING
-        }
-    })
+export default class Interest extends Model<
+  InterestAttributes,
+  InterestCreationAttributes
+> {
+  declare id: CreationOptional<string>;
+  declare name: string;
 }
+
+Interest.init(
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+    },
+    name: {
+      type: DataTypes.STRING,
+    },
+  },
+  {sequelize, tableName: 'interest'}
+);
+
+type InterestAttributes = {
+  id: string;
+  name: string;
+};
+
+type InterestCreationAttributes = Optional<InterestAttributes, 'id'>;

@@ -1,15 +1,33 @@
-import sequelize, {DataTypes} from "sequelize";
+import {CreationOptional, DataTypes, Model, Optional} from 'sequelize';
+import {sequelize} from './';
 
 // define database model for roles
 
-module.exports = (sequelize: sequelize.Sequelize, Sequelize: typeof DataTypes) => {
-    return sequelize.define('roles', {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true
-        },
-        name: {
-            type: Sequelize.STRING
-        }
-    })
+export default class Role extends Model<
+  RoleAttributes,
+  RoleCreationAttributes
+> {
+  declare id: CreationOptional<string>;
+  declare name: string;
 }
+
+Role.init(
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+    },
+    name: {
+      type: DataTypes.STRING,
+    },
+  },
+  {sequelize, tableName: 'role'}
+);
+
+type RoleAttributes = {
+  id: string;
+  name: string;
+};
+
+type RoleCreationAttributes = Optional<RoleAttributes, 'id'>;
