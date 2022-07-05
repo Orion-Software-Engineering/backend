@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
+import verifyEmailRoutes from './routes/verify.routes'
 import db, {sequelize} from './models';
 
 const app = express();
@@ -59,6 +60,7 @@ app.get('/', (req: Request, res: Response) => {
 
 userRoutes(app);
 authRoutes(app);
+verifyEmailRoutes(app)
 
 const PORT = process.env.PORT || 8000;
 
