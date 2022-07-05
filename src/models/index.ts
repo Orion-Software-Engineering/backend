@@ -29,7 +29,7 @@ const sequelize = process.env.DATABASE_URL
     });
 
 // models need and instant of sequelize to be able to initialize
-// putting model imports above runs model instatiation before data start
+// putting model imports above runs model instantiation before data start
 // TODO: extract database startup into a separate component
 import User from './user.model';
 import Role from './role.model';
