@@ -48,4 +48,7 @@ type UserAttributes = {
   isEmailVerified: boolean;
 };
 
-type UserCreationAttributes = Optional<UserAttributes, 'id'>;
+type UserCreationAttributes = Optional<
+  UserAttributes,
+  'id' | 'isEmailVerified'
+>;
