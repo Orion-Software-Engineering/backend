@@ -5,8 +5,6 @@ import db from '../models';
 import config from '../config/auth.config';
 import bcrypt from 'bcryptjs';
 
-// TODO: clarify purpose of undefined funcs
-
 const {Op} = Sequelize;
 const {User, Role} = db;
 
@@ -23,17 +21,19 @@ export const signup = async (req: Request, res: Response) => {
       password: bcrypt.hashSync(req.body.password, 8),
     });
 
-    if (!user || !req.body.roles) {
-      return res.send({message: 'User registered succefully!'});
-    }
-
-    Role.findAll({
+    const roles = await Role.findAll({
       where: {
         name: {[Op.or]: req.body.roles},
       },
     });
 
-    // TODO: setRoles to users here
+    if (!req.body.roles) {
+      // set default role
+      // TODO: confirm 0th index in base role
+      user.setRoles([roles[0]]);
+      return res.send({message: 'User registered succefully!'});
+    }
+    user.setRoles(roles);
     return res.send({message: 'User registered successfully!'});
   } catch ({message}) {
     return res.status(500).send({message});
@@ -70,9 +70,12 @@ export const signin = async (req: Request, res: Response) => {
       expiresIn: 5184000,
     });
 
-    //TODO: do the getRoles thingy
+    const rolesRaw = await user.getRoles();
+    const roles = rolesRaw.map(({name}) => `ROLE_${name.toUpperCase()}`);
+
     // return the user's credentials and access token
     return res.status(200).send({
+      roles,
       id: user.id,
       username: user.username,
       email: user.email,
