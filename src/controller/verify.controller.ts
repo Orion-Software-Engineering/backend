@@ -26,5 +26,4 @@ export const verifyEmail = (req: Request, res: Response) => {
     } catch (_) {
         return res.status(400).send('Could not verify email. Try again later.')
     }
-
 }
