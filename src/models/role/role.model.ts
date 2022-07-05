@@ -1,5 +1,6 @@
-import {CreationOptional, DataTypes, Model, Optional} from 'sequelize';
+import {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
+import {RoleAttributes, RoleCreationAttributes} from './role.type';
 
 // define database model for roles
 
@@ -24,10 +25,3 @@ Role.init(
   },
   {sequelize, tableName: 'roles'}
 );
-
-export type RoleAttributes = {
-  id: string;
-  name: string;
-};
-
-export type RoleCreationAttributes = Optional<RoleAttributes, 'id'>;

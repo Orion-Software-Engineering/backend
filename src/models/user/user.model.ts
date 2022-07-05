@@ -1,12 +1,8 @@
-import Sequelize, {
-  CreationOptional,
-  DataTypes,
-  Model,
-  Optional,
-} from 'sequelize';
+import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
-import {RoleAttributes} from '../role/role.model';
-import {InterestAttributes} from '../interest/interest.model';
+import {RoleAttributes} from '../role';
+import {InterestAttributes} from '../interest';
+import {UserAttributes, UserCreationAttributes} from './user.type';
 
 // define database model for users
 export default class User extends Model<
@@ -56,16 +52,3 @@ User.init(
     tableName: 'users',
   }
 );
-
-type UserAttributes = {
-  id: string;
-  username: string;
-  email: string;
-  password: string;
-  isEmailVerified: boolean;
-};
-
-type UserCreationAttributes = Optional<
-  UserAttributes,
-  'id' | 'isEmailVerified'
->;
