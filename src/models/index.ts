@@ -31,9 +31,9 @@ const sequelize = process.env.DATABASE_URL
 // models need and instant of sequelize to be able to initialize
 // putting model imports above runs model instantiation before data start
 // TODO: extract database startup into a separate component
-import User from './user/user.model';
-import Role from './role/role.model';
-import Interest from './interest/interest.model';
+import User from './user';
+import Role from './role/';
+import Interest from './interest';
 
 // the db variable will store database info for use
 const db = {
