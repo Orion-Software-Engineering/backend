@@ -15,9 +15,10 @@ export const verifyEmail = (req: Request, res: Response) => {
                     where: {
                         id: userId
                     }
-                }).then(() => res.status(200).send('Account Verified'))
+                }).then(() => {
+                    return res.status(200).send('Account Verified')
+                })
             }
         })
-
-    res.status(400).send('Could not verify email. Try again later.')
+    return res.status(400).send('Could not verify email. Try again later.')
 }
