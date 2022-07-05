@@ -1,5 +1,4 @@
 import {Express, NextFunction, Request, Response} from "express";
-import {verifyEmail} from "../middleware/verifyEmail";
 import * as controller from '../controller/verify.controller'
 
 export default (app: Express) => {
@@ -12,6 +11,5 @@ export default (app: Express) => {
     });
 
     app.get('/verify',
-        [verifyEmail],
         controller.verified)
 }

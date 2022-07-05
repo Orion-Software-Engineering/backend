@@ -30,10 +30,10 @@ export const signup = async (req: Request, res: Response) => {
         if (!req.body.roles) {
             // set default role
             // TODO: confirm 0th index in base role
-            user.setRoles([roles[0]]);
+            await user.setRoles([roles[0]]);
             return res.send({message: 'User registered succefully!'});
         }
-        user.setRoles(roles);
+        await user.setRoles(roles);
         return res.send({message: 'User registered successfully!'});
     } catch ({message}) {
         return res.status(500).send({message});
