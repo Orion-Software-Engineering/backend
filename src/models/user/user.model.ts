@@ -4,9 +4,9 @@ import Sequelize, {
   Model,
   Optional,
 } from 'sequelize';
-import {sequelize} from '.';
-import {RoleAttributes} from './role.model';
-import {InterestAttributes} from './interest.model';
+import {sequelize} from '..';
+import {RoleAttributes} from '../role/role.model';
+import {InterestAttributes} from '../interest/interest.model';
 
 // define database model for users
 export default class User extends Model<

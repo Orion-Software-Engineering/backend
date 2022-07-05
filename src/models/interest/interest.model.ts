@@ -1,5 +1,5 @@
 import {CreationOptional, DataTypes, Model, Optional} from 'sequelize';
-import {sequelize} from './';
+import {sequelize} from '..';
 
 // define the database model for interests
 export default class Interest extends Model<

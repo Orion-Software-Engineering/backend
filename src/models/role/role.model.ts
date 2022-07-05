@@ -1,5 +1,5 @@
 import {CreationOptional, DataTypes, Model, Optional} from 'sequelize';
-import {sequelize} from './';
+import {sequelize} from '..';
 
 // define database model for roles
 
