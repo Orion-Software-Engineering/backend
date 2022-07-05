@@ -3,29 +3,31 @@ import {sequelize} from './';
 
 // define database model for roles
 
-export default class Role extends Model<RoleAttributes,
-    RoleCreationAttributes> {
-    declare id: CreationOptional<string>;
-    declare name: string;
+export default class Role extends Model<
+  RoleAttributes,
+  RoleCreationAttributes
+> {
+  declare id: CreationOptional<string>;
+  declare name: string;
 }
 
 Role.init(
-    {
-        id: {
-            type: DataTypes.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
-        },
-        name: {
-            type: DataTypes.STRING,
-        },
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
     },
-    {sequelize, tableName: 'roles'}
+    name: {
+      type: DataTypes.STRING,
+    },
+  },
+  {sequelize, tableName: 'roles'}
 );
 
-type RoleAttributes = {
-    id: string;
-    name: string;
+export type RoleAttributes = {
+  id: string;
+  name: string;
 };
 
-type RoleCreationAttributes = Optional<RoleAttributes, 'id'>;
+export type RoleCreationAttributes = Optional<RoleAttributes, 'id'>;
