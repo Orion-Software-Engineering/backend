@@ -10,6 +10,7 @@ export default class User extends Model<
   declare username: string;
   declare email: string;
   declare password: string;
+  declare isEmailVerified: boolean;
 }
 
 User.init(
@@ -28,6 +29,10 @@ User.init(
     password: {
       type: DataTypes.STRING,
     },
+    isEmailVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     sequelize,
@@ -40,6 +45,7 @@ type UserAttributes = {
   username: string;
   email: string;
   password: string;
+  isEmailVerified: boolean;
 };
 
 type UserCreationAttributes = Optional<UserAttributes, 'id'>;
