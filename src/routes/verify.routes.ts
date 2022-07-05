@@ -10,5 +10,5 @@ export default (app: Express) => {
         next();
     });
 
-    app.get('/verify', controller.verifyEmail)
+    app.get('/api/verify', controller.verifyEmail)
 }
