@@ -18,14 +18,15 @@ const verifyToken = (req: Request, res: Response, next: Function) => {
 
   // check that the token is actually a string else JWT will cry
   if (typeof token === 'string') {
-    jwt.verify(token, config.secret, (err: any, decoded: any) => {
+    jwt.verify(token, config.secret, (err: unknown, decoded: unknown) => {
       if (err) {
         return res.status(401).send({
           message: 'Unauthorized',
         });
       }
-      // @ts-ignore
-      req.userId = decoded.id; // add a new entry called userId, needed later
+      (req as unknown as {userId: string}).userId = (
+        decoded as {id: string}
+      ).id; // add a new entry called userId, needed later
       next(); // simply invokes the next middleware function
     });
   }
@@ -33,59 +34,51 @@ const verifyToken = (req: Request, res: Response, next: Function) => {
 
 // middleware function to check if user is an admin
 const isAdmin = (req: Request, res: Response, next: Function) => {
-  // @ts-ignore
-  User.findByPk(req.userId).then(user => {
-    User.getRoles().then(roles => {
-      for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'admin') {
-          next();
-          return;
-        }
-      }
-      res.status(403).send({
-        message: 'Requires Admin Role!',
-      });
-      return;
+  User.findByPk((req as unknown as {userId: string}).userId).then(user => {
+    // User.getRoles().then(roles => {
+    //   for (let i = 0; i < roles.length; i++) {
+    //     if (roles[i].name === 'admin') {
+    //       next();
+    //       return;
+    //     }
+    //   }
+    return res.status(403).send({
+      message: 'Requires Admin Role!',
     });
   });
 };
 
 // middleware function to check if user is a moderator
 const isModerator = (req: Request, res: Response, next: Function) => {
-  // @ts-ignore
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
-      for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'moderator') {
-          next();
-          return;
-        }
-      }
-      res.status(403).send({
-        message: 'Requires Moderator Role',
-      });
+  User.findByPk((req as unknown as {userId: string}).userId).then(user => {
+    // user.getRoles().then(roles => {
+    //   for (let i = 0; i < roles.length; i++) {
+    //     if (roles[i].name === 'moderator') {
+    //       next();
+    //       return;
+    //     }
+    //   }
+    return res.status(403).send({
+      message: 'Requires Moderator Role',
     });
   });
 };
-
 // check if user is either admin or moderator
 const isModeratorOrAdmin = (req: Request, res: Response, next: Function) => {
-  // @ts-ignore
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
-      for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'moderator') {
-          next();
-          return;
-        }
-        if (roles[i].name === 'admin') {
-          next();
-          return;
-        }
-      }
-      res.status(403).send({
-        message: 'Requires Moderator or Admin Role',
-      });
+  User.findByPk((req as unknown as {userId: string}).userId).then(user => {
+    // user.getRoles().then(roles => {
+    //   for (let i = 0; i < roles.length; i++) {
+    //     if (roles[i].name === 'moderator') {
+    //       next();
+    //       return;
+    //     }
+    //     if (roles[i].name === 'admin') {
+    //       next();
+    //       return;
+    //     }
+    //   }
+    return res.status(403).send({
+      message: 'Requires Moderator or Admin Role',
     });
   });
 };
