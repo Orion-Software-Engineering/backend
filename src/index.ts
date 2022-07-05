@@ -1,8 +1,9 @@
-import express, {Express, Request, Response} from 'express';
+import express, {Request, Response} from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
+import db, {sequelize} from './models';
 
 const app = express();
 const corsOptions = {
@@ -13,36 +14,44 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const db = require('./models');
-const Role = db.role;
-const Interest = db.interest;
-const INTERESTS = db.INTERESTS;
-const ROLES = db.ROLES;
+const {Role, Interest, INTERESTS, ROLES} = db;
 
-db.sequelize
-  .sync({force: true}) // force: true forces dropping and resyncing the database
+sequelize
+  .sync({force: false}) // force: true forces dropping and resyncing the database
   .then(() => {
     console.log('Syncing DB');
-    initial();
+    //initial()
   });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
 function initial() {
-  ROLES.forEach((role, index) => {
+  // Role.create({
+  //     id: 1,
+  //     name: "user"
+  // });
+  //
+  // Role.create({
+  //     id: 2,
+  //     name: "moderator"
+  // });
+  //
+  // Role.create({
+  //     id: 3,
+  //     name: "admin"
+  // });
+
+  ROLES.forEach(role => {
     Role.create({
-      id: index + 1,
       name: role,
     });
   });
 
-  INTERESTS.forEach((interest, index) => {
+  INTERESTS.forEach(interest => {
     Interest.create({
-      id: index + 1,
       name: interest,
     });
   });
 }
-
 app.get('/', (req: Request, res: Response) => {
   res.json({message: 'Welcome to Orion Meet'});
 });
