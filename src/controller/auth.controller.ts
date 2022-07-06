@@ -12,9 +12,9 @@ const {User, Role} = db;
 
 // module for signing up new users
 export const signup = async (req: Request, res: Response) => {
-    // per the Sequelize docs, create is synonymous to an INSERT operation with the given params
+    // per Sequelize docs, create is synonymous to an INSERT operation with the given params
     try {
-        const user = await User.create({
+        await User.create({
             username: req.body.username,
             email: req.body.email,
             // don't store the raw password, encrypt it with bcrypt
@@ -40,9 +40,7 @@ export const signup = async (req: Request, res: Response) => {
                     user.setRoles(roles)
                 })
             }
-        })
-
-
+        });
         return res.send({message: 'User registered successfully!'});
     } catch ({message}) {
         return res.status(500).send({message});
