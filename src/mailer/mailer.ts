@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const sib = require('sib-api-v3-sdk')
 
 export const sendmail = (email: string, verificationLink: string) => {
