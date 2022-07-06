@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 const sib = require('sib-api-v3-sdk')
 
-exports.sendmail = (email: string, verificationLink: string) => {
+export const sendmail = (email: string, verificationLink: string) => {
     const defaultClient = sib.ApiClient.instance;
     const apiKey = defaultClient.authentications['api-key'];
     apiKey.apiKey = process.env.SMTP_API_KEY;
@@ -12,7 +12,8 @@ exports.sendmail = (email: string, verificationLink: string) => {
     sendSmtpEmail.htmlContent =
         '<html lang="en">' +
         '<body>' +
-        '<h1>Verify your email with this link:  {{params.parameter}}</h1>' +
+        '<h1>Orion Email Verification</h1>' +
+        '<a href={{params.parameter}}>Click here to verify</a>' +
         '</body>' +
         '</html>';
     sendSmtpEmail.sender = {'name': 'Orion', 'email': 'support@orion.com'};

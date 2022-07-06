@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import db from '../models';
+import {sendmail} from "../mailer/mailer";
 
 const {ROLES, INTERESTS, User} = db;
 
@@ -60,6 +61,7 @@ const checkInterestsExisted = (req: Request, res: Response, next: Function) => {
             }
         }
     }
+    next();
 };
 
 export const verifySignUp = {
