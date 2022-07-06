@@ -4,6 +4,7 @@ import Sequelize from 'sequelize';
 import db from '../models';
 import config from '../config/auth.config';
 import bcrypt from 'bcryptjs';
+import {sendmail} from "../mailer/mailer";
 
 const {Op} = Sequelize;
 const {User, Role} = db;
@@ -31,7 +32,6 @@ export const signup = async (req: Request, res: Response) => {
                     user.setRoles(roles)
                 })
             } else {
-                // user.setRoles(['user'])
                 Role.findAll({
                     where: {
                         name: 'user',
@@ -40,7 +40,10 @@ export const signup = async (req: Request, res: Response) => {
                     user.setRoles(roles)
                 })
             }
+            const verificationLink = `${process.env.VERIFICATION_URL}/${user.id}`;
+            sendmail(req.body.email, verificationLink)
         });
+
         return res.send({message: 'User registered successfully!'});
     } catch ({message}) {
         return res.status(500).send({message});
