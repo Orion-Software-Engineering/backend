@@ -11,7 +11,7 @@ export const sendmail = (email: string, verificationLink: string) => {
     sendSmtpEmail.htmlContent =
         '<html lang="en">' +
         '<body>' +
-        '<h1>Orion Email Verification</h1>' +
+        '<h1>Email Verification</h1>' +
         '<a href={{params.parameter}}>Click here to verify</a>' +
         '</body>' +
         '</html>';
