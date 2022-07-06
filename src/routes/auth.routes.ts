@@ -24,7 +24,7 @@ export default (app: Express) => {
         ],
         controller.signup
     );
-
+    
     // the sign in controller
     app.post('/api/auth/signin', controller.signin);
 };
