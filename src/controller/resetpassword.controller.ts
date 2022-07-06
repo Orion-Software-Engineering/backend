@@ -4,6 +4,7 @@ import {Request, Response} from 'express';
 import db from '../models';
 import { sendresetmail } from '../mailer/resetPasswordMailer';
 const {User} = db;
+require('dotenv').config()
 
 // eslint-disable-next-line prettier/prettier
 export const resetpassword = async (req: Request, res: Response) => {
@@ -11,7 +12,8 @@ export const resetpassword = async (req: Request, res: Response) => {
     User.findByPk(req.body.email)
     .then(user => {
         if (user?.email){
-            sendresetmail(req.body.email, 'link');
+            const passwordResetLink = `${process.env.PASSWORD_RESET_LINK}?token=${user.id}`
+            sendresetmail(req.body.email, passwordResetLink);
         }
         else{
             res.send({
