@@ -18,7 +18,7 @@ export const sendmail = (email: string, verificationLink: string) => {
         '</html>';
     sendSmtpEmail.sender = {'name': 'Orion', 'email': 'support@orion.com'};
     sendSmtpEmail.to = [{'email': email}];
-    sendSmtpEmail.replyTo = {'email': 'replyto@orion.com', 'name': 'orion'};
+    sendSmtpEmail.replyTo = {'email': 'noreply@orion.com', 'name': 'orion'};
     sendSmtpEmail.headers = {'Orion-Email-Verification': 'unique-id-1234'};
 
     sendSmtpEmail.params = {'parameter': verificationLink, 'subject': 'Verify your E-mail.'};

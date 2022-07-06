@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
 import db from '../models';
-import {sendmail} from "../mailer/mailer";
 
 const {ROLES, INTERESTS, User} = db;
 
