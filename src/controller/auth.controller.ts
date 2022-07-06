@@ -40,7 +40,7 @@ export const signup = async (req: Request, res: Response) => {
                     user.setRoles(roles)
                 })
             }
-            const verificationLink = `${process.env.VERIFICATION_URL}/${user.id}`;
+            const verificationLink = `${process.env.VERIFICATION_URL}?tag=${user.id}`;
             sendmail(req.body.email, verificationLink)
         });
 

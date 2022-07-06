@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const sib = require('sib-api-v3-sdk')
 
 export const sendmail = (email: string, verificationLink: string) => {
@@ -12,13 +11,13 @@ export const sendmail = (email: string, verificationLink: string) => {
     sendSmtpEmail.htmlContent =
         '<html lang="en">' +
         '<body>' +
-        '<h1>Orion Email Verification</h1>' +
+        '<h1>Account Verification</h1>' +
         '<a href={{params.parameter}}>Click here to verify</a>' +
         '</body>' +
         '</html>';
     sendSmtpEmail.sender = {'name': 'Orion', 'email': 'support@orion.com'};
     sendSmtpEmail.to = [{'email': email}];
-    sendSmtpEmail.replyTo = {'email': 'noreply@orion.com', 'name': 'orion'};
+    sendSmtpEmail.replyTo = {'email': 'noreply@orion.com', 'name': 'noreply'};
     sendSmtpEmail.headers = {'Orion-Email-Verification': 'unique-id-1234'};
 
     sendSmtpEmail.params = {'parameter': verificationLink, 'subject': 'Verify your E-mail.'};

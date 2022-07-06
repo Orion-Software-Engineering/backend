@@ -6,6 +6,8 @@ import authRoutes from './routes/auth.routes';
 import verifyEmailRoutes from './routes/verify.routes'
 import db, {sequelize} from './models';
 
+require('dotenv').config()
+
 const app = express();
 const corsOptions = {
     origin: 'https://localhost:8000',
