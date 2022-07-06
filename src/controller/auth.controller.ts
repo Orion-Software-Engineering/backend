@@ -19,21 +19,30 @@ export const signup = async (req: Request, res: Response) => {
             email: req.body.email,
             // don't store the raw password, encrypt it with bcrypt
             password: bcrypt.hashSync(req.body.password, 8),
-        });
+        }).then(user => {
+            if (req.body.roles) {
+                Role.findAll({
+                    where: {
+                        name: {
+                            [Op.or]: req.body.roles
+                        }
+                    }
+                }).then(roles => {
+                    user.setRoles(roles)
+                })
+            } else {
+                // user.setRoles(['user'])
+                Role.findAll({
+                    where: {
+                        name: 'user',
+                    }
+                }).then(roles => {
+                    user.setRoles(roles)
+                })
+            }
+        })
 
-        const roles = await Role.findAll({
-            where: {
-                name: {[Op.or]: req.body.roles},
-            },
-        });
 
-        if (!req.body.roles) {
-            // set default role
-            // TODO: confirm 0th index in base role
-            await user.setRoles([roles[0]]);
-            return res.send({message: 'User registered succefully!'});
-        }
-        await user.setRoles(roles);
         return res.send({message: 'User registered successfully!'});
     } catch ({message}) {
         return res.status(500).send({message});
@@ -62,7 +71,7 @@ export const signin = async (req: Request, res: Response) => {
         );
 
         if (!passwordIsValid) {
-            return res.status(404).send({message: 'User not found'});
+            return res.status(404).send({message: 'Invalid Credentials'});
         }
 
         // generate the token with JWT with 60 days expiration
@@ -82,8 +91,6 @@ export const signin = async (req: Request, res: Response) => {
             accessToken: token,
         });
     } catch ({message}) {
-        return res.status(500).send({
-            message,
-        });
+        return res.status(500).send({message});
     }
 };
