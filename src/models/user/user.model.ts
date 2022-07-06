@@ -5,48 +5,62 @@ import {InterestAttributes} from '../interest';
 import {UserAttributes, UserCreationAttributes} from './user.type';
 
 // define database model for users
-export default class User extends Model<UserAttributes,
-    UserCreationAttributes> {
-    declare id: CreationOptional<string>;
-    declare username: string;
-    declare email: string;
-    declare password: string;
-    declare isEmailVerified: boolean;
-    declare getRoles: Sequelize.BelongsToManyGetAssociationsMixin<RoleAttributes>;
-    declare setRoles: Sequelize.BelongsToManySetAssociationsMixin<RoleAttributes,
-        RoleAttributes['id']>;
-    declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
-    declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<InterestAttributes,
-        InterestAttributes['id']>;
+export default class User extends Model<
+  UserAttributes,
+  UserCreationAttributes
+> {
+  declare id: CreationOptional<string>;
+  declare username: string;
+  declare email: string;
+  declare password: string;
+  declare isEmailVerified: boolean;
+  declare getRoles: Sequelize.BelongsToManyGetAssociationsMixin<RoleAttributes>;
+  declare setRoles: Sequelize.BelongsToManySetAssociationsMixin<
+    RoleAttributes,
+    RoleAttributes['id']
+  >;
+  declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
+  declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<
+    InterestAttributes,
+    InterestAttributes['id']
+  >;
+  declare addInterests: Sequelize.BelongsToManyAddAssociationsMixin<
+    InterestAttributes,
+    InterestAttributes['id']
+  >;
+  declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<
+    InterestAttributes,
+    InterestAttributes['id']
+  >;
 }
 
 User.init(
-    {
-        id: {
-            type: DataTypes.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false
-        },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        isEmailVerified: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
     },
-    {
-        sequelize,
-        tableName: 'users',
-    }
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    isEmailVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+  },
+  {
+    sequelize,
+    tableName: 'users',
+  }
 );
