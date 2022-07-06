@@ -17,10 +17,10 @@ export const verifyEmail = (req: Request, res: Response) => {
                             id: userId
                         }
                     }).then(() => {
-                        return res.status(200).send('Account Verified')
+                        return res.status(200).send('Account Verified. You can now log in to the app.')
                     })
                 } else if (user.isEmailVerified) {
-                    return res.status(200).send('Account Already Verified')
+                    return res.status(200).send('Account Already Verified. You can log in to the app.')
                 }
             })
     } catch (_) {
