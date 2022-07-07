@@ -9,12 +9,12 @@ export const changePassword = async (req:Request, res: Response) => {
     try{
         await User.findOne({
             where : req.body.userId
-        }).then(user => {
+        }).then( () => {
             User.update({
-                'password' : bcrypt.hashSync(req.body.password, 8);
-            }, where : {
+                'password' : bcrypt.hashSync(req.body.password, 8)
+            }, {where : {
                 'id' : req.body.userId
-            }).then(() => {
+            }}).then(() => {
                 return res.send('Password Changed Successfully.')
             })
         })
