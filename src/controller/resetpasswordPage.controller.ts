@@ -2,6 +2,7 @@
 import {Request, Response} from "express";
 import db from '../models';
 import { UserRequest } from '../models/user/user.request';
+import path from 'path';
 const {User} = db;
 
 
@@ -10,7 +11,7 @@ export const resetpasswordPage = async (req:Request, res:Response) => {
     User.findByPk(userId)
     .then(user => {
         if (user){
-            res.redirect('/static/resetpassword/?token='+ user.id)
+            res.sendFile(path.join(__dirname, '../../public/resetPassword/index.html'));
         }
     });
 };

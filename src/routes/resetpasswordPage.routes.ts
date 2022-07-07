@@ -12,4 +12,4 @@ export default (app: Express) => {
     });
 
 app.get('/api/reset', controller.resetpasswordPage);
-};
+}

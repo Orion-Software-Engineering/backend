@@ -8,7 +8,7 @@ export const sendresetmail = (email: string, resetPasswordLink: string) => {
     const apiInstance = new sib.TransactionalEmailsApi();
     const sendSmtpEmail = new sib.SendSmtpEmail();
 
-    sendSmtpEmail.subject = 'Verify your email address.';
+    sendSmtpEmail.subject = 'Password Reset.';
     sendSmtpEmail.htmlContent =
         '<html lang="en">' +
         '<body>' +

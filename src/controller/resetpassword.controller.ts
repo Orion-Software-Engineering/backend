@@ -17,7 +17,7 @@ export const resetpassword = async (req: Request, res: Response) => {
     
 
     if (user?.email){
-        const passwordResetLink = `${process.env.PASSWORD_RESET_URL}?token=${user.id}`
+        const passwordResetLink = `${process.env.RESET_PASSWORD_URL}?tag=${user.id}`
         sendresetmail(req.body.email, passwordResetLink);
         res.send({
             'response' : 'Check your email for reset link!'
@@ -26,7 +26,7 @@ export const resetpassword = async (req: Request, res: Response) => {
     // if user does not exist play with their brains, hahaha :)
     else{
         res.send({
-            'response' : 'Check your email for reset link!'
+            'response' : 'Check your email for reset'
         });
     }
 

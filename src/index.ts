@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes';
 import verifyEmailRoutes from './routes/verify.routes'
 import resetpasswordRoutes from './routes/resetpassword.routes';
 import db, {sequelize} from './models';
+import resetpasswordPageRoutes from './routes/resetpasswordPage.routes';
 
 require('dotenv').config()
 
@@ -17,7 +18,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/static', express.static('public'));
 
 const {Role, Interest, INTERESTS, ROLES} = db;
 
@@ -66,6 +66,7 @@ userRoutes(app);
 authRoutes(app);
 verifyEmailRoutes(app);
 resetpasswordRoutes(app);
+resetpasswordPageRoutes(app);
 
 const PORT = process.env.PORT || 8000;
 
