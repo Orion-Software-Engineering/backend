@@ -9,20 +9,26 @@ require('dotenv').config()
 // eslint-disable-next-line prettier/prettier
 export const resetpassword = async (req: Request, res: Response) => {
     // check if user exists in database
-    User.findByPk(req.body.email)
-    .then(user => {
-        if (user?.email){
-            const passwordResetLink = `${process.env.PASSWORD_RESET_LINK}?token=${user.id}`
-            sendresetmail(req.body.email, passwordResetLink);
-            res.send({
-                'response' : 'Check your email for reset link!'
-            });
-        }
-        // if user does not exist play with their brains, hahaha :)
-        else{
-            res.send({
-                'response':'Check your mail for reset link.'
-            });
-        }
+    const user = await User.findOne({
+        where: {
+            email: req.body.email,
+        },
     })
+    
+
+    if (user?.email){
+        const passwordResetLink = `${process.env.PASSWORD_RESET_URL}?token=${user.id}`
+        sendresetmail(req.body.email, passwordResetLink);
+        res.send({
+            'response' : 'Check your email for reset link!'
+        });
+    }
+    // if user does not exist play with their brains, hahaha :)
+    else{
+        res.send({
+            'response':'error'
+        });
+    }
+
+
 };

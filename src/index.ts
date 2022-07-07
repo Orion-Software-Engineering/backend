@@ -4,6 +4,7 @@ import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import verifyEmailRoutes from './routes/verify.routes'
+import resetpasswordRoutes from './routes/resetpassword.routes';
 import db, {sequelize} from './models';
 
 require('dotenv').config()
@@ -62,7 +63,8 @@ app.get('/', (req: Request, res: Response) => {
 
 userRoutes(app);
 authRoutes(app);
-verifyEmailRoutes(app)
+verifyEmailRoutes(app);
+resetpasswordRoutes(app);
 
 const PORT = process.env.PORT || 8000;
 
