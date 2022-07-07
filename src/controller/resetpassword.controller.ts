@@ -26,7 +26,7 @@ export const resetpassword = async (req: Request, res: Response) => {
     // if user does not exist play with their brains, hahaha :)
     else{
         res.send({
-            'response':'error'
+            'response' : 'Check your email for reset link!'
         });
     }
 
