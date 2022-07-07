@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./localstorage.js"></script>
+    <script >
+        function store(){
+            const params = new URLSearchParams(window.location.search);
+            const value = params.get('tag');
+            localStorage.setItem('token', value);
+        }
+
+        function postData(){
+            const token =  localStorage.getItem('token');
+            const pwd = document.getElementsByName('pwd1')
+
+            fetch('http://localhost:8000/api/changePassword', {method : 'POST', body : {
+                'userId' : token,
+                'password' : pwd
+            }})
+        }
+    </script>
     <title>Orion Reset Password</title>
     <script>
         function checkPasswords(){
@@ -23,7 +39,6 @@
 </head>
 <body onload=store()>
     <center>
-        <form action="" method="post">
             <div id="pwd-form">
                 <table>
                     <tr>
@@ -36,11 +51,10 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><button type="submit" onclick=checkPasswords()>Reset Password</button></td>
+                        <td><button type="button" onclick=postData()>Reset Password</button></td>
                     </tr>
                 </table>
             </div>
-        </form>
     </center>
     
 </body>
