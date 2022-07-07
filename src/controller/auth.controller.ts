@@ -44,7 +44,7 @@ export const signup = async (req: Request, res: Response) => {
             sendmail(req.body.email, verificationLink)
         });
 
-        return res.send({message: 'User registered successfully!'});
+        return res.status(201).send({message: 'User registered successfully!'});
     } catch ({message}) {
         return res.status(500).send({message});
     }
