@@ -6,6 +6,7 @@ import config from '../config/db.config';
  * Heroku provides a database url, but locally we do not need that.
  * If testing locally, we use our config
  * else we use the provided database url (it changes so do not hardcode the value!)
+ * Not the best method. Will be refactored on later iterations.
  * */
 const sequelize = process.env.DATABASE_URL
     ? new Sequelize(process.env.DATABASE_URL, {
@@ -60,7 +61,7 @@ const db = {
     ],
 };
 
-// one role can have many u
+// one role can have many users
 db.Role.belongsToMany(db.User, {
     through: 'user_roles',
     foreignKey: 'roleId',

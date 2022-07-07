@@ -2,70 +2,70 @@ import {Op} from 'sequelize';
 import db from '../models';
 
 const get = async (id: string) => {
-  const user = await db.User.findByPk(id);
-  if (user) {
-    return user.getInterests();
-  }
+    const user = await db.User.findByPk(id);
+    if (user) {
+        return user.getInterests();
+    }
 };
 
 const set = async (id: string, interests: string[]) => {
-  const user = await db.User.findByPk(id);
+    const user = await db.User.findByPk(id);
 
-  if (!user) {
-    throw new Error('No such user');
-  }
+    if (!user) {
+        throw new Error('No such user');
+    }
 
-  const validInterest = await db.Interest.findAll({
-    where: {
-      name: {
-        [Op.or]: interests,
-      },
-    },
-  });
+    const validInterest = await db.Interest.findAll({
+        where: {
+            name: {
+                [Op.or]: interests,
+            },
+        },
+    });
 
-  if (user) {
-    return await user.setInterests(validInterest);
-  }
+    if (user) {
+        return await user.setInterests(validInterest);
+    }
 };
 
 const add = async (id: string, interests: string[]) => {
-  const user = await db.User.findByPk(id);
+    const user = await db.User.findByPk(id);
 
-  if (!user) {
-    throw new Error('No such user');
-  }
+    if (!user) {
+        throw new Error('No such user');
+    }
 
-  const validInterest = await db.Interest.findAll({
-    where: {
-      name: {
-        [Op.or]: interests,
-      },
-    },
-  });
+    const validInterest = await db.Interest.findAll({
+        where: {
+            name: {
+                [Op.or]: interests,
+            },
+        },
+    });
 
-  if (user) {
-    return await user.addInterests(validInterest);
-  }
+    if (user) {
+        return await user.addInterests(validInterest);
+    }
 };
 
 const remove = async (id: string, interests: string[]) => {
-  const user = await db.User.findByPk(id);
+    const user = await db.User.findByPk(id);
 
-  if (!user) {
-    throw new Error('No such user');
-  }
+    if (!user) {
+        throw new Error('No such user');
+    }
 
-  const validInterest = await db.Interest.findAll({
-    where: {
-      name: {
-        [Op.or]: interests,
-      },
-    },
-  });
+    const validInterest = await db.Interest.findAll({
+        where: {
+            name: {
+                [Op.or]: interests,
+            },
+        },
+    });
 
-  if (user) {
-    return await user.removeInterests(validInterest);
-  }
+    if (user) {
+        return await user.removeInterests(validInterest);
+    }
 };
 
 export default {get, add, set, remove};
