@@ -7,6 +7,8 @@ import verifyEmailRoutes from './routes/verify.routes'
 import resetpasswordRoutes from './routes/resetpassword.routes';
 import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/resetpasswordPage.routes';
+import { changePassword } from './controller/changePassword.controller';
+import changePasswordRoutes from './routes/changePassword.routes';
 
 require('dotenv').config()
 
@@ -67,6 +69,7 @@ authRoutes(app);
 verifyEmailRoutes(app);
 resetpasswordRoutes(app);
 resetpasswordPageRoutes(app);
+changePasswordRoutes(app);
 
 const PORT = process.env.PORT || 8000;
 

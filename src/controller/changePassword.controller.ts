@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import { where } from 'sequelize/types';
 require('dotenv').config()
 
-export const changePassword = async (req:Request, res: Response) => {
+export const changePassword = async (req: Request, res: Response) => {
     try{
         await User.findOne({
             where : req.body.userId
