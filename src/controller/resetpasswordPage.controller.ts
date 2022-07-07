@@ -11,7 +11,7 @@ export const resetpasswordPage = async (req:Request, res:Response) => {
     User.findByPk(userId)
     .then(user => {
         if (user){
-            res.sendFile(path.join(__dirname, '../../public/resetPassword/index.html'));
+            res.sendFile(path.join(__dirname, '../public/resetPassword/index.html'));
         }
     });
 };
