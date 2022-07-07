@@ -17,6 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/static', express.static('public'));
 
 const {Role, Interest, INTERESTS, ROLES} = db;
 

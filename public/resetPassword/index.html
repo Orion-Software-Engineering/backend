@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orion Reset Password</title>
+    <script>
+        function checkPasswords(){
+            pwd1 = document.getElementsByName('pwd1')
+            pwd2 = document.getElementsByName('pwd2')
+
+            if (pwd1 != pwd2){
+                alert("Passwords did not match. Try again!!")
+            }
+
+            else{
+                console.log("Requests sent")
+            }
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <form action="" method="post">
+            <div id="pwd-form">
+                <table>
+                    <tr>
+                        <td>New Password: </td>
+                        <td><input type="password" name="pwd1" id=""></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password: </td>
+                        <td><input type="password" name="pwd2" id=""></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit" onclick=checkPasswords()>Reset Password</button></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </center>
+    
+</body>
+</html>
