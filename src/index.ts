@@ -3,8 +3,12 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
-import verifyEmailRoutes from './routes/verify.routes';
+import verifyEmailRoutes from './routes/verify.routes'
+import resetpasswordRoutes from './routes/password/resetpassword.routes';
 import db, {sequelize} from './models';
+import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
+import {changePassword} from './controller/password/changePassword.controller';
+import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
 
 require('dotenv').config();
@@ -14,7 +18,7 @@ const corsOptions = {
     origin: 'https://localhost:8000',
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -49,6 +53,9 @@ app.get('/', (req: Request, res: Response) => {
 userRoutes(app);
 authRoutes(app);
 verifyEmailRoutes(app);
+resetpasswordRoutes(app);
+resetpasswordPageRoutes(app);
+changePasswordRoutes(app);
 app.use('/api/interest', interestRouter);
 
 const PORT = process.env.PORT || 8000;
