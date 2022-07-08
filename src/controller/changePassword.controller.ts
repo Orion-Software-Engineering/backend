@@ -13,7 +13,11 @@ export const changePassword = async (req: Request, res: Response) => {
             where: {
                 'id': req.body.id
             }
-        }).then(() => {
+        }).then(user => {
+            if (user?.password === bcrypt.hashSync(req.body.password, 8)) {
+                return res.status(403).send('New password cannot be same as old password.')
+            }
+
             User.update({
                 'password': bcrypt.hashSync(req.body.password, 8)
             }, {
