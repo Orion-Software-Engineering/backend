@@ -1,17 +1,18 @@
 /* eslint-disable prettier/prettier */
 import {Request, Response} from "express";
 import db from '../../models';
-import { UserRequest } from '../../models/user/user.request';
+import {UserRequest} from '../../models/user/user.request';
 import path from 'path';
+
 const {User} = db;
 
 
-export const resetPasswordPage = async (req:Request, res:Response) => {
+export const resetPasswordPage = async (req: Request, res: Response) => {
     const userId = req.params.id
     User.findByPk(userId)
-    .then(user => {
-        if (user){
-            res.sendFile(path.resolve('src','public','index.html'));
-        }
-    });
+        .then(user => {
+            if (user) {
+                res.sendFile(path.resolve('src', 'public', 'reset', 'index.html'));
+            }
+        });
 };
