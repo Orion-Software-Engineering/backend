@@ -28,8 +28,8 @@ export const changePassword = async (req: Request, res: Response) => {
                 }
             } else return res.status(403).send('Unable to change password.')
         })
-    } catch (_) {
-        return res.status(403).send('Unable to change password.')
+    } catch ({message}) {
+        return res.status(400).send(message)
     }
 
 }

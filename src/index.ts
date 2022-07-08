@@ -7,7 +7,7 @@ import verifyEmailRoutes from './routes/verify.routes'
 import resetpasswordRoutes from './routes/password/resetpassword.routes';
 import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
-import { changePassword } from './controller/password/changePassword.controller';
+import {changePassword} from './controller/password/changePassword.controller';
 import changePasswordRoutes from './routes/password/changePassword.routes';
 
 require('dotenv').config()
@@ -17,7 +17,7 @@ const corsOptions = {
     origin: 'https://localhost:8000',
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 

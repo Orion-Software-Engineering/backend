@@ -25,12 +25,13 @@
             if (pwd.length < 8) return alert('Password has to be at least 8 characters.')
 
             if (passwordsMatch()) {
+                console.log(token)
                 fetch('http://localhost:8000/api/changePassword', {
                     method: 'POST', body: {
                         'id': token,
                         'password': pwd
                     },
-                    mode: 'no-cors'
+                    // mode: 'no-cors'
                 })
             } else {
                 alert('Passwords do not match.')
