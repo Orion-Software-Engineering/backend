@@ -1,6 +1,6 @@
 const sib = require('sib-api-v3-sdk')
 
-export const sendmail = (email: string, verificationLink: string) => {
+export const sendMail = (email: string, verificationLink: string) => {
     const defaultClient = sib.ApiClient.instance;
     const apiKey = defaultClient.authentications['api-key'];
     apiKey.apiKey = process.env.SMTP_API_KEY;
