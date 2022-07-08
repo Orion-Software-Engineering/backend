@@ -6,8 +6,8 @@ import path from 'path';
 const {User} = db;
 
 
-export const resetpasswordPage = async (req:Request, res:Response) => {
-    const userId = (req as UserRequest).query.tag;
+export const resetPasswordPage = async (req:Request, res:Response) => {
+    const userId = req.params.id
     User.findByPk(userId)
     .then(user => {
         if (user){
