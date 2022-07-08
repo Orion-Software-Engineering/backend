@@ -6,7 +6,6 @@ const {User} = db;
 
 export const changePassword = async (req: Request, res: Response) => {
     try {
-        console.log(req.body);
         await User.findOne({
             where: {
                 id: req.body.id,
@@ -30,7 +29,7 @@ export const changePassword = async (req: Request, res: Response) => {
             } else return res.status(403).send('Unable to change password.')
         })
     } catch ({message}) {
-        return res.status(400).send(message)
+        return res.status(400).send('Unable to change password. Please try again later.')
     }
 
 }

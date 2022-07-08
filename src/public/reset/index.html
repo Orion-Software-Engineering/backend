@@ -7,9 +7,8 @@
     <script>
 
         function store() {
-            let value = ''
             const parts = document.URL.split('/')
-            value = parts[parts.length - 1]
+            const value = parts[parts.length - 1];
             localStorage.setItem('token', value);
         }
 
@@ -36,6 +35,10 @@
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: body
+                }).then(async response => {
+                    const status = document.getElementById('status')
+                    status.innerText = await response.text()
+                    status.style.visibility = 'visible';
                 })
             } else {
                 alert('Passwords do not match.')
@@ -63,6 +66,10 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <div style="visibility:hidden">
+        <h3 id="status"></h3>
     </div>
 </div>
 
