@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         function store() {
-            const params = new URLSearchParams(window.location.search);
-            const value = params.get('tag');
+            const parts = document.URL.split('/')
+            const value = parts[parts.length - 1]
             localStorage.setItem('token', value);
         }
 
@@ -26,11 +26,12 @@
 
             if (passwordsMatch()) {
                 console.log(token)
+                // TODO: change to heroku
                 fetch('http://localhost:8000/api/changePassword', {
-                    method: 'POST', body: {
+                    method: 'POST', body: JSON.stringify({
                         'id': token,
                         'password': pwd
-                    },
+                    }),
                     // mode: 'no-cors'
                 })
             } else {
