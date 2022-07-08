@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function store() {
+            const params = new URLSearchParams(window.location.search);
+            const value = params.get('tag');
+            localStorage.setItem('token', value);
+        }
+
+        function postData() {
+            const token = localStorage.getItem('token');
+            const pwd = document.getElementById('pass').value
+
+            if (pwd.length < 8) alert('Password has to be at least 8 characters.')
+
+            if (passwordsMatch()) {
+                fetch('http://localhost:8000/api/changePassword', {
+                    method: 'POST', body: {
+                        'userId': token,
+                        'password': pwd
+                    }
+                })
+            } else {
+                alert('Passwords do not match.')
+            }
+        }
+    </script>
+    <title>Orion Reset Password</title>
+    <script>
+        function passwordsMatch() {
+            const pwd1 = document.getElementById('pass').value;
+            const pwd2 = document.getElementById('confpass').value;
+
+            return pwd1 === pwd2;
+
+        }
+    </script>
+</head>
+<body onload=store()>
+<div style="text-align: center;">
+    <div id="pwd-form">
+        <table>
+            <tr>
+                <td>New Password:</td>
+                <td><input type="password" name="pwd1" id="pass"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="password" name="pwd2" id="confpass"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="button" onclick=postData()>Reset Password</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
