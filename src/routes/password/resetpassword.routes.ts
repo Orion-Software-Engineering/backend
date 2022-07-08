@@ -11,5 +11,5 @@ export default (app: Express) => {
         next();
     });
 
-    app.post('/api/resetPassword', controller.resetPassword);
+    app.post('/api/resetPassword/:id', controller.resetPassword);
 };

@@ -3,6 +3,7 @@
 import {Request, Response} from 'express';
 import db from '../../models';
 import {sendResetMail} from '../../mailer/resetPasswordMailer';
+import {UserRequest} from "../../models/user/user.request";
 
 const {User} = db;
 require('dotenv').config()
@@ -12,14 +13,13 @@ export const resetPassword = async (req: Request, res: Response) => {
     // check if user exists in database
     User.findOne({
         where: {
-            id: req.body.id,
-            email: req.body.email,
+            id: req.params.id,
             isEmailVerified: true
         },
     }).then(user => {
         if (user) {
-            const passwordResetLink = `${process.env.RESET_PASSWORD_URL}/${user.id}`
-            sendResetMail(req.body.email, passwordResetLink);
+            const passwordResetLink = `${process.env.RESET_PASSWORD_URL}?tag=${user.id}`
+            sendResetMail(user.email, passwordResetLink);
             return res.send('Password reset link has been sent to your email.');
         }
         // if user does not exist play with their brains, hahaha :)
