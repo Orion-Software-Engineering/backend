@@ -2,7 +2,8 @@
 /* eslint-disable no-trailing-spaces */
 import {Request, Response} from 'express';
 import db from '../models';
-import { sendResetMail } from '../mailer/resetPasswordMailer';
+import {sendResetMail} from '../mailer/resetPasswordMailer';
+
 const {User} = db;
 require('dotenv').config()
 
@@ -14,19 +15,19 @@ export const resetPassword = async (req: Request, res: Response) => {
             email: req.body.email,
         },
     })
-    
 
-    if (user?.email){
+
+    if (user?.email) {
         const passwordResetLink = `${process.env.RESET_PASSWORD_URL}?tag=${user.id}`
         sendResetMail(req.body.email, passwordResetLink);
         res.send({
-            'response' : 'Check your email for reset link!'
+            'response': 'Check your email for reset link!'
         });
     }
     // if user does not exist play with their brains, hahaha :)
-    else{
+    else {
         res.send({
-            'response' : 'Check your email for reset'
+            'response': 'Check your email for reset'
         });
     }
 
