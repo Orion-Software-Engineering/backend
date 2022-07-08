@@ -1,2 +1,2 @@
-# backend
-Repository for the backend of Orion Meet
+# Orion Meet Backend
+⚡Express

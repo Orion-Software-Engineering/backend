@@ -9,8 +9,9 @@ import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
 import {changePassword} from './controller/password/changePassword.controller';
 import changePasswordRoutes from './routes/password/changePassword.routes';
+import interestRouter from './routes/interest.routes';
 
-require('dotenv').config()
+require('dotenv').config();
 
 const app = express();
 const corsOptions = {
@@ -27,26 +28,11 @@ sequelize
     .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-        initial()
+        initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
 function initial() {
-    // Role.create({
-    //     id: 1,
-    //     name: "user"
-    // });
-    //
-    // Role.create({
-    //     id: 2,
-    //     name: "moderator"
-    // });
-    //
-    // Role.create({
-    //     id: 3,
-    //     name: "admin"
-    // });
-
     ROLES.forEach(role => {
         Role.create({
             name: role,
@@ -70,6 +56,7 @@ verifyEmailRoutes(app);
 resetpasswordRoutes(app);
 resetpasswordPageRoutes(app);
 changePasswordRoutes(app);
+app.use('/api/interest', interestRouter);
 
 const PORT = process.env.PORT || 8000;
 

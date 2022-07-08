@@ -44,7 +44,7 @@ export const signup = async (req: Request, res: Response) => {
             sendMail(req.body.email, verificationLink)
         });
 
-        return res.send({message: 'User registered successfully!'});
+        return res.status(201).send({message: 'User registered successfully!'});
     } catch ({message}) {
         return res.status(500).send({message});
     }
@@ -84,6 +84,7 @@ export const signin = async (req: Request, res: Response) => {
         const roles = rolesRaw.map(({name}) => `ROLE_${name.toUpperCase()}`);
 
         // return the user's credentials and access token
+        //TODO: return only the id and access token, but not now
         return res.status(200).send({
             roles,
             id: user.id,

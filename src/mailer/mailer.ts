@@ -15,11 +15,11 @@ export const sendMail = (email: string, verificationLink: string) => {
         '<a href={{params.parameter}}>Click here to verify</a>' +
         '</body>' +
         '</html>';
+
     sendSmtpEmail.sender = {'name': 'Orion', 'email': 'support@orion.com'};
     sendSmtpEmail.to = [{'email': email}];
     sendSmtpEmail.replyTo = {'email': 'noreply@orion.com', 'name': 'noreply'};
     sendSmtpEmail.headers = {'Orion-Email-Verification': 'unique-id-1234'};
-
     sendSmtpEmail.params = {'parameter': verificationLink, 'subject': 'Verify your E-mail.'};
 
     apiInstance.sendTransacEmail(sendSmtpEmail).then((data: any) => {
