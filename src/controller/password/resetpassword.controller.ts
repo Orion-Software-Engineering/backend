@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-trailing-spaces */
 import {Request, Response} from 'express';
-import db from '../models';
-import {sendResetMail} from '../mailer/resetPasswordMailer';
+import db from '../../models';
+import {sendResetMail} from '../../mailer/resetPasswordMailer';
 
 const {User} = db;
 require('dotenv').config()

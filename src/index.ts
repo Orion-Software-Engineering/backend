@@ -4,11 +4,11 @@ import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import verifyEmailRoutes from './routes/verify.routes'
-import resetpasswordRoutes from './routes/resetpassword.routes';
+import resetpasswordRoutes from './routes/password/resetpassword.routes';
 import db, {sequelize} from './models';
-import resetpasswordPageRoutes from './routes/resetpasswordPage.routes';
-import { changePassword } from './controller/changePassword.controller';
-import changePasswordRoutes from './routes/changePassword.routes';
+import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
+import { changePassword } from './controller/password/changePassword.controller';
+import changePasswordRoutes from './routes/password/changePassword.routes';
 
 require('dotenv').config()
 

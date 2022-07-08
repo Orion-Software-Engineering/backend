@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {Express, NextFunction, Request, Response} from 'express';
-import * as controller from '../controller/resetpasswordPage.controller';
+import * as controller from '../../controller/password/resetpasswordPage.controller';
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
