@@ -7,7 +7,7 @@ const {User} = db;
 require('dotenv').config()
 
 // eslint-disable-next-line prettier/prettier
-export const resetpassword = async (req: Request, res: Response) => {
+export const resetPassword = async (req: Request, res: Response) => {
     // check if user exists in database
     const user = await User.findOne({
         where: {
