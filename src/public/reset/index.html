@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
+        let value = ''
+
         function store() {
             const parts = document.URL.split('/')
-            const value = parts[parts.length - 1]
+            value = parts[parts.length - 1]
             localStorage.setItem('token', value);
         }
 
@@ -29,7 +31,7 @@
                 // TODO: change to heroku
                 fetch('http://localhost:8000/api/changePassword', {
                     method: 'POST', body: JSON.stringify({
-                        'id': token,
+                        'id': value,
                         'password': pwd
                     }),
                     // mode: 'no-cors'
