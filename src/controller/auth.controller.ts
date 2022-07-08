@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 import db from '../models';
 import config from '../config/auth.config';
 import bcrypt from 'bcryptjs';
-import {sendmail} from "../mailer/mailer";
+import {sendMail} from "../mailer/mailer";
 
 const {Op} = Sequelize;
 const {User, Role} = db;
@@ -41,7 +41,7 @@ export const signup = async (req: Request, res: Response) => {
                 })
             }
             const verificationLink = `${process.env.VERIFICATION_URL}?tag=${user.id}`;
-            sendmail(req.body.email, verificationLink)
+            sendMail(req.body.email, verificationLink)
         });
 
         return res.status(201).send({message: 'User registered successfully!'});
