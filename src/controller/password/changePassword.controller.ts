@@ -6,6 +6,7 @@ const {User} = db;
 
 export const changePassword = async (req: Request, res: Response) => {
     try {
+        console.log(req.body);
         await User.findOne({
             where: {
                 id: req.body.id,

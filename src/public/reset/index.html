@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        let value = ''
 
         function store() {
+            let value = ''
             const parts = document.URL.split('/')
             value = parts[parts.length - 1]
             localStorage.setItem('token', value);
@@ -27,14 +27,15 @@
             if (pwd.length < 8) return alert('Password has to be at least 8 characters.')
 
             if (passwordsMatch()) {
-                console.log(token)
+                const body = JSON.stringify({
+                    "id": token,
+                    "password": pwd
+                })
                 // TODO: change to heroku
                 fetch('http://localhost:8000/api/changePassword', {
-                    method: 'POST', body: JSON.stringify({
-                        'id': value,
-                        'password': pwd
-                    }),
-                    // mode: 'no-cors'
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: body
                 })
             } else {
                 alert('Passwords do not match.')
