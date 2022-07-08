@@ -12,17 +12,17 @@ export const resetPassword = async (req: Request, res: Response) => {
     // check if user exists in database
     User.findOne({
         where: {
+            id: req.body.id,
             email: req.body.email,
+            isEmailVerified: true
         },
     }).then(user => {
         if (user) {
             const passwordResetLink = `${process.env.RESET_PASSWORD_URL}/${user.id}`
             sendResetMail(req.body.email, passwordResetLink);
-            res.send('Password reset link has been sent to your email.');
+            return res.send('Password reset link has been sent to your email.');
         }
+        // if user does not exist play with their brains, hahaha :)
+        return res.status(403).send('Link has been sent to email.')
     })
-
-
-    // if user does not exist play with their brains, hahaha :)
-
 };
