@@ -5,8 +5,6 @@ const {User} = db;
 import bcrypt from 'bcryptjs';
 import {where} from 'sequelize/types';
 
-require('dotenv').config()
-
 export const changePassword = async (req: Request, res: Response) => {
     try {
         await User.findOne({
@@ -14,22 +12,25 @@ export const changePassword = async (req: Request, res: Response) => {
                 'id': req.body.id
             }
         }).then(user => {
-            if (user?.password === bcrypt.hashSync(req.body.password, 8)) {
-                return res.status(403).send('New password cannot be same as old password.')
-            }
-
-            User.update({
-                'password': bcrypt.hashSync(req.body.password, 8)
-            }, {
-                where: {
-                    'id': req.body.id
+            if (user) {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    return res.status(403).send('New password cannot be same as old password.')
+                } else {
+                    User.update({
+                        'password': bcrypt.hashSync(req.body.password, 8)
+                    }, {
+                        where: {
+                            'id': req.body.id
+                        }
+                    }).then(() => {
+                        return res.send('Password Changed Successfully.')
+                    })
                 }
-            }).then(() => {
-                return res.send('Password Changed Successfully.')
-            })
+            }
+            else return res.status(403).send('Unable to change password.')
         })
     } catch (_) {
-        return res.status(400).send('Unable to change password.')
+        return res.status(403).send('Unable to change password.')
     }
 
 }
