@@ -18,7 +18,7 @@ export const resetPassword = async (req: Request, res: Response) => {
         },
     }).then(user => {
         if (user) {
-            const passwordResetLink = `${process.env.RESET_PASSWORD_URL}?tag=${user.id}`
+            const passwordResetLink = `${process.env.RESET_PASSWORD_URL}/${user.id}`
             sendResetMail(user.email, passwordResetLink);
             return res.send('Password reset link has been sent to your email.');
         }
