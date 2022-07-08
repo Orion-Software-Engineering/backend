@@ -1,7 +1,7 @@
 const sib = require('sib-api-v3-sdk')
 require('dotenv').config()
 
-export const sendresetmail = (email: string, resetPasswordLink: string) => {
+export const sendResetMail = (email: string, resetPasswordLink: string) => {
     const defaultClient = sib.ApiClient.instance;
     const apiKey = defaultClient.authentications['api-key'];
     apiKey.apiKey = process.env.SMTP_API_KEY;

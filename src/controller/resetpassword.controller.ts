@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 import {Request, Response} from 'express';
 import db from '../models';
-import { sendresetmail } from '../mailer/resetPasswordMailer';
+import { sendResetMail } from '../mailer/resetPasswordMailer';
 const {User} = db;
 require('dotenv').config()
 
@@ -18,7 +18,7 @@ export const resetpassword = async (req: Request, res: Response) => {
 
     if (user?.email){
         const passwordResetLink = `${process.env.RESET_PASSWORD_URL}?tag=${user.id}`
-        sendresetmail(req.body.email, passwordResetLink);
+        sendResetMail(req.body.email, passwordResetLink);
         res.send({
             'response' : 'Check your email for reset link!'
         });
