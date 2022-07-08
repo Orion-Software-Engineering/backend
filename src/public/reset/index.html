@@ -36,9 +36,11 @@
                     headers: {'Content-Type': 'application/json'},
                     body: body
                 }).then(async response => {
-                    const status = document.getElementById('status')
-                    status.innerText = await response.text()
-                    status.style.visibility = 'visible';
+                    document.getElementById('status')
+                        .innerText = await response.text();
+
+                    document.getElementById('container')
+                        .style.visibility = 'hidden'
                 })
             } else {
                 alert('Passwords do not match.')
@@ -48,8 +50,12 @@
     <title>Orion Reset Password</title>
 </head>
 <body onload=store()>
-<div style="text-align: center;">
-    <div id="pwd-form">
+<div style="text-align: center;
+            visibility: visible;
+            display:flex;
+            align-items: center;
+            justify-content: center;">
+    <div id="container">
         <table>
             <tr>
                 <td>New Password:</td>
@@ -68,7 +74,7 @@
         </table>
     </div>
 
-    <div style="visibility:hidden">
+    <div style="text-align:center; top: 5px; position: absolute">
         <h3 id="status"></h3>
     </div>
 </div>
