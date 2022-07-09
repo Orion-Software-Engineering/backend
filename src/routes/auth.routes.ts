@@ -3,6 +3,7 @@ import {Express, NextFunction, Request, Response} from 'express';
 import {verifySignUp} from '../middleware/verifySignUp';
 
 import * as controller from '../controller/auth.controller';
+import {authJwt} from "../middleware/authJwt";
 
 // routes for authentication functions
 
@@ -24,7 +25,9 @@ export default (app: Express) => {
         ],
         controller.signup
     );
-    
+
     // the sign in controller
-    app.post('/api/auth/signin', controller.signin);
+    app.post('/api/auth/signin',
+        [authJwt.isUserVerified],
+        controller.signin);
 };
