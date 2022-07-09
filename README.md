@@ -41,16 +41,6 @@ Request Body: <br>
 ```
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be ommitted.
 
-### Check if a user's email is verified
-End Point: /api/isUserVerified <br>
-Method: POST <br>
-Request Body: <br>
-```json
-{
-    "email" : " "
-}
-```
-
 ### Request for admin content.
 End Point: /api/test/admin <br>
 Method: GET <br>
