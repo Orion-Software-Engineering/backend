@@ -13,7 +13,8 @@ export const resetPassword = async (req: Request, res: Response) => {
     // check if user exists in database
     User.findOne({
         where: {
-            id: req.params.id,
+            // id: req.params.id,
+            email: req.body.email,
             isEmailVerified: true
         },
     }).then(user => {
