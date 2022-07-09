@@ -1,5 +1,5 @@
 import {Express, NextFunction, Request, Response} from "express";
-import * as controller from '../controller/verify.controller'
+import * as controller from '../controller/isUserVerified.controller'
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
@@ -10,5 +10,5 @@ export default (app: Express) => {
         next();
     });
 
-    app.get('/api/isUserVerified', controller.verified)
+    app.post('/api/isUserVerified', controller.verified)
 }

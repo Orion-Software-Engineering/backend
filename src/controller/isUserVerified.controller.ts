@@ -1,12 +1,15 @@
 import {Request, Response} from "express";
 import db from '../models';
-import {UserRequest} from "../models/user/user.request";
 
 const {User} = db;
 
 export const verified = (req: Request, res: Response) => {
     try {
-        User.findByOne(req.body.email)
+        User.findOne({
+            where : {
+                email : req.body.email
+            }
+        })
             .then(user => {
                 if (user?.isEmailVerified) {
                     res.status(200).send({
