@@ -41,6 +41,16 @@ Request Body: <br>
 ```
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be ommitted.
 
+### Request for re-setting password
+End Point: /api/resetPassword <br>
+Method: POST <br>
+Request Body:
+```json
+{
+  "email" : " "
+}
+```
+
 ### Request for admin content.
 End Point: /api/test/admin <br>
 Method: GET <br>
@@ -93,13 +103,40 @@ Connection
 x-access-token
 ```
 
-### Request for re-setting password
-End Point: /api/resetPassword <br>
-Method: POST <br> 
+### Interests
+NB: "ID" is the user ID for the user.
+
+#### Get interests of a user.
+End Point: /api/interest/ID <br>
+Method: GET <br>
+
+#### Set Interests of a user.
+End Point: /api/interest/ID <br>
+Method: POST <br>
 Request Body:
 ```json
 {
-  "email" : " "
+    "interests" : ["sports","photography","comedy"]
+}
+```
+
+#### Adding Interests for a particular user.
+End Point: /api/interests/ID <br>
+Method: PUT <br>
+Request Body:
+```json
+{
+"interests" : ["science"]
+}
+```
+
+#### Removing interests for a particular user.
+End Point: /api/interests/ID <br>
+Method: DELETE <br>
+Request Body:
+```json
+{
+    "interests":["sorts"]
 }
 ```
 
