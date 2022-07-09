@@ -7,7 +7,6 @@ import verifyEmailRoutes from './routes/verify.routes'
 import resetpasswordRoutes from './routes/password/resetpassword.routes';
 import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
-import {changePassword} from './controller/password/changePassword.controller';
 import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
 

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import {Express, NextFunction, Request, Response} from 'express';
 import * as controller from '../../controller/password/resetpassword.controller';
+import isUserVerified from "../../middleware/authentication/isUserVerified";
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
@@ -11,5 +12,6 @@ export default (app: Express) => {
         next();
     });
 
-    app.post('/api/resetPassword', controller.resetPassword);
+    app.post('/api/resetPassword',
+        controller.resetPassword);
 };
