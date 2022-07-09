@@ -77,3 +77,39 @@ Accept-Encoding
 Connection
 ```
 
+### Request for moderator content
+End Point: /api/test/mod <br>
+Method: GET <br>
+Request Header:
+```
+Host
+User-Agent
+Accept
+Accept-Encoding
+Connection
+x-access-token
+```
+
+### Request for user content
+End Point: /api/test/all <br>
+Method: GET <br>
+Request Header:
+```
+Host
+User-Agent
+Accept
+Accept-Encoding
+Connection
+x-access-token
+```
+
+### Request for re-setting password
+End Point: /api/resetPassword <br>
+Method: POST <br> 
+Request Body:
+```json
+{
+  "email" : " "
+}
+```
+
