@@ -16,14 +16,25 @@ https://orion-meet-testing.herokuapp.com/
 ## API Documentation
 Main URL: https://orion-meet.herokuapp.com/
 
-## Sign In
-End Point: /api/auth/signin
-Request Body:<br>
+### Sign In
+<b>End Point:</b> /api/auth/signin <br>
+<b>Method: </b>POST <br>
+<b>Request Body:</b><br>
 ```json 
 {
     "username" : " ",
     "password" : " ",
-    "roles" : [" "," ", " "]
 }
 ```
 
+### Sign up
+<b>End Point:</b> /api/auth/signup <br>
+<b>Method: </b> POST
+```json
+{
+    "username" : " ",
+    "email" : " ",
+    "password" : " ",
+    "roles" : [" "," ", " "]
+}
+```
