@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
 import jwt from 'jsonwebtoken';
-import {Identifier} from 'sequelize/types';
 import config from '../config/auth.config';
 import db from '../models';
 import {UserRequest} from "../models/user/user.request";
