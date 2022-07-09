@@ -89,6 +89,11 @@ const isModeratorOrAdmin = (req: Request, res: Response, next: Function) => {
     });
 };
 
+// check if the user is verified (through the email verification)
+const isUserVerified = (req: Request, res: Response, next: Function) => {
+
+}
+
 // export the functions
 export const authJwt = {
     verifyToken: verifyToken,
