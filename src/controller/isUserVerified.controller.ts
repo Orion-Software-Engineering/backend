@@ -6,19 +6,18 @@ const {User} = db;
 export const verified = (req: Request, res: Response) => {
     try {
         User.findOne({
-            where : {
-                email : req.body.email
+            where: {
+                email: req.body.email
             }
         })
             .then(user => {
                 if (user?.isEmailVerified) {
                     res.status(200).send({
-                        "response" : "E-mail has been verified."
+                        "response": "E-mail has been verified."
                     })
-                }
-                else{
-                    res.status(301).send({
-                        "response" : "E-mail has not been verified."
+                } else {
+                    res.status(403).send({
+                        "response": "E-mail has not been verified."
                     })
                 }
             })
