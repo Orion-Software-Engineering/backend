@@ -51,7 +51,7 @@ export const signup = async (req: Request, res: Response) => {
 };
 
 // module for logging in users
-export const signin = async (req: Request, res: Response) => {
+export const signIn = async (req: Request, res: Response) => {
     try {
         const user = await User.findOne({
             where: {
