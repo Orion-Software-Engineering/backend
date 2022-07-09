@@ -7,21 +7,13 @@ const checkRolesExist = (req: Request, res: Response, next: Function) => {
     if (req.body.roles) {
         req.body.roles.forEach((role: string) => {
             if (!ROLES.includes(role)) {
-                res.status(400).send(`Role ${role} does not exist.`);
-                return;
+                return res.status(400).send({
+                    'message': `Role ${role} does not exist.`
+                });
             }
         })
-
-        // for (let i = 0; i < req.body.roles.length; i++) {
-        //     if (!ROLES.includes(req.body.roles[i])) {
-        //         res.status(400).send({
-        //             message: 'Role does not exist',
-        //         });
-        //         return;
-        //     }
-        // }
     }
-    next();
+    next()
 };
 
 export default checkRolesExist
