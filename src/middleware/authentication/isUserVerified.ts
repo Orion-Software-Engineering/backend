@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import db from "../models";
+import db from "../../models";
 
 const {User} = db;
 
@@ -19,3 +19,5 @@ const isUserVerified = (req: Request, res: Response, next: Function) => {
         res.status(404).send('Account not found.')
     })
 }
+
+export default isUserVerified

@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import jwt from "jsonwebtoken";
-import config from "../config/auth.config";
+import config from "../../config/auth.config";
 
 const verifyToken = (req: Request, res: Response, next: Function) => {
     const token = req.headers['x-access-token'];
@@ -26,3 +26,5 @@ const verifyToken = (req: Request, res: Response, next: Function) => {
         });
     }
 };
+
+export default verifyToken

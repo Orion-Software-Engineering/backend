@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import {UserRequest} from "../models/user/user.request";
-import db from "../models";
+import {UserRequest} from "../../models/user/user.request";
+import db from "../../models";
 
 const {User} = db;
 
@@ -23,3 +23,5 @@ const isModeratorOrAdmin = (req: Request, res: Response, next: Function) => {
         });
     });
 };
+
+export default isModeratorOrAdmin
