@@ -17,9 +17,9 @@ https://orion-meet-testing.herokuapp.com/
 Main URL: https://orion-meet.herokuapp.com/
 
 ### Sign In
-<b>End Point:</b> /api/auth/signin <br>
-<b>Method: </b>POST <br>
-<b>Request Body:</b><br>
+End Point: /api/auth/signin <br>
+Method: POST <br>
+Request Body:<br>
 ```json 
 {
     "username" : " ",
@@ -28,8 +28,9 @@ Main URL: https://orion-meet.herokuapp.com/
 ```
 
 ### Sign up
-<b>End Point:</b> /api/auth/signup <br>
-<b>Method: </b> POST
+End Point: /api/auth/signup <br>
+Method: POST <br>
+Request Body: <br>
 ```json
 {
     "username" : " ",
