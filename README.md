@@ -35,7 +35,8 @@ Request Body: <br>
 {
     "username" : " ",
     "email" : " ",
-    "password" : " ",
+    "password" : " ", 
+    "dob": " ",
     "roles" : [" "," ", " "]
 }
 ```
