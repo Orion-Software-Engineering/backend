@@ -11,7 +11,8 @@
         "lint": "gts lint",
         "clean": "gts clean",
         "compile": "tsc",
-        "fix": "gts fix"
+        "fix": "gts fix",
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
