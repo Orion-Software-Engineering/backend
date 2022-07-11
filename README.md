@@ -104,6 +104,10 @@ Connection
 x-access-token
 ```
 
+### Listing all users .
+End Point: /api/test/users <br>
+Method: GET <br>
+
 ### Interests
 NB: "ID" is the user ID for the user.
 
