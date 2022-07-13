@@ -14,6 +14,7 @@ export default class User extends Model<
   declare email: string;
   declare password: string;
   declare isEmailVerified: boolean;
+  declare dateOfBirth: string;
   declare getRoles: Sequelize.BelongsToManyGetAssociationsMixin<RoleAttributes>;
   declare setRoles: Sequelize.BelongsToManySetAssociationsMixin<
     RoleAttributes,
@@ -52,6 +53,10 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dateOfBirth: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     isEmailVerified: {

@@ -1,4 +1,4 @@
-import {Optional} from 'sequelize';
+import {DataTypes, Optional} from 'sequelize';
 
 export type UserAttributes = {
   id: string;
@@ -6,6 +6,7 @@ export type UserAttributes = {
   email: string;
   password: string;
   isEmailVerified: boolean;
+  dateOfBirth: string;
 };
 
 export type UserCreationAttributes = Optional<
