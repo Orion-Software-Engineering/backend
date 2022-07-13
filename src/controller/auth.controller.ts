@@ -41,11 +41,14 @@ export const signup = async (req: Request, res: Response) => {
           user.setRoles(roles);
         });
       }
+      const userId = user.id;
       const verificationLink = `${process.env.VERIFICATION_URL}?tag=${user.id}`;
       sendMail(req.body.email, verificationLink);
+      res.status(201).send({
+        message: 'User registered successfully!',
+        userId: userId,
+      });
     });
-
-    return res.status(201).send({message: 'User registered successfully!'});
   } catch ({message}) {
     return res.status(500).send({message});
   }
