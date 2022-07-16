@@ -50,7 +50,7 @@ Request Body: <br>
     "roles" : [" "," ", " "]
 }
 ```
-NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be committed.<br>
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
 Response: 200 Ok<br>
 ```json
 {
