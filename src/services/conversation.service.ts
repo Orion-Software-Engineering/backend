@@ -14,3 +14,5 @@ const add = async (userId: string, senderId: string) => {
     userId,
   });
 };
+
+export default {get, add};
