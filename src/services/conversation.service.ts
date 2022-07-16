@@ -9,9 +9,14 @@ const get = async (id: string) => {
 };
 
 const add = async (userId: string, senderId: string) => {
+  // two conversations need to be created; one for the sender and another for the recipient
   await db.Conversation.create({
     senderId,
     userId,
+  });
+  await db.Conversation.create({
+    senderId: userId,
+    userId: senderId,
   });
 };
 
