@@ -26,6 +26,16 @@ Request Body:<br>
     "password" : " "
 }
 ```
+Response: 200 Ok <br>
+```json
+{
+  "roles" : [" "],
+  "id" : "",
+  "username" : "",
+  "email" : " ",
+  "accessToken" : ""
+}
+```
 
 ### Sign up
 End Point: /api/auth/signup <br>
@@ -40,7 +50,14 @@ Request Body: <br>
     "roles" : [" "," ", " "]
 }
 ```
-NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be ommitted.
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
+Response: 200 Ok<br>
+```json
+{
+  "message" : "user registered successfully",
+  "useId" : " "
+}
+```
 
 ### Request for re-setting password
 End Point: /api/resetPassword <br>
@@ -51,6 +68,8 @@ Request Body:
   "email" : " "
 }
 ```
+Response: 200 Ok <br>
+```Password Reset link has been sent to your mail. ```
 
 ### Request for admin content.
 End Point: /api/test/admin <br>
@@ -107,13 +126,29 @@ x-access-token
 ### Listing all users .
 End Point: /api/test/users <br>
 Method: GET <br>
+Request Headers: <br>
+```
+x-acces-token
+```
+Response: 200 Ok <br>
+```json
+{
+  "users": [
+    {
+      "id": " ",
+      "username": " ",
+      "password": " ",
+      "dateOfBirth": " ",
+      "isMailVerified": " ",
+      "createdAt": " ",
+      "updatedAt": " "
+    }
+  ]
+}
+```
 
 ### Interests
 NB: "ID" is the user ID for the user.
-
-#### Get interests of a user.
-End Point: /api/interest/ID <br>
-Method: GET <br>
 
 #### Set Interests of a user.
 End Point: /api/interest/ID <br>
@@ -121,8 +156,21 @@ Method: POST <br>
 Request Body:
 ```json
 {
-    "interests" : ["sports","photography","comedy"]
+    "interests" : ["sports","photography"]
 }
+```
+Response: 200 Ok <br>
+```json
+[
+  [
+    {
+      "userId" : " ",
+      "roleId" : " ",
+      "createdAt" : " ",
+      "updatedAt" : " "
+    }
+  ]
+]
 ```
 
 #### Adding Interests for a particular user.
@@ -134,6 +182,17 @@ Request Body:
 "interests" : ["science"]
 }
 ```
+Response: 200 Ok<br>
+```json
+[
+    {
+        "userId": " ",
+        "roleId": " ",
+        "createdAt": " ",
+        "updatedAt": " "
+    }
+]
+```
 
 #### Removing interests for a particular user.
 End Point: /api/interests/ID <br>
@@ -144,4 +203,26 @@ Request Body:
     "interests":["sorts"]
 }
 ```
+Response: 200 Ok <br>
+```1```
 
+#### Request for all interests of a particular user
+End Point: /api/interests/ID <br>
+Method: GET <br>
+Response: 200 Ok <br>
+```json
+[
+    {
+        "id": " ",
+        "name": " ",
+        "createdAt": " ",
+        "updatedAt": " ",
+        "user_interests": {
+            "createdAt": " ",
+            "updatedAt": " ",
+            "userId": " ",
+            "roleId": " "
+        }
+    }
+]
+```
