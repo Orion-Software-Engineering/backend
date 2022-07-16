@@ -15,7 +15,7 @@ const add = async (req: Request, res: Response) => {
 const getMessages = async (req: Request, res: Response) => {
   const {senderId, receiverId} = req.params;
   try {
-    res.json(await messageService.getMessages(senderId, receiverId));
+    res.json(await messageService.getMessages({senderId, receiverId}));
   } catch ({message}) {
     res.status(400).send({message});
   }
