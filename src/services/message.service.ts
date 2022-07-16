@@ -12,4 +12,14 @@ const addMessage = async (context: PostMessage) => {
   });
 };
 
-export default {addMessage};
+const getMessages = async (context: Omit<PostMessage, 'text'>) => {
+  const {senderId, receiverId} = context;
+  const idHash = [senderId, receiverId].sort().join('');
+  return await db.Message.findAll({
+    where: {
+      idHash,
+    },
+  });
+};
+
+export default {addMessage, getMessages};
