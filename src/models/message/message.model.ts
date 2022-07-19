@@ -20,7 +20,7 @@ Message.init(
       allowNull: false,
     },
     idHash: {type: DataTypes.STRING, allowNull: false},
-    text: {type: DataTypes.STRING, allowNull: false},
+    text: {type: DataTypes.TEXT, allowNull: false},
   },
   {sequelize, tableName: 'messages'}
 );
