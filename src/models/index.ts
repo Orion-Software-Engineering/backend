@@ -94,10 +94,10 @@ db.User.belongsToMany(db.Interest, {
 });
 
 // a conversation can have multiple messages
-db.Conversation.belongsToMany(db.Message, {through: 'conversationMessages'});
+db.Conversation.belongsToMany(db.Message, {through: 'conversation_messages'});
 
 // a message can have multiple conversations(two) i.e one for sender and one for receiver
-db.Message.belongsToMany(db.Conversation, {through: 'conversationMessages'});
+db.Message.belongsToMany(db.Conversation, {through: 'conversation_messages'});
 
 // a conversation can have only one user(owner)
 db.Conversation.belongsTo(db.User, {as: 'owner'});
@@ -105,7 +105,7 @@ db.Conversation.belongsTo(db.User, {as: 'owner'});
 // a conversation can have only one sender
 db.Conversation.belongsTo(db.User, {as: 'sender'});
 
-// a user can have muliple conversations
+// a user can have multiple conversations
 db.User.hasMany(db.Conversation);
 
 // a message can have only one author(sender)
