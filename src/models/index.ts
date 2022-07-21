@@ -110,8 +110,8 @@ db.Conversation.belongsToMany(db.User, {
 // a user can have multiple conversations
 db.User.belongsToMany(db.Conversation, {
   through: 'conversation_users',
-  foreignKey: 'conversationId',
-  otherKey: 'userId',
+  foreignKey: 'userId',
+  otherKey: 'conversationId',
 });
 
 // a message can have only one conversation

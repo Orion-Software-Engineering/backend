@@ -1,9 +1,11 @@
-import {CreationOptional, DataTypes, Model} from 'sequelize';
+import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
 import {
   ConversationAttributes,
   ConversationCreationAttributes,
 } from './conversation.type';
+import {UserAttributes} from '../user';
+import {MessageAttributes} from '../message';
 
 export default class Conversation extends Model<
   ConversationAttributes,
@@ -11,6 +13,21 @@ export default class Conversation extends Model<
 > {
   declare id: CreationOptional<string>;
   declare unseenCount: number;
+
+  declare getUsers: Sequelize.BelongsToManyGetAssociationsMixin<UserAttributes>;
+  declare setUsers: Sequelize.BelongsToManySetAssociationsMixin<
+    UserAttributes,
+    UserAttributes['id']
+  >;
+  declare addMessages: Sequelize.BelongsToManyAddAssociationsMixin<
+    MessageAttributes,
+    MessageAttributes['id']
+  >;
+  declare removeMessages: Sequelize.BelongsToManyRemoveAssociationsMixin<
+    MessageAttributes,
+    MessageAttributes['id']
+  >;
+  declare getMessages: Sequelize.BelongsToManyGetAssociationsMixin<MessageAttributes>;
 }
 
 Conversation.init(

@@ -3,6 +3,7 @@ import {sequelize} from '..';
 import {RoleAttributes} from '../role';
 import {InterestAttributes} from '../interest';
 import {UserAttributes, UserCreationAttributes} from './user.type';
+import {ConversationAttributes} from '../conversation';
 
 // define database model for users
 export default class User extends Model<
@@ -32,6 +33,15 @@ export default class User extends Model<
   declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<
     InterestAttributes,
     InterestAttributes['id']
+  >;
+  declare addConversations: Sequelize.BelongsToManyAddAssociationsMixin<
+    ConversationAttributes,
+    ConversationAttributes['id']
+  >;
+  declare getConversations: Sequelize.BelongsToManyGetAssociationsMixin<ConversationAttributes>;
+  declare removeConversations: Sequelize.BelongsToManyRemoveAssociationsMixin<
+    ConversationAttributes,
+    ConversationAttributes['id']
   >;
 }
 

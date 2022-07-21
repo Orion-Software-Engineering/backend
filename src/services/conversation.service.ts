@@ -1,23 +1,29 @@
 import db from '../models';
 
+const {Conversation, User} = db;
+
 const get = async (id: string) => {
-  return await db.Conversation.findAll({
+  return await Conversation.findAll({
     where: {
-      userId: id,
+      id: id,
     },
   });
 };
 
 const add = async (userId: string, senderId: string) => {
-  // two conversations need to be created; one for the sender and another for the recipient
-  await db.Conversation.create({
-    senderId,
-    userId,
+  // await db.Conversation.create({
+  //     senderId,
+  //     userId,
+  // });
+  // await db.Conversation.create({
+  //     senderId: userId,
+  //     userId: senderId,
+  // });
+  const convo = await Conversation.create({
+    unseenCount: 0,
   });
-  await db.Conversation.create({
-    senderId: userId,
-    userId: senderId,
-  });
+
+  const user = await User.findByPk(userId);
 };
 
 export default {get, add};
