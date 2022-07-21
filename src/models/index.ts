@@ -94,7 +94,11 @@ db.User.belongsToMany(db.Interest, {
 });
 
 // a conversation can have multiple messages
-db.Conversation.belongsToMany(db.Message, {through: 'conversation_messages'});
+db.Conversation.belongsToMany(db.Message, {
+  through: 'conversation_messages',
+  foreignKey: 'conversationId',
+  otherKey: 'messageId',
+});
 
 // a message can have multiple conversations(two) i.e one for sender and one for receiver
 db.Message.belongsToMany(db.Conversation, {through: 'conversation_messages'});
