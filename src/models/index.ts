@@ -100,12 +100,6 @@ db.Conversation.belongsToMany(db.Message, {
   otherKey: 'messageId',
 });
 
-// a message can have multiple conversations(two) i.e one for sender and one for receiver
-db.Message.belongsToMany(db.Conversation, {through: 'conversation_messages'});
-
-// a conversation can have only one user(owner)
-db.Conversation.belongsTo(db.User, {as: 'owner'});
-
 // a conversation can have multiple users watching (a sender and a receiver, or if a group, multiple receivers)
 db.Conversation.belongsToMany(db.User, {
   through: 'conversation_users',
