@@ -3,7 +3,6 @@
 import {Request, Response} from 'express';
 import db from '../../models';
 import {sendResetMail} from '../../mailer/resetPasswordMailer';
-import {UserRequest} from "../../models/user/user.request";
 
 const {User} = db;
 require('dotenv').config()

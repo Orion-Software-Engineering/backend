@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import messageService from '../services/message.service';
 
-type PostMessage = {receiverId: string; senderId: string; text: string};
+type PostMessage = {conversationId: string; senderId: string; text: string};
 
 const add = async (req: Request, res: Response) => {
   try {
@@ -13,9 +13,9 @@ const add = async (req: Request, res: Response) => {
 };
 
 const getMessages = async (req: Request, res: Response) => {
-  const {senderId, receiverId} = req.params;
+  const {conversationId} = req.params;
   try {
-    res.json(await messageService.getMessages({senderId, receiverId}));
+    res.json(await messageService.getMessages({conversationId}));
   } catch ({message}) {
     res.status(400).send({message});
   }

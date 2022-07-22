@@ -1,23 +1,51 @@
 import db from '../models';
 
-type PostMessage = {receiverId: string; senderId: string; text: string};
+const {Message, Conversation, User} = db;
+
+type PostMessage = {conversationId: string; senderId: string; text: string};
 
 const addMessage = async (context: PostMessage) => {
-  const {text, receiverId, senderId} = context;
-  const idHash = [senderId, receiverId].sort().join('');
-  return await db.Message.create({
-    text,
-    senderId,
-    idHash,
+  // const {text, receiverId, senderId} = context;
+  // const idHash = [senderId, receiverId].sort().join('');
+  // return await db.Message.create({
+  //     text,
+  //     senderId,
+  //     idHash,
+  // });
+
+  // to add a message we need the conversation, sender and text
+  const {conversationId, senderId, text} = context;
+  const message = await Message.create({
+    senderId: senderId,
+    conversationId: conversationId,
+    text: text,
   });
+
+  // update conversation unread message count
+  const conversation = await Conversation.findOne({
+    where: {
+      id: message.conversationId,
+    },
+  });
+
+  conversation?.update({
+    unseenCount: conversation.unseenCount + 1,
+  });
+
+  return message;
 };
 
-const getMessages = async (context: Omit<PostMessage, 'text'>) => {
-  const {senderId, receiverId} = context;
-  const idHash = [senderId, receiverId].sort().join('');
-  return await db.Message.findAll({
+const getMessages = async (context: Omit<PostMessage, 'text' | 'senderId'>) => {
+  // const {senderId, receiverId} = context;
+  // const idHash = [senderId, receiverId].sort().join('');
+  // return await db.Message.findAll({
+  //     where: {
+  //         idHash,
+  //     },
+  // });
+  return await Message.findAll({
     where: {
-      idHash,
+      conversationId: context.conversationId,
     },
   });
 };
