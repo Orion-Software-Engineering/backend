@@ -11,8 +11,8 @@ const get = async (req: Request, res: Response) => {
 
 const add = async (req: Request, res: Response) => {
   try {
-    const {userId, senderId}: {userId: string; senderId: string} = req.body;
-    res.json(await conversationService.add(userId, senderId));
+    const {userId}: {userId: string} = req.body;
+    res.json(await conversationService.add(userId));
   } catch ({message}) {
     res.status(400).send({message});
   }
