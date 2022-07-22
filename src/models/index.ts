@@ -4,11 +4,6 @@ import config from '../config/db.config';
 // models need and instant of sequelize to be able to initialize
 // putting model imports above runs model instantiation before data start
 // TODO: extract database startup into a separate component
-import User from './user';
-import Role from './role/';
-import Interest from './interest';
-import Conversation from './conversation/';
-import Message from './message';
 
 /* Heroku essential
  * Heroku provides a database url, but locally we do not need that.
@@ -36,6 +31,12 @@ const sequelize = process.env.DATABASE_URL
         idle: config.pool.idle,
       },
     });
+
+import User from './user';
+import Role from './role/';
+import Interest from './interest';
+import Conversation from './conversation/';
+import Message from './message';
 
 // the db variable will store database info for use
 const db = {
