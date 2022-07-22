@@ -1,6 +1,7 @@
 {
     "extends": "./node_modules/gts/",
     "rules": {
-        "prettier/prettier": 0
+        "prettier/prettier": 0,
+        "skipBlankLines": true
     }
 }

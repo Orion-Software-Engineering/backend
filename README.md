@@ -41,11 +41,15 @@ Request Body: <br>
 
 ```json
 {
-    "username" : " ",
-    "email" : " ",
-    "password" : " ", 
+    "username": " ",
+    "email": " ",
+    "password": " ",
     "dob": " ",
-    "roles" : [" "," ", " "]
+    "roles": [
+        " ",
+        " ",
+        " "
+    ]
 }
 ```
 
@@ -60,7 +64,7 @@ Request Body:
 
 ```json
 {
-  "email" : " "
+    "email": " "
 }
 ```
 
@@ -147,7 +151,11 @@ Request Body:
 
 ```json
 {
-    "interests" : ["sports","photography","comedy"]
+    "interests": [
+        "sports",
+        "photography",
+        "comedy"
+    ]
 }
 ```
 
@@ -159,7 +167,9 @@ Request Body:
 
 ```json
 {
-"interests" : ["science"]
+    "interests": [
+        "science"
+    ]
 }
 ```
 
@@ -171,7 +181,9 @@ Request Body:
 
 ```json
 {
-    "interests":["sorts"]
+    "interests": [
+        "sorts"
+    ]
 }
 ```
 

@@ -1,10 +1,10 @@
 import {Optional} from 'sequelize';
 
 export type MessageAttributes = {
-  id: string;
-  text: string;
-  senderId?: string;
-  conversationId: string;
+    id: string;
+    text: string;
+    senderId?: string;
+    conversationId: string;
 };
 
 export type MessageCreationAttributes = Optional<MessageAttributes, 'id'>;
