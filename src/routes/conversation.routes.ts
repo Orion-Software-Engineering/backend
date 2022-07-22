@@ -11,6 +11,6 @@ import conversationController from '../controller/conversation.controller';
 const router = Router();
 
 router.get('/:id', conversationController.get);
-router.post('/:id', conversationController.add);
+router.put('/:id', conversationController.add);
 
 export default router;
