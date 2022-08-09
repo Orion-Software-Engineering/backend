@@ -23,14 +23,24 @@ export const removeMessageFromConversation = async (req: Request, res: Response)
         const {userId, messageId, conversationId} = req.body
 
         const conversation = await Conversation.findByPk(conversationId)
-        conversation?.removeMessage([messageId])
+        await conversation?.removeMessage([messageId])
+
+        return res.status(200).send()
     } catch (e) {
         return res.status(400).send()
     }
 }
 
 export const getMessageFromConversation = async (req: Request, res: Response) => {
+    try {
+        const {userId, messageId, conversationId} = req.body
+        const conversation = await Conversation.findByPk(conversationId)
+        const message = await Message.findByPk(messageId)
 
+        return res.status(200).send(JSON.stringify(message))
+    } catch (e) {
+        return res.status(400).send()
+    }
 }
 
 export const getMessagesFromConversation = async (req: Request, res: Response) => {
