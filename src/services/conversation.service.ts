@@ -10,25 +10,18 @@ const get = async (id: string) => {
     });
 };
 
-const add = async (senderId: string, receiverId: string) => {
+const add = async (userId: string) => {
     const conversation = await Conversation.create({
         unseenCount: 0,
     });
 
     const sender = await User.findOne({
         where: {
-            id: senderId,
-        },
-    });
-
-    const receiver = await User.findOne({
-        where: {
-            id: receiverId,
+            id: userId,
         },
     });
 
     await sender?.addConversations([conversation])
-    await receiver?.addConversations([conversation])
 
     return conversation
 };
