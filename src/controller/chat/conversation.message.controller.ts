@@ -35,6 +35,7 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
     try {
         const {userId, messageId, conversationId} = req.body
         const conversation = await Conversation.findByPk(conversationId)
+
         const message = await Message.findByPk(messageId)
 
         return res.status(200).send(JSON.stringify(message))
@@ -44,5 +45,13 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
 }
 
 export const getMessagesFromConversation = async (req: Request, res: Response) => {
+    try {
+        const {userId, messageId, conversationId} = req.body
+        const conversation = await Conversation.findByPk(conversationId)
 
+        const messages = await conversation?.getMessages()
+        return res.status(200).send(JSON.stringify(messages))
+    } catch (e) {
+        return res.status(400).send()
+    }
 }
