@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import messageService from '../services/message.service';
+import messageService from '../../services/message.service';
 
 type PostMessage = { conversationId: string; senderId: string; text: string };
 

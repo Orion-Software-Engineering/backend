@@ -6,7 +6,7 @@
 // TODO: remove routes after matching algo's are completed
 
 import {Router} from 'express';
-import conversationController from '../controller/conversation.controller';
+import conversationController from '../controller/chat/conversation.controller';
 
 const router = Router();
 
