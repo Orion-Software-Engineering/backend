@@ -1,4 +1,5 @@
 import db from '../models';
+import conversation from '../models/conversation';
 
 const {Conversation, User} = db;
 
@@ -11,9 +12,7 @@ const get = async (id: string) => {
 };
 
 const add = async (userId: string) => {
-    const conversation = await Conversation.create({
-        unseenCount: 0,
-    });
+    const conversation = await Conversation.create();
 
     const sender = await User.findOne({
         where: {
@@ -26,4 +25,9 @@ const add = async (userId: string) => {
     return conversation
 };
 
-export default {get, add};
+const remove = async (userId: string, conversationId: string) => {
+    const user = await User.findByPk(userId)
+    await user?.removeConversations([conversationId])
+}
+
+export default {get, add, remove};

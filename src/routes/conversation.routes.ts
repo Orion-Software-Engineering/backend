@@ -3,7 +3,7 @@
 // not called from the frontend.
 // with that out of the way, it's needed for testing purposes
 
-// TODO: remove routes after matching algo's are completed
+// TODO: remove routes after matching algo's are completed ... TBD
 
 import {Router} from 'express';
 import conversationController from '../controller/chat/conversation.controller';
@@ -11,6 +11,7 @@ import conversationController from '../controller/chat/conversation.controller';
 const router = Router();
 
 router.get('/:id', conversationController.get);
-router.put('/:id', conversationController.add);
+router.put('/', conversationController.add);
+router.delete('/', conversationController.remove);
 
 export default router;

@@ -1,4 +1,5 @@
 import {Request, Response} from 'express';
+import message from '../../models/message';
 import conversationService from '../../services/conversation.service';
 
 const get = async (req: Request, res: Response) => {
@@ -18,4 +19,13 @@ const add = async (req: Request, res: Response) => {
     }
 };
 
-export default {get, add};
+const remove = async (req: Request, res: Response) => {
+    try {
+        const {userId, conversationId} = req.body
+        res.json(await conversationService.remove(userId, conversationId))
+    } catch ({message}) {
+        res.status(400).send({message})
+    }
+}
+
+export default {get, add, remove};
