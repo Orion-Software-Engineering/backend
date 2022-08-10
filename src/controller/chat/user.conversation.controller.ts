@@ -38,7 +38,7 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
                 model: Conversation,
                 through: {
                     where: {
-                        id: conversationId
+                        conversationId: conversationId
                     }
                 },
                 attributes: ['id']
