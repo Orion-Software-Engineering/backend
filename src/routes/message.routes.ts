@@ -22,10 +22,10 @@ export default (app: Express) => {
     app.get('/api/messages',
         getMessagesFromConversation)
 
-    app.post('/api/message',
+    app.put('/api/message',
         addMessageToConversation)
 
-    app.delete('/api/messages',
+    app.delete('/api/message',
         removeMessageFromConversation)
 }
 

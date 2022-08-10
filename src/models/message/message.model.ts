@@ -6,6 +6,7 @@ export default class Message extends Model<MessageAttributes,
     MessageCreationAttributes> {
     declare id: CreationOptional<string>;
     declare text: string;
+    declare userId: string
 }
 
 Message.init(
@@ -14,6 +15,10 @@ Message.init(
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
+            allowNull: false,
+        },
+        userId: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         text: {

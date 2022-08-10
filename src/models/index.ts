@@ -118,10 +118,10 @@ db.User.belongsToMany(db.Conversation, {
 db.Message.belongsTo(db.Conversation);
 
 // a message can have only one user
-db.Message.belongsTo(db.User);
+// db.Message.belongsTo(db.User);
 
 // a user can have multiple messages
-db.User.hasMany(db.Message);
+// db.User.hasMany(db.Message);
 
 export default db;
 export {sequelize};

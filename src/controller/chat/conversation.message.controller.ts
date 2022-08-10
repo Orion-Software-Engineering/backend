@@ -8,7 +8,10 @@ export const addMessageToConversation = async (req: Request, res: Response) => {
         const {userId, messageText, conversationId} = req.body
 
         const conversation = await Conversation.findByPk(conversationId)
-        const message = await Message.create({text: messageText})
+        const message = await Message.create({
+            text: messageText,
+            userId: userId
+        })
 
         await conversation?.addMessage([message.id])
 

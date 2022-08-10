@@ -9,7 +9,7 @@ import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
 import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
-import messageRouter from './routes/message.routes';
+import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 
 require('dotenv').config();
@@ -57,8 +57,8 @@ verifyEmailRoutes(app);
 resetpasswordRoutes(app);
 resetpasswordPageRoutes(app);
 changePasswordRoutes(app);
+messageRoutes(app)
 app.use('/api/interest', interestRouter);
-app.use('/api/message', messageRouter);
 app.use('/api/conversation', conversationRouter);
 
 const PORT = process.env.PORT || 8000;
