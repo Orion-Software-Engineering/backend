@@ -3,7 +3,7 @@ import db from '../../models';
 
 const {User} = db;
 
-export const addConversationToUser = async (req: Request, res: Response) => {
+export const addUserToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, conversationId} = req.body
         const user = await User.findByPk(userId)
@@ -16,7 +16,7 @@ export const addConversationToUser = async (req: Request, res: Response) => {
     }
 }
 
-export const removeConversationFromUser = async (req: Request, res: Response) => {
+export const removeUserFromConversation = async (req: Request, res: Response) => {
     try {
         const {userId, conversationId} = req.body
         const user = await User.findByPk(userId)
