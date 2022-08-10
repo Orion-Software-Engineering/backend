@@ -9,9 +9,9 @@ export const addUserToConversation = async (req: Request, res: Response) => {
         const {userId, conversationId} = req.body
         const user = await User.findByPk(userId)
 
-        await user?.addConversations([conversationId])
+        await user?.addConversations(conversationId)
 
-        return res.status(201).send('conversations added successfully')
+        return res.status(201).send({user})
     } catch (e) {
         return res.status(400).send({e})
     }
@@ -33,7 +33,7 @@ export const removeUserFromConversation = async (req: Request, res: Response) =>
 export const getUsersOfConversation = async (req: Request, res: Response) => {
     try {
         const {conversationId} = req.body
-        const users = User.findAll({
+        const users = await User.findAll({
             include: [{
                 model: Conversation,
                 through: {
@@ -41,11 +41,11 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
                         conversationId: conversationId
                     }
                 },
-                attributes: ['id']
             }]
         })
 
-        return res.status(200).send(JSON.stringify(users))
+        // TODO: send only user ids
+        return res.status(200).send({users})
     } catch ({message}) {
         res.status(400).send({message})
     }

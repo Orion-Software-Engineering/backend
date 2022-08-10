@@ -36,7 +36,7 @@ export default (app: Express) => {
 
     app.get(
         '/api/test/users',
-        [verifyToken, isAdmin],
+        // [verifyToken, isAdmin],
         controller.showAll
     );
 };
