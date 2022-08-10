@@ -1,7 +1,8 @@
 import {Request, Response} from "express";
 import db from '../../models';
+import Conversation from "../../models/conversation";
 
-const {Conversation, Message} = db;
+const {Message} = db;
 
 export const addMessageToConversation = async (req: Request, res: Response) => {
     try {
@@ -52,8 +53,17 @@ export const getMessagesFromConversation = async (req: Request, res: Response) =
         const {userId, messageId, conversationId} = req.body
         const conversation = await Conversation.findByPk(conversationId)
 
-        const messages = await conversation?.getMessages()
-        return res.status(200).send(JSON.stringify(messages))
+        const messages = await Message.findAll({
+            include: [{
+                model: Conversation,
+                through: {
+                    where: {
+                        conversationId: conversationId
+                    }
+                }
+            }]
+        })
+        return res.status(200).send({messages})
     } catch (e) {
         return res.status(400).send()
     }

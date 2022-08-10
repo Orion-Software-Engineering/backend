@@ -115,7 +115,9 @@ db.User.belongsToMany(db.Conversation, {
 });
 
 // a message can have only one conversation
-db.Message.belongsTo(db.Conversation);
+db.Message.belongsTo(db.Conversation, {
+    foreignKey: 'conversationId'
+});
 
 // a message can have only one user
 // db.Message.belongsTo(db.User);
