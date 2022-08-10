@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
 import db from '../../models';
+import Conversation from "../../models/conversation";
 
 const {User} = db;
 
@@ -26,5 +27,26 @@ export const removeUserFromConversation = async (req: Request, res: Response) =>
         return res.status(200).send('conversations removed successfully')
     } catch (e) {
         res.status(400).send({e})
+    }
+}
+
+export const getUsersOfConversation = async (req: Request, res: Response) => {
+    try {
+        const {conversationId} = req.body
+        const users = User.findAll({
+            include: [{
+                model: Conversation,
+                through: {
+                    where: {
+                        id: conversationId
+                    }
+                },
+                attributes: ['id']
+            }]
+        })
+
+        return res.status(200).send(JSON.stringify(users))
+    } catch ({message}) {
+        res.status(400).send({message})
     }
 }
