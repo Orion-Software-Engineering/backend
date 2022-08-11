@@ -8,7 +8,7 @@ export type EventAttributes = {
     organizers: string;
     MCs: string;
     Guests: string;
-    Age_restriction: number;
+    Age_restriction: boolean;
     description: string;
 };
 

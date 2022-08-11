@@ -15,7 +15,7 @@ export default class Event extends Model<
     declare organizers: string;
     declare MCs: string;
     declare Guests: string;
-    declare Age_restriction: number;
+    declare Age_restriction: boolean;
     declare description: string;
 
     declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
@@ -66,7 +66,7 @@ Event.init(
             defaultValue: false,
         },
         Age_restriction: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
         description: {
