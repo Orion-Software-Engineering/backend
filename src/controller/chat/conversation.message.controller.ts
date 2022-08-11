@@ -28,11 +28,16 @@ export const removeMessageFromConversation = async (req: Request, res: Response)
         const {userId, messageId, conversationId} = req.body
 
         const conversation = await Conversation.findByPk(conversationId)
-        await conversation?.removeMessage([messageId])
+        // await conversation?.removeMessage([messageId])
+        await Message.destroy({
+            where: {
+                id: messageId
+            }
+        })
 
         return res.status(200).send()
-    } catch (e) {
-        return res.status(400).send()
+    } catch ({message}) {
+        return res.status(400).send({message})
     }
 }
 
@@ -44,8 +49,8 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
         const message = await Message.findByPk(messageId)
 
         return res.status(200).send({message})
-    } catch (e) {
-        return res.status(400).send()
+    } catch ({message}) {
+        return res.status(400).send({message})
     }
 }
 
@@ -60,7 +65,7 @@ export const getMessagesFromConversation = async (req: Request, res: Response) =
             }
         })
         return res.status(200).send({messages})
-    } catch (e) {
-        return res.status(400).send()
+    } catch ({message}) {
+        return res.status(400).send({message})
     }
 }
