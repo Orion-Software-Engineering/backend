@@ -11,10 +11,11 @@ export const addMessageToConversation = async (req: Request, res: Response) => {
         const conversation = await Conversation.findByPk(conversationId)
         const message = await Message.create({
             text: messageText,
-            userId: userId
+            userId: userId,
+            conversationId: conversationId
         })
 
-        await conversation?.addMessage([message.id])
+        // await conversation?.addMessage([message.id])
 
         return res.status(200).send()
     } catch (e) {
@@ -54,14 +55,9 @@ export const getMessagesFromConversation = async (req: Request, res: Response) =
         const conversation = await Conversation.findByPk(conversationId)
 
         const messages = await Message.findAll({
-            include: [{
-                model: Conversation,
-                through: {
-                    where: {
-                        conversationId: conversationId
-                    }
-                }
-            }]
+            where: {
+                conversationId: conversationId
+            }
         })
         return res.status(200).send({messages})
     } catch (e) {

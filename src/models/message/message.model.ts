@@ -7,6 +7,7 @@ export default class Message extends Model<MessageAttributes,
     declare id: CreationOptional<string>;
     declare text: string;
     declare userId: string
+    declare conversationId: string
 }
 
 Message.init(
@@ -25,6 +26,10 @@ Message.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        conversationId: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
     {sequelize, tableName: 'messages'}
 );

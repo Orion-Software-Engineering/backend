@@ -94,11 +94,11 @@ db.User.belongsToMany(db.Interest, {
 });
 
 // a conversation can have multiple messages
-db.Conversation.belongsToMany(db.Message, {
-    through: 'conversation_messages',
-    foreignKey: 'conversationId',
-    otherKey: 'messageId',
-});
+// db.Conversation.belongsToMany(db.Message, {
+//     through: 'conversation_messages',
+//     foreignKey: 'conversationId',
+//     otherKey: 'messageId',
+// });
 
 // a conversation can have multiple users watching (a sender and a receiver, or if a group, multiple receivers)
 db.Conversation.belongsToMany(db.User, {
@@ -114,10 +114,10 @@ db.User.belongsToMany(db.Conversation, {
     otherKey: 'conversationId',
 });
 
-// a message can have only one conversation
-db.Message.belongsTo(db.Conversation, {
-    foreignKey: 'conversationId'
-});
+// // a message can have only one conversation
+// db.Message.belongsTo(db.Conversation, {
+//     foreignKey: 'conversationId'
+// });
 
 // a message can have only one user
 // db.Message.belongsTo(db.User);
