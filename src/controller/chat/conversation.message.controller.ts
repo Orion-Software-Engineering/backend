@@ -43,7 +43,7 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
 
         const message = await Message.findByPk(messageId)
 
-        return res.status(200).send(JSON.stringify(message))
+        return res.status(200).send({message})
     } catch (e) {
         return res.status(400).send()
     }
