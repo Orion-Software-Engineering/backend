@@ -12,5 +12,7 @@ export default (app: Express) => {
         next();
     });
 
-    app.post("/createEvent", [isModerator], controller.createEvents);
+    app.post('/createEvent', [isModerator], controller.createEvents);
+    app.get('/getEvents', controller.getEvents);
+    app.delete('/deleteEvents', [isModerator],controller.deleteEvents)
 }
