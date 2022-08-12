@@ -19,6 +19,8 @@ export const createEvents = async (req: Request, res: Response) => {
             Age_restriction: req.body.age,
             description: req.body.description,
         })
+    } catch (e) {
+        console.log("nothing to see here");
     }
 
 };

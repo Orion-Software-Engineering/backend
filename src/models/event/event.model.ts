@@ -7,7 +7,7 @@ import {EventAttributes, EventCreationAttributes} from './event.type';
 export default class Event extends Model<
     EventAttributes,
     EventCreationAttributes
-    > {
+> {
     declare event_name: CreationOptional<string>;
     declare event_date: Date;
     declare event_time: Date;

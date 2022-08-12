@@ -11,6 +11,7 @@ import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
 import messageRouter from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
+import eventRouter from './routes/events.routes';
 
 require('dotenv').config();
 
@@ -57,6 +58,7 @@ verifyEmailRoutes(app);
 resetpasswordRoutes(app);
 resetpasswordPageRoutes(app);
 changePasswordRoutes(app);
+eventRouter(app);
 app.use('/api/interest', interestRouter);
 app.use('/api/message', messageRouter);
 app.use('/api/conversation', conversationRouter);

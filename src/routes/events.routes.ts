@@ -1,6 +1,7 @@
 import {Express, Request, Response} from 'express';
 import * as controller from '../controller/events.controller';
-import isModerator from "../middleware/authentication/isModerator";
+import isModerator from '../middleware/authentication/isModerator';
+import isUserVerified from '../middleware/authentication/isUserVerified';
 
 
 export default (app: Express) => {
@@ -12,7 +13,7 @@ export default (app: Express) => {
         next();
     });
 
-    app.post('/createEvent', [isModerator], controller.createEvents);
-    app.get('/getEvents', controller.getEvents);
-    app.delete('/deleteEvents', [isModerator],controller.deleteEvents)
-}
+    app.post('/api/events/createEvent', [isModerator], controller.createEvents);
+    app.get('/api/events/getEvents', [isUserVerified],controller.getEvents);
+    app.delete('/api/events/deleteEvents', [isModerator],controller.deleteEvents)
+};
