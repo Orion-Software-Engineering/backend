@@ -41,13 +41,15 @@ Response: 200 Ok <br>
 End Point: /api/auth/signup <br>
 Method: POST <br>
 Request Body: <br>
+NB: with gender male == true and female == false
 ```json
 {
     "username" : " ",
     "email" : " ",
     "password" : " ", 
     "dob": " ",
-    "roles" : [" "," ", " "]
+    "roles" : [" "," ", " "], 
+    "gender" : "true"
 }
 ```
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
