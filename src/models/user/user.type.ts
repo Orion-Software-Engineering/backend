@@ -7,6 +7,7 @@ export type UserAttributes = {
   password: string;
   isEmailVerified: boolean;
   dateOfBirth: Date;
+  gender: boolean;
 };
 
 export type UserCreationAttributes = Optional<

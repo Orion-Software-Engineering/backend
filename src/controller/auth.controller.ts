@@ -21,6 +21,7 @@ export const signup = async (req: Request, res: Response) => {
       // don't store the raw password, encrypt it with bcrypt
       password: bcrypt.hashSync(req.body.password, 8),
       dateOfBirth: req.body.dob,
+      gender: req.body.gender,
     }).then(user => {
       if (req.body.roles) {
         Role.findAll({
@@ -94,6 +95,7 @@ export const signIn = async (req: Request, res: Response) => {
       id: user.id,
       username: user.username,
       email: user.email,
+      gender: user.gender,
       accessToken: token,
     });
   } catch ({message}) {
