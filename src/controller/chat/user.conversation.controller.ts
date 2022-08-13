@@ -24,7 +24,7 @@ export const removeUserFromConversation = async (req: Request, res: Response) =>
 
         await user?.removeConversations([conversationId])
 
-        return res.status(200).send('conversations removed successfully')
+        return res.status(200).send('conversation removed successfully')
     } catch (e) {
         res.status(400).send({e})
     }
@@ -44,7 +44,7 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
             }]
         })
 
-        const usersInfo: Array<any> = []
+        const usersInfo: Array<Object> = []
         users.forEach(user => {
             const u = {
                 "id": user.id,
