@@ -36,11 +36,11 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
         const users = await User.findAll({
             include: [{
                 model: Conversation,
-                through: {
+                // through: {
                     where: {
-                        conversationId: conversationId
+                        id: conversationId
                     }
-                },
+                // },
             }]
         })
 
