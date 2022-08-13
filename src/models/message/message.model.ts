@@ -27,7 +27,7 @@ Message.init(
             allowNull: false,
         },
         conversationId: {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             allowNull: false,
         }
     },
