@@ -37,15 +37,24 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
             include: [{
                 model: Conversation,
                 // through: {
-                    where: {
-                        id: conversationId
-                    }
+                where: {
+                    id: conversationId
+                }
                 // },
             }]
         })
 
+        const usersInfo: Array<any> = []
+        users.forEach(user => {
+            const u = {
+                "id": user.id,
+                "username": user.username
+            }
+            usersInfo.push(u)
+        })
+
         // TODO: send only user ids
-        return res.status(200).send({users})
+        return res.status(200).send({usersInfo})
     } catch ({message}) {
         res.status(400).send({message})
     }
