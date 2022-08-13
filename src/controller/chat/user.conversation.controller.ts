@@ -53,7 +53,6 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
             usersInfo.push(u)
         })
 
-        // TODO: send only user ids
         return res.status(200).send({usersInfo})
     } catch ({message}) {
         res.status(400).send({message})
