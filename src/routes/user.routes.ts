@@ -16,6 +16,12 @@ export default (app: Express) => {
         next();
     });
 
+    app.get('/api/user',
+        controller.getUsername)
+
+    app.get('/api/user/profile',
+        controller.getUserProfile)
+
     app.get('/api/test/all', controller.allAccess);
 
     app.get('/api/test/user',
@@ -36,7 +42,7 @@ export default (app: Express) => {
 
     app.get(
         '/api/test/users',
-        [verifyToken, isAdmin],
+        // [verifyToken, isAdmin],
         controller.showAll
     );
 };

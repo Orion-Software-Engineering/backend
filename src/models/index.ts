@@ -1,6 +1,9 @@
 import {Sequelize} from 'sequelize';
 
 import config from '../config/db.config';
+// models need and instant of sequelize to be able to initialize
+// putting model imports above runs model instantiation before data start
+// TODO: extract database startup into a separate component
 
 /* Heroku essential
  * Heroku provides a database url, but locally we do not need that.
@@ -29,18 +32,19 @@ const sequelize = process.env.DATABASE_URL
         },
     });
 
-// models need and instant of sequelize to be able to initialize
-// putting model imports above runs model instantiation before data start
-// TODO: extract database startup into a separate component
 import User from './user';
 import Role from './role/';
 import Interest from './interest';
+import Conversation from './conversation/';
+import Message from './message';
 
 // the db variable will store database info for use
 const db = {
     User,
     Role,
     Interest,
+    Conversation,
+    Message,
     ROLES: ['user', 'admin', 'moderator'],
     INTERESTS: [
         'art',
@@ -88,6 +92,38 @@ db.User.belongsToMany(db.Interest, {
     foreignKey: 'userId',
     otherKey: 'roleId',
 });
+
+// a conversation can have multiple messages
+// db.Conversation.belongsToMany(db.Message, {
+//     through: 'conversation_messages',
+//     foreignKey: 'conversationId',
+//     otherKey: 'messageId',
+// });
+
+// a conversation can have multiple users watching (a sender and a receiver, or if a group, multiple receivers)
+db.Conversation.belongsToMany(db.User, {
+    through: 'conversation_users',
+    foreignKey: 'conversationId',
+    otherKey: 'userId',
+});
+
+// a user can have multiple conversations
+db.User.belongsToMany(db.Conversation, {
+    through: 'conversation_users',
+    foreignKey: 'userId',
+    otherKey: 'conversationId',
+});
+
+// // a message can have only one conversation
+// db.Message.belongsTo(db.Conversation, {
+//     foreignKey: 'conversationId'
+// });
+
+// a message can have only one user
+// db.Message.belongsTo(db.User);
+
+// a user can have multiple messages
+// db.User.hasMany(db.Message);
 
 export default db;
 export {sequelize};

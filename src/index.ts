@@ -3,12 +3,14 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
-import verifyEmailRoutes from './routes/verify.routes'
+import verifyEmailRoutes from './routes/verify.routes';
 import resetpasswordRoutes from './routes/password/resetpassword.routes';
 import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
 import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
+import messageRoutes from './routes/message.routes';
+import conversationRouter from './routes/conversation.routes';
 
 require('dotenv').config();
 
@@ -24,10 +26,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 const {Role, Interest, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: true}) // force: true forces dropping and resyncing the database
+    .sync({force: false}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-        initial();
+        // initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
@@ -55,7 +57,9 @@ verifyEmailRoutes(app);
 resetpasswordRoutes(app);
 resetpasswordPageRoutes(app);
 changePasswordRoutes(app);
+messageRoutes(app)
 app.use('/api/interest', interestRouter);
+app.use('/api/conversation', conversationRouter);
 
 const PORT = process.env.PORT || 8000;
 

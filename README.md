@@ -1,25 +1,31 @@
 # Orion Meet Backend
+
 ⚡Express
 
 <br>
 
 ### Production ✨
+
 Reviewed and tested stable app version
 https://orion-meet.herokuapp.com/
 
 ### Testing 💫
+
 Staging area for new features
 https://orion-meet-testing.herokuapp.com/
 
 <br><br>
 
 ## API Documentation
+
 Main URL: https://orion-meet.herokuapp.com/
 
 ### Sign In
+
 End Point: /api/auth/signin <br>
 Method: POST <br>
 Request Body:<br>
+
 ```json 
 {
     "username" : " ",
@@ -38,18 +44,25 @@ Response: 200 Ok <br>
 ```
 
 ### Sign up
+
 End Point: /api/auth/signup <br>
 Method: POST <br>
 Request Body: <br>
+
 ```json
 {
-    "username" : " ",
-    "email" : " ",
-    "password" : " ", 
+    "username": " ",
+    "email": " ",
+    "password": " ",
     "dob": " ",
-    "roles" : [" "," ", " "]
+    "roles": [
+        " ",
+        " ",
+        " "
+    ]
 }
 ```
+
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
 Response: 200 Ok<br>
 ```json
@@ -60,21 +73,25 @@ Response: 200 Ok<br>
 ```
 
 ### Request for re-setting password
+
 End Point: /api/resetPassword <br>
 Method: POST <br>
 Request Body:
+
 ```json
 {
-  "email" : " "
+    "email": " "
 }
 ```
 Response: 200 Ok <br>
 ```Password Reset link has been sent to your mail. ```
 
 ### Request for admin content.
+
 End Point: /api/test/admin <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -83,12 +100,15 @@ Accept-Encoding
 Connection
 x-access-token
 ```
+
 NB: In Request headers access token for the admin should be set in order to make a successful request.
 
 ### Request for public content
+
 End Point: /api/test/all <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -98,9 +118,11 @@ Connection
 ```
 
 ### Request for moderator content
+
 End Point: /api/test/mod <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -111,9 +133,11 @@ x-access-token
 ```
 
 ### Request for user content
+
 End Point: /api/test/all <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -124,6 +148,7 @@ x-access-token
 ```
 
 ### Listing all users .
+
 End Point: /api/test/users <br>
 Method: GET <br>
 Request Headers: <br>
@@ -148,15 +173,27 @@ Response: 200 Ok <br>
 ```
 
 ### Interests
+
 NB: "ID" is the user ID for the user.
 
+#### Get interests of a user.
+
+End Point: /api/interest/ID <br>
+Method: GET <br>
+
 #### Set Interests of a user.
+
 End Point: /api/interest/ID <br>
 Method: POST <br>
 Request Body:
+
 ```json
 {
-    "interests" : ["sports","photography"]
+    "interests": [
+        "sports",
+        "photography",
+        "comedy"
+    ]
 }
 ```
 Response: 200 Ok <br>
@@ -174,12 +211,16 @@ Response: 200 Ok <br>
 ```
 
 #### Adding Interests for a particular user.
+
 End Point: /api/interests/ID <br>
 Method: PUT <br>
 Request Body:
+
 ```json
 {
-"interests" : ["science"]
+    "interests": [
+        "science"
+    ]
 }
 ```
 Response: 200 Ok<br>
@@ -195,12 +236,16 @@ Response: 200 Ok<br>
 ```
 
 #### Removing interests for a particular user.
+
 End Point: /api/interests/ID <br>
 Method: DELETE <br>
 Request Body:
+
 ```json
 {
-    "interests":["sorts"]
+    "interests": [
+        "sorts"
+    ]
 }
 ```
 Response: 200 Ok <br>
