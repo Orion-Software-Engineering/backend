@@ -41,20 +41,24 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
                     id: conversationId
                 }
                 // },
-            }]
+            }],
+            attributes: ['id', 'username']
         })
 
-        const usersInfo: Array<Object> = []
-        users.forEach(user => {
-            const u = {
-                "id": user.id,
-                "username": user.username
-            }
-            usersInfo.push(u)
-        })
-
-        return res.status(200).send({usersInfo})
+        return res.status(200).send({users})
     } catch ({message}) {
         res.status(400).send({message})
     }
+}
+
+export const getConversationsOfUser = async (req: Request, res: Response) => {
+    try {
+        const {userId} = req.body
+        const user = await User.findByPk(userId)
+        const conversations = user?.getConversations
+        return res.status(200).send({conversations})
+    } catch ({message}) {
+        res.status(400).send({message})
+    }
+
 }

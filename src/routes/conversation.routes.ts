@@ -8,7 +8,7 @@
 import {Router} from 'express';
 import conversationController from '../controller/chat/conversation.controller';
 import {
-    addUserToConversation,
+    addUserToConversation, getConversationsOfUser,
     getUsersOfConversation,
     removeUserFromConversation
 } from "../controller/chat/user.conversation.controller";
@@ -22,5 +22,6 @@ router.delete('/', conversationController.remove);
 router.put('/user', addUserToConversation)
 router.delete('/user', removeUserFromConversation)
 router.get('/user/all', getUsersOfConversation)
+router.get('/user/conversations', getConversationsOfUser)
 
 export default router;
