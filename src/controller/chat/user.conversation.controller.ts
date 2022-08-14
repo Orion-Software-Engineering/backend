@@ -1,17 +1,15 @@
 import {Request, Response} from "express";
 import db from '../../models';
 import Conversation from "../../models/conversation";
+import conversation from '../../services/user.conversation.service'
 
 const {User} = db;
 
 export const addUserToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, conversationId} = req.body
-        const user = await User.findByPk(userId)
 
-        await user?.addConversations(conversationId)
-
-        return res.status(201).send({user})
+        return res.status(201).json(await conversation.addUser(userId, conversationId))
     } catch (e) {
         return res.status(400).send({e})
     }
@@ -20,11 +18,8 @@ export const addUserToConversation = async (req: Request, res: Response) => {
 export const removeUserFromConversation = async (req: Request, res: Response) => {
     try {
         const {userId, conversationId} = req.body
-        const user = await User.findByPk(userId)
 
-        await user?.removeConversations([conversationId])
-
-        return res.status(200).send('conversation removed successfully')
+        return res.status(200).json(await conversation.removeUser(userId, conversationId))
     } catch (e) {
         res.status(400).send({e})
     }
@@ -33,17 +28,7 @@ export const removeUserFromConversation = async (req: Request, res: Response) =>
 export const getUsersOfConversation = async (req: Request, res: Response) => {
     try {
         const {conversationId} = req.body
-        const users = await User.findAll({
-            include: [{
-                model: Conversation,
-                // through: {
-                where: {
-                    id: conversationId
-                }
-                // },
-            }],
-            attributes: ['id', 'username']
-        })
+
 
         return res.status(200).send({users})
     } catch ({message}) {
