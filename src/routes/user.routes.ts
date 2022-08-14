@@ -19,6 +19,9 @@ export default (app: Express) => {
     app.get('/api/user',
         controller.getUsername)
 
+    app.get('/api/user/profile',
+        controller.getUserProfile)
+
     app.get('/api/test/all', controller.allAccess);
 
     app.get('/api/test/user',
