@@ -29,8 +29,7 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
     try {
         const {conversationId} = req.body
 
-
-        return res.status(200).send({users})
+        return res.status(200).json(await conversation.getUsers(conversationId))
     } catch ({message}) {
         res.status(400).send({message})
     }
@@ -39,9 +38,8 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
 export const getConversationsOfUser = async (req: Request, res: Response) => {
     try {
         const {userId} = req.body
-        const user = await User.findByPk(userId)
-        const conversations = await user?.getConversations()
-        return res.status(200).send({conversations})
+
+        return res.status(200).json(await conversation.getConversations(userId))
     } catch ({message}) {
         res.status(400).send({message})
     }
