@@ -55,7 +55,7 @@ export const getConversationsOfUser = async (req: Request, res: Response) => {
     try {
         const {userId} = req.body
         const user = await User.findByPk(userId)
-        const conversations = user?.getConversations
+        const conversations = await user?.getConversations()
         return res.status(200).send({conversations})
     } catch ({message}) {
         res.status(400).send({message})
