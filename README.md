@@ -32,6 +32,16 @@ Request Body:<br>
     "password" : " "
 }
 ```
+Response: 200 Ok <br>
+```json
+{
+  "roles" : [" "],
+  "id" : "",
+  "username" : "",
+  "email" : " ",
+  "accessToken" : ""
+}
+```
 
 ### Sign up
 
@@ -53,8 +63,14 @@ Request Body: <br>
 }
 ```
 
-NB: When user signs up a mail is sent to their email address for email verification. For calls made from the
-app, ```roles...``` should be ommitted.
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
+Response: 200 Ok<br>
+```json
+{
+  "message" : "user registered successfully",
+  "useId" : " "
+}
+```
 
 ### Request for re-setting password
 
@@ -67,6 +83,8 @@ Request Body:
     "email": " "
 }
 ```
+Response: 200 Ok <br>
+```Password Reset link has been sent to your mail. ```
 
 ### Request for admin content.
 
@@ -133,6 +151,26 @@ x-access-token
 
 End Point: /api/test/users <br>
 Method: GET <br>
+Request Headers: <br>
+```
+x-acces-token
+```
+Response: 200 Ok <br>
+```json
+{
+  "users": [
+    {
+      "id": " ",
+      "username": " ",
+      "password": " ",
+      "dateOfBirth": " ",
+      "isMailVerified": " ",
+      "createdAt": " ",
+      "updatedAt": " "
+    }
+  ]
+}
+```
 
 ### Interests
 
@@ -158,6 +196,19 @@ Request Body:
     ]
 }
 ```
+Response: 200 Ok <br>
+```json
+[
+  [
+    {
+      "userId" : " ",
+      "roleId" : " ",
+      "createdAt" : " ",
+      "updatedAt" : " "
+    }
+  ]
+]
+```
 
 #### Adding Interests for a particular user.
 
@@ -171,6 +222,17 @@ Request Body:
         "science"
     ]
 }
+```
+Response: 200 Ok<br>
+```json
+[
+    {
+        "userId": " ",
+        "roleId": " ",
+        "createdAt": " ",
+        "updatedAt": " "
+    }
+]
 ```
 
 #### Removing interests for a particular user.
@@ -186,4 +248,26 @@ Request Body:
     ]
 }
 ```
+Response: 200 Ok <br>
+```1```
 
+#### Request for all interests of a particular user
+End Point: /api/interests/ID <br>
+Method: GET <br>
+Response: 200 Ok <br>
+```json
+[
+    {
+        "id": " ",
+        "name": " ",
+        "createdAt": " ",
+        "updatedAt": " ",
+        "user_interests": {
+            "createdAt": " ",
+            "updatedAt": " ",
+            "userId": " ",
+            "roleId": " "
+        }
+    }
+]
+```
