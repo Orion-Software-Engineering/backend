@@ -49,29 +49,33 @@ Event.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    venue: {
+    event_venue: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    organizers: {
+    event_organizers: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    MCs: {
+    event_mcs: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Guests: {
+    event_guests: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Age_restriction: {
+    age_restriction: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
     },
-    description: {
+    event_description: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    event_id: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
   },
