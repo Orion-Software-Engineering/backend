@@ -7,15 +7,11 @@ const {Message} = db;
 export const addMessageToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, messageText, conversationId} = req.body
-
-        const conversation = await Conversation.findByPk(conversationId)
-        const message = await Message.create({
+        await Message.create({
             text: messageText,
             userId: userId,
             conversationId: conversationId
-        })
-
-        // await conversation?.addMessage([message.id])
+        });
 
         return res.status(200).send()
     } catch (e) {
@@ -25,10 +21,7 @@ export const addMessageToConversation = async (req: Request, res: Response) => {
 
 export const removeMessageFromConversation = async (req: Request, res: Response) => {
     try {
-        const {userId, messageId, conversationId} = req.body
-
-        const conversation = await Conversation.findByPk(conversationId)
-        // await conversation?.removeMessage([messageId])
+        const {messageId} = req.body
         await Message.destroy({
             where: {
                 id: messageId
@@ -43,9 +36,7 @@ export const removeMessageFromConversation = async (req: Request, res: Response)
 
 export const getMessageFromConversation = async (req: Request, res: Response) => {
     try {
-        const {userId, messageId, conversationId} = req.body
-        const conversation = await Conversation.findByPk(conversationId)
-
+        const {messageId} = req.body
         const message = await Message.findByPk(messageId)
 
         return res.status(200).send({message})
@@ -56,9 +47,7 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
 
 export const getMessagesFromConversation = async (req: Request, res: Response) => {
     try {
-        const {userId, messageId, conversationId} = req.body
-        const conversation = await Conversation.findByPk(conversationId)
-
+        const {conversationId} = req.body
         const messages = await Message.findAll({
             where: {
                 conversationId: conversationId
