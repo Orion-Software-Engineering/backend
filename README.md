@@ -32,18 +32,8 @@ Request Body:<br>
     "password" : " "
 }
 ```
-Response: 200 Ok <br>
-```json
-{
-  "roles" : [" "],
-  "id" : "",
-  "username" : "",
-  "email" : " ",
-  "accessToken" : ""
-}
-```
 
-### Sign up
+### Sign Up
 
 End Point: /api/auth/signup <br>
 Method: POST <br>
@@ -63,16 +53,10 @@ Request Body: <br>
 }
 ```
 
-NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
-Response: 200 Ok<br>
-```json
-{
-  "message" : "user registered successfully",
-  "useId" : " "
-}
-```
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the
+app, ```roles...``` should be ommitted.
 
-### Request for re-setting password
+### Request For Re-setting Password
 
 End Point: /api/resetPassword <br>
 Method: POST <br>
@@ -83,10 +67,8 @@ Request Body:
     "email": " "
 }
 ```
-Response: 200 Ok <br>
-```Password Reset link has been sent to your mail. ```
 
-### Request for admin content.
+### Request For Admin Content
 
 End Point: /api/test/admin <br>
 Method: GET <br>
@@ -103,7 +85,7 @@ x-access-token
 
 NB: In Request headers access token for the admin should be set in order to make a successful request.
 
-### Request for public content
+### Request For Public Content
 
 End Point: /api/test/all <br>
 Method: GET <br>
@@ -117,7 +99,7 @@ Accept-Encoding
 Connection
 ```
 
-### Request for moderator content
+### Request For Moderator Content
 
 End Point: /api/test/mod <br>
 Method: GET <br>
@@ -132,7 +114,7 @@ Connection
 x-access-token
 ```
 
-### Request for user content
+### Request For User Content
 
 End Point: /api/test/all <br>
 Method: GET <br>
@@ -147,28 +129,32 @@ Connection
 x-access-token
 ```
 
-### Listing all users .
+### Listing All Users
 
 End Point: /api/test/users <br>
 Method: GET <br>
-Request Headers: <br>
-```
-x-acces-token
-```
-Response: 200 Ok <br>
+
+### Get Username From ID
+
+End Point: /api/user <br>
+Method: GET <br>
+Request Body:
+
 ```json
 {
-  "users": [
-    {
-      "id": " ",
-      "username": " ",
-      "password": " ",
-      "dateOfBirth": " ",
-      "isMailVerified": " ",
-      "createdAt": " ",
-      "updatedAt": " "
-    }
-  ]
+    "userId": ""
+}
+```
+
+### Get User Profile
+
+End Point: /api/user/profile <br>
+Method: GET <br>
+Request Body:
+
+```json
+{
+    "userId": ""
 }
 ```
 
@@ -176,12 +162,12 @@ Response: 200 Ok <br>
 
 NB: "ID" is the user ID for the user.
 
-#### Get interests of a user.
+#### Get Interests Of A User.
 
 End Point: /api/interest/ID <br>
 Method: GET <br>
 
-#### Set Interests of a user.
+#### Set Interests Of A User.
 
 End Point: /api/interest/ID <br>
 Method: POST <br>
@@ -196,21 +182,8 @@ Request Body:
     ]
 }
 ```
-Response: 200 Ok <br>
-```json
-[
-  [
-    {
-      "userId" : " ",
-      "roleId" : " ",
-      "createdAt" : " ",
-      "updatedAt" : " "
-    }
-  ]
-]
-```
 
-#### Adding Interests for a particular user.
+#### Adding Interests For A User.
 
 End Point: /api/interests/ID <br>
 Method: PUT <br>
@@ -223,19 +196,8 @@ Request Body:
     ]
 }
 ```
-Response: 200 Ok<br>
-```json
-[
-    {
-        "userId": " ",
-        "roleId": " ",
-        "createdAt": " ",
-        "updatedAt": " "
-    }
-]
-```
 
-#### Removing interests for a particular user.
+#### Removing Interests For A Particular User.
 
 End Point: /api/interests/ID <br>
 Method: DELETE <br>
@@ -248,26 +210,121 @@ Request Body:
     ]
 }
 ```
-Response: 200 Ok <br>
-```1```
 
-#### Request for all interests of a particular user
-End Point: /api/interests/ID <br>
-Method: GET <br>
-Response: 200 Ok <br>
+### Instant Messaging
+
+#### Create Conversation
+
+End Point: /api/conversation/ <br>
+Method: PUT <br>
+Request Body:
+
 ```json
-[
-    {
-        "id": " ",
-        "name": " ",
-        "createdAt": " ",
-        "updatedAt": " ",
-        "user_interests": {
-            "createdAt": " ",
-            "updatedAt": " ",
-            "userId": " ",
-            "roleId": " "
-        }
-    }
-]
+{
+    "userId": ""
+}
+```
+
+#### Get Conversation
+
+End Point: /api/conversation/:conversationId <br>
+Method: GET <br>
+Request Body: null
+
+#### Get Message
+
+End Point: /api/message Method: GET <br>
+Request Body:
+
+```json
+{
+    "messageId": ""
+}
+```
+
+#### Get Messages From Conversation
+
+End Point: /api/messages Method: GET <br>
+Request Body:
+
+```json
+{
+    "conversationId": ""
+}
+```
+
+#### Add Message To Conversation
+
+End Point: /api/messages/ <br>
+Method: PUT <br>
+Request Body:
+
+```json
+{
+    "userId": "",
+    "messageText": "",
+    "conversationId": ""
+}
+```
+
+#### Remove Message From Conversation
+
+End Point: /api/message <br>
+Method: DELETE <br>
+Request Body:
+
+```json
+{
+    "messageId": ""
+}
+```
+
+#### Add User To Conversation
+
+End Point: /api/conversation/user <br>
+Method: PUT <br>
+Request Body:
+
+```json
+{
+    "userId": "",
+    "conversationId": ""
+}
+```
+
+#### Remove User From Conversation
+
+End Point: /api/conversation/user <br>
+Method: DELETE <br>
+Request Body:
+
+```json
+{
+    "userId": "",
+    "conversationId": ""
+}
+```
+
+#### Get Users of Conversation
+
+End Point: /api/conversation/users/all <br>
+Method: GET <br>
+Request Body:
+
+```json
+{
+    "conversationId": ""
+}
+```
+
+#### Get Conversations Of User
+
+End Point: /api/conversation/user/all <br>
+Method: GET <br>
+Request Body:
+
+```json
+{
+    "userId": ""
+}
 ```
