@@ -26,7 +26,7 @@ const getUsers = async (conversationId: string) => {
     })
 }
 
-const getConversations = async (userId: string) => {
+const getUserConversations = async (userId: string) => {
     const user = await User.findByPk(userId)
     return user?.getConversations()
 }
@@ -35,5 +35,5 @@ export default {
     addUser,
     removeUser,
     getUsers,
-    getConversations
+    getUserConversations
 }

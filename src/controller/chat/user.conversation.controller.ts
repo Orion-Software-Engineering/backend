@@ -1,10 +1,5 @@
 import {Request, Response} from "express";
-import db from '../../models';
-import Conversation from "../../models/conversation";
 import conversation from '../../services/user.conversation.service'
-
-const {User} = db;
-
 export const addUserToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, conversationId} = req.body
@@ -39,7 +34,7 @@ export const getConversationsOfUser = async (req: Request, res: Response) => {
     try {
         const {userId} = req.body
 
-        return res.status(200).json(await conversation.getConversations(userId))
+        return res.status(200).json(await conversation.getUserConversations(userId))
     } catch ({message}) {
         res.status(400).send({message})
     }
