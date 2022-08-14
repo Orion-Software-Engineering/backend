@@ -37,3 +37,10 @@ const getMessages = async (conversationId: string) => {
 
     return messages
 }
+
+export default {
+    addMessage,
+    removeMessage,
+    getMessage,
+    getMessages
+}

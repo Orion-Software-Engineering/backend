@@ -1,17 +1,14 @@
 import {Request, Response} from "express";
 import db from '../../models';
-import Conversation from "../../models/conversation";
+import conversation from '../../services/conversation.message.service'
 
 const {Message} = db;
 
 export const addMessageToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, messageText, conversationId} = req.body
-        await Message.create({
-            text: messageText,
-            userId: userId,
-            conversationId: conversationId
-        });
+
+        await conversation.addMessage(userId, messageText, conversationId)
 
         return res.status(200).send()
     } catch (e) {
@@ -22,11 +19,8 @@ export const addMessageToConversation = async (req: Request, res: Response) => {
 export const removeMessageFromConversation = async (req: Request, res: Response) => {
     try {
         const {messageId} = req.body
-        await Message.destroy({
-            where: {
-                id: messageId
-            }
-        })
+
+        await conversation.removeMessage(messageId)
 
         return res.status(200).send()
     } catch ({message}) {
@@ -37,9 +31,8 @@ export const removeMessageFromConversation = async (req: Request, res: Response)
 export const getMessageFromConversation = async (req: Request, res: Response) => {
     try {
         const {messageId} = req.body
-        const message = await Message.findByPk(messageId)
 
-        return res.status(200).send({message})
+        return res.status(200).json(await conversation.getMessage(messageId))
     } catch ({message}) {
         return res.status(400).send({message})
     }
@@ -48,12 +41,8 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
 export const getMessagesFromConversation = async (req: Request, res: Response) => {
     try {
         const {conversationId} = req.body
-        const messages = await Message.findAll({
-            where: {
-                conversationId: conversationId
-            }
-        })
-        return res.status(200).send({messages})
+
+        return res.status(200).json(await conversation.getMessages(conversationId))
     } catch ({message}) {
         return res.status(400).send({message})
     }
