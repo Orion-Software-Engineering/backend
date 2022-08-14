@@ -60,5 +60,4 @@ export const getConversationsOfUser = async (req: Request, res: Response) => {
     } catch ({message}) {
         res.status(400).send({message})
     }
-
 }
