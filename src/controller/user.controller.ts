@@ -17,7 +17,7 @@ export const getUsername = async (req: Request, res: Response) => {
 
 export const getUserProfile = async (req: Request, res: Response) => {
     try {
-        const user = await User.findByPk(req.body.userId)
+        const user = await User.findByPk(req.params.userId)
 
         if (user) return res.status(200).send({user})
         return res.status(404).send()
