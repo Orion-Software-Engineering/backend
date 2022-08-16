@@ -13,6 +13,9 @@ const get = async (req: Request, res: Response) => {
 
 const set = async (req: Request, res: Response) => {
     try {
+        console.log("##################################")
+        console.log(req)
+        console.log("##################################")
         const {id} = req.params;
         const {interests}: { interests: string[] } = req.body;
         res.json(await interest.set(id, interests));
