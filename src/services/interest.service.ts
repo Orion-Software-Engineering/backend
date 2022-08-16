@@ -24,7 +24,8 @@ const set = async (id: string, interests: string[]) => {
     });
 
     if (user) {
-        return await user.setInterests(validInterest);
+        await user.setInterests(validInterest);
+        return user.getInterests()
     }
 };
 
