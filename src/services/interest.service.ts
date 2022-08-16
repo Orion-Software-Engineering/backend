@@ -45,7 +45,8 @@ const add = async (id: string, interests: string[]) => {
     });
 
     if (user) {
-        return await user.addInterests(validInterest);
+        await user.addInterests(validInterest);
+        return user.getInterests()
     }
 };
 
@@ -65,7 +66,8 @@ const remove = async (id: string, interests: string[]) => {
     });
 
     if (user) {
-        return await user.removeInterests(validInterest);
+        await user.removeInterests(validInterest);
+        return user.getInterests()
     }
 };
 
