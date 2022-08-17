@@ -8,15 +8,16 @@ export default class Event extends Model<
   EventAttributes,
   EventCreationAttributes
 > {
-  declare event_name: CreationOptional<string>;
+  declare event_name: String;
+  declare eventId: CreationOptional<string>;
   declare event_date: Date;
   declare event_time: Date;
-  declare venue: string;
-  declare organizers: string;
-  declare MCs: string;
-  declare Guests: string;
-  declare Age_restriction: boolean;
-  declare description: string;
+  declare event_venue: string;
+  declare event_organizers: string;
+  declare event_mcs: string;
+  declare event_guests: string;
+  declare age_restriction: boolean;
+  declare event_description: string;
 
   declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
   declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<
@@ -37,9 +38,14 @@ Event.init(
   {
     event_name: {
       type: DataTypes.STRING,
-      primaryKey: true,
       defaultValue: DataTypes.STRING,
       allowNull: true,
+    },
+    eventId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUID,
+      primaryKey: true,
+      allowNull: false,
     },
     event_date: {
       type: DataTypes.DATEONLY,
@@ -49,28 +55,28 @@ Event.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    venue: {
+    event_venue: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    organizers: {
+    event_organizers: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    MCs: {
+    event_mcs: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Guests: {
+    event_guests: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Age_restriction: {
+    age_restriction: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
     },
-    description: {
+    event_description: {
       type: DataTypes.STRING,
       allowNull: false,
     },

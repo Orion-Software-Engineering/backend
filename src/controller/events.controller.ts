@@ -19,7 +19,9 @@ export const createEvents = async (req: Request, res: Response) => {
             Guests: req.body.guests,
             Age_restriction: req.body.age,
             description: req.body.description,
-        })
+        }).then ({
+            res.send()
+        });
     } catch ({message}) {
         res.status(500).send({message})
     }
@@ -28,17 +30,15 @@ export const createEvents = async (req: Request, res: Response) => {
 
 // Module for getting current events
 export const getEvents = async (req: Request, res: Response) => {
-    const event = await db.Event.findByPk(req.body.event_name);
+    const event = await db.Event.findByPk(req.body.eventId);
 
     if (!event){
-        return res.status(404).send("Event does not exist.")
+        return res.status(404).send("Event does not exist.");
     }
 
-    const validEvents = await db.Event.findAll({
-        where: {
-            event_name: req.body.event_name,
-        },
-    })
+    return res.status(200).send({
+
+    });
 
 };
 

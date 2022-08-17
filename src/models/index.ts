@@ -118,6 +118,7 @@ db.User.hasMany(db.Message);
 
 // an event can have many organizers which are also users
 db.Event.belongsToMany(db.User,{
+  through: 'eventId',
   foreignKey: 'userId',
   otherKey: 'eventId',
 });
