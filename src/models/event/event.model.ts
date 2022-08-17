@@ -43,7 +43,7 @@ Event.init(
     },
     eventId: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
@@ -78,10 +78,6 @@ Event.init(
     },
     event_description: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    event_id: {
-      type: DataTypes.UUID,
       allowNull: false,
     },
   },

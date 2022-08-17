@@ -13,7 +13,7 @@ export default (app: Express) => {
         next();
     });
 
-    app.post('/api/events/createEvent', [isModerator], controller.createEvents);
-    app.get('/api/events/getEvents', [isUserVerified],controller.getEvents);
-    app.delete('/api/events/deleteEvents', [isModerator],controller.deleteEvents)
+    app.post('/api/events/createEvent', controller.createEvents);
+    app.get('/api/events/getEvent/:id', controller.getEvents);
+    app.delete('/api/events/deleteEvent/:id', controller.deleteEvents);
 };
