@@ -9,14 +9,14 @@ import db, {sequelize} from './models';
 import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
 import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
-import messageRouter from './routes/message.routes';
+import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 
 require('dotenv').config();
 
 const app = express();
 const corsOptions = {
-  origin: 'https://localhost:8000',
+    origin: 'https://localhost:8000',
 };
 
 app.use(cors());
@@ -26,29 +26,29 @@ app.use(bodyParser.urlencoded({extended: true}));
 const {Role, Interest, INTERESTS, ROLES} = db;
 
 sequelize
-  .sync({force: true}) // force: true forces dropping and resyncing the database
-  .then(() => {
-    console.log('Syncing DB');
-    initial();
-  });
+    .sync({force: false}) // force: true forces dropping and resyncing the database
+    .then(() => {
+        console.log('Syncing DB');
+        // initial();
+    });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
 function initial() {
-  ROLES.forEach(role => {
-    Role.create({
-      name: role,
+    ROLES.forEach(role => {
+        Role.create({
+            name: role,
+        });
     });
-  });
 
-  INTERESTS.forEach(interest => {
-    Interest.create({
-      name: interest,
+    INTERESTS.forEach(interest => {
+        Interest.create({
+            name: interest,
+        });
     });
-  });
 }
 
 app.get('/', (req: Request, res: Response) => {
-  res.json({message: 'Welcome to Orion Meet'});
+    res.json({message: 'Welcome to Orion Meet'});
 });
 
 userRoutes(app);
@@ -57,13 +57,13 @@ verifyEmailRoutes(app);
 resetpasswordRoutes(app);
 resetpasswordPageRoutes(app);
 changePasswordRoutes(app);
+messageRoutes(app)
 app.use('/api/interest', interestRouter);
-app.use('/api/message', messageRouter);
 app.use('/api/conversation', conversationRouter);
 
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`DATABASE_URL is ${process.env.DATABASE_URL}`);
+    console.log(`Server running on port ${PORT}`);
+    console.log(`DATABASE_URL is ${process.env.DATABASE_URL}`);
 });
