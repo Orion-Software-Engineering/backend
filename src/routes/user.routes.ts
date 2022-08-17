@@ -16,7 +16,7 @@ export default (app: Express) => {
         next();
     });
 
-    app.get('/api/user',
+    app.get('/api/user/:userId',
         controller.getUsername)
 
     app.get('/api/user/profile/:userId',
