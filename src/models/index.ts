@@ -116,8 +116,11 @@ db.Message.belongsTo(db.User);
 // a user can have multiple messages
 db.User.hasMany(db.Message);
 
-// an event can have many organizers
-db.Event.belongsTo(db.Event);
+// an event can have many organizers which are also users
+db.Event.belongsToMany(db.User,{
+  foreignKey: 'userId',
+  otherKey: 'eventId',
+});
 
 export default db;
 export {sequelize};
