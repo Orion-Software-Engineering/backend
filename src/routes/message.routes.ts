@@ -16,10 +16,10 @@ export default (app: Express) => {
         next();
     });
 
-    app.get('/api/message',
+    app.get('/api/message/:messageId',
         getMessageFromConversation)
 
-    app.get('/api/messages',
+    app.get('/api/messages/:conversationId',
         getMessagesFromConversation)
 
     app.put('/api/message',

@@ -21,7 +21,7 @@ router.delete('/', conversationController.remove);
 
 router.put('/user', addUserToConversation)
 router.delete('/user', removeUserFromConversation)
-router.get('/users/all', getUsersOfConversation)
-router.get('/user/all', getConversationsOfUser)
+router.get('/users/all/:conversationId', getUsersOfConversation)
+router.get('/user/all/:userId', getConversationsOfUser)
 
 export default router;

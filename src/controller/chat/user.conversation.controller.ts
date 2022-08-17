@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
 import conversation from '../../services/user.conversation.service'
+
 export const addUserToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, conversationId} = req.body
@@ -22,9 +23,7 @@ export const removeUserFromConversation = async (req: Request, res: Response) =>
 
 export const getUsersOfConversation = async (req: Request, res: Response) => {
     try {
-        const {conversationId} = req.body
-
-        return res.status(200).json(await conversation.getUsers(conversationId))
+        return res.status(200).json(await conversation.getUsers(req.params.conversationId))
     } catch ({message}) {
         res.status(400).send({message})
     }
@@ -32,9 +31,7 @@ export const getUsersOfConversation = async (req: Request, res: Response) => {
 
 export const getConversationsOfUser = async (req: Request, res: Response) => {
     try {
-        const {userId} = req.body
-
-        return res.status(200).json(await conversation.getUserConversations(userId))
+        return res.status(200).json(await conversation.getUserConversations(req.params.userId))
     } catch ({message}) {
         res.status(400).send({message})
     }

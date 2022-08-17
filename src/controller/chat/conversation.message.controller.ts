@@ -23,9 +23,7 @@ export const removeMessageFromConversation = async (req: Request, res: Response)
 
 export const getMessageFromConversation = async (req: Request, res: Response) => {
     try {
-        const {messageId} = req.body
-
-        return res.status(200).json(await conversation.getMessage(messageId))
+        return res.status(200).json(await conversation.getMessage(req.params.messageId))
     } catch ({message}) {
         return res.status(400).send({message})
     }
@@ -33,9 +31,7 @@ export const getMessageFromConversation = async (req: Request, res: Response) =>
 
 export const getMessagesFromConversation = async (req: Request, res: Response) => {
     try {
-        const {conversationId} = req.body
-
-        return res.status(200).json(await conversation.getMessages(conversationId))
+        return res.status(200).json(await conversation.getMessages(req.params.conversationId))
     } catch ({message}) {
         return res.status(400).send({message})
     }
