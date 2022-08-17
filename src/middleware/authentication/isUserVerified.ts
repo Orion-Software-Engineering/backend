@@ -14,9 +14,9 @@ const isUserVerified = (req: Request, res: Response, next: Function) => {
                 next()
                 return
             }
-            res.status(403).send('Verify your account before logging in.')
+            return res.status(403).send('Verify your account before logging in.')
         }
-        res.status(404).send('Account not found.')
+        return res.status(404).send('Account not found.')
     })
 }
 

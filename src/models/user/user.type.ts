@@ -10,7 +10,5 @@ export type UserAttributes = {
   gender: boolean;
 };
 
-export type UserCreationAttributes = Optional<
-  UserAttributes,
-  'id' | 'isEmailVerified'
->;
+export type UserCreationAttributes = Optional<UserAttributes,
+    'id' | 'isEmailVerified'>;
