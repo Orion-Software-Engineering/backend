@@ -32,6 +32,16 @@ Request Body:<br>
     "password" : " "
 }
 ```
+Response: 200 Ok <br>
+```json
+{
+  "roles" : [" "],
+  "id" : "",
+  "username" : "",
+  "email" : " ",
+  "accessToken" : ""
+}
+```
 
 ### Sign Up
 
@@ -53,6 +63,16 @@ Request Body: <br>
 }
 ```
 
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
+Response: 200 Ok<br>
+```json
+{
+  "message" : "user registered successfully",
+  "useId" : " "
+}
+```
+
+
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the
 app, ```roles...``` should be ommitted.
 
@@ -67,6 +87,8 @@ Request Body:
     "email": " "
 }
 ```
+Response: 200 Ok <br>
+```Password Reset link has been sent to your mail. ```
 
 ### Request For Admin Content
 
@@ -133,6 +155,26 @@ x-access-token
 
 End Point: /api/test/users <br>
 Method: GET <br>
+Request Headers: <br>
+```
+x-acces-token
+```
+Response: 200 Ok <br>
+```json
+{
+  "users": [
+    {
+      "id": " ",
+      "username": " ",
+      "password": " ",
+      "dateOfBirth": " ",
+      "isMailVerified": " ",
+      "createdAt": " ",
+      "updatedAt": " "
+    }
+  ]
+}
+```
 
 ### Get Username From ID
 
@@ -182,6 +224,19 @@ Request Body:
     ]
 }
 ```
+Response: 200 Ok <br>
+```json
+[
+  [
+    {
+      "userId" : " ",
+      "roleId" : " ",
+      "createdAt" : " ",
+      "updatedAt" : " "
+    }
+  ]
+]
+```
 
 #### Adding Interests For A User.
 
@@ -195,6 +250,17 @@ Request Body:
         "science"
     ]
 }
+```
+Response: 200 Ok<br>
+```json
+[
+    {
+        "userId": " ",
+        "roleId": " ",
+        "createdAt": " ",
+        "updatedAt": " "
+    }
+]
 ```
 
 #### Removing Interests For A Particular User.
@@ -278,6 +344,8 @@ Request Body:
     "messageId": ""
 }
 ```
+Response: 200 Ok <br>
+```1```
 
 #### Add User To Conversation
 
