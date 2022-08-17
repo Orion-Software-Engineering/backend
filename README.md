@@ -49,12 +49,15 @@ End Point: /api/auth/signup <br>
 Method: POST <br>
 Request Body: <br>
 
+NB: with gender male == true and female == false
+
 ```json
 {
     "username": " ",
     "email": " ",
     "password": " ",
     "dob": " ",
+    "gender" : "true",
     "roles": [
         " ",
         " ",
@@ -190,15 +193,9 @@ Request Body:
 
 ### Get User Profile
 
-End Point: /api/user/profile <br>
+End Point: /api/user/profile/ID <br>
 Method: GET <br>
-Request Body:
-
-```json
-{
-    "userId": ""
-}
-```
+Request Body: null
 
 ### Interests
 
@@ -299,25 +296,14 @@ Request Body: null
 
 #### Get Message
 
-End Point: /api/message Method: GET <br>
-Request Body:
-
-```json
-{
-    "messageId": ""
-}
-```
+End Point: /api/message/ID <br>
+Method: GET <br>
+Request Body: null
 
 #### Get Messages From Conversation
 
-End Point: /api/messages Method: GET <br>
-Request Body:
-
-```json
-{
-    "conversationId": ""
-}
-```
+End Point: /api/messages/ID Method: GET <br>
+Request Body: null
 
 #### Add Message To Conversation
 
@@ -375,24 +361,12 @@ Request Body:
 
 #### Get Users of Conversation
 
-End Point: /api/conversation/users/all <br>
+End Point: /api/conversation/users/all/ID <br>
 Method: GET <br>
-Request Body:
-
-```json
-{
-    "conversationId": ""
-}
-```
+Request Body: null
 
 #### Get Conversations Of User
 
-End Point: /api/conversation/user/all <br>
+End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
-Request Body:
-
-```json
-{
-    "userId": ""
-}
-```
+Request Body: null
