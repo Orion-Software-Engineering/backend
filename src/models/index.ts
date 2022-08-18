@@ -47,7 +47,7 @@ const db = {
   Conversation,
   Message,
   Event,
-  ROLES: ['user', 'admin', 'moderator'],
+  ROLES: ['user', 'admin', 'moderator', 'organizer'],
   INTERESTS: [
     'art',
     'business',
