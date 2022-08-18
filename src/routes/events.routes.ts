@@ -16,4 +16,5 @@ export default (app: Express) => {
     app.post('/api/events/createEvent', controller.createEvents);
     app.get('/api/events/getEvent/:id', controller.getEvents);
     app.delete('/api/events/deleteEvent/:id', controller.deleteEvents);
+    app.put('/api/events/updateEvent/:id', controller.updateEvents);
 };
