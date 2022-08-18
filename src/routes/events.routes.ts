@@ -2,6 +2,7 @@ import {Express, Request, Response} from 'express';
 import * as controller from '../controller/events.controller';
 import isModerator from '../middleware/authentication/isModerator';
 import isUserVerified from '../middleware/authentication/isUserVerified';
+import isOrganizer from "../middleware/authentication/isOrganizer";
 
 
 export default (app: Express) => {
@@ -13,8 +14,8 @@ export default (app: Express) => {
         next();
     });
 
-    app.post('/api/events/createEvent', controller.createEvents);
-    app.get('/api/events/getEvent/:id', controller.getEvents);
-    app.delete('/api/events/deleteEvent/:id', controller.deleteEvents);
-    app.put('/api/events/updateEvent/:id', controller.updateEvents);
+    app.post('/api/events/createEvent',[isOrganizer], controller.createEvents);
+    app.get('/api/events/getEvent/:id', [isOrganizer],controller.getEvents);
+    app.delete('/api/events/deleteEvent/:id',[isOrganizer], controller.deleteEvents);
+    app.put('/api/events/updateEvent/:id',[isOrganizer], controller.updateEvents);
 };
