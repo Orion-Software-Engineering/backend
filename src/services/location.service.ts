@@ -9,6 +9,7 @@ export const getLocation = async (userId: string) => {
 }
 
 export const updateLocation = async (userId: string, latitude: string, longitude: string) => {
+    if (!Number.isNaN(latitude) || !Number.isNaN(longitude)) throw new Error("Invalid Input")
     const user = await User.findByPk(userId)
     if (!user) throw new Error("User not found")
     await user.update({location: `${latitude} ${longitude}`})
