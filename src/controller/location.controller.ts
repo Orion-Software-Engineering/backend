@@ -1,5 +1,5 @@
 import {Request, Response} from 'express'
-import {getLocation} from "../services/location.service";
+import {getLocation, updateLocation} from "../services/location.service";
 
 export const getUserLocation = async (req: Request, res: Response) => {
     const location = await getLocation(req.params.userId)
@@ -16,6 +16,8 @@ export const getUserLocation = async (req: Request, res: Response) => {
     })
 }
 
-export const updateUserLocation = (req: Request, res: Response) => {
-
+export const updateUserLocation = async (req: Request, res: Response) => {
+    const {userId, latitude, longitude} = req.body
+    const update = await updateLocation(userId, latitude, longitude)
+    return res.status(update).send()
 }

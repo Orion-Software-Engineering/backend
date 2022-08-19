@@ -8,5 +8,11 @@ export const getLocation = async (userId: string) => {
 }
 
 export const updateLocation = async (userId: string, latitude: string, longitude: string) => {
+    const user = await User.findByPk(userId)
 
+    if (!user) return 404
+
+    await user.update({location: `${latitude} ${longitude}`})
+
+    return 200
 }
