@@ -15,3 +15,7 @@ export const getUserLocation = async (req: Request, res: Response) => {
         "longitude": longitude
     })
 }
+
+export const updateUserLocation = (req: Request, res: Response) => {
+
+}

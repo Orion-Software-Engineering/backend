@@ -1,4 +1,5 @@
 import {NextFunction, Request, Response, Express} from 'express';
+import {getUserLocation} from "../controller/location.controller";
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
@@ -8,6 +9,9 @@ export default (app: Express) => {
         );
         next();
     });
+
+    app.get('/api/user/location',
+        getUserLocation)
 
     app.post('/api/user/location',)
 };
