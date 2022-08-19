@@ -2,6 +2,6 @@ const cloudinary = require('cloudinary')
 
 cloudinary.config({
     cloud_name: 'team-orion',
-    api_key: '646245648622919',
-    api_secret: 'QLZPmHn9qqlYyRAmjBfltMPImjo'
+    api_key: process.env["CLOUDINARY_API_KEY"],
+    api_secret: process.env["CLOUDINARY_API_SECRET"]
 });
