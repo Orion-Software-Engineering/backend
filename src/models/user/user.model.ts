@@ -15,6 +15,7 @@ export default class User extends Model<UserAttributes,
     declare isEmailVerified: boolean;
     declare dateOfBirth: string;
     declare gender: boolean;
+    declare location: string;
     declare getRoles: Sequelize.BelongsToManyGetAssociationsMixin<RoleAttributes>;
     declare setRoles: Sequelize.BelongsToManySetAssociationsMixin<RoleAttributes,
         RoleAttributes['id']>;
@@ -63,10 +64,14 @@ User.init(
         gender: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
-      }
+        },
+        location: {
+            type: DataTypes.STRING,
+            defaultValue: ""
+        }
     },
-  {
-    sequelize,
-    tableName: 'users',
-  }
+    {
+        sequelize,
+        tableName: 'users',
+    }
 );
