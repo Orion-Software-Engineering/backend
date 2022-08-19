@@ -4,15 +4,13 @@ const {User} = db
 
 export const getLocation = async (userId: string) => {
     const user = await User.findByPk(userId)
-    return user?.location
+    if (!user) throw new Error("User not found")
+    return user.location
 }
 
 export const updateLocation = async (userId: string, latitude: string, longitude: string) => {
     const user = await User.findByPk(userId)
-
-    if (!user) return 404
-
+    if (!user) throw new Error("User not found")
     await user.update({location: `${latitude} ${longitude}`})
-
     return 200
 }

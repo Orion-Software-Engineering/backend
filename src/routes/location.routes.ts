@@ -10,7 +10,7 @@ export default (app: Express) => {
         next();
     });
 
-    app.get('/api/user/location',
+    app.get('/api/user/location/:userId',
         getUserLocation)
 
     app.post('/api/user/location',
