@@ -64,14 +64,14 @@ User.init(
         gender: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
-      },
+        },
         location: {
             type: DataTypes.STRING,
-            defaultValue: "0.000000 0.000000"
+            defaultValue: ""
         }
     },
-  {
-    sequelize,
-    tableName: 'users',
-  }
+    {
+        sequelize,
+        tableName: 'users',
+    }
 );
