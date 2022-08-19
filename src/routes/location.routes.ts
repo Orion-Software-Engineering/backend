@@ -9,4 +9,5 @@ export default (app: Express) => {
         next();
     });
 
+    app.post('/api/user/location',)
 };
