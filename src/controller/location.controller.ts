@@ -4,9 +4,14 @@ import {getLocation, updateLocation} from "../services/location.service";
 export const getUserLocation = async (req: Request, res: Response) => {
     try {
         const location = await getLocation(req.params.userId)
-        const split = location.split(' ')
-        const latitude = split[0]
-        const longitude = split[1]
+        let latitude: string = '0.0'
+        let longitude: string = '0.0'
+
+        if ((location !== ' ')) {
+            const split = location.split(' ')
+            latitude = split[0]
+            longitude = split[1]
+        }
 
         return res.status(200).json({
             "latitude": latitude,
