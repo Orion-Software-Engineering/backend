@@ -11,7 +11,7 @@ import changePasswordRoutes from './routes/password/changePassword.routes';
 import interestRouter from './routes/interest.routes';
 import messageRouter from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
-import eventRouter from './routes/events.routes';
+import eventRouter from './routes/event.routes';
 
 require('dotenv').config();
 

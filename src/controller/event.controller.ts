@@ -15,11 +15,13 @@ const storage = multer.diskStorage({
         callback(null, `${file.originalname}-${new Date()}`)
     }
 })
+
+const upload = multer({storage})
 // Module for allowing users with organizer access to create events
 export const createEvents = async (req: Request, res: Response) => {
     try {
-        // store image locally
-
+        // parse and store image locally
+        upload.single('file')
 
         await Event.create({
             name: req.body.name,

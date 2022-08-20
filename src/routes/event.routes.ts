@@ -14,8 +14,18 @@ export default (app: Express) => {
         next();
     });
 
-    app.post('/api/events/createEvent',[isOrganizer], controller.createEvents);
-    app.get('/api/events/getEvent/:id', [isOrganizer],controller.getEvents);
-    app.delete('/api/events/deleteEvent/:id',[isOrganizer], controller.deleteEvent);
-    app.put('/api/events/updateEvent/:id',[isOrganizer], controller.updateEvents);
+    app.post('/api/events/createEvent',
+        // [isOrganizer],
+        controller.createEvents);
+
+    app.get('/api/events/getEvent/:id',
+        controller.getEvents);
+
+    app.delete('/api/events/deleteEvent/:id',
+        // [isOrganizer],
+        controller.deleteEvent);
+
+    app.put('/api/events/updateEvent/:id',
+        // [isOrganizer],
+        controller.updateEvents);
 };
