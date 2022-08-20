@@ -11,7 +11,7 @@ const options = {
     overwrite: true
 }
 
-export const uploadImage = async (imagePath: string) => {
+export const uploadImageToCloud = async (imagePath: string) => {
     try {
         const res = await cloudinary.uploader.upload(imagePath, options)
         console.log(res)
