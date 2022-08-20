@@ -10,6 +10,7 @@ export default class Event extends Model<EventAttributes,
     declare name: String;
     declare description: string;
     declare date: Date;
+    declare time: string;
     declare venue: string;
     declare organizers: string;
     declare mcs: string;
@@ -40,8 +41,12 @@ Event.init(
             allowNull: false,
         },
         date: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
+        },
+        time: {
+            type: DataTypes.STRING,
+            defaultValue: '00:00'
         },
         venue: {
             type: DataTypes.STRING,

@@ -5,6 +5,7 @@ export type EventAttributes = {
     name: string;
     description: string;
     date: Date;
+    time: string;
     venue: string;
     organizers: string;
     mcs: string;
