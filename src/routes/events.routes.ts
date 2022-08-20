@@ -1,5 +1,5 @@
 import {Express, Request, Response} from 'express';
-import * as controller from '../controller/events.controller';
+import * as controller from '../controller/event.controller';
 import isModerator from '../middleware/authentication/isModerator';
 import isUserVerified from '../middleware/authentication/isUserVerified';
 import isOrganizer from "../middleware/authentication/isOrganizer";

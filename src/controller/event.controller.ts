@@ -17,6 +17,7 @@ export const createEvents = async (req: Request, res: Response) => {
             guests: req.body.guests,
             age_restriction: req.body.age,
             description: req.body.description,
+            organizer: req.body.organizer
         }).then(event => {
             return res.status(201).send({
                 message: 'Event created successfully!',
@@ -24,7 +25,7 @@ export const createEvents = async (req: Request, res: Response) => {
             });
         });
     } catch ({message}) {
-        res.status(500).send({message});
+        res.status(400).send({message});
     }
 };
 
@@ -49,12 +50,10 @@ export const deleteEvent = async (req: Request, res: Response) => {
         });
     }
 
-    if (event) {
-        res.status(200).send({
-            message: 'Event deleted successfully.',
-        });
-        return await event.destroy();
-    }
+    res.status(200).send({
+        message: 'Event deleted successfully.',
+    });
+    return await event.destroy();
 };
 
 export const updateEvents = async (req: Request, res: Response) => {
