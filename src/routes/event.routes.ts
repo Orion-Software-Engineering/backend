@@ -2,13 +2,18 @@ import {Express, Request, Response} from 'express';
 import * as controller from '../controller/event.controller';
 import multer from "multer";
 import path from "path";
+import {uploadImageToCloud} from "../services/image.service";
 
 const storage = multer.diskStorage({
     destination: __dirname + '../../../images/',
-    filename(req: Request,
-             file: Express.Multer.File,
-             callback: (error: (Error | null), filename: string) => void) {
+    async filename(req: Request,
+                   file: Express.Multer.File,
+                   callback: (error: (Error | null), filename: string) => void) {
         callback(null, Date.now() + path.extname(file.originalname))
+        console.log(file.path)  // gives the full path to image
+
+        const uploadedImage = await uploadImageToCloud(file.path)
+        console.log(uploadedImage)
     }
 })
 
