@@ -12,6 +12,7 @@ const options = {
 }
 
 export const uploadImageToCloud = async (imagePath: string) => {
+    console.log(imagePath)
     try {
         const res = await cloudinary.uploader.upload(imagePath, options)
         console.log(res)

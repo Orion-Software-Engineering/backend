@@ -11,7 +11,7 @@ const {Event} = db;
 // Module for allowing users with organizer access to create events
 export const createEvent = async (req: Request, res: Response) => {
     try {
-        console.log(req.body)
+        // console.log(req.body)
         console.log(req.file)
         const {
             name, description, date, time,
