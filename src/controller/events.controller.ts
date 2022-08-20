@@ -25,7 +25,7 @@ export const createEvents = async (req: Request, res: Response) => {
       });
       return res.status(201).send({
         message: 'Event added successfully!',
-        eventId: event.eventId,
+        eventId: event.id,
       });
     });
   } catch ({message}) {
@@ -43,16 +43,16 @@ export const getEvents = async (req: Request, res: Response) => {
   }
 
   return res.status(200).send({
-    event_name: event.event_name,
-    event_Id: event.eventId,
-    event_date: event.event_date,
+    event_name: event.name,
+    event_Id: event.id,
+    event_date: event.date,
     event_time: event.event_time,
-    event_venue: event.event_venue,
-    event_organizers: event.event_organizers,
-    event_mcs: event.event_mcs,
-    event_guests: event.event_guests,
+    event_venue: event.venue,
+    event_organizers: event.organizers,
+    event_mcs: event.mcs,
+    event_guests: event.guests,
     age_restriction: event.age_restriction,
-    event_description: event.event_description,
+    event_description: event.description,
   });
 };
 

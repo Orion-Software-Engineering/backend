@@ -1,20 +1,15 @@
 import {Optional} from 'sequelize';
 
-export type EventAttributes = {
-    event_name: string;
-    eventId: String;
-    event_date: Date;
-    event_time: Date;
-    event_venue: string;
-    event_organizers: string;
-    event_mcs: string;
-    event_guests: string;
-    age_restriction: number;
-    event_description: string;
+export type Attributes = {
+  id: string;
+  name: string;
+  description: string;
+  date: Date;
+  venue: string;
+  organizers: string;
+  mcs: string;
+  guests: string;
+  age_restriction: number;
 };
 
-export type EventCreationAttributes = Optional<
-    EventAttributes,
-    'eventId' | 'event_organizers'
-    >;
-
+export type CreationAttributes = Optional<Attributes, 'id' | 'guests' | 'mcs'>;

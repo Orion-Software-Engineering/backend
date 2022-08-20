@@ -8,16 +8,15 @@ export default class Event extends Model<
   EventAttributes,
   EventCreationAttributes
 > {
-  declare event_name: String;
-  declare eventId: CreationOptional<string>;
-  declare event_date: Date;
-  declare event_time: Date;
-  declare event_venue: string;
-  declare event_organizers: string;
-  declare event_mcs: string;
-  declare event_guests: string;
+  declare id: CreationOptional<string>;
+  declare name: String;
+  declare description: string;
+  declare date: Date;
+  declare venue: string;
+  declare organizers: string;
+  declare mcs: string;
+  declare guests: string;
   declare age_restriction: boolean;
-  declare event_description: string;
 
   declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
   declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<
@@ -36,38 +35,34 @@ export default class Event extends Model<
 
 Event.init(
   {
-    event_name: {
+    name: {
       type: DataTypes.STRING,
       defaultValue: DataTypes.STRING,
       allowNull: true,
     },
-    eventId: {
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
-    event_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
-    event_time: {
+    date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    event_venue: {
+    venue: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    event_organizers: {
+    organizers: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    event_mcs: {
+    mcs: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    event_guests: {
+    guests: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -76,13 +71,13 @@ Event.init(
       defaultValue: true,
       allowNull: false,
     },
-    event_description: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
     sequelize,
-    tableName: 'event',
+    tableName: 'events',
   }
 );
