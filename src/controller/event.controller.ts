@@ -19,6 +19,8 @@ export const createEvents = async (req: Request, res: Response) => {
             description: req.body.description,
             organizer: req.body.organizer
         }).then(event => {
+            event.setInterests(req.body.interests)
+
             return res.status(201).send({
                 message: 'Event created successfully!',
                 eventId: event.id,
@@ -66,6 +68,7 @@ export const updateEvents = async (req: Request, res: Response) => {
             },
         }).then(newEvent => {
             if (newEvent) {
+                newEvent.setInterests(req.body.interests)
                 Event.update(
                     {
                         name: req.body.name,
