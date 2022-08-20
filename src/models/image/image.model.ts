@@ -6,6 +6,7 @@ import {ImageAttributes, ImageCreationAttributes} from './image.type';
 export default class Image extends Model<ImageAttributes,
     ImageCreationAttributes> {
     declare id: CreationOptional<string>;
+    declare url: string;
 }
 
 Image.init(
@@ -16,6 +17,10 @@ Image.init(
             primaryKey: true,
             allowNull: false,
         },
+        url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
     {
         sequelize,
