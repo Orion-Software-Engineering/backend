@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage})
 // Module for allowing users with organizer access to create events
-export const createEvents = async (req: Request, res: Response) => {
+export const createEvent = async (req: Request, res: Response) => {
     try {
         // parse and store image locally
         upload.single('file')
@@ -47,7 +47,7 @@ export const createEvents = async (req: Request, res: Response) => {
 };
 
 // Module for getting current events
-export const getEvents = async (req: Request, res: Response) => {
+export const getEvent = async (req: Request, res: Response) => {
     const {id} = req.params;
     const event = await db.Event.findByPk(id);
 
@@ -73,7 +73,7 @@ export const deleteEvent = async (req: Request, res: Response) => {
     return await event.destroy();
 };
 
-export const updateEvents = async (req: Request, res: Response) => {
+export const updateEvent = async (req: Request, res: Response) => {
     const {eventId} = req.params;
 
     try {
