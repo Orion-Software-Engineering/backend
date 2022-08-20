@@ -10,6 +10,7 @@ export type EventAttributes = {
     mcs: string;
     guests: string;
     age_restriction: number;
+    organizer: string;
 };
 
 export type EventCreationAttributes = Optional<EventAttributes, 'id' | 'guests' | 'mcs'>;
