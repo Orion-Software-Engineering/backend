@@ -14,10 +14,11 @@ import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 
 require('dotenv').config();
+require('multer')
 
 const app = express();
 const corsOptions = {
-  origin: 'https://localhost:8000',
+    origin: 'https://localhost:8000',
 };
 
 app.use(cors());
@@ -27,29 +28,29 @@ app.use(bodyParser.urlencoded({extended: true}));
 const {Role, Interest, INTERESTS, ROLES} = db;
 
 sequelize
-  .sync({force: true}) // force: true forces dropping and resyncing the database
-  .then(() => {
-    console.log('Syncing DB');
-    initial();
-  });
+    .sync({force: true}) // force: true forces dropping and resyncing the database
+    .then(() => {
+        console.log('Syncing DB');
+        initial();
+    });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
 function initial() {
-  ROLES.forEach(role => {
-    Role.create({
-      name: role,
+    ROLES.forEach(role => {
+        Role.create({
+            name: role,
+        });
     });
-  });
 
-  INTERESTS.forEach(interest => {
-    Interest.create({
-      name: interest,
+    INTERESTS.forEach(interest => {
+        Interest.create({
+            name: interest,
+        });
     });
-  });
 }
 
 app.get('/', (req: Request, res: Response) => {
-  res.json({message: 'Welcome to Orion Meet'});
+    res.json({message: 'Welcome to Orion Meet'});
 });
 
 userRoutes(app);
@@ -66,6 +67,6 @@ app.use('/api/conversation', conversationRouter);
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`DATABASE_URL is ${process.env.DATABASE_URL}`);
+    console.log(`Server running on port ${PORT}`);
+    console.log(`DATABASE_URL is ${process.env.DATABASE_URL}`);
 });

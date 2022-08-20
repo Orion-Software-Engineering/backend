@@ -31,8 +31,7 @@ Event.init(
     {
         name: {
             type: DataTypes.STRING,
-            defaultValue: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         id: {
             type: DataTypes.UUID,
