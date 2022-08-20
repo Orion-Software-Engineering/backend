@@ -16,6 +16,6 @@ export default (app: Express) => {
 
     app.post('/api/events/createEvent',[isOrganizer], controller.createEvents);
     app.get('/api/events/getEvent/:id', [isOrganizer],controller.getEvents);
-    app.delete('/api/events/deleteEvent/:id',[isOrganizer], controller.deleteEvents);
+    app.delete('/api/events/deleteEvent/:id',[isOrganizer], controller.deleteEvent);
     app.put('/api/events/updateEvent/:id',[isOrganizer], controller.updateEvents);
 };
