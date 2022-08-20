@@ -1,6 +1,5 @@
 import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
-import {InterestAttributes} from '../interest';
 import {ImageAttributes, ImageCreationAttributes} from './image.type';
 
 // define database model for Images
