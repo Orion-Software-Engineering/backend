@@ -1,13 +1,26 @@
 import {Request, Response} from 'express';
 import db from '../models';
+import multer from 'multer'
 
 const {Event} = db;
 
 // TODO: extract calls into service
 
+const storage = multer.diskStorage({
+    destination: __dirname + '/images/',
+    filename(req: Request,
+             file: Express.Multer.File,
+             callback: (error: (Error | null), filename: string) => void) {
+        console.log(callback)
+        callback(null, `${file.originalname}-${new Date()}`)
+    }
+})
 // Module for allowing users with organizer access to create events
 export const createEvents = async (req: Request, res: Response) => {
     try {
+        // store image locally
+
+
         await Event.create({
             name: req.body.name,
             date: req.body.date,
