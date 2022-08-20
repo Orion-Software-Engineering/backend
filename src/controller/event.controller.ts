@@ -2,6 +2,8 @@ import {Request, Response} from 'express';
 import db from '../models';
 import Interest from "../models/interest";
 import {Op, where} from "sequelize";
+import {dataUri} from "../middleware/multer";
+import {uploadImageToCloudinary} from "../services/cloudinary.service";
 
 const {Event} = db;
 
@@ -11,8 +13,15 @@ const {Event} = db;
 // Module for allowing users with organizer access to create events
 export const createEvent = async (req: Request, res: Response) => {
     try {
-        // console.log(req.body)
-        console.log(req.file)
+        // console.log(req.file)
+        if (req.file) {
+            const file = dataUri(req)?.content
+            if (file) {
+                const uploadedImage = await uploadImageToCloudinary(file)
+                console.log(uploadedImage)
+            }
+        }
+
         const {
             name, description, date, time,
             venue, organizers, organizer,

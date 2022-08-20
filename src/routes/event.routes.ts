@@ -2,7 +2,7 @@ import {Express, Request, Response} from 'express';
 import * as controller from '../controller/event.controller';
 import multer from "multer";
 import path from "path";
-import {multerUploads} from "../middleware/multer";
+import {multerUploads, dataUri} from "../middleware/multer";
 
 // const storage = multer.diskStorage({
 //     destination: __dirname + '../../../images/',

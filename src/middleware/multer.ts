@@ -9,7 +9,7 @@ const multerUploads = multer({storage}).single('cover-image')
 const parser = new DataUriParser();
 const dataUri = (req: Request) => {
     if (req.file)
-        parser.format(path.extname(req.file.originalname).toString(),
+        return parser.format(path.extname(req.file.originalname).toString(),
             req.file.buffer)
 }
 

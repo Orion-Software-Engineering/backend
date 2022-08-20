@@ -12,6 +12,7 @@ import interestRouter from './routes/interest.routes';
 import messageRouter from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
+import path from "path";
 
 require('dotenv').config();
 require('multer')
@@ -24,6 +25,7 @@ const corsOptions = {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.resolve(__dirname, 'src/public')))
 
 const {Role, Interest, INTERESTS, ROLES} = db;
 
