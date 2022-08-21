@@ -32,14 +32,18 @@ Request Body:<br>
     "password" : " "
 }
 ```
+
 Response: 200 Ok <br>
+
 ```json
 {
-  "roles" : [" "],
-  "id" : "",
-  "username" : "",
-  "email" : " ",
-  "accessToken" : ""
+    "roles": [
+        " "
+    ],
+    "id": "",
+    "username": "",
+    "email": " ",
+    "accessToken": ""
 }
 ```
 
@@ -57,7 +61,7 @@ NB: with gender male == true and female == false
     "email": " ",
     "password": " ",
     "dob": " ",
-    "gender" : "true",
+    "gender": "true",
     "roles": [
         " ",
         " ",
@@ -66,15 +70,16 @@ NB: with gender male == true and female == false
 }
 ```
 
-NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the
+app, ```roles...``` should be omitted.<br>
 Response: 200 Ok<br>
+
 ```json
 {
-  "message" : "user registered successfully",
-  "userId" : " "
+    "message": "user registered successfully",
+    "userId": " "
 }
 ```
-
 
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the
 app, ```roles...``` should be ommitted.
@@ -90,6 +95,7 @@ Request Body:
     "email": " "
 }
 ```
+
 Response: 200 Ok <br>
 ```Password Reset link has been sent to your mail. ```
 
@@ -159,23 +165,26 @@ x-access-token
 End Point: /api/test/users <br>
 Method: GET <br>
 Request Headers: <br>
+
 ```
 x-acces-token
 ```
+
 Response: 200 Ok <br>
+
 ```json
 {
-  "users": [
-    {
-      "id": " ",
-      "username": " ",
-      "password": " ",
-      "dateOfBirth": " ",
-      "isMailVerified": " ",
-      "createdAt": " ",
-      "updatedAt": " "
-    }
-  ]
+    "users": [
+        {
+            "id": " ",
+            "username": " ",
+            "password": " ",
+            "dateOfBirth": " ",
+            "isMailVerified": " ",
+            "createdAt": " ",
+            "updatedAt": " "
+        }
+    ]
 }
 ```
 
@@ -221,17 +230,19 @@ Request Body:
     ]
 }
 ```
+
 Response: 200 Ok <br>
+
 ```json
 [
-  [
-    {
-      "userId" : " ",
-      "roleId" : " ",
-      "createdAt" : " ",
-      "updatedAt" : " "
-    }
-  ]
+    [
+        {
+            "userId": " ",
+            "roleId": " ",
+            "createdAt": " ",
+            "updatedAt": " "
+        }
+    ]
 ]
 ```
 
@@ -248,7 +259,9 @@ Request Body:
     ]
 }
 ```
+
 Response: 200 Ok<br>
+
 ```json
 [
     {
@@ -330,6 +343,7 @@ Request Body:
     "messageId": ""
 }
 ```
+
 Response: 200 Ok <br>
 ```1```
 
@@ -346,14 +360,15 @@ Request Body:
 }
 ```
 
-<<<<<<< HEAD
 ### Events
 
 #### Upload Event
+
 End Point: /api/event <br>
 Method: POST <br>
 Required: Data must be sent as multipart form data <br>
 Request Body: <br>
+
 ```form-data
     name 
     date
@@ -370,22 +385,27 @@ Request Body: <br>
 ```
 
 #### Get Event
+
 End Point: /api/event/id <br>
 Method: GET <br>
 
 #### Get All Events
+
 End Point: /api/events
 Method: GET <br>
 
 #### Delete Event
+
 End Point: /api/event/id
 Method: DELETE <br>
 
 #### Update Event
+
 End Point: /api/event/id
 Method: PUT <br>
 Required: Data must be sent as multipart form data <br>
 Request Body: <br>
+
 ```form-data
     name 
     date
@@ -400,7 +420,7 @@ Request Body: <br>
     cover-image
     interests[]
 ```
-=======
+
 #### Remove User From Conversation
 
 End Point: /api/conversation/user <br>
@@ -425,4 +445,3 @@ Request Body: null
 End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
 Request Body: null
->>>>>>> testing
