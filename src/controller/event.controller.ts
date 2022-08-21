@@ -88,39 +88,57 @@ export const deleteEvent = async (req: Request, res: Response) => {
 };
 
 export const updateEvent = async (req: Request, res: Response) => {
-    const {eventId} = req.params;
+    const {id} = req.params;
+    if (req.file) {
+        const file = dataUri(req)?.content
+        if (file) {
+            const uploadedImage = await uploadImageToCloudinary(file)
+            console.log(uploadedImage)
+        }
+    }
+    const {
+        name, description, date, time,
+        venue, organizers, organizer,
+        mcs, guests, age_restriction, interests
+    } = req.body
+
+    console.log(interests)
 
     try {
         await Event.findOne({
             where: {
-                id: eventId,
+                id: id,
             },
         }).then(newEvent => {
             if (newEvent) {
-                newEvent.setInterests(req.body.interests)
-                Event.update(
+                newEvent.update(
                     {
-                        name: req.body.name,
-                        description: req.body.description,
-                        date: req.body.date,
-                        venue: req.body.venue,
-                        organizers: req.body.organizers,
-                        mcs: req.body.mcs,
-                        guests: req.body.guests,
-                        age_restriction: req.body.age,
-                    },
-                    {
-                        where: {
-                            id: eventId,
-                        },
+                        name: name,
+                        description: description,
+                        date: date,
+                        venue: venue,
+                        organizers: organizers,
+                        mcs: mcs,
+                        guests: guests,
+                        age_restriction: age_restriction,
+                        organizer: organizer,
+                        time: time,
                     }
                 ).then(() => {
-                    return res.status(201).send({
-                        message: 'event updated successfully.',
-                    });
+                    Interest.findAll({
+                        where: {
+                            name: {
+                                [Op.or]: interests
+                            }
+                        }
+                    }).then(interests => {
+                        newEvent.setInterests(interests)
+                    })
+
+                    return res.status(201).send(newEvent);
                 });
             } else {
-                return res.status(403).send({
+                return res.status(400).send({
                     message: "event couldn't be updated.",
                 });
             }

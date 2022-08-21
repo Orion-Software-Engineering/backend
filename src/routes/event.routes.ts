@@ -57,5 +57,6 @@ export default (app: Express) => {
 
     app.put('/api/event/:id',
         // [isOrganizer],
+        multerUploads,
         controller.updateEvent);
 };
