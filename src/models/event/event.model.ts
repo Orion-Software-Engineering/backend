@@ -17,6 +17,7 @@ export default class Event extends Model<EventAttributes,
     declare guests: string;
     declare age_restriction: boolean;
     declare organizer: string;
+    declare cover_image: string;
 
     declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
     declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<InterestAttributes,
@@ -70,6 +71,10 @@ Event.init(
             allowNull: false,
         },
         organizer: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        cover_image:{
             type: DataTypes.STRING,
             allowNull: false,
         }

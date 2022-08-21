@@ -12,6 +12,8 @@ export type EventAttributes = {
     guests: string;
     age_restriction: number;
     organizer: string;
+    cover_image: string;
 };
 
-export type EventCreationAttributes = Optional<EventAttributes, 'id' | 'guests' | 'mcs'>;
+export type EventCreationAttributes = Optional<EventAttributes,
+    'id' | 'guests' | 'mcs' | 'cover_image'>
