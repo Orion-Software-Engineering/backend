@@ -37,6 +37,7 @@ import Role from './role/';
 import Interest from './interest';
 import Conversation from './conversation/';
 import Message from './message';
+import Event from './event';
 
 // the db variable will store database info for use
 const db = {
@@ -45,7 +46,8 @@ const db = {
     Interest,
     Conversation,
     Message,
-    ROLES: ['user', 'admin', 'moderator'],
+    Event,
+    ROLES: ['user', 'admin', 'moderator', 'organizer'],
     INTERESTS: [
         'art',
         'business',
@@ -124,6 +126,12 @@ db.User.belongsToMany(db.Conversation, {
 
 // a user can have multiple messages
 // db.User.hasMany(db.Message);
+
+// an event can have many interests
+db.Event.belongsToMany(db.Interest,
+    {
+        through: 'event_interests',
+    })
 
 export default db;
 export {sequelize};

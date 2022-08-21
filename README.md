@@ -71,7 +71,7 @@ Response: 200 Ok<br>
 ```json
 {
   "message" : "user registered successfully",
-  "useId" : " "
+  "userId" : " "
 }
 ```
 
@@ -346,6 +346,61 @@ Request Body:
 }
 ```
 
+<<<<<<< HEAD
+### Events
+
+#### Upload Event
+End Point: /api/event <br>
+Method: POST <br>
+Required: Data must be sent as multipart form data <br>
+Request Body: <br>
+```form-data
+    name 
+    date
+    time
+    venue
+    organizers
+    mcs
+    guests
+    age_restriction
+    description
+    organizer
+    cover-image
+    interests[]
+```
+
+#### Get Event
+End Point: /api/event/id <br>
+Method: GET <br>
+
+#### Get All Events
+End Point: /api/events
+Method: GET <br>
+
+#### Delete Event
+End Point: /api/event/id
+Method: DELETE <br>
+
+#### Update Event
+End Point: /api/event/id
+Method: PUT <br>
+Required: Data must be sent as multipart form data <br>
+Request Body: <br>
+```form-data
+    name 
+    date
+    time
+    venue
+    organizers
+    mcs
+    guests
+    age_restriction
+    description
+    organizer
+    cover-image
+    interests[]
+```
+=======
 #### Remove User From Conversation
 
 End Point: /api/conversation/user <br>
@@ -370,3 +425,4 @@ Request Body: null
 End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
 Request Body: null
+>>>>>>> testing

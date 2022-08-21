@@ -1,5 +1,4 @@
 import db from '../models';
-import conversation from '../models/conversation';
 
 const {Conversation, User} = db;
 

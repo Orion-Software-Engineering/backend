@@ -3,51 +3,50 @@ import {sequelize} from '..';
 import {InterestAttributes} from '../interest';
 import {EventAttributes, EventCreationAttributes} from './event.type';
 
-// define database model for users
-export default class Event extends Model<
-    EventAttributes,
-    EventCreationAttributes
-    > {
-    declare event_name: CreationOptional<string>;
-    declare event_date: Date;
-    declare event_time: Date;
+// define database model for events
+export default class Event extends Model<EventAttributes,
+    EventCreationAttributes> {
+    declare id: CreationOptional<string>;
+    declare name: String;
+    declare description: string;
+    declare date: Date;
+    declare time: string;
     declare venue: string;
     declare organizers: string;
-    declare MCs: string;
-    declare Guests: string;
-    declare Age_restriction: number;
-    declare description: string;
+    declare mcs: string;
+    declare guests: string;
+    declare age_restriction: boolean;
+    declare organizer: string;
+    declare cover_image: string;
 
     declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
-    declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<
-        InterestAttributes,
-        InterestAttributes['id']
-        >;
-    declare addInterests: Sequelize.BelongsToManyAddAssociationsMixin<
-        InterestAttributes,
-        InterestAttributes['id']
-        >;
-    declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<
-        InterestAttributes,
-        InterestAttributes['id']
-        >;
+    declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<InterestAttributes,
+        InterestAttributes['id']>;
+    declare addInterests: Sequelize.BelongsToManyAddAssociationsMixin<InterestAttributes,
+        InterestAttributes['id']>;
+    declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<InterestAttributes,
+        InterestAttributes['id']>;
 }
 
 Event.init(
     {
-        event_name: {
-            type: DataTypes.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+        name: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
-        event_date: {
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false,
+        },
+        date: {
             type: DataTypes.DATEONLY,
             allowNull: false,
         },
-        event_time: {
-            type: DataTypes.DATE,
-            allowNull: false,
+        time: {
+            type: DataTypes.STRING,
+            defaultValue: '00:00'
         },
         venue: {
             type: DataTypes.STRING,
@@ -55,27 +54,33 @@ Event.init(
         },
         organizers: {
             type: DataTypes.STRING,
+        },
+        mcs: {
+            type: DataTypes.STRING,
+        },
+        guests: {
+            type: DataTypes.STRING,
+        },
+        age_restriction: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
             allowNull: false,
-        },
-        MCs: {
-            type: DataTypes.STRING,
-            defaultValue: false,
-        },
-        Guests: {
-            type: DataTypes.STRING,
-            defaultValue: false,
-        },
-        Age_restriction: {
-            type: DataTypes.NUMBER,
-            defaultValue: false,
         },
         description: {
             type: DataTypes.STRING,
-            defaultValue: false,
+            allowNull: false,
         },
+        organizer: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        cover_image:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
     {
         sequelize,
-        tableName: 'event',
+        tableName: 'events',
     }
 );

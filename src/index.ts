@@ -12,8 +12,11 @@ import locationRoutes from './routes/location.routes';
 import interestRouter from './routes/interest.routes';
 import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
+import eventRouter from './routes/event.routes';
+import path from "path";
 
 require('dotenv').config();
+require('multer')
 
 const app = express();
 const corsOptions = {
@@ -23,14 +26,15 @@ const corsOptions = {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.resolve(__dirname, 'src/public')))
 
 const {Role, Interest, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: false}) // force: true forces dropping and resyncing the database
+    .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-        // initial();
+        initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
@@ -58,6 +62,7 @@ verifyEmailRoutes(app);
 resetPasswordRoutes(app);
 resetPasswordPageRoutes(app);
 changePasswordRoutes(app);
+eventRouter(app);
 messageRoutes(app)
 locationRoutes(app)
 app.use('/api/interest', interestRouter);

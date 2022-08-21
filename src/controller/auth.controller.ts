@@ -95,6 +95,7 @@ export const signIn = async (req: Request, res: Response) => {
             id: user.id,
             username: user.username,
             email: user.email,
+            gender: user.gender,
             accessToken: token,
         });
     } catch ({message}) {
