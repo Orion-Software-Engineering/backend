@@ -12,6 +12,7 @@ const {Event} = db;
 
 // Module for allowing users with organizer access to create events
 export const createEvent = async (req: Request, res: Response) => {
+    let cover_image_url: string = ''
     try {
         // console.log(req.file)
         if (req.file) {
@@ -19,8 +20,11 @@ export const createEvent = async (req: Request, res: Response) => {
             if (file) {
                 const uploadedImage = await uploadImageToCloudinary(file)
                 console.log(uploadedImage)
+                cover_image_url = uploadedImage.secure_url
             }
         }
+
+        if (!cover_image_url) return res.status(400).send("No image found")
 
         const {
             name, description, date, time,
@@ -43,6 +47,7 @@ export const createEvent = async (req: Request, res: Response) => {
             age_restriction: age_restriction,
             description: description,
             organizer: organizer,
+            cover_image: cover_image_url
         }).then(event => {
             Interest.findAll({
                 where: {
@@ -89,13 +94,18 @@ export const deleteEvent = async (req: Request, res: Response) => {
 
 export const updateEvent = async (req: Request, res: Response) => {
     const {id} = req.params;
+    let cover_image_url: string = ''
     if (req.file) {
         const file = dataUri(req)?.content
         if (file) {
             const uploadedImage = await uploadImageToCloudinary(file)
             console.log(uploadedImage)
+            cover_image_url = uploadedImage.secure_url
         }
     }
+
+    if (!cover_image_url) return res.status(400).send('No image found')
+
     const {
         name, description, date, time,
         venue, organizers, organizer,
@@ -122,6 +132,7 @@ export const updateEvent = async (req: Request, res: Response) => {
                         guests: guests,
                         age_restriction: age_restriction,
                         time: time,
+                        cover_image: cover_image_url
                     }
                 ).then(() => {
                     Interest.findAll({
