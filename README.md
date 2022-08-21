@@ -391,17 +391,17 @@ Method: GET <br>
 
 #### Get All Events
 
-End Point: /api/events
+End Point: /api/events <br>
 Method: GET <br>
 
 #### Delete Event
 
-End Point: /api/event/id
+End Point: /api/event/id <br>
 Method: DELETE <br>
 
 #### Update Event
 
-End Point: /api/event/id
+End Point: /api/event/id <br>
 Method: PUT <br>
 Required: Data must be sent as multipart form data <br>
 Request Body: <br>
@@ -425,7 +425,7 @@ Request Body: <br>
 
 End Point: /api/conversation/user <br>
 Method: DELETE <br>
-Request Body:
+Request Body: <br>
 
 ```json
 {
@@ -438,10 +438,10 @@ Request Body:
 
 End Point: /api/conversation/users/all/ID <br>
 Method: GET <br>
-Request Body: null
+Request Body: null <br>
 
 #### Get Conversations Of User
 
 End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
-Request Body: null
+Request Body: null <br>
