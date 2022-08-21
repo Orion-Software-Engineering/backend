@@ -121,7 +121,6 @@ export const updateEvent = async (req: Request, res: Response) => {
                         mcs: mcs,
                         guests: guests,
                         age_restriction: age_restriction,
-                        organizer: organizer,
                         time: time,
                     }
                 ).then(() => {
