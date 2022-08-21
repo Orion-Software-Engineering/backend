@@ -4,12 +4,13 @@ import cors from 'cors';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import verifyEmailRoutes from './routes/verify.routes';
-import resetpasswordRoutes from './routes/password/resetpassword.routes';
+import resetPasswordRoutes from './routes/password/resetpassword.routes';
 import db, {sequelize} from './models';
-import resetpasswordPageRoutes from './routes/password/resetpasswordPage.routes';
+import resetPasswordPageRoutes from './routes/password/resetpasswordPage.routes';
 import changePasswordRoutes from './routes/password/changePassword.routes';
+import locationRoutes from './routes/location.routes';
 import interestRouter from './routes/interest.routes';
-import messageRouter from './routes/message.routes';
+import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
@@ -58,12 +59,13 @@ app.get('/', (req: Request, res: Response) => {
 userRoutes(app);
 authRoutes(app);
 verifyEmailRoutes(app);
-resetpasswordRoutes(app);
-resetpasswordPageRoutes(app);
+resetPasswordRoutes(app);
+resetPasswordPageRoutes(app);
 changePasswordRoutes(app);
 eventRouter(app);
+messageRoutes(app)
+locationRoutes(app)
 app.use('/api/interest', interestRouter);
-app.use('/api/message', messageRouter);
 app.use('/api/conversation', conversationRouter);
 
 const PORT = process.env.PORT || 8000;

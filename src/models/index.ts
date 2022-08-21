@@ -1,6 +1,9 @@
 import {Sequelize} from 'sequelize';
 
 import config from '../config/db.config';
+// models need and instant of sequelize to be able to initialize
+// putting model imports above runs model instantiation before data start
+// TODO: extract database startup into a separate component
 
 /* Heroku essential
  * Heroku provides a database url, but locally we do not need that.
@@ -29,9 +32,6 @@ const sequelize = process.env.DATABASE_URL
         },
     });
 
-// models need and instant of sequelize to be able to initialize
-// putting model imports above runs model instantiation before data start
-// TODO: extract database startup into a separate component
 import User from './user';
 import Role from './role/';
 import Interest from './interest';
@@ -96,25 +96,36 @@ db.User.belongsToMany(db.Interest, {
 });
 
 // a conversation can have multiple messages
-db.Conversation.belongsToMany(db.Message, {through: 'conversation_messages'});
+// db.Conversation.belongsToMany(db.Message, {
+//     through: 'conversation_messages',
+//     foreignKey: 'conversationId',
+//     otherKey: 'messageId',
+// });
 
-// a message can have multiple conversations(two) i.e one for sender and one for receiver
-db.Message.belongsToMany(db.Conversation, {through: 'conversation_messages'});
-
-// a conversation can have only one user(owner)
-db.Conversation.belongsTo(db.User, {as: 'owner'});
-
-// a conversation can have only one sender
-db.Conversation.belongsTo(db.User, {as: 'sender'});
+// a conversation can have multiple users watching (a sender and a receiver, or if a group, multiple receivers)
+db.Conversation.belongsToMany(db.User, {
+    through: 'conversation_users',
+    foreignKey: 'conversationId',
+    otherKey: 'userId',
+});
 
 // a user can have multiple conversations
-db.User.hasMany(db.Conversation);
+db.User.belongsToMany(db.Conversation, {
+    through: 'conversation_users',
+    foreignKey: 'userId',
+    otherKey: 'conversationId',
+});
 
-// a message can have only one author(sender)
-db.Message.belongsTo(db.User);
+// // a message can have only one conversation
+// db.Message.belongsTo(db.Conversation, {
+//     foreignKey: 'conversationId'
+// });
+
+// a message can have only one user
+// db.Message.belongsTo(db.User);
 
 // a user can have multiple messages
-db.User.hasMany(db.Message);
+// db.User.hasMany(db.Message);
 
 // an event can have many interests
 db.Event.belongsToMany(db.Interest,

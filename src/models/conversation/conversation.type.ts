@@ -1,14 +1,8 @@
 import {Optional} from 'sequelize';
 
 export type ConversationAttributes = {
-  id: string;
-  unseenCount: number;
-  // userId, sendId, lastMessageId => taken care using foreign-keys(associations):
-  userId?: string;
-  senderId?: string;
+    id: string;
 };
 
-export type ConversationCreationAttributes = Optional<
-  ConversationAttributes,
-  'id' | 'unseenCount'
->;
+export type ConversationCreationAttributes = Optional<ConversationAttributes,
+    'id'>;

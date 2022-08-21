@@ -1,25 +1,31 @@
 # Orion Meet Backend
+
 ⚡Express
 
 <br>
 
 ### Production ✨
+
 Reviewed and tested stable app version
 https://orion-meet.herokuapp.com/
 
 ### Testing 💫
+
 Staging area for new features
 https://orion-meet-testing.herokuapp.com/
 
 <br><br>
 
 ## API Documentation
+
 Main URL: https://orion-meet.herokuapp.com/
 
 ### Sign In
+
 End Point: /api/auth/signin <br>
 Method: POST <br>
 Request Body:<br>
+
 ```json 
 {
     "username" : " ",
@@ -37,21 +43,29 @@ Response: 200 Ok <br>
 }
 ```
 
-### Sign up
+### Sign Up
+
 End Point: /api/auth/signup <br>
 Method: POST <br>
 Request Body: <br>
+
 NB: with gender male == true and female == false
+
 ```json
 {
-    "username" : " ",
-    "email" : " ",
-    "password" : " ", 
+    "username": " ",
+    "email": " ",
+    "password": " ",
     "dob": " ",
-    "roles" : [" "," ", " "], 
-    "gender" : "true"
+    "gender" : "true",
+    "roles": [
+        " ",
+        " ",
+        " "
+    ]
 }
 ```
+
 NB: When user signs up a mail is sent to their email address for email verification. For calls made from the app, ```roles...``` should be omitted.<br>
 Response: 200 Ok<br>
 ```json
@@ -61,22 +75,30 @@ Response: 200 Ok<br>
 }
 ```
 
-### Request for re-setting password
+
+NB: When user signs up a mail is sent to their email address for email verification. For calls made from the
+app, ```roles...``` should be ommitted.
+
+### Request For Re-setting Password
+
 End Point: /api/resetPassword <br>
 Method: POST <br>
 Request Body:
+
 ```json
 {
-  "email" : " "
+    "email": " "
 }
 ```
 Response: 200 Ok <br>
 ```Password Reset link has been sent to your mail. ```
 
-### Request for admin content.
+### Request For Admin Content
+
 End Point: /api/test/admin <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -85,12 +107,15 @@ Accept-Encoding
 Connection
 x-access-token
 ```
+
 NB: In Request headers access token for the admin should be set in order to make a successful request.
 
-### Request for public content
+### Request For Public Content
+
 End Point: /api/test/all <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -99,10 +124,12 @@ Accept-Encoding
 Connection
 ```
 
-### Request for moderator content
+### Request For Moderator Content
+
 End Point: /api/test/mod <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -112,10 +139,12 @@ Connection
 x-access-token
 ```
 
-### Request for user content
+### Request For User Content
+
 End Point: /api/test/all <br>
 Method: GET <br>
 Request Header:
+
 ```
 Host
 User-Agent
@@ -125,7 +154,8 @@ Connection
 x-access-token
 ```
 
-### Listing all users .
+### Listing All Users
+
 End Point: /api/test/users <br>
 Method: GET <br>
 Request Headers: <br>
@@ -149,16 +179,46 @@ Response: 200 Ok <br>
 }
 ```
 
+### Get Username From ID
+
+End Point: /api/user <br>
+Method: GET <br>
+Request Body:
+
+```json
+{
+    "userId": ""
+}
+```
+
+### Get User Profile
+
+End Point: /api/user/profile/ID <br>
+Method: GET <br>
+Request Body: null
+
 ### Interests
+
 NB: "ID" is the user ID for the user.
 
-#### Set Interests of a user.
+#### Get Interests Of A User.
+
+End Point: /api/interest/ID <br>
+Method: GET <br>
+
+#### Set Interests Of A User.
+
 End Point: /api/interest/ID <br>
 Method: POST <br>
 Request Body:
+
 ```json
 {
-    "interests" : ["sports","photography"]
+    "interests": [
+        "sports",
+        "photography",
+        "comedy"
+    ]
 }
 ```
 Response: 200 Ok <br>
@@ -175,13 +235,17 @@ Response: 200 Ok <br>
 ]
 ```
 
-#### Adding Interests for a particular user.
+#### Adding Interests For A User.
+
 End Point: /api/interests/ID <br>
 Method: PUT <br>
 Request Body:
+
 ```json
 {
-"interests" : ["science"]
+    "interests": [
+        "science"
+    ]
 }
 ```
 Response: 200 Ok<br>
@@ -196,39 +260,93 @@ Response: 200 Ok<br>
 ]
 ```
 
-#### Removing interests for a particular user.
+#### Removing Interests For A Particular User.
+
 End Point: /api/interests/ID <br>
 Method: DELETE <br>
 Request Body:
+
 ```json
 {
-    "interests":["sorts"]
+    "interests": [
+        "sorts"
+    ]
+}
+```
+
+### Instant Messaging
+
+#### Create Conversation
+
+End Point: /api/conversation/ <br>
+Method: PUT <br>
+Request Body:
+
+```json
+{
+    "userId": ""
+}
+```
+
+#### Get Conversation
+
+End Point: /api/conversation/:conversationId <br>
+Method: GET <br>
+Request Body: null
+
+#### Get Message
+
+End Point: /api/message/ID <br>
+Method: GET <br>
+Request Body: null
+
+#### Get Messages From Conversation
+
+End Point: /api/messages/ID Method: GET <br>
+Request Body: null
+
+#### Add Message To Conversation
+
+End Point: /api/messages/ <br>
+Method: PUT <br>
+Request Body:
+
+```json
+{
+    "userId": "",
+    "messageText": "",
+    "conversationId": ""
+}
+```
+
+#### Remove Message From Conversation
+
+End Point: /api/message <br>
+Method: DELETE <br>
+Request Body:
+
+```json
+{
+    "messageId": ""
 }
 ```
 Response: 200 Ok <br>
 ```1```
 
-#### Request for all interests of a particular user
-End Point: /api/interests/ID <br>
-Method: GET <br>
-Response: 200 Ok <br>
+#### Add User To Conversation
+
+End Point: /api/conversation/user <br>
+Method: PUT <br>
+Request Body:
+
 ```json
-[
-    {
-        "id": " ",
-        "name": " ",
-        "createdAt": " ",
-        "updatedAt": " ",
-        "user_interests": {
-            "createdAt": " ",
-            "updatedAt": " ",
-            "userId": " ",
-            "roleId": " "
-        }
-    }
-]
+{
+    "userId": "",
+    "conversationId": ""
+}
 ```
 
+<<<<<<< HEAD
 ### Events
 
 #### Upload Event
@@ -282,3 +400,29 @@ Request Body: <br>
     cover-image
     interests[]
 ```
+=======
+#### Remove User From Conversation
+
+End Point: /api/conversation/user <br>
+Method: DELETE <br>
+Request Body:
+
+```json
+{
+    "userId": "",
+    "conversationId": ""
+}
+```
+
+#### Get Users of Conversation
+
+End Point: /api/conversation/users/all/ID <br>
+Method: GET <br>
+Request Body: null
+
+#### Get Conversations Of User
+
+End Point: /api/conversation/user/all/ID <br>
+Method: GET <br>
+Request Body: null
+>>>>>>> testing
