@@ -315,7 +315,8 @@ Request Body: null
 
 #### Get Messages From Conversation
 
-End Point: /api/messages/ID Method: GET <br>
+End Point: /api/messages/ID <br>
+Method: GET <br>
 Request Body: null
 
 #### Add Message To Conversation
