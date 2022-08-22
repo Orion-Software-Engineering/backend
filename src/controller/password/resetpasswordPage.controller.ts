@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
-import {Request, Response} from "express";
+import {Request, Response} from 'express';
 import db from '../../models';
-import {UserRequest} from '../../models/user/user.request';
 import path from 'path';
 
 const {User} = db;

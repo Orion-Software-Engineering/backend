@@ -3,79 +3,85 @@ import {sequelize} from '..';
 import {InterestAttributes} from '../interest';
 import {EventAttributes, EventCreationAttributes} from './event.type';
 
-// define database model for event
-export default class Event extends Model<
-  EventAttributes,
-  EventCreationAttributes
-> {
-  declare event_name: CreationOptional<string>;
-  declare event_date: Date;
-  declare event_time: Date;
-  declare venue: string;
-  declare organizers: string;
-  declare MCs: string;
-  declare Guests: string;
-  declare Age_restriction: boolean;
-  declare description: string;
+// define database model for events
+export default class Event extends Model<EventAttributes,
+    EventCreationAttributes> {
+    declare id: CreationOptional<string>;
+    declare name: String;
+    declare description: string;
+    declare date: Date;
+    declare time: string;
+    declare venue: string;
+    declare organizers: string;
+    declare mcs: string;
+    declare guests: string;
+    declare age_restriction: boolean;
+    declare organizer: string;
+    declare cover_image: string;
 
-  declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
-  declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<
-    InterestAttributes,
-    InterestAttributes['id']
-  >;
-  declare addInterests: Sequelize.BelongsToManyAddAssociationsMixin<
-    InterestAttributes,
-    InterestAttributes['id']
-  >;
-  declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<
-    InterestAttributes,
-    InterestAttributes['id']
-  >;
+    declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
+    declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<InterestAttributes,
+        InterestAttributes['id']>;
+    declare addInterests: Sequelize.BelongsToManyAddAssociationsMixin<InterestAttributes,
+        InterestAttributes['id']>;
+    declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<InterestAttributes,
+        InterestAttributes['id']>;
 }
 
 Event.init(
-  {
-    event_name: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-      defaultValue: DataTypes.STRING,
-      allowNull: false,
+    {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false,
+        },
+        date: {
+            type: DataTypes.DATEONLY,
+            allowNull: false,
+        },
+        time: {
+            type: DataTypes.STRING,
+            defaultValue: '00:00'
+        },
+        venue: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        organizers: {
+            type: DataTypes.STRING,
+        },
+        mcs: {
+            type: DataTypes.STRING,
+        },
+        guests: {
+            type: DataTypes.STRING,
+        },
+        age_restriction: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        organizer: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        cover_image:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
-    event_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
-    event_time: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    venue: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    organizers: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    MCs: {
-      type: DataTypes.STRING,
-      defaultValue: false,
-    },
-    Guests: {
-      type: DataTypes.STRING,
-      defaultValue: false,
-    },
-    Age_restriction: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-      defaultValue: false,
-    },
-  },
-  {
-    sequelize,
-    tableName: 'event',
-  }
+    {
+        sequelize,
+        tableName: 'events',
+    }
+
 );
