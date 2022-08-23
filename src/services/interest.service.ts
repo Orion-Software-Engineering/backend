@@ -4,7 +4,7 @@ import db from '../models';
 const get = async (id: string) => {
     const user = await db.User.findByPk(id);
     if (user) {
-        return asObject(await user.getInterests())
+        return await user.getInterests()
     }
 };
 
