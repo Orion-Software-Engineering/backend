@@ -19,7 +19,10 @@ export const getUserProfile = async (req: Request, res: Response) => {
     try {
         const user = await User.findByPk(req.params.userId)
 
-        if (user) return res.status(200).send({user})
+        if (user) return res.status(200).json({
+            "user": user,
+            "user_interests": user.getInterests()
+        })
         return res.status(404).send()
     } catch ({message}) {
         res.status(400).send({message})
