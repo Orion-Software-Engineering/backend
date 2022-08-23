@@ -23,8 +23,8 @@ export const getUserProfile = async (req: Request, res: Response) => {
             },
             include: [{
                 model: db.Interest,
-                attributes: ['id', 'name']
-            },]
+                attributes: ['id', 'name'],
+            }]
         })
 
         if (user) return res.status(200).send(user)
