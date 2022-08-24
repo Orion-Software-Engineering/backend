@@ -14,7 +14,7 @@ const {Event} = db;
 export const createEvent = async (req: Request, res: Response) => {
     let cover_image_url: string = ''
     try {
-        // console.log(req.file)
+        console.log(req.file)
         if (req.file) {
             const file = dataUri(req)?.content
             if (file) {
@@ -62,7 +62,7 @@ export const createEvent = async (req: Request, res: Response) => {
             res.status(201).send(event);
         });
     } catch ({message}) {
-        return res.status(400).send({message});
+        return res.status(400).send("is it you");
     }
 };
 
