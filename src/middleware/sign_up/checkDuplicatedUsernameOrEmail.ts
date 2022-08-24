@@ -9,7 +9,9 @@ const checkDuplicatedUsernameOrEmail = (
     next: Function
 ) => {
     User.findOne({
-        where: {username: req.body.username},
+        where: {
+            username: req.body.username
+        },
     }).then((user: any) => {
         if (user) {
             res.status(400).send({

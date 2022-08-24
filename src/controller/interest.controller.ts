@@ -5,6 +5,7 @@ const get = async (req: Request, res: Response) => {
     try {
         res.json(await interest.get(req.params.id));
     } catch ({message}) {
+        console.log({message})
         // TODO: we should decide on a standard way to do error handling
         res.status(400).send({message});
     }
@@ -12,10 +13,14 @@ const get = async (req: Request, res: Response) => {
 
 const set = async (req: Request, res: Response) => {
     try {
+        // console.log("##################################")
+        // console.log(req)
+        // console.log("##################################")
         const {id} = req.params;
         const {interests}: { interests: string[] } = req.body;
         res.json(await interest.set(id, interests));
     } catch ({message}) {
+        console.log({message})
         res.status(400).send({message});
     }
 };
@@ -26,6 +31,7 @@ const remove = async (req: Request, res: Response) => {
         const {interests}: { interests: string[] } = req.body;
         res.json(await interest.remove(id, interests));
     } catch ({message}) {
+        console.log({message})
         res.status(400).send({message});
     }
 };
@@ -36,6 +42,7 @@ const add = async (req: Request, res: Response) => {
         const {interests}: { interests: string[] } = req.body;
         res.json(await interest.add(id, interests));
     } catch ({message}) {
+        console.log({message})
         res.status(400).send({message});
     }
 };

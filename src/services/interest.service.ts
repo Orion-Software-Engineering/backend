@@ -4,8 +4,9 @@ import db from '../models';
 const get = async (id: string) => {
     const user = await db.User.findByPk(id);
     if (user) {
-        return user.getInterests();
+        return await user.getInterests()
     }
+    throw new Error('User not found')
 };
 
 const set = async (id: string, interests: string[]) => {
@@ -24,7 +25,8 @@ const set = async (id: string, interests: string[]) => {
     });
 
     if (user) {
-        return await user.setInterests(validInterest);
+        await user.setInterests(validInterest);
+        return await user.getInterests()
     }
 };
 
@@ -44,7 +46,8 @@ const add = async (id: string, interests: string[]) => {
     });
 
     if (user) {
-        return await user.addInterests(validInterest);
+        await user.addInterests(validInterest);
+        return await user.getInterests()
     }
 };
 
@@ -64,8 +67,13 @@ const remove = async (id: string, interests: string[]) => {
     });
 
     if (user) {
-        return await user.removeInterests(validInterest);
+        await user.removeInterests(validInterest);
+        return await user.getInterests()
     }
 };
+
+const asObject = async (arr: Array<any>) => {
+    return arr[0]
+}
 
 export default {get, add, set, remove};
