@@ -1,3 +1,5 @@
+import {log} from "util";
+
 const cloudinary = require('cloudinary').v2
 
 cloudinary.config({
@@ -7,5 +9,5 @@ cloudinary.config({
 })
 
 export const uploadImageToCloudinary = async (file: string) => {
-    return await cloudinary.uploader.upload(file)
+    return await cloudinary.uploader.upload(file).catch((err: any) => console.log(err))
 }
