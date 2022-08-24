@@ -16,11 +16,15 @@ export const createEvent = async (req: Request, res: Response) => {
     try {
         console.log(req.file)
         if (req.file) {
-            const file = dataUri(req)?.content
-            if (file) {
-                const uploadedImage = await uploadImageToCloudinary(file)
-                console.log(uploadedImage)
-                cover_image_url = uploadedImage.secure_url
+            try {
+                const file = dataUri(req)?.content
+                if (file) {
+                    const uploadedImage = await uploadImageToCloudinary(file)
+                    console.log(uploadedImage)
+                    cover_image_url = uploadedImage.secure_url
+                }
+            } catch ({message}) {
+                console.log(message)
             }
         }
 
