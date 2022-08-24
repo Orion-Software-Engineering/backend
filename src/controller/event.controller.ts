@@ -24,7 +24,7 @@ export const createEvent = async (req: Request, res: Response) => {
                     cover_image_url = uploadedImage.secure_url
                 }
             } catch ({message}) {
-                console.log(message)
+                return res.status(500).send('Error uploading to cloudinary')
             }
         }
 
@@ -66,7 +66,7 @@ export const createEvent = async (req: Request, res: Response) => {
             res.status(201).send(event);
         });
     } catch ({message}) {
-        return res.status(400).send("is it you");
+        return res.status(400).send({message});
     }
 };
 
