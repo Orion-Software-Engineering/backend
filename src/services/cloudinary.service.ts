@@ -1,5 +1,3 @@
-import {log} from "util";
-
 const cloudinary = require('cloudinary').v2
 
 cloudinary.config({

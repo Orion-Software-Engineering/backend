@@ -1,8 +1,5 @@
 import {Express, Request, Response} from 'express';
 import * as controller from '../controller/event.controller';
-import multer from "multer";
-import path from "path";
-import {multerUploads, dataUri} from "../middleware/multer";
 
 // const storage = multer.diskStorage({
 //     destination: __dirname + '../../../images/',
@@ -42,7 +39,7 @@ export default (app: Express) => {
     });
 
     app.post('/api/event',
-        multerUploads,
+        // multerUploads,
         controller.createEvent);
 
     app.get('/api/event/:id',
@@ -57,6 +54,6 @@ export default (app: Express) => {
 
     app.put('/api/event/:id',
         // [isOrganizer],
-        multerUploads,
+        // multerUploads,
         controller.updateEvent);
 };
