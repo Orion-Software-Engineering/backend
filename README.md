@@ -367,22 +367,27 @@ Request Body:
 
 End Point: /api/event <br>
 Method: POST <br>
-Required: Data must be sent as multipart form data <br>
 Request Body: <br>
 
-```form-data
-    name 
-    date
-    time
-    venue
-    organizers
-    mcs
-    guests
-    age_restriction
-    description
-    organizer
-    cover-image
-    interests[]
+```json
+{
+    "name": "",
+    "date": "",
+    "time": "",
+    "venue": "",
+    "organizers": "",
+    "mcs": "",
+    "guests": "",
+    "age_restriction": "",
+    "description": "",
+    "organizer": "",
+    "cover-image": "",
+    "interests": [
+        "",
+        "",
+        ""
+    ]
+}
 ```
 
 #### Get Event
@@ -404,22 +409,27 @@ Method: DELETE <br>
 
 End Point: /api/event/id <br>
 Method: PUT <br>
-Required: Data must be sent as multipart form data <br>
 Request Body: <br>
 
-```form-data
-    name 
-    date
-    time
-    venue
-    organizers
-    mcs
-    guests
-    age_restriction
-    description
-    organizer
-    cover-image
-    interests[]
+```json
+{
+    "name": "",
+    "date": "",
+    "time": "",
+    "venue": "",
+    "organizers": "",
+    "mcs": "",
+    "guests": "",
+    "age_restriction": "",
+    "description": "",
+    "organizer": "",
+    "cover-image": "",
+    "interests": [
+        "",
+        "",
+        ""
+    ]
+}
 ```
 
 #### Remove User From Conversation
