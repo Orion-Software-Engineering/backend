@@ -33,17 +33,17 @@ export default (app: Express) => {
         '/api/test/mod',
         [verifyToken, isModerator],
         controller.moderatorBoard
-  });
+    );
 
-  app.get('/api/test/all', controller.allAccess);
+    app.get('/api/test/all', controller.allAccess);
 
 
-  app.get('/api/test/admin', [verifyToken, isAdmin], controller.adminBoard);
+    app.get('/api/test/admin', [verifyToken, isAdmin], controller.adminBoard);
 
-  // TODO: id param should be removed and verifyToke6n6 6m6iddleware should be inclueded
-  app.get('/api/test/matches/:id', matchController.find);
+    // TODO: id param should be removed and verifyToke6n6 6m6iddleware should be inclueded
+    app.get('/api/test/matches/:id', matchController.find);
 
-app.get(
+    app.get(
         '/api/test/users',
         // [verifyToken, isAdmin],
         controller.showAll
