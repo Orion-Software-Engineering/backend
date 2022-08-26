@@ -11,7 +11,7 @@ export const getAllEventIds = async () => {
         attributes: ['id'],
     });
      if (events){
-         console.log(events.keys())
+         return events.map((events) => events.getDataValue("id"));
      }
 };
 
@@ -19,8 +19,21 @@ export const eventMatch = async (userId: string) => {
     const user = await db.User.findByPk(userId);
 
     if (user){
-        let userInterests = await user.getInterests()
+        let userInterests = await user.getInterests();
 
-        const eventsInterestsAndIds = getAllEventIds();
+        const eventIds = getAllEventIds();
+
+        for(let i in eventIds){
+            const eventModel = await db.Event.findByPk(eventIds[i]);
+            if (eventModel){
+                let eventInterests = await eventModel.getInterests();
+
+                for(let i in userInterests){
+                    if (eventInterests.includes(userInterests[i])){
+
+                    }
+                }
+            }
+        }
     }
 };
