@@ -3,6 +3,8 @@ import * as controller from '../controller/event.controller';
 import multer from "multer";
 import path from "path";
 import {multerUploads, dataUri} from "../middleware/multer";
+import {getAllEventIds} from "../services/event.matching.service";
+
 
 // const storage = multer.diskStorage({
 //     destination: __dirname + '../../../images/',
@@ -59,4 +61,6 @@ export default (app: Express) => {
         // [isOrganizer],
         multerUploads,
         controller.updateEvent);
+
+    app.get('/api/events/match', getAllEventIds);
 };

@@ -13,5 +13,14 @@ export const getAllEventIds = async () => {
      if (event){
          console.log(event);
      }
+};
 
+export const eventMatch = async (userId: string) => {
+    const user = await db.User.findByPk(userId);
+
+    if (user){
+        let userInterests = await user.getInterests()
+
+        const eventsInterestsAndIds = getAllEventIds();
+    }
 };
