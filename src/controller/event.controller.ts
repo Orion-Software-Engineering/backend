@@ -101,7 +101,7 @@ export const deleteEvent = async (req: Request, res: Response) => {
 
 export const updateEvent = async (req: Request, res: Response) => {
     const {id} = req.params;
-    let cover_image_url: string = ''
+    // let cover_image_url: string = ''
     // if (req.file) {
     //     const file = dataUri(req)?.content
     //     if (file) {
@@ -116,7 +116,8 @@ export const updateEvent = async (req: Request, res: Response) => {
     const {
         name, description, date, time,
         venue, organizers, organizer,
-        mcs, guests, age_restriction, interests
+        mcs, guests, age_restriction,
+        interests, cover_image
     } = req.body
 
     console.log(interests)
@@ -139,7 +140,7 @@ export const updateEvent = async (req: Request, res: Response) => {
                         guests: guests,
                         age_restriction: age_restriction,
                         time: time,
-                        cover_image: cover_image_url,
+                        cover_image: cover_image,
                         organizer: organizer
                     }
                 ).then(() => {
