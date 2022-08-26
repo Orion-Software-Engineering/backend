@@ -52,10 +52,8 @@ const findMatches = async (id: string) => {
     // get interest of each user in unique array
     // order them in order of most shared interests
     return matchInterests.sort((a, b) =>
-        a.commonInterests.length < b.commonInterests.length
-            ? 1
-            : a.commonInterests.length > b.commonInterests.length
-                ? -1
+        a.commonInterests.length < b.commonInterests.length ? 1
+            : a.commonInterests.length > b.commonInterests.length ? -1
                 : 0
     );
 };
