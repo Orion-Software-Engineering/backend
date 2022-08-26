@@ -5,10 +5,13 @@ import Event from "../models/event";
 
 export const getAllEventIds = async () => {
     const event =  await db.Event.findAll({
-        attributes: ['id']
+        include: [{
+            model: Interest,
+        }],
+        attributes: ['id','interest']
     });
      if (event){
-         return event;
+         console.log(event);
      }
 
 };
