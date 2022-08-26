@@ -34,7 +34,7 @@ export const createEvent = async (req: Request, res: Response) => {
                 name, description, date, time,
                 venue, organizers, organizer,
                 mcs, guests, age_restriction,
-                interests, cover_image_url: cover_image
+                interests, cover_image
             } = req.body
 
             console.log(interests)
@@ -139,7 +139,8 @@ export const updateEvent = async (req: Request, res: Response) => {
                         guests: guests,
                         age_restriction: age_restriction,
                         time: time,
-                        cover_image: cover_image_url
+                        cover_image: cover_image_url,
+                        organizer: organizer
                     }
                 ).then(() => {
                     Interest.findAll({
