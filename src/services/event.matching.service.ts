@@ -4,14 +4,14 @@ import Interest from "../models/interest";
 import Event from "../models/event";
 
 export const getAllEventIds = async () => {
-    const event =  await db.Event.findAll({
+    const events =  await db.Event.findAll({
         include: [{
-            model: Interest,
+            model: db.Interest,
         }],
-        attributes: ['id','interest']
+        attributes: ['id'],
     });
-     if (event){
-         console.log(event);
+     if (events){
+         console.log(events.keys())
      }
 };
 

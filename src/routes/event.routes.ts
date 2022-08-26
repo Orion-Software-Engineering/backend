@@ -1,5 +1,6 @@
 import {Express, Request, Response} from 'express';
 import * as controller from '../controller/event.controller';
+import {eventMatch, getAllEventIds} from "../services/event.matching.service";
 
 
 // const storage = multer.diskStorage({
@@ -58,4 +59,5 @@ export default (app: Express) => {
         // multerUploads,
         controller.updateEvent);
 
+    app.get('/api/debug', getAllEventIds);
 };
