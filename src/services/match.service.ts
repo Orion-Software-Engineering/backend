@@ -18,7 +18,7 @@ const findMatches = async (id: string) => {
     return interest.id;
   }) as string[];
 
-  // find interests users with at most one shared interest
+  // find interests users with at least one shared interest
   const [records] = (await sequelize.query(
     'SELECT DISTINCT "userId" FROM user_interests WHERE "roleId" in (:interests) AND NOT "userId" = :user LIMIT 20',
     {replacements: {interests: interestIds, user: id}}
