@@ -315,7 +315,8 @@ Request Body: null
 
 #### Get Messages From Conversation
 
-End Point: /api/messages/ID Method: GET <br>
+End Point: /api/messages/ID <br>
+Method: GET <br>
 Request Body: null
 
 #### Add Message To Conversation
@@ -366,22 +367,27 @@ Request Body:
 
 End Point: /api/event <br>
 Method: POST <br>
-Required: Data must be sent as multipart form data <br>
 Request Body: <br>
 
-```form-data
-    name 
-    date
-    time
-    venue
-    organizers
-    mcs
-    guests
-    age_restriction
-    description
-    organizer
-    cover-image
-    interests[]
+```json
+{
+    "name": "",
+    "date": "",
+    "time": "",
+    "venue": "",
+    "organizers": "",
+    "mcs": "",
+    "guests": "",
+    "age_restriction": "",
+    "description": "",
+    "organizer": "",
+    "cover-image": "",
+    "interests": [
+        "",
+        "",
+        ""
+    ]
+}
 ```
 
 #### Get Event
@@ -391,41 +397,46 @@ Method: GET <br>
 
 #### Get All Events
 
-End Point: /api/events
+End Point: /api/events <br>
 Method: GET <br>
 
 #### Delete Event
 
-End Point: /api/event/id
+End Point: /api/event/id <br>
 Method: DELETE <br>
 
 #### Update Event
 
-End Point: /api/event/id
+End Point: /api/event/id <br>
 Method: PUT <br>
-Required: Data must be sent as multipart form data <br>
 Request Body: <br>
 
-```form-data
-    name 
-    date
-    time
-    venue
-    organizers
-    mcs
-    guests
-    age_restriction
-    description
-    organizer
-    cover-image
-    interests[]
+```json
+{
+    "name": "",
+    "date": "",
+    "time": "",
+    "venue": "",
+    "organizers": "",
+    "mcs": "",
+    "guests": "",
+    "age_restriction": "",
+    "description": "",
+    "organizer": "",
+    "cover-image": "",
+    "interests": [
+        "",
+        "",
+        ""
+    ]
+}
 ```
 
 #### Remove User From Conversation
 
 End Point: /api/conversation/user <br>
 Method: DELETE <br>
-Request Body:
+Request Body: <br>
 
 ```json
 {
@@ -438,10 +449,10 @@ Request Body:
 
 End Point: /api/conversation/users/all/ID <br>
 Method: GET <br>
-Request Body: null
+Request Body: null <br>
 
 #### Get Conversations Of User
 
 End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
-Request Body: null
+Request Body: null <br>
