@@ -160,6 +160,12 @@ Connection
 x-access-token
 ```
 
+### Get User Matches
+
+End Point: /api/test/matches/ID <br>
+Method: GET <br>
+No request body. <br>
+
 ### Listing All Users
 
 End Point: /api/test/users <br>
