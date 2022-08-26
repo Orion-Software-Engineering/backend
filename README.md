@@ -381,7 +381,7 @@ Request Body: <br>
     "age_restriction": "",
     "description": "",
     "organizer": "",
-    "cover-image": "",
+    "cover_image": "",
     "interests": [
         "",
         "",
