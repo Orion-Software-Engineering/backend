@@ -1,39 +1,73 @@
-import db from '../models';
-import Interest from "../models/interest";
-// import {sequelize} from '..';
-import Event from "../models/event";
+import db from '../models'
+import {Request, Response} from "express";
 
-export const getAllEventIds = async () => {
-    const events =  await db.Event.findAll({
-        include: [{
-            model: db.Interest,
-        }],
+const getAllEventIds = async () => {
+    // fetch all events and their interests
+    const events = await db.Event.findAll({
         attributes: ['id'],
     });
-     if (events){
-         return events.map((events) => events.getDataValue("id"));
-     }
+    if (events) {
+        // console.log(events)
+        // events.forEach(event => {
+        //     console.log(event)
+        //
+        return events.map((event) => event.id);
+
+    }
 };
 
-export const eventMatch = async (userId: string) => {
-    const user = await db.User.findByPk(userId);
+export const eventMatch = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    const user = await db.User.findByPk(id);
 
-    if (user){
+    let priority = 0;
+
+    let userInterestsArray = [];
+    let eventInterestsArray = [];
+
+    if (user) {
         let userInterests = await user.getInterests();
 
-        const eventIds = getAllEventIds();
+        console.log(userInterests);
 
-        for(let i in eventIds){
-            const eventModel = await db.Event.findByPk(eventIds[i]);
-            if (eventModel){
-                let eventInterests = await eventModel.getInterests();
-
-                for(let i in userInterests){
-                    if (eventInterests.includes(userInterests[i])){
+        const eventIds = await getAllEventIds();
+        if (eventIds) {
+            for (const eventId of eventIds) {
+                const eventModel = await db.Event.findByPk(eventId);
+                if (eventModel) {
+                    let eventInterests = await eventModel.getInterests();
+                    for (let i in userInterests) {
+                        if (eventInterests.includes(userInterests[i])) {
+                            priority += 1;
+                        } else {
+                            continue
+                        }
 
                     }
+                    res.send(eventId + ': ' + priority);
                 }
             }
         }
     }
+
+    // for(let i in eventIds){
+    //     // const eventModel = await db.Event.findByPk(eventIds[i]);
+    //     if (eventModel){
+    //         let eventInterests = await eventModel.getInterests();
+    //
+    //         for(let i in userInterests){
+    //             if (eventInterests.includes(userInterests[i])){
+    //                 priority += 1;
+    //             }
+    //             else {
+    //                 continue
+    //             }
+    //
+    //         console.log(eventIds[i] + ':' + priority);
+    //         }
+    //
+    //         // okay sure
+    //     }
+    // }
+    // }
 };
