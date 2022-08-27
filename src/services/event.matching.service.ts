@@ -7,12 +7,7 @@ const getAllEventIds = async () => {
         attributes: ['id'],
     });
     if (events) {
-        // console.log(events)
-        // events.forEach(event => {
-        //     console.log(event)
-        //
         return events.map((event) => event.id);
-
     }
 };
 
@@ -22,13 +17,14 @@ export const eventMatch = async (req: Request, res: Response) => {
 
     let priority = 0;
 
-    let userInterestsArray = [];
-    let eventInterestsArray = [];
-
+    let userInterestsArray: string[] = [];
+    let eventInterestsArray: string[] = [];
     if (user) {
         let userInterests = await user.getInterests();
 
-        console.log(userInterests);
+        userInterests.forEach(userInt => {
+            userInterestsArray.push(userInt.name)
+        })
 
         const eventIds = await getAllEventIds();
         if (eventIds) {
@@ -36,38 +32,23 @@ export const eventMatch = async (req: Request, res: Response) => {
                 const eventModel = await db.Event.findByPk(eventId);
                 if (eventModel) {
                     let eventInterests = await eventModel.getInterests();
-                    for (let i in userInterests) {
-                        if (eventInterests.includes(userInterests[i])) {
-                            priority += 1;
-                        } else {
-                            continue
-                        }
+                    eventInterests.forEach(eveInt => {
+                        eventInterestsArray.push(eveInt.name)
+                    });
 
-                    }
+                    // for (let i in userInterestsArray) {
+                    //     if (eventInterestsArray.includes(i)) {
+                    //         priority += 1;
+                    //     }
+                    // }
+                    userInterestsArray.forEach(userInterest => {
+                        if (eventInterestsArray.includes(userInterest))
+                            priority++
+                    })
                     res.send(eventId + ': ' + priority);
                 }
             }
         }
     }
 
-    // for(let i in eventIds){
-    //     // const eventModel = await db.Event.findByPk(eventIds[i]);
-    //     if (eventModel){
-    //         let eventInterests = await eventModel.getInterests();
-    //
-    //         for(let i in userInterests){
-    //             if (eventInterests.includes(userInterests[i])){
-    //                 priority += 1;
-    //             }
-    //             else {
-    //                 continue
-    //             }
-    //
-    //         console.log(eventIds[i] + ':' + priority);
-    //         }
-    //
-    //         // okay sure
-    //     }
-    // }
-    // }
 };
