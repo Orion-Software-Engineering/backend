@@ -17,6 +17,8 @@ export const eventMatch = async (req: Request, res: Response) => {
 
     let priority = 0;
 
+    const userEventPriorityMap = new Map<string, number>()
+
     let userInterestsArray: string[] = [];
     let eventInterestsArray: string[] = [];
     if (user) {
@@ -29,6 +31,7 @@ export const eventMatch = async (req: Request, res: Response) => {
         const eventIds = await getAllEventIds();
         if (eventIds) {
             for (const eventId of eventIds) {
+                priority = 0
                 const eventModel = await db.Event.findByPk(eventId);
                 if (eventModel) {
                     let eventInterests = await eventModel.getInterests();
@@ -45,10 +48,11 @@ export const eventMatch = async (req: Request, res: Response) => {
                         if (eventInterestsArray.includes(userInterest))
                             priority++
                     })
-                    res.send(eventId + ': ' + priority);
                 }
+                userEventPriorityMap.set(eventId, priority)
             }
         }
     }
-
+    console.log(userEventPriorityMap)
+    return res.send(userEventPriorityMap)
 };
