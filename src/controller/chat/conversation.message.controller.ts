@@ -36,3 +36,11 @@ export const getMessagesFromConversation = async (req: Request, res: Response) =
         return res.status(400).send({message})
     }
 }
+
+export const getLastMessageFromConversation = async (req: Request, res: Response) => {
+    try {
+
+    } catch ({message}) {
+        return res.status(400).send({message})
+    }
+}

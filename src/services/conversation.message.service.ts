@@ -38,9 +38,16 @@ const getMessages = async (conversationId: string) => {
     return messages
 }
 
+const getLastMessage = async () => {
+    const message = await Message.findOne({
+        order: [['createdAt', 'DESC']]
+    })
+}
+
 export default {
     addMessage,
     removeMessage,
     getMessage,
-    getMessages
+    getMessages,
+    getLastMessage
 }

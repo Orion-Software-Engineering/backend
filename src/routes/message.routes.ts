@@ -1,6 +1,6 @@
 import {Express, NextFunction, Request, Response, Router} from 'express';
 import {
-    addMessageToConversation,
+    addMessageToConversation, getLastMessageFromConversation,
     getMessageFromConversation,
     getMessagesFromConversation, removeMessageFromConversation
 } from "../controller/chat/conversation.message.controller";
@@ -18,6 +18,9 @@ export default (app: Express) => {
 
     app.get('/api/message/:messageId',
         getMessageFromConversation)
+
+    app.get('/api/message',
+        getLastMessageFromConversation)
 
     app.get('/api/messages/:conversationId',
         getMessagesFromConversation)
