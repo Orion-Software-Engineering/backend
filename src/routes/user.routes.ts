@@ -20,7 +20,7 @@ export default (app: Express) => {
     app.get('/api/user/:userId',
         controller.getUsername)
 
-    app.post('/api/user',
+    app.post('/api/user/bio',
         controller.updateUserBio)
 
     app.get('/api/user/profile/:userId',
