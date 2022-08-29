@@ -212,6 +212,19 @@ End Point: /api/user/profile/ID <br>
 Method: GET <br>
 Request Body: null
 
+### Update User Bio
+
+End Point: /api/user/bio <br>
+Method: POST <br>
+Request Body:
+
+```json
+{
+    "userId": "",
+    "bio": ""
+}
+```
+
 ### Interests
 
 NB: "ID" is the user ID for the user.

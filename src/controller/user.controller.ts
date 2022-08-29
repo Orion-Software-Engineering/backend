@@ -46,7 +46,6 @@ export const updateUserBio = async (req: Request, res: Response) => {
         })
 
         return res.status(200).send(user)
-
     } catch ({message}) {
         return res.status(400).send({message})
     }
