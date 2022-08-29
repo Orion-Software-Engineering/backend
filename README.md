@@ -216,7 +216,7 @@ Request Body: null
 
 End Point: /api/user/bio <br>
 Method: POST <br>
-Request Body:
+Request Body: <br>
 
 ```json
 {
