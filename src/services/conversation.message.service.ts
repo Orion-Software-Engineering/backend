@@ -4,11 +4,15 @@ import {where} from "sequelize";
 const {Message, Conversation} = db
 
 const addMessage = async (userId: string, messageText: string, conversationId: string) => {
-    return await Message.create({
+    const message = await Message.create({
         text: messageText,
         userId: userId,
         conversationId: conversationId,
     })
+
+    const conversation = await Conversation.findByPk(conversationId)
+    conversation?.addMessage([message])
+    return message
 }
 
 const removeMessage = async (messageId: string) => {
