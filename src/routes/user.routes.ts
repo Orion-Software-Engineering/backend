@@ -20,6 +20,9 @@ export default (app: Express) => {
     app.get('/api/user/:userId',
         controller.getUsername)
 
+    app.post('/api/user',
+        controller.updateUserBio)
+
     app.get('/api/user/profile/:userId',
         controller.getUserProfile)
 
@@ -40,7 +43,6 @@ export default (app: Express) => {
 
     app.get('/api/test/admin', [verifyToken, isAdmin], controller.adminBoard);
 
-    // TODO: id param should be removed and verifyToke6n6 6m6iddleware should be inclueded
     app.get('/api/test/matches/:id', matchController.find);
 
     app.get(
