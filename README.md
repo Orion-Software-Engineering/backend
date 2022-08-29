@@ -338,6 +338,12 @@ End Point: /api/messages/ID <br>
 Method: GET <br>
 Request Body: null
 
+#### Get Last Message From Conversation
+
+End Point: /api/message/last/:ID <br>
+Method: GET <br>
+Request Body: null
+
 #### Add Message To Conversation
 
 End Point: /api/messages/ <br>

@@ -2,8 +2,6 @@ import {Request, Response} from 'express';
 import db from '../models';
 import Interest from "../models/interest";
 import {Op} from "sequelize";
-// import {dataUri} from "../middleware/multer";
-import {uploadImageToCloudinary} from "../services/cloudinary.service";
 
 const {Event} = db;
 

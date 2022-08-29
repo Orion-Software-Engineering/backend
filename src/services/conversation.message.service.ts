@@ -1,4 +1,5 @@
 import db from '../models';
+import {where} from "sequelize";
 
 const {Message, Conversation} = db
 
@@ -38,9 +39,21 @@ const getMessages = async (conversationId: string) => {
     return messages
 }
 
+const getLastMessage = async (conversationId: string) => {
+    const message = await Message.findOne({
+        where: {
+            conversationId: conversationId
+        },
+        order: [['createdAt', 'DESC']]
+    })
+    if (!message) throw new Error("No message found")
+    return message
+}
+
 export default {
     addMessage,
     removeMessage,
     getMessage,
-    getMessages
+    getMessages,
+    getLastMessage
 }
