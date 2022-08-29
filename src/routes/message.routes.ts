@@ -19,7 +19,7 @@ export default (app: Express) => {
     app.get('/api/message/:messageId',
         getMessageFromConversation)
 
-    app.get('/api/message',
+    app.get('/api/message/last/:conversationId',
         getLastMessageFromConversation)
 
     app.get('/api/messages/:conversationId',
