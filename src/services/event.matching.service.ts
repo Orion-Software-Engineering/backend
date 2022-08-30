@@ -11,8 +11,8 @@ const getAllEventIds = async () => {
     }
 };
 
-export const eventMatch = async (req: Request, res: Response) => {
-    const {id} = req.params;
+export const eventMatch = async (id: string) => {
+    // const {id} = req.params;
     const user = await db.User.findByPk(id);
 
     let priority = 0;
@@ -38,7 +38,8 @@ export const eventMatch = async (req: Request, res: Response) => {
                     eventInterests.forEach(eveInt => {
                         eventInterestsArray.push(eveInt.name)
                     });
-
+                    console.log(eventInterestsArray);
+                    console.log(userInterestsArray);
                     userInterestsArray.forEach(userInterest => {
                         if (eventInterestsArray.includes(userInterest))
                             priority++
@@ -48,6 +49,10 @@ export const eventMatch = async (req: Request, res: Response) => {
             }
         }
     }
-    console.log(userEventPriorityMap)
-    return res.send(userEventPriorityMap)
+    console.log(userEventPriorityMap);
+
+    // Sorting  the events in terms of their priority (highest to lowest)
+    const sortedEvents = new Map([...userEventPriorityMap].sort((a, b) => b[1] - a[1]));
+
+    return sortedEvents
 };
