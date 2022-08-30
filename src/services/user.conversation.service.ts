@@ -1,6 +1,6 @@
 import db from '../models'
 
-const {User, Conversation} = db
+const {User, Conversation, Message} = db
 
 const addUser = async (userId: string, conversationId: string) => {
     const user = await User.findByPk(userId)
@@ -20,15 +20,33 @@ const getUsers = async (conversationId: string) => {
             model: Conversation,
             where: {
                 id: conversationId
-            }
+            },
+            attributes: []
         }],
         attributes: ['id', 'username']
     })
 }
 
 const getUserConversations = async (userId: string) => {
-    const user = await User.findByPk(userId)
-    return user?.getConversations()
+    return await Conversation.findAll({
+        include: [
+            {
+                model: User,
+                as: "Users",
+                where: {
+                    id: userId
+                },
+                attributes: []  // we don't need any attributes from user
+            },
+            {
+                model: Message,
+                as: "Messages",
+                attributes: [],
+            }],
+        attributes: ['id'],
+        order: [['Messages', 'createdAt', 'DESC']]
+    })
+    // return user?.getConversations()
 }
 
 export default {
