@@ -1,6 +1,7 @@
 import db from '../models'
+import {where} from "sequelize";
 
-const {User, Conversation} = db
+const {User, Conversation, Message} = db
 
 const addUser = async (userId: string, conversationId: string) => {
     const user = await User.findByPk(userId)
@@ -20,7 +21,8 @@ const getUsers = async (conversationId: string) => {
             model: Conversation,
             where: {
                 id: conversationId
-            }
+            },
+            attributes: []
         }],
         attributes: ['id', 'username']
     })
@@ -28,7 +30,22 @@ const getUsers = async (conversationId: string) => {
 
 const getUserConversations = async (userId: string) => {
     const user = await User.findByPk(userId)
-    return user?.getConversations()
+
+    const conversations = await Conversation.findAll({
+        include: [{
+            model: User,
+            where: {
+                id: userId
+            },
+            attributes: []  // we don't need any attributes from user
+        },
+            {
+                model: Message,
+                order: [['createdAt', 'DESC']]
+            }]
+    })
+    return conversations
+    // return user?.getConversations()
 }
 
 export default {
