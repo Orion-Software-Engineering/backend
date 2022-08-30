@@ -32,17 +32,20 @@ const getUserConversations = async (userId: string) => {
     const user = await User.findByPk(userId)
 
     const conversations = await Conversation.findAll({
-        include: [{
-            model: User,
-            where: {
-                id: userId
+        include: [
+            {
+                model: User,
+                where: {
+                    id: userId
+                },
+                attributes: []  // we don't need any attributes from user
             },
-            attributes: []  // we don't need any attributes from user
-        },
             {
                 model: Message,
-                order: [['createdAt', 'DESC']]
-            }]
+                as: "Messages",
+                attributes: []
+            }],
+        order: [['Messages', 'createdAt', 'DESC']]
     })
     return conversations
     // return user?.getConversations()
