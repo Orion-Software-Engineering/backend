@@ -10,7 +10,7 @@ export const  eventsMatchingController = async (req: Request, res: Response) => 
     const eventsAndPriorities = await eventMatch(id);
 
     if (eventsAndPriorities){
-        for (const [value, key] of eventsAndPriorities){
+        for (const [key, value] of eventsAndPriorities){
            const event = await db.Event.findByPk(key);
 
            if (event){

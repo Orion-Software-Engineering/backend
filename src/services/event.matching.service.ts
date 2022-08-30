@@ -45,7 +45,10 @@ export const eventMatch = async (id: string) => {
                             priority++
                     })
                 }
-                userEventPriorityMap.set(eventId, priority)
+                if (priority>0){
+                    userEventPriorityMap.set(eventId, priority);
+                }
+                continue
             }
         }
     }
