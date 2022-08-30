@@ -1,5 +1,4 @@
 import db from '../models'
-import {where} from "sequelize";
 
 const {User, Conversation, Message} = db
 
@@ -29,12 +28,11 @@ const getUsers = async (conversationId: string) => {
 }
 
 const getUserConversations = async (userId: string) => {
-    const user = await User.findByPk(userId)
-
-    const conversations = await Conversation.findAll({
+    return await Conversation.findAll({
         include: [
             {
                 model: User,
+                as: "Users",
                 where: {
                     id: userId
                 },
@@ -43,11 +41,11 @@ const getUserConversations = async (userId: string) => {
             {
                 model: Message,
                 as: "Messages",
-                attributes: []
+                attributes: [],
             }],
+        attributes: ['id'],
         order: [['Messages', 'createdAt', 'DESC']]
     })
-    return conversations
     // return user?.getConversations()
 }
 
