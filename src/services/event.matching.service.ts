@@ -39,11 +39,6 @@ export const eventMatch = async (req: Request, res: Response) => {
                         eventInterestsArray.push(eveInt.name)
                     });
 
-                    // for (let i in userInterestsArray) {
-                    //     if (eventInterestsArray.includes(i)) {
-                    //         priority += 1;
-                    //     }
-                    // }
                     userInterestsArray.forEach(userInterest => {
                         if (eventInterestsArray.includes(userInterest))
                             priority++
