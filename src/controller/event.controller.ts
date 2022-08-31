@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
 import db from '../models';
-import Interest from "../models/interest";
 import {Op} from "sequelize";
 
-const {Event} = db;
+
+const {Event, Interest} = db;
 
 // TODO: extract calls into service
 
