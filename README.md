@@ -457,6 +457,11 @@ Request Body: <br>
 }
 ```
 
+## Get event matches
+End Point: /api/events/:id <br>
+Method: GET <br>
+No Request Body.
+
 #### Remove User From Conversation
 
 End Point: /api/conversation/user <br>
@@ -481,3 +486,4 @@ Request Body: null <br>
 End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
 Request Body: null <br>
+
