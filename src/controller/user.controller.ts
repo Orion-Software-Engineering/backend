@@ -34,6 +34,24 @@ export const getUserProfile = async (req: Request, res: Response) => {
     }
 }
 
+export const updateUserBio = async (req: Request, res: Response) => {
+    try {
+        const {userId, bio} = req.body
+        const user = await User.update({
+            bio: bio
+        }, {
+            where: {
+                id: userId
+            }
+        })
+
+        return res.status(200).send(user)
+    } catch ({message}) {
+        return res.status(400).send({message})
+    }
+
+}
+
 // basic controllers for content
 export const allAccess = (req: Request, res: Response) => {
     res.status(200).send('Public Content');

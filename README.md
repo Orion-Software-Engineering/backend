@@ -212,6 +212,19 @@ End Point: /api/user/profile/ID <br>
 Method: GET <br>
 Request Body: null
 
+### Update User Bio
+
+End Point: /api/user/bio <br>
+Method: POST <br>
+Request Body: <br>
+
+```json
+{
+    "userId": "",
+    "bio": ""
+}
+```
+
 ### Interests
 
 NB: "ID" is the user ID for the user.
@@ -322,6 +335,12 @@ Request Body: null
 #### Get Messages From Conversation
 
 End Point: /api/messages/ID <br>
+Method: GET <br>
+Request Body: null
+
+#### Get Last Message From Conversation
+
+End Point: /api/message/last/:ID <br>
 Method: GET <br>
 Request Body: null
 

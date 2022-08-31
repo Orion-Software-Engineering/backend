@@ -1,5 +1,7 @@
 import {Request, Response} from 'express';
-import db from '../models';import {Op} from "sequelize";
+import db from '../models';
+import {Op} from "sequelize";
+
 
 const {Event, Interest} = db;
 
