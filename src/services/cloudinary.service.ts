@@ -7,5 +7,5 @@ cloudinary.config({
 })
 
 export const uploadImageToCloudinary = async (file: string) => {
-    return await cloudinary.uploader.upload(file)
+    return await cloudinary.uploader.upload(file).catch((err: any) => console.log(err))
 }

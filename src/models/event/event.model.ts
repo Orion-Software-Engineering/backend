@@ -67,14 +67,14 @@ Event.init(
             allowNull: false,
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         organizer: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        cover_image:{
+        cover_image: {
             type: DataTypes.STRING,
             allowNull: false,
         }
@@ -83,4 +83,5 @@ Event.init(
         sequelize,
         tableName: 'events',
     }
+
 );

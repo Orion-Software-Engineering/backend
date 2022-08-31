@@ -160,6 +160,12 @@ Connection
 x-access-token
 ```
 
+### Get User Matches
+
+End Point: /api/test/matches/ID <br>
+Method: GET <br>
+No request body. <br>
+
 ### Listing All Users
 
 End Point: /api/test/users <br>
@@ -205,6 +211,19 @@ Request Body:
 End Point: /api/user/profile/ID <br>
 Method: GET <br>
 Request Body: null
+
+### Update User Bio
+
+End Point: /api/user/bio <br>
+Method: POST <br>
+Request Body: <br>
+
+```json
+{
+    "userId": "",
+    "bio": ""
+}
+```
 
 ### Interests
 
@@ -319,6 +338,12 @@ End Point: /api/messages/ID <br>
 Method: GET <br>
 Request Body: null
 
+#### Get Last Message From Conversation
+
+End Point: /api/message/last/:ID <br>
+Method: GET <br>
+Request Body: null
+
 #### Add Message To Conversation
 
 End Point: /api/messages/ <br>
@@ -367,22 +392,27 @@ Request Body:
 
 End Point: /api/event <br>
 Method: POST <br>
-Required: Data must be sent as multipart form data <br>
 Request Body: <br>
 
-```form-data
-    name 
-    date
-    time
-    venue
-    organizers
-    mcs
-    guests
-    age_restriction
-    description
-    organizer
-    cover-image
-    interests[]
+```json
+{
+    "name": "",
+    "date": "",
+    "time": "",
+    "venue": "",
+    "organizers": "",
+    "mcs": "",
+    "guests": "",
+    "age_restriction": "",
+    "description": "",
+    "organizer": "",
+    "cover_image": "",
+    "interests": [
+        "",
+        "",
+        ""
+    ]
+}
 ```
 
 #### Get Event
@@ -404,22 +434,27 @@ Method: DELETE <br>
 
 End Point: /api/event/id <br>
 Method: PUT <br>
-Required: Data must be sent as multipart form data <br>
 Request Body: <br>
 
-```form-data
-    name 
-    date
-    time
-    venue
-    organizers
-    mcs
-    guests
-    age_restriction
-    description
-    organizer
-    cover-image
-    interests[]
+```json
+{
+    "name": "",
+    "date": "",
+    "time": "",
+    "venue": "",
+    "organizers": "",
+    "mcs": "",
+    "guests": "",
+    "age_restriction": "",
+    "description": "",
+    "organizer": "",
+    "cover-image": "",
+    "interests": [
+        "",
+        "",
+        ""
+    ]
+}
 ```
 
 #### Remove User From Conversation

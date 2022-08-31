@@ -9,7 +9,8 @@ export type UserAttributes = {
     dateOfBirth: Date;
     gender: boolean;
     location: string;
+    bio: string;
 };
 
 export type UserCreationAttributes = Optional<UserAttributes,
-    'id' | 'isEmailVerified' | 'location'>;
+    'id' | 'isEmailVerified' | 'location' | 'bio'>;

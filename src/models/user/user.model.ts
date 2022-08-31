@@ -16,6 +16,7 @@ export default class User extends Model<UserAttributes,
     declare dateOfBirth: string;
     declare gender: boolean;
     declare location: string;
+    declare bio: string;
     declare getRoles: Sequelize.BelongsToManyGetAssociationsMixin<RoleAttributes>;
     declare setRoles: Sequelize.BelongsToManySetAssociationsMixin<RoleAttributes,
         RoleAttributes['id']>;
@@ -67,6 +68,10 @@ User.init(
         },
         location: {
             type: DataTypes.STRING,
+            defaultValue: ""
+        },
+        bio: {
+            type: DataTypes.TEXT,
             defaultValue: ""
         }
     },
