@@ -38,8 +38,7 @@ export const eventMatch = async (id: string) => {
                     eventInterests.forEach(eveInt => {
                         eventInterestsArray.push(eveInt.name)
                     });
-                    console.log(eventInterestsArray);
-                    console.log(userInterestsArray);
+
                     userInterestsArray.forEach(userInterest => {
                         if (eventInterestsArray.includes(userInterest))
                             priority++
@@ -48,11 +47,10 @@ export const eventMatch = async (id: string) => {
                 if (priority>0){
                     userEventPriorityMap.set(eventId, priority);
                 }
-                continue
+                eventInterestsArray.splice(0);
             }
         }
     }
-    console.log(userEventPriorityMap);
 
     // Sorting  the events in terms of their priority (highest to lowest)
     const sortedEvents = new Map([...userEventPriorityMap].sort((a, b) => b[1] - a[1]));
