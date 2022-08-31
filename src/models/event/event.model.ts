@@ -83,4 +83,5 @@ Event.init(
         sequelize,
         tableName: 'events',
     }
+
 );
