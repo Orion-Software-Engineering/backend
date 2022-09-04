@@ -20,10 +20,6 @@ export const createEvent = async (req: Request, res: Response) => {
                 interests, cover_image
             } = req.body
 
-            console.log(interests)
-            // parse and store image locally
-            // upload.single('cover-image')
-
             const event = await Event.create({
                 name: name,
                 date: date,
