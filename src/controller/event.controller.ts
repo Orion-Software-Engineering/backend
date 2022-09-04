@@ -1,7 +1,6 @@
 import {Request, Response} from 'express';
 import db from '../models';
 import {Op} from "sequelize";
-import EventType from "../models/event"
 import {generateEventsWithInterests, generateEventWithInterests} from "../services/event.service";
 
 
