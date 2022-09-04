@@ -8,13 +8,11 @@ export type EventAttributes = {
     time: string;
     venue: string;
     organizers: string;
-
     mcs: string;
     guests: string;
     age_restriction: number;
     organizer: string;
     cover_image: string;
-
 };
 
 export type EventCreationAttributes = Optional<EventAttributes,

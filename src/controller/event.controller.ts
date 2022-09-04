@@ -1,33 +1,18 @@
 import {Request, Response} from 'express';
 import db from '../models';
 import {Op} from "sequelize";
+import EventType from "../models/event"
+import {generateEventWithInterests} from "../services/event.service";
 
 
-const {Event, Interest} = db;
+let {Event, Interest} = db;
 
 // TODO: extract calls into service
 
 
 // Module for allowing users with organizer access to create events
 export const createEvent = async (req: Request, res: Response) => {
-        // let cover_image_url: string = ''
         try {
-            //     console.log(req.file)
-            //     if (req.file) {
-            //         try {
-            //             const file = dataUri(req)?.content
-            //             if (file) {
-            //                 const uploadedImage = await uploadImageToCloudinary(file)
-            //                 console.log(uploadedImage)
-            //                 cover_image_url = uploadedImage.secure_url
-            //             }
-            //         } catch ({message}) {
-            //             return res.status(500).send('Error uploading to cloudinary')
-            //         }
-            //     }
-            //
-            //     if (!cover_image_url) return res.status(400).send("No image found")
-
             const {
                 name, description, date, time,
                 venue, organizers, organizer,
@@ -74,11 +59,11 @@ export const createEvent = async (req: Request, res: Response) => {
 // Module for getting current events
 export const getEvent = async (req: Request, res: Response) => {
     const {id} = req.params;
-    const event = await db.Event.findByPk(id);
+    let event = await db.Event.findByPk(id);
 
     if (!event) return res.status(404).send('Event does not exist.');
 
-    return res.status(200).send(event);
+    return res.status(200).send(await generateEventWithInterests(event));
 };
 
 // Module for deleting events
@@ -99,17 +84,6 @@ export const deleteEvent = async (req: Request, res: Response) => {
 
 export const updateEvent = async (req: Request, res: Response) => {
     const {id} = req.params;
-    // let cover_image_url: string = ''
-    // if (req.file) {
-    //     const file = dataUri(req)?.content
-    //     if (file) {
-    //         const uploadedImage = await uploadImageToCloudinary(file)
-    //         console.log(uploadedImage)
-    //         cover_image_url = uploadedImage.secure_url
-    //     }
-    // }
-
-    // if (!cover_image_url) return res.status(400).send('No image found')
 
     const {
         name, description, date, time,
@@ -152,7 +126,7 @@ export const updateEvent = async (req: Request, res: Response) => {
                         newEvent.setInterests(interests)
                     })
 
-                    return res.status(201).send(newEvent);
+                    return res.status(201).send(generateEventWithInterests(newEvent));
                 });
             } else {
                 return res.status(400).send({
@@ -167,7 +141,13 @@ export const updateEvent = async (req: Request, res: Response) => {
 
 export const getAllEvents = async (req: Request, res: Response) => {
     try {
-        const events = await Event.findAll()
+        const events = await Event.findAll({
+            include: [{
+                model: db.Interest,
+                // as: "interest",
+                attributes: ['name']
+            }]
+        })
         return res.status(200).send(events)
     } catch ({message}) {
         return res.status(400).send({message});
