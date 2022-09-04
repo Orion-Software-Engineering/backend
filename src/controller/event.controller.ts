@@ -24,7 +24,7 @@ export const createEvent = async (req: Request, res: Response) => {
             // parse and store image locally
             // upload.single('cover-image')
 
-            await Event.create({
+            const event = await Event.create({
                 name: name,
                 date: date,
                 time: time,
@@ -36,19 +36,18 @@ export const createEvent = async (req: Request, res: Response) => {
                 description: description,
                 organizer: organizer,
                 cover_image: cover_image
-            }).then(async event => {
-                Interest.findAll({
-                    where: {
-                        name: {
-                            [Op.or]: interests
-                        }
-                    }
-                }).then(interests => {
-                    event.setInterests(interests)
-                })
+            })
 
-                res.status(201).send(await generateEventWithInterests(event));
-            });
+            const interestsData = await Interest.findAll({
+                where: {
+                    name: {
+                        [Op.or]: interests
+                    }
+                }
+            })
+            await event.setInterests(interestsData)
+
+            res.status(201).send(await generateEventWithInterests(event));
         } catch
             ({message}) {
             return res.status(400).send({message});

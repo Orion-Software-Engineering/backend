@@ -15,8 +15,4 @@ export const generateEventsWithInterests = async (events: Event[]) => {
         eventsWithInterests.push(await generateEventWithInterests(event))
 
     return eventsWithInterests
-    // const interests: string[] = (await event.getInterests()).map(interestObj => interestObj.name);
-    // // @ts-ignore
-    // event.setDataValue("interests", interests)
-    // return event
 }
