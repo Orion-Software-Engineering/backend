@@ -13,7 +13,6 @@ export default (app: Express) => {
     });
 
     app.post('/api/event',
-        // multerUploads,
         controller.createEvent);
 
     app.get('/api/event/:id',
@@ -28,7 +27,6 @@ export default (app: Express) => {
 
     app.put('/api/event/:id',
         // [isOrganizer],
-        // multerUploads,
         controller.updateEvent);
 
     app.get('/api/events/:id', mController.eventsMatchingController);
