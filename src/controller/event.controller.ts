@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import db from '../models';
 import {Op} from "sequelize";
 import EventType from "../models/event"
-import {generateEventWithInterests} from "../services/event.service";
+import {generateEventsWithInterests, generateEventWithInterests} from "../services/event.service";
 
 
 let {Event, Interest} = db;
@@ -36,7 +36,7 @@ export const createEvent = async (req: Request, res: Response) => {
                 description: description,
                 organizer: organizer,
                 cover_image: cover_image
-            }).then(event => {
+            }).then(async event => {
                 Interest.findAll({
                     where: {
                         name: {
@@ -47,7 +47,7 @@ export const createEvent = async (req: Request, res: Response) => {
                     event.setInterests(interests)
                 })
 
-                res.status(201).send(event);
+                res.status(201).send(await generateEventWithInterests(event));
             });
         } catch
             ({message}) {
@@ -115,7 +115,7 @@ export const updateEvent = async (req: Request, res: Response) => {
                         cover_image: cover_image,
                         organizer: organizer
                     }
-                ).then(() => {
+                ).then(async () => {
                     Interest.findAll({
                         where: {
                             name: {
@@ -126,7 +126,7 @@ export const updateEvent = async (req: Request, res: Response) => {
                         newEvent.setInterests(interests)
                     })
 
-                    return res.status(201).send(generateEventWithInterests(newEvent));
+                    return res.status(201).send(await generateEventWithInterests(newEvent));
                 });
             } else {
                 return res.status(400).send({
@@ -141,14 +141,8 @@ export const updateEvent = async (req: Request, res: Response) => {
 
 export const getAllEvents = async (req: Request, res: Response) => {
     try {
-        const events = await Event.findAll({
-            include: [{
-                model: db.Interest,
-                // as: "interest",
-                attributes: ['name']
-            }]
-        })
-        return res.status(200).send(events)
+        const events = await Event.findAll()
+        return res.status(200).send(await generateEventsWithInterests(events))
     } catch ({message}) {
         return res.status(400).send({message});
     }

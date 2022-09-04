@@ -16,7 +16,7 @@ export const eventsMatchingController = async (req: Request, res: Response) => {
                 const event = await db.Event.findByPk(key);
 
                 if (event) {
-                    events.push(generateEventWithInterests(event))
+                    events.push(await generateEventWithInterests(event))
                 }
             }
             return res.send(events)
