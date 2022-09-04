@@ -1,6 +1,5 @@
 import {Express, Request, Response} from 'express';
 import * as controller from '../controller/event.controller';
-import * as mController from '../controller/events.matching.controller'
 import {eventsMatchingController} from "../controller/events.matching.controller";
 
 export default (app: Express) => {
@@ -29,5 +28,6 @@ export default (app: Express) => {
         // [isOrganizer],
         controller.updateEvent);
 
-    app.get('/api/events/:id', mController.eventsMatchingController);
+    app.get('/api/events/:id',
+        eventsMatchingController);
 };
