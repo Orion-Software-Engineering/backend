@@ -34,6 +34,8 @@ const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 sequelize
     .sync({force: false}) // force: true forces dropping and resyncing the database
     .then(() => {
+        // @ts-ignore
+        sequelize.query('SET FOREIGN_KEY_CHECKS = 0', null, { raw: true })
         console.log('Syncing DB');
         // initial();
         Conversation.destroy({
