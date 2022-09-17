@@ -1,6 +1,7 @@
 import db, {sequelize} from '../models'
 import interestService from "./interest.service";
 
+
 const {User} = db
 //change from degree to radians
 function degreesToRadians(degrees: number) {
@@ -31,7 +32,7 @@ export const sortByLocation = async (userId: string) => {
 
     const matchedUserInfo = new Set();
 
-    const userDistance = new Map<string, number>() // store userId, with relative distance
+    const userDistance = new Map<[string, string, string], number>() // store userId, with relative distance
 
     const interests = await interestService.get(userId);
     const interestNames = new Set();
@@ -55,18 +56,19 @@ export const sortByLocation = async (userId: string) => {
 
 
         const matchedUsername = matchedUser.username
+        const userBio = matchedUser.bio
 
 
         const {location} = matchedUser
         const [latitude, longitude] = location.split(' ', 2)
             .map(i => Number(i));
-        userDistance.set(userId, calculateDistance(userLatitude, userLongitude, latitude, longitude))
+        userDistance.set([userId, matchedUsername, userBio], calculateDistance(userLatitude, userLongitude, latitude, longitude))
 
     }
     console.log(userDistance)
     const sortedmap = new Map([...userDistance.entries()]
         .sort((a, b) => a[1] - b[1]))
 
-    console.log(sortedmap);
+    return sortedmap
 
 }
