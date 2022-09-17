@@ -32,17 +32,10 @@ app.use(express.static(path.resolve(__dirname, 'src/public')))
 const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: false}) // force: true forces dropping and resyncing the database
+    .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-        // initial();
-        // Conversation.findAll().then(conversations => {
-        //     conversations.forEach(conversation => conversation.destroy())
-        // })
-        //
-        // Message.findAll().then(messages => {
-        //     messages.forEach(message => message.destroy())
-        // })
+        initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
