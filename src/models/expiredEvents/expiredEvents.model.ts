@@ -1,10 +1,10 @@
 import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
 import {InterestAttributes} from '../interest';
-import {EventAttributes, EventCreationAttributes} from './event.type';
+import {EventAttributes, EventCreationAttributes} from './expiredEvents.type';
 
 // define database model for events
-export default class Event extends Model<EventAttributes,
+export default class expiredEvents extends Model<EventAttributes,
     EventCreationAttributes> {
     declare id: CreationOptional<string>;
     declare name: string;
@@ -28,7 +28,7 @@ export default class Event extends Model<EventAttributes,
         InterestAttributes['id']>;
 }
 
-Event.init(
+expiredEvents.init(
     {
         name: {
             type: DataTypes.STRING,
@@ -85,6 +85,6 @@ Event.init(
     },
     {
         sequelize,
-        tableName: 'events',
+        tableName: 'expiredEvents',
     }
 );
