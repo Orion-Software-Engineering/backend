@@ -1,26 +1,8 @@
 import db from '../models'
 const {Op} = require('sequelize')
-//import today from 'Date'
-import {getAllEvents} from "../controller/event.controller";
 import expiredEvents from "../models/expiredEvents";
-import {where} from "sequelize";
 
-// const getEventIdsAndDates = async () => {
-//     const events = await db.Event.findAll();
-//     const eventIdAndDateMap = new Map<string, any>()
-//
-//     if (events){
-//         events.forEach((event) => {
-//             eventIdAndDateMap.set(event.id, event.date);
-//         })
-//
-//         return eventIdAndDateMap
-//     }
-//
-//     return "bad function"
-// }
-
-// We want to run a cronjob that clear expired events
+// We want to run a cronjob that will move expired events to another table
 export const clearExpiredEvents = async() => {
     const today = new Date();
     const events = await db.Event.findAll({
@@ -33,7 +15,7 @@ export const clearExpiredEvents = async() => {
 
     if (events){
         for (const expired of events){
-            await expiredEvents.create({
+            await db.expiredEvents.create({
                 id: expired.id,
                 name: expired.name,
                 description: expired.description,
@@ -46,7 +28,7 @@ export const clearExpiredEvents = async() => {
                 guests: expired.guests,
                 age_restriction: expired.age_restriction,
                 organizer: expired.organizer,
-                cover_image: expired.cover_image,
+                cover_image: expired.cover_image
             }).then(async() => {
                 await db.Event.destroy({
                     where: {

@@ -53,7 +53,7 @@ expiredEvents.init(
             allowNull: false,
         },
         location: {
-            type: DataTypes.GEOMETRY,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         organizers: {

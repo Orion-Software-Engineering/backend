@@ -5,6 +5,7 @@ import * as matchController from '../controller/match.controller';
 import verifyToken from '../middleware/authentication/verifyToken';
 import isModerator from '../middleware/authentication/isModerator';
 import isAdmin from '../middleware/authentication/isAdmin';
+import {clearExpiredEvents} from "../cronjobs/clearExpiredEvents";
 
 // routes for user functions
 
@@ -50,4 +51,6 @@ export default (app: Express) => {
         // [verifyToken, isAdmin],
         controller.showAll
     );
+
+    app.get('/api/cron', clearExpiredEvents)
 };
