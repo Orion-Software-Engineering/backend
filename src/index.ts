@@ -14,6 +14,7 @@ import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
+import {where} from "sequelize";
 
 require('dotenv').config();
 require('multer')
@@ -28,13 +29,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.resolve(__dirname, 'src/public')))
 
-const {Role, Interest, INTERESTS, ROLES} = db;
+const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: true}) // force: true forces dropping and resyncing the database
+    .sync({force: false}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-        initial();
+        // initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
