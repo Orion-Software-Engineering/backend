@@ -36,13 +36,13 @@ sequelize
     .then(() => {
         console.log('Syncing DB');
         // initial();
-        Conversation.findAll().then(conversations => {
-            conversations.forEach(conversation => conversation.destroy())
-        })
-
-        Message.findAll().then(messages => {
-            messages.forEach(message => message.destroy())
-        })
+        // Conversation.findAll().then(conversations => {
+        //     conversations.forEach(conversation => conversation.destroy())
+        // })
+        //
+        // Message.findAll().then(messages => {
+        //     messages.forEach(message => message.destroy())
+        // })
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
