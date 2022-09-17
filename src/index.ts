@@ -14,6 +14,7 @@ import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
+import {where} from "sequelize";
 
 require('dotenv').config();
 require('multer')
@@ -35,8 +36,16 @@ sequelize
     .then(() => {
         console.log('Syncing DB');
         // initial();
-        Conversation.destroy()
-        Message.destroy()
+        Conversation.destroy({
+            where: {},
+            truncate: true
+        })
+        Message.destroy(
+            {
+                where: {},
+                truncate: true
+            }
+        )
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
