@@ -30,9 +30,7 @@ export const sortByLocation = async (userId: string) => {
     const [userLatitude, userLongitude] = user.location.split(' ', 2)
         .map(i => Number(i))
 
-    const matchedUserInfo = new Set();
-
-    const userDistance = new Map<[string, string, string], number>() // store userId, with relative distance
+    const userDistance = new Map<[string, string, string], number>() // store userId,bio and name with relative distance
 
     const interests = await interestService.get(userId);
     const interestNames = new Set();
@@ -47,7 +45,6 @@ export const sortByLocation = async (userId: string) => {
     )) as [{ userId: string }[], unknown];
 
     // get details about matches from matched users
-    const matchInterests = [];
     for (const {userId} of records) {
         // a matched user based on interest
         const matchedUser = await User.findByPk(userId)

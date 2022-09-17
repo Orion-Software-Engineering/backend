@@ -14,18 +14,11 @@ export const find = async (req: Request, res: Response) => {
 
 export const findWithLocation = async (req: Request, res: Response) => {
     try {
-        const locationAndProximity: object[] = [];
 
         const data: any = await sortByLocation(req.params.id)
 
-        // if (data) {
-        //     console.log(data)
-        //     locationAndProximity.push(data)
-        // }
-
-        return res.status(200).send({
-            message: Object.fromEntries(data)
-        })
+        // converted to object to allow response to send map
+        return res.status(200).send(Object.fromEntries(data))
     } catch ({message}) {
         console.log(message)
         return res.status(400).send()
