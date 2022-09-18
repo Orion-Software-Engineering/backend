@@ -54,7 +54,7 @@ Event.init(
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: false,
+            defaultValue: ""
         },
         organizers: {
             type: DataTypes.STRING,
