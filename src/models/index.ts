@@ -39,6 +39,7 @@ import Conversation from './conversation/';
 import Message from './message';
 import Event from './event';
 import ExpiredEvent from "./expired_events";
+import Like from "./like";
 
 // the db variable will store database info for use
 const db = {
@@ -49,6 +50,7 @@ const db = {
     Message,
     Event,
     ExpiredEvent,
+    Like,
     ROLES: ['user', 'admin', 'moderator', 'organizer'],
     INTERESTS: [
         'art',
