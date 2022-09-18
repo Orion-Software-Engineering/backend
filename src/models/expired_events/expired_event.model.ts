@@ -1,7 +1,7 @@
 import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
 import {InterestAttributes} from '../interest';
-import {EventAttributes, EventCreationAttributes} from './expiredEvents.type';
+import {EventAttributes, EventCreationAttributes} from './expired.event.type';
 
 // define database model for events
 export default class expiredEvents extends Model<EventAttributes,
