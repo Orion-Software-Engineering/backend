@@ -4,6 +4,8 @@ import expiredEvents from "../models/expired_events";
 
 // We want to run a cronjob that will move expired events to another table
 export const clearExpiredEvents = async() => {
+
+    console.log("[INFO] Started Running cronjob.")
     const today = new Date();
     const events = await db.Event.findAll({
         where: {
