@@ -1,2 +1,2 @@
-export {default} from './expiredevent.model';
-export type {EventAttributes} from './expiredevents.type';
+export {default} from './expired_event.model';
+export type {ExpiredEventAttributes} from './expired_event.type';

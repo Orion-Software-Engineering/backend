@@ -1,6 +1,6 @@
 import db from '../models'
 const {Op} = require('sequelize')
-import expiredEvents from "../models/expiredEvents";
+import expiredEvents from "../models/expired_events";
 
 // We want to run a cronjob that will move expired events to another table
 export const clearExpiredEvents = async() => {
@@ -15,7 +15,7 @@ export const clearExpiredEvents = async() => {
 
     if (events){
         for (const expired of events){
-            await db.expiredEvents.create({
+            await db.ExpiredEvent.create({
                 id: expired.id,
                 name: expired.name,
                 description: expired.description,
