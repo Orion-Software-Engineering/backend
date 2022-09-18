@@ -14,6 +14,7 @@ import messageRoutes from './routes/message.routes';
 import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
+import {where} from "sequelize";
 
 require('dotenv').config();
 require('multer')
@@ -28,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.resolve(__dirname, 'src/public')))
 
-const {Role, Interest, INTERESTS, ROLES} = db;
+const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
 sequelize
     .sync({force: true}) // force: true forces dropping and resyncing the database
