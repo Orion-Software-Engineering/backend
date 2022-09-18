@@ -1,6 +1,6 @@
 import {Optional} from 'sequelize';
 
-export type EventAttributes = {
+export type ExpiredEventAttributes = {
     id: string;
     name: string;
     description: string;
@@ -11,10 +11,10 @@ export type EventAttributes = {
     organizers: string;
     mcs: string;
     guests: string;
-    age_restriction: number;
+    age_restriction: boolean;
     organizer: string;
     cover_image: string;
 };
 
-export type EventCreationAttributes = Optional<EventAttributes,
+export type ExpiredEventCreationAttributes = Optional<ExpiredEventAttributes,
     'id' | 'guests' | 'mcs' | 'cover_image'>

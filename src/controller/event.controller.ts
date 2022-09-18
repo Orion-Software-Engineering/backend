@@ -14,7 +14,7 @@ export const createEvent = async (req: Request, res: Response) => {
         try {
             const {
                 name, description, date, time,
-                venue, organizers, organizer,
+                venue, location, organizers, organizer,
                 mcs, guests, age_restriction,
                 interests, cover_image
             } = req.body
@@ -24,6 +24,7 @@ export const createEvent = async (req: Request, res: Response) => {
                 date: date,
                 time: time,
                 venue: venue,
+                location: location,
                 organizers: organizers,
                 mcs: mcs,
                 guests: guests,

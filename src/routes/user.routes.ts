@@ -45,6 +45,8 @@ export default (app: Express) => {
 
     app.get('/api/test/matches/:id', matchController.find);
 
+    app.get('/api/test/match/location/:id', matchController.findWithLocation)
+
     app.get(
         '/api/test/users',
         // [verifyToken, isAdmin],
