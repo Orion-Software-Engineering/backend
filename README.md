@@ -443,7 +443,7 @@ Request Body: <br>
     "date": "",
     "time": "",
     "venue": "",
-    "location": "longitude latitude",
+    "location": "latitude longitude",
     "organizers": "",
     "mcs": "",
     "guests": "",
