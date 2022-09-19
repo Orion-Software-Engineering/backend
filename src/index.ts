@@ -15,6 +15,7 @@ import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
 import {where} from "sequelize";
+import likeRoutes from "./routes/like.routes";
 
 require('dotenv').config();
 require('multer')
@@ -35,7 +36,7 @@ sequelize
     .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-       // initial();
+        initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
@@ -66,6 +67,7 @@ changePasswordRoutes(app);
 eventRouter(app);
 messageRoutes(app)
 locationRoutes(app)
+likeRoutes(app)
 app.use('/api/interest', interestRouter);
 app.use('/api/conversation', conversationRouter);
 

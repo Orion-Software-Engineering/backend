@@ -33,12 +33,10 @@ export default class User extends Model<UserAttributes,
     declare getConversations: Sequelize.BelongsToManyGetAssociationsMixin<ConversationAttributes>;
     declare removeConversations: Sequelize.BelongsToManyRemoveAssociationsMixin<ConversationAttributes,
         ConversationAttributes['id']>;
-    declare setEventLikes: Sequelize.BelongsToManySetAssociationsMixin<EventAttributes, EventAttributes['id']>;
-    declare removeEventLikes: Sequelize.BelongsToManyRemoveAssociationsMixin<EventAttributes,
+    declare getLikedEvents: Sequelize.BelongsToManyGetAssociationsMixin<EventAttributes>;
+    declare addLikedEvents: Sequelize.BelongsToManyAddAssociationsMixin<EventAttributes, EventAttributes['id']>;
+    declare removeLikedEvents: Sequelize.BelongsToManyRemoveAssociationsMixin<EventAttributes,
         EventAttributes['id']>
-    declare  setUserLikes: Sequelize.BelongsToManySetAssociationsMixin<UserAttributes, UserAttributes['id']>;
-    declare removeUserLikes: Sequelize.BelongsToManyRemoveAssociationsMixin<UserAttributes,
-        UserAttributes['id']>
 }
 
 User.init(

@@ -1,11 +1,19 @@
-import {Router} from 'express';
+import {Express, Request, Response, Router} from 'express';
 import likeController from '../controller/like.controller';
 
-const router = Router();
+export default (app: Express) => {
+    app.use((req: Request, res: Response, next: Function) => {
+        res.header(
+            'Access-Control-Allow-Headers',
+            'x-access-token, Origin, Content-Type, Accept'
+        );
+        next();
+    });
 
-router.post('/api/event/like', likeController.likeEvent);
-router.get('/api/event/dislike/:id', likeController.dislikeEvent);
-router.get('/api/event/likes/:id', likeController.getEventLikes);
-// router.delete('/:id',);
 
-export default router;
+    app.post('/api/event/like', likeController.likeEvent);
+    app.get('/api/event/dislike/:id', likeController.dislikeEvent);
+
+    app.get('/api/event/likes/:id', likeController.getEventLikes);
+
+}
