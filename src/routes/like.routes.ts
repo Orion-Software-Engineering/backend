@@ -12,7 +12,7 @@ export default (app: Express) => {
 
 
     app.post('/api/event/like', likeController.likeEvent);
-    app.get('/api/event/dislike/:id', likeController.dislikeEvent);
+    // app.get('/api/event/dislike/:id', likeController.dislikeEvent);
 
     app.get('/api/event/likes/:id', likeController.getEventLikes);
 
