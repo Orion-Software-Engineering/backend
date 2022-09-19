@@ -45,7 +45,7 @@ function initial() {
             name: role,
         });
     });
-//g
+
     INTERESTS.forEach(interest => {
         Interest.create({
             name: interest,
