@@ -39,7 +39,6 @@ import Conversation from './conversation/';
 import Message from './message';
 import Event from './event';
 import ExpiredEvent from "./expired_events";
-import Like from "./like";
 
 // the db variable will store database info for use
 const db = {
@@ -50,7 +49,6 @@ const db = {
     Message,
     Event,
     ExpiredEvent,
-    Like,
     ROLES: ['user', 'admin', 'moderator', 'organizer'],
     INTERESTS: [
         'art',
@@ -142,6 +140,18 @@ db.Event.belongsToMany(db.Interest,
     {
         through: 'event_interests',
     })
+
+// one user can like many events
+db.User.belongsToMany(db.Event, {
+    through: 'event_likes',
+    foreignKey: 'userId',
+})
+
+// one event can be like by many users
+db.Event.belongsToMany(db.User, {
+    through: 'event_likes',
+    foreignKey: 'eventId'
+})
 
 export default db;
 export {sequelize};
