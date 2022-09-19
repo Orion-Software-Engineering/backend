@@ -14,13 +14,29 @@ export const find = async (req: Request, res: Response) => {
 
 export const findWithLocation = async (req: Request, res: Response) => {
     try {
+        const list: object[] = []
+        const data  = await sortByLocation(req.params.id)
 
-        const data: any = await sortByLocation(req.params.id)
+        function sortFunction(a:any, b:any ) {
+            if (a[3] === b[3]) {
+                return 0;
+            }
+            else {
+                return (a[3] < b[3]) ? -1 : 1;
+            }
+        }
 
+        if (data){
+            for (const i of data){
+               list.push(i)
+            }
+
+        }
         // converted to object to allow response to send map
-        return res.status(200).send(Object.fromEntries(data))
+        console.log(data)
+        return res.status(200).send(list.sort(sortFunction))
     } catch ({message}) {
-        console.log(message)
-        return res.status(400).send()
+        return res.status(400).send({message})
     }
 }
+
