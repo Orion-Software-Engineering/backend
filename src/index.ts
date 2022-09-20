@@ -15,6 +15,7 @@ import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
 import {where} from "sequelize";
+import likeRoutes from "./routes/like.routes";
 
 require('dotenv').config();
 require('multer')
@@ -66,6 +67,7 @@ changePasswordRoutes(app);
 eventRouter(app);
 messageRoutes(app)
 locationRoutes(app)
+likeRoutes(app)
 app.use('/api/interest', interestRouter);
 app.use('/api/conversation', conversationRouter);
 

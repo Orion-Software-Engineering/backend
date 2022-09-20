@@ -4,6 +4,7 @@ import {RoleAttributes} from '../role';
 import {InterestAttributes} from '../interest';
 import {UserAttributes, UserCreationAttributes} from './user.type';
 import {ConversationAttributes} from '../conversation';
+import {EventAttributes} from "../event";
 
 // define database model for users
 export default class User extends Model<UserAttributes,
@@ -32,6 +33,10 @@ export default class User extends Model<UserAttributes,
     declare getConversations: Sequelize.BelongsToManyGetAssociationsMixin<ConversationAttributes>;
     declare removeConversations: Sequelize.BelongsToManyRemoveAssociationsMixin<ConversationAttributes,
         ConversationAttributes['id']>;
+    declare getLikedEvents: Sequelize.BelongsToManyGetAssociationsMixin<EventAttributes>;
+    declare addLikedEvents: Sequelize.BelongsToManyAddAssociationsMixin<EventAttributes, EventAttributes['id']>;
+    declare removeLikedEvents: Sequelize.BelongsToManyRemoveAssociationsMixin<EventAttributes,
+        EventAttributes['id']>
 }
 
 User.init(

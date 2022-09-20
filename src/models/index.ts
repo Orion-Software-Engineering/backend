@@ -123,7 +123,7 @@ db.Message.belongsTo(db.Conversation, {
     foreignKey: 'conversationId'
 });
 
-db.Conversation.belongsToMany(db.Message,{
+db.Conversation.belongsToMany(db.Message, {
     through: 'conversation_messages',
     foreignKey: 'conversationId',
     otherKey: 'messageId'
@@ -140,6 +140,22 @@ db.Event.belongsToMany(db.Interest,
     {
         through: 'event_interests',
     })
+
+// one user can like many events
+db.User.belongsToMany(db.Event, {
+    as: 'likedEvents',
+    through: 'event_likes',
+    foreignKey: 'userId',
+    otherKey: 'eventId'
+})
+
+// one event can be like by many users
+db.Event.belongsToMany(db.User, {
+    as: 'likedEvents',
+    through: 'event_likes',
+    foreignKey: 'eventId',
+    otherKey: 'userId'
+})
 
 export default db;
 export {sequelize};
