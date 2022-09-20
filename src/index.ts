@@ -33,7 +33,7 @@ app.use(express.static(path.resolve(__dirname, 'src/public')))
 const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: false}) // force: true forces dropping and resyncing the database
+    .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
         initial();
