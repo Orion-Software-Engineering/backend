@@ -29,21 +29,24 @@ const unlike = async (eventId: string, userId: string) => {
 }
 
 const getLikes = async (eventId: string) => {
+    const validEvent = await db.Event.findByPk(eventId)
+
+    if (!validEvent){
+        return ["0","No such eventId"]
+    }
+
     const user = await db.User.count(
         {
-        include: [{
-            model: db.Event,
-            as: 'likedEvents',
-            where: {
-                id: eventId
-            },
-        }],
-    })
-    console.log(user)
-    if (user){
-        return [user, eventId]
-    }
-    return "No such event."
+            include: [{
+                model: db.Event,
+                as: 'likedEvents',
+                where: {
+                    id: eventId
+                },
+            }],
+        })
+    return [user, eventId]
+
 }
 
 export default {

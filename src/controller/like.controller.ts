@@ -29,6 +29,7 @@ const getEventLikes = async (req: Request, res: Response) => {
     const [numberOfLikes, eventID] = await eventLikeService.getLikes(id)
 
     try {
+        console.log(eventID,numberOfLikes)
         return res.status(200).json({
             eventId: eventID,
             likes : numberOfLikes
