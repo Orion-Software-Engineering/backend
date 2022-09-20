@@ -16,7 +16,7 @@ export const createEvent = async (req: Request, res: Response) => {
                 name, description, date, time,
                 venue, location, organizers, organizer,
                 mcs, guests, age_restriction,
-                interests, cover_image
+                interests, cover_image, ticket_price
             } = req.body
 
             const event = await Event.create({
@@ -31,7 +31,8 @@ export const createEvent = async (req: Request, res: Response) => {
                 age_restriction: age_restriction,
                 description: description,
                 organizer: organizer,
-                cover_image: cover_image
+                cover_image: cover_image,
+                ticket_price: ticket_price,
             })
 
             const interestsData = await Interest.findAll({
@@ -84,7 +85,7 @@ export const updateEvent = async (req: Request, res: Response) => {
         name, description, date, time,
         venue, organizers, organizer,
         mcs, guests, age_restriction,
-        interests, cover_image
+        interests, cover_image, ticket_price
     } = req.body
 
     console.log(interests)
@@ -108,7 +109,8 @@ export const updateEvent = async (req: Request, res: Response) => {
                         age_restriction: age_restriction,
                         time: time,
                         cover_image: cover_image,
-                        organizer: organizer
+                        organizer: organizer,
+                        ticket_price: ticket_price,
                     }
                 ).then(async () => {
                     Interest.findAll({
