@@ -17,26 +17,36 @@ const like = async (eventId: string, userId: string) => {
     return await user.addLikedEvents([eventId])
 }
 
-const dislike = async (eventID: string, userID: string) => {
+const unlike = async (eventId: string, userId: string) => {
     // simply remove the event from the user, i decided to leave this for you
-    return "Invalid User or Event ID."
+    const event = await db.Event.findByPk(eventId)
+    const user = await  db.User.findByPk(userId)
+
+    if (!user || !event) return "Invalid userId or eventId"
+
+    return  await user.removeLikedEvents([eventId])
+
 }
 
-const getLikes = async (eventID: string) => {
-    // const event = Like.count({
-    //     where: {
-    //         eventId: eventID,
-    //         like: true
-    //     }
-    // })
-    //
-    // if (event){
-    //     return event
-    // }
-    return 'hello'
+const getLikes = async (eventId: string) => {
+    const user = await db.User.count(
+        {
+        include: [{
+            model: db.Event,
+            as: 'likedEvents',
+            where: {
+                id: eventId
+            },
+        }],
+    })
+    console.log(user)
+    if (user){
+        return [user, eventId]
+    }
+    return "No such event."
 }
 
 export default {
-    like, dislike,
+    like, unlike,
     getLikes
 }
