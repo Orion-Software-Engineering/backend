@@ -408,7 +408,7 @@ Request Body: <br>
     "description": "",
     "organizer": "",
     "cover_image": "",
-    "ticket_price": "",
+    "ticket_price": decimal,
     "interests": [
         "",
         "",
@@ -452,7 +452,7 @@ Request Body: <br>
     "description": "",
     "organizer": "",
     "cover-image": "",
-    "ticket_price": "",
+    "ticket_price": decimal,
     "interests": [
         "",
         "",
