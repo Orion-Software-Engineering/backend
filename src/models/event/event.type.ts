@@ -14,6 +14,7 @@ export type EventAttributes = {
     age_restriction: number;
     organizer: string;
     cover_image: string;
+    ticket_price: number;
 };
 
 export type EventCreationAttributes = Optional<EventAttributes,

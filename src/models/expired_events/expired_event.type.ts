@@ -14,6 +14,7 @@ export type ExpiredEventAttributes = {
     age_restriction: boolean;
     organizer: string;
     cover_image: string;
+    ticket_price: number;
 };
 
 export type ExpiredEventCreationAttributes = Optional<ExpiredEventAttributes,

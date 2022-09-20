@@ -20,6 +20,7 @@ export default class Event extends Model<EventAttributes,
     declare age_restriction: boolean;
     declare organizer: string;
     declare cover_image: string;
+    declare ticket_price: number;
     declare getInterests: Sequelize.BelongsToManyGetAssociationsMixin<InterestAttributes>;
     declare setInterests: Sequelize.BelongsToManySetAssociationsMixin<InterestAttributes,
         InterestAttributes['id']>;
@@ -85,6 +86,10 @@ Event.init(
         cover_image: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        ticket_price: {
+            type: DataTypes.DECIMAL(10,2),
+            defaultValue: 0.00,
         },
     },
     {
