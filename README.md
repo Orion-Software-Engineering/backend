@@ -466,6 +466,33 @@ End Point: /api/events/:id <br>
 Method: GET <br>
 No Request Body.
 
+## Like an event
+End Point: /api/event/like <br>
+Method: POST <br>
+Request Body: <br>
+```json
+{
+  "eventId": "",
+  "userId": ""
+}
+```
+
+## Unlike and event
+End Point: /api/event/unlike <br>
+Method: POST <br>
+Request Body: <br>
+```json
+{
+  "eventId": "",
+  "userId": ""
+}
+```
+
+## Get number of likes for an event
+End Point: /api/event/likes/:id <br>
+Method: GET <br>
+No Request Body
+
 #### Remove User From Conversation
 
 End Point: /api/conversation/user <br>
