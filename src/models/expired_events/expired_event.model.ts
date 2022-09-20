@@ -84,7 +84,7 @@ ExpiredEvent.init(
             allowNull: false,
         },
         ticket_price: {
-            type: DataTypes.DECIMAL(2,3),
+            type: DataTypes.DECIMAL(10,2),
             defaultValue: 0.00,
         },
     },
