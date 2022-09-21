@@ -2,11 +2,12 @@ import db from '../models'
 const {Op} = require('sequelize')
 import expiredEvents from "../models/expired_events";
 import exp from "constants";
+import {logger} from "../logger/logger";
 
 // We want to run a cronjob that will move expired events to another table
 export const clearExpiredEvents = async() => {
 
-    console.log("[INFO] Started Running cronjob.")
+    logger.info("Cronjob: Moving expired events to to another table")
     const today = new Date();
     const events = await db.Event.findAll({
         where: {
@@ -45,8 +46,7 @@ export const clearExpiredEvents = async() => {
             })
         }
 
-        return console.log("[+] Copied and moved all expired events.")
+        return logger.info("Moved all expired events to expired_events table")
     }
-    return console.log("[!] Did not find any expired events")
-
+    return logger.info("Did not find any expired events")
 }
