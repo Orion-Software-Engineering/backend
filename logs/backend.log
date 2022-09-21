@@ -1,0 +1,11 @@
+[2022-09-21T11:22:26.208Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T11:22:26.211Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T11:22:27.503Z] [Orion Backend] info: Syncing Database
+[2022-09-21T11:22:33.830Z] [Orion Backend] http: - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 9.329 ms
+[2022-09-21T11:22:53.006Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T11:22:53.011Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T11:22:54.424Z] [Orion Backend] info: Syncing Database
+[2022-09-21T11:23:04.056Z] [Orion Backend] http: ::ffff:127.0.0.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 5.317 ms
+[2022-09-21T11:23:20.458Z] [Orion Backend] http: ::ffff:127.0.0.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 0.847 ms
+[2022-09-21T11:23:45.394Z] [Orion Backend] http: ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 1.424 ms
+[2022-09-21T11:23:46.162Z] [Orion Backend] http: ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET /favicon.ico 404 - 7.793 ms
