@@ -1,7 +1,6 @@
 import {Request, Response} from 'express';
 import db from '../models';
 import bcrypt from "bcryptjs";
-import Role from "../models/role";
 
 export const deleteAccount = async (req: Request, res: Response) => {
     try {
@@ -27,6 +26,7 @@ export const deleteAccount = async (req: Request, res: Response) => {
             return res.status(404).send({message: 'Invalid Credentials'});
         }
 
+        // copy to another table and delete from working table
         await db.DeletedUser.create({
             username: user.username,
             email:  user.email,
