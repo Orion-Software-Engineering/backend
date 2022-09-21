@@ -518,3 +518,16 @@ End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
 Request Body: null <br>
 
+#### Delete user Account
+
+End Point: /api/account/delete <br>
+Method: POST <br>
+Request Body: <br>
+```json
+{
+  "usedId" : "",
+  "username": "",
+  "password": ""
+}
+```
+
