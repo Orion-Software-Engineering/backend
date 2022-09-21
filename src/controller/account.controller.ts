@@ -26,7 +26,7 @@ export const deleteAccount = async (req: Request, res: Response) => {
             return res.status(404).send({message: 'Invalid Credentials'});
         }
 
-        // copy to another table and delete from working table
+        // copy to user account details to another table and delete from working table
         await db.DeletedUser.create({
             username: user.username,
             email: user.email,
