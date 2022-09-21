@@ -16,6 +16,8 @@ import eventRouter from './routes/event.routes';
 import path from "path";
 import {where} from "sequelize";
 import likeRoutes from "./routes/like.routes";
+import {logger} from "./logger/logger";
+import {morganMiddleware} from "./middleware/morganMiddleware";
 
 require('dotenv').config();
 require('multer')
@@ -29,6 +31,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.resolve(__dirname, 'src/public')))
+app.use(morganMiddleware)
 
 const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
@@ -36,6 +39,7 @@ sequelize
     .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
+        logger.info("Syncing Database");
         initial();
     });
 
@@ -76,4 +80,6 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`DATABASE_URL is ${process.env.DATABASE_URL}`);
+    logger.info(`Server is running on port ${PORT}`);
+    logger.info(`DATABASE_URL is ${process.env.DATABASE_URL}`)
 });
