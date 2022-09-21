@@ -1,6 +1,7 @@
-import {CreationOptional, DataTypes, Model} from 'sequelize';
+import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
 import {RoleAttributes, RoleCreationAttributes} from './role.type';
+import {UserAttributes} from "../user";
 
 // define database model for roles
 
