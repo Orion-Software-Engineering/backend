@@ -1,4 +1,4 @@
-import {createLogger, transports, format, level} from 'winston'
+import {createLogger, transports, format} from 'winston'
 
 export const logger = createLogger(
     {
@@ -21,16 +21,4 @@ export const logger = createLogger(
     }
 )
 
-// export const log = createLogger(
-//     {
-//         level: 'http',
-//         format: combine(
-//             timestamp({
-//                 format: 'YYYY-MM-DD hh:mm:ss.SSS A',
-//             }),
-//             json()
-//         ),
-//         transports: [new winston.transports.Console()],
-//     }
-// )
 
