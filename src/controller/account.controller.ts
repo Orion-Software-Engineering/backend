@@ -29,7 +29,7 @@ export const deleteAccount = async (req: Request, res: Response) => {
         // copy to another table and delete from working table
         await db.DeletedUser.create({
             username: user.username,
-            email:  user.email,
+            email: user.email,
             password: user.password,
             dateOfBirth: user.dateOfBirth,
             gender: user.gender,
@@ -39,11 +39,13 @@ export const deleteAccount = async (req: Request, res: Response) => {
                     id: req.body.userId
                 }
             })
-            return res.status(204).send("Account deleted successfully.")
         })
-
-
+        return res.status(200).send({message: "Account deleted successfully."})
     } catch ({message}) {
         return res.status(500).send({message})
     }
+}
+
+export default {
+    deleteAccount
 }

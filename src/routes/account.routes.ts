@@ -1,8 +1,7 @@
 import {Express, Request, Response} from 'express';
-import {deleteAccount} from "../controller/account.controller";
+import accountController from "../controller/account.controller";
 
-// routes for authentication functions
-
+// routes for account related functions
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: Function) => {
         res.header(
@@ -12,7 +11,6 @@ export default (app: Express) => {
         next();
     });
 
-    // the delete account controller
-    app.post(
-        '/api/user/delete', deleteAccount);
+    // delete account controller
+    app.post('/api/account/delete', accountController.deleteAccount);
 };

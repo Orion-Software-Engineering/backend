@@ -14,7 +14,7 @@ export default class User extends Model<UserAttributes,
     declare email: string;
     declare password: string;
     declare isEmailVerified: boolean;
-    declare dateOfBirth: string;
+    declare dateOfBirth: Date;
     declare gender: boolean;
     declare location: string;
     declare bio: string;

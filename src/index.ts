@@ -16,8 +16,10 @@ import eventRouter from './routes/event.routes';
 import path from "path";
 import {where} from "sequelize";
 import likeRoutes from "./routes/like.routes";
+
 import {logger} from "./logger/logger";
 import {morganMiddleware} from "./middleware/morganMiddleware";
+import deleteAccountRoutes from "./routes/account.routes";
 
 require('dotenv').config();
 require('multer')
@@ -71,7 +73,9 @@ changePasswordRoutes(app);
 eventRouter(app);
 messageRoutes(app)
 locationRoutes(app)
-likeRoutes(app)
+likeRoutes(app);
+deleteAccountRoutes(app)
+
 app.use('/api/interest', interestRouter);
 app.use('/api/conversation', conversationRouter);
 
