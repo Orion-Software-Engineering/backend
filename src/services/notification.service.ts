@@ -1,13 +1,13 @@
 require('dotenv').config();
 const OneSignal = require('onesignal-node');
 
-export const sendNotification = async (messageToSend: string|any) => {
+export const sendNotification = async (username:string, deviceId:string, messageToSend: string|any) => {
     const client = new OneSignal.Client(process.env.ONESIGNAL_APP_ID, process.env.ONESIGNAL_API_KEY);
     const notification = {
         contents: {
-            'en': `${messageToSend}`,
+            'en': `${username}: ${messageToSend}`,
         },
-        included_segments: ['Subscribed Users'],
+        include_player_ids: [deviceId],
     };
 
     try {

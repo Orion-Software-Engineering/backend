@@ -20,6 +20,7 @@ export const signup = async (req: Request, res: Response) => {
             email: req.body.email,
             // don't store the raw password, encrypt it with bcrypt
             password: bcrypt.hashSync(req.body.password, 8),
+            deviceId: req.body.deviceId,
             dateOfBirth: req.body.dob,
             gender: req.body.gender,
         }).then(user => {

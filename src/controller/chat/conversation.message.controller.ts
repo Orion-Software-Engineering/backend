@@ -1,11 +1,12 @@
 import {Request, Response} from "express";
-import conversation from '../../services/conversation.message.service'
+import conversation, {notifyMessage} from '../../services/conversation.message.service'
 
 export const addMessageToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, messageText, conversationId} = req.body
 
-        return res.status(200).json(await conversation.addMessage(userId, messageText, conversationId))
+        res.status(200).send(await conversation.addMessage(userId, messageText, conversationId))
+        return await conversation.notifyMessage(userId, messageText)
     } catch ({message}) {
         return res.status(400).send(message)
     }

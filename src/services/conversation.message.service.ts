@@ -19,17 +19,12 @@ const addMessage = async (userId: string, messageText: string, conversationId: s
 }
 
 
-export const notifyMessage = async (userId:string, messageId: string)=>{
-
-    OneSignal.push(function() {
-        OneSignal.setExternalUserId(userId);
-    });
-
-    const message = await Message.findByPk(messageId)
+export const notifyMessage = async (userId:string, message: string)=>{
     const user = await User.findByPk(userId)
-    const notification =[user,message]
-    const notify = await sendNotification(notification)
-    return notify
+    if (user) {
+        const notify = await sendNotification(user.username,user.deviceId,message)
+        return notify
+    }
 }
 
 
