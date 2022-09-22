@@ -1,0 +1,85 @@
+[2022-09-21T11:22:26.208Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T11:22:26.211Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T11:22:27.503Z] [Orion Backend] info: Syncing Database
+[2022-09-21T11:22:33.830Z] [Orion Backend] http: - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 9.329 ms
+[2022-09-21T11:22:53.006Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T11:22:53.011Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T11:22:54.424Z] [Orion Backend] info: Syncing Database
+[2022-09-21T11:23:04.056Z] [Orion Backend] http: ::ffff:127.0.0.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 5.317 ms
+[2022-09-21T11:23:20.458Z] [Orion Backend] http: ::ffff:127.0.0.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 0.847 ms
+[2022-09-21T11:23:45.394Z] [Orion Backend] http: ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 1.424 ms
+[2022-09-21T11:23:46.162Z] [Orion Backend] http: ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET /favicon.ico 404 - 7.793 ms
+[2022-09-21T12:08:39.899Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T12:08:39.903Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T12:08:41.108Z] [Orion Backend] info: Syncing Database
+[2022-09-21T12:08:50.396Z] [Orion Backend] http: ::ffff:127.0.0.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET / 200 - 9.334 ms
+[2022-09-21T12:09:12.439Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T12:09:12.443Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T12:09:13.296Z] [Orion Backend] info: Syncing Database
+[2022-09-21T13:49:11.467Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T13:49:11.468Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T13:49:11.868Z] [Orion Backend] info: Syncing Database
+[2022-09-21T13:50:13.589Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T13:50:13.591Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T13:50:14.175Z] [Orion Backend] info: Syncing Database
+[2022-09-21T13:50:42.118Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 392.866 ms
+[2022-09-21T13:52:21.080Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/delete 400 - 129.172 ms
+[2022-09-21T13:53:10.337Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/delete 400 - 80.949 ms
+[2022-09-21T13:54:36.344Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T13:54:36.345Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T13:54:36.763Z] [Orion Backend] info: Syncing Database
+[2022-09-21T13:54:49.082Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/account/delete 404 - 3.053 ms
+[2022-09-21T13:54:58.354Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 404 - 2.739 ms
+[2022-09-21T13:55:36.913Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 404 - 0.223 ms
+[2022-09-21T13:57:31.602Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T13:57:31.604Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T13:57:32.028Z] [Orion Backend] info: Syncing Database
+[2022-09-21T13:57:36.440Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 261.427 ms
+[2022-09-21T13:57:38.528Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 404 - 5.781 ms
+[2022-09-21T14:00:28.818Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T14:00:28.819Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T14:00:29.104Z] [Orion Backend] info: Syncing Database
+[2022-09-21T14:01:23.521Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 172.136 ms
+[2022-09-21T14:01:42.236Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 127.032 ms
+[2022-09-21T14:02:13.881Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T14:02:13.882Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T14:02:14.190Z] [Orion Backend] info: Syncing Database
+[2022-09-21T14:02:49.491Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 167.750 ms
+[2022-09-21T14:03:16.695Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 238.587 ms
+[2022-09-21T14:03:20.678Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 404 - 3.486 ms
+[2022-09-21T14:05:08.964Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T14:05:08.969Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T14:05:09.249Z] [Orion Backend] info: Syncing Database
+[2022-09-21T14:05:54.329Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 172.067 ms
+[2022-09-21T14:06:12.298Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 116.371 ms
+[2022-09-21T14:09:28.423Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T14:09:28.424Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T14:09:28.716Z] [Orion Backend] info: Syncing Database
+[2022-09-21T14:09:36.863Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 91.427 ms
+[2022-09-21T14:09:53.028Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 258.351 ms
+[2022-09-21T19:45:44.064Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T19:45:44.066Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T19:45:44.450Z] [Orion Backend] info: Syncing Database
+[2022-09-21T19:45:58.665Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T19:45:58.667Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T19:45:59.104Z] [Orion Backend] info: Syncing Database
+[2022-09-21T19:45:59.739Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 284.073 ms
+[2022-09-21T19:46:23.903Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 162.057 ms
+[2022-09-21T19:48:04.598Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T19:48:04.602Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T19:48:05.091Z] [Orion Backend] info: Syncing Database
+[2022-09-21T19:48:08.998Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 90.797 ms
+[2022-09-21T19:48:23.140Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 177.521 ms
+[2022-09-21T19:49:30.711Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T19:49:30.713Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T19:49:30.999Z] [Orion Backend] info: Syncing Database
+[2022-09-21T19:52:29.320Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T19:52:29.322Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T19:52:29.610Z] [Orion Backend] info: Syncing Database
+[2022-09-21T19:52:57.698Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 182.837 ms
+[2022-09-21T19:53:16.730Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 204 - 115.654 ms
+[2022-09-21T19:54:25.542Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-21T19:54:25.543Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-21T19:54:25.969Z] [Orion Backend] info: Syncing Database
+[2022-09-21T19:54:27.865Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 88.595 ms
+[2022-09-21T19:54:43.017Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 200 - 137.532 ms

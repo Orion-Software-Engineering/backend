@@ -2,20 +2,19 @@ import Sequelize, {CreationOptional, DataTypes, Model} from 'sequelize';
 import {sequelize} from '..';
 import {RoleAttributes} from '../role';
 import {InterestAttributes} from '../interest';
-import {UserAttributes, UserCreationAttributes} from './user.type';
 import {ConversationAttributes} from '../conversation';
 import {EventAttributes} from "../event";
+import {DeletedUserAttributes, DeletedUserCreationAttributes} from "./deleted_user.type";
 
-// define database model for users
-export default class User extends Model<UserAttributes,
-    UserCreationAttributes> {
+// define database model for deleted users
+export default class DeletedUser extends Model<DeletedUserAttributes,
+    DeletedUserCreationAttributes> {
     declare id: CreationOptional<string>;
     declare username: string;
     declare email: string;
     declare password: string;
-    declare playerId: string;
     declare isEmailVerified: boolean;
-    declare dateOfBirth: Date;
+    declare dateOfBirth: string;
     declare gender: boolean;
     declare location: string;
     declare bio: string;
@@ -40,7 +39,7 @@ export default class User extends Model<UserAttributes,
         EventAttributes['id']>
 }
 
-User.init(
+DeletedUser.init(
     {
         id: {
             type: DataTypes.UUID,
@@ -57,10 +56,6 @@ User.init(
             allowNull: false,
         },
         password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        playerId: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -87,6 +82,6 @@ User.init(
     },
     {
         sequelize,
-        tableName: 'users',
+        tableName: 'deleted_users',
     }
 );

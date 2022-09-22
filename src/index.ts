@@ -15,6 +15,11 @@ import conversationRouter from './routes/conversation.routes';
 import eventRouter from './routes/event.routes';
 import path from "path";
 import {where} from "sequelize";
+import likeRoutes from "./routes/like.routes";
+
+import {logger} from "./logger/logger";
+import {morganMiddleware} from "./middleware/morganMiddleware";
+import deleteAccountRoutes from "./routes/account.routes";
 
 require('dotenv').config();
 require('multer')
@@ -28,14 +33,16 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.resolve(__dirname, 'src/public')))
+app.use(morganMiddleware)
 
 const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: false}) // force: true forces dropping and resyncing the database
+    .sync({force: true}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
-         //initial();
+        logger.info("Syncing Database");
+         initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
@@ -66,6 +73,9 @@ changePasswordRoutes(app);
 eventRouter(app);
 messageRoutes(app)
 locationRoutes(app)
+likeRoutes(app);
+deleteAccountRoutes(app)
+
 app.use('/api/interest', interestRouter);
 app.use('/api/conversation', conversationRouter);
 
@@ -74,4 +84,6 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`DATABASE_URL is ${process.env.DATABASE_URL}`);
+    logger.info(`Server is running on port ${PORT}`);
+    logger.info(`DATABASE_URL is ${process.env.DATABASE_URL}`)
 });
