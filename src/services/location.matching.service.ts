@@ -110,20 +110,13 @@ export const sortByLocation = async (userId: string) => {
 
     }
     console.log(userDistance)
-    //const sortedmap = new Map([...userDistance.entries()]
-        //.sort((a, b) => a[1] - b[1]))
     const sortedmap = new Map([...userDistance.entries()]
         .sort())
 
-    //const values = Array.from(sortedmap.values());
-    //const userInfo =Object.values(sortedmap).flat()
-    //return values
+
     console.log(sortedmap)
     return sortedmap.values()
 
-    //return getKey(sortedmap,calculateDistance(userLatitude, userLongitude, latitude, longitude))
-    //console.log(userInfo)
-    //return userInfo
 
 
 }

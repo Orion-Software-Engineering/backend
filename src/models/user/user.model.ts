@@ -12,6 +12,7 @@ export default class User extends Model<UserAttributes,
     declare username: string;
     declare email: string;
     declare password: string;
+    declare playerId: string;
     declare isEmailVerified: boolean;
     declare dateOfBirth: string;
     declare gender: boolean;
@@ -51,6 +52,10 @@ User.init(
             allowNull: false,
         },
         password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        playerId: {
             type: DataTypes.STRING,
             allowNull: false,
         },

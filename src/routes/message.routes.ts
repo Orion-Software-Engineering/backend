@@ -5,6 +5,7 @@ import {
     getMessagesFromConversation, removeMessageFromConversation
 } from "../controller/chat/conversation.message.controller";
 // import messageController from '../controller/chat/message.controller';
+import {notifyMessage} from "../services/conversation.message.service";
 
 // const router = Router();
 export default (app: Express) => {
@@ -30,6 +31,7 @@ export default (app: Express) => {
 
     app.delete('/api/message',
         removeMessageFromConversation)
+
 }
 
 // router.post('/', messageController.add);

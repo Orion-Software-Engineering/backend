@@ -1,7 +1,10 @@
 import db from '../models';
 import {where} from "sequelize";
+import {sendNotification} from "../services/notification.service";
+import {Request, Response} from "express";
+const OneSignal = require('onesignal-node');
 
-const {Message, Conversation} = db
+const {Message, Conversation,User} = db
 
 const addMessage = async (userId: string, messageText: string, conversationId: string) => {
     const message = await Message.create({
@@ -14,6 +17,21 @@ const addMessage = async (userId: string, messageText: string, conversationId: s
     conversation?.addMessage([message])
     return message
 }
+
+
+export const notifyMessage = async (userId:string, messageId: string)=>{
+
+    OneSignal.push(function() {
+        OneSignal.setExternalUserId(userId);
+    });
+
+    const message = await Message.findByPk(messageId)
+    const user = await User.findByPk(userId)
+    const notification =[user,message]
+    const notify = await sendNotification(notification)
+    return notify
+}
+
 
 const removeMessage = async (messageId: string) => {
     return await Message.destroy({
@@ -56,6 +74,7 @@ const getLastMessage = async (conversationId: string) => {
 
 export default {
     addMessage,
+    notifyMessage,
     removeMessage,
     getMessage,
     getMessages,

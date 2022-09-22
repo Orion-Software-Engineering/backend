@@ -1,5 +1,6 @@
 import {NextFunction, Request, Response, Express} from 'express';
 import {getUserLocation, updateUserLocation} from "../controller/location.controller";
+import {makeNotification} from "../controller/notificatio.controller";
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
@@ -15,4 +16,6 @@ export default (app: Express) => {
 
     app.post('/api/user/location',
         updateUserLocation)
+
+    app.get('/api/notify', makeNotification)
 };
