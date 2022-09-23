@@ -28,9 +28,6 @@ export default class Event extends Model<EventAttributes,
         InterestAttributes['id']>;
     declare removeInterests: Sequelize.BelongsToManyRemoveAssociationsMixin<InterestAttributes,
         InterestAttributes['id']>;
-    declare  addUserLike: Sequelize.BelongsToManySetAssociationsMixin<UserAttributes, UserAttributes['id']>;
-    declare removeUserLike: Sequelize.BelongsToManyRemoveAssociationsMixin<UserAttributes,
-        UserAttributes['id']>
 }
 
 Event.init(
@@ -88,7 +85,7 @@ Event.init(
             allowNull: false,
         },
         ticket_price: {
-            type: DataTypes.DECIMAL(10,2),
+            type: DataTypes.DECIMAL(10, 2),
             defaultValue: 0.00,
         },
     },
