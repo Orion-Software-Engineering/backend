@@ -83,3 +83,42 @@
 [2022-09-21T19:54:25.969Z] [Orion Backend] info: Syncing Database
 [2022-09-21T19:54:27.865Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 88.595 ms
 [2022-09-21T19:54:43.017Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/account/delete 200 - 137.532 ms
+[2022-09-22T18:52:24.543Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-22T18:52:24.545Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-22T18:52:25.476Z] [Orion Backend] info: Syncing Database
+[2022-09-22T18:52:41.889Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-22T18:52:41.891Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-22T18:52:42.641Z] [Orion Backend] info: Syncing Database
+[2022-09-22T18:52:48.274Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/event 201 - 49.167 ms
+[2022-09-22T18:53:18.759Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 169.880 ms
+[2022-09-22T18:53:33.695Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/event/like 201 - 112.340 ms
+[2022-09-22T18:55:05.912Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/event/unlike 400 - 211.043 ms
+[2022-09-22T18:55:33.118Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/event/unlike 200 - 117.160 ms
+[2022-09-22T18:56:48.330Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/event/likes/0a1d9b1c-572e-408f-858f-df790eecc7cd 200 - 86.675 ms
+[2022-09-22T19:22:28.303Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-22T19:22:28.304Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-23T21:37:51.908Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-23T21:37:51.913Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-23T21:37:53.844Z] [Orion Backend] info: Syncing Database
+[2022-09-23T21:38:23.216Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-23T21:38:23.223Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-23T21:38:24.801Z] [Orion Backend] info: Syncing Database
+[2022-09-23T21:39:30.206Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 482.054 ms
+[2022-09-23T21:39:47.341Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/99a4a080-69cb-49ef-b46b-b6baf154b2ba 200 - 245.151 ms
+[2022-09-23T21:41:12.304Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/ 404 - 6.908 ms
+[2022-09-23T21:41:19.623Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/99a4a080-69cb-49ef-b46b-b6baf154b2ba 200 - 171.276 ms
+[2022-09-23T21:42:03.343Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 267.692 ms
+[2022-09-23T21:42:38.848Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/6b0ed743-e455-4a42-9ff1-47a2ad5b273b 200 - 195.221 ms
+[2022-09-23T21:42:52.111Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/6b0ed743-e455-4a42-9ff1-47a2ad5b273b 200 - 175.533 ms
+[2022-09-23T21:52:07.435Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-23T21:52:07.439Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-23T21:52:08.907Z] [Orion Backend] info: Syncing Database
+[2022-09-23T21:52:15.091Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/6b0ed743-e455-4a42-9ff1-47a2ad5b273b 400 - 38.856 ms
+[2022-09-23T21:52:28.798Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 365.564 ms
+[2022-09-23T21:52:48.081Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/8e9f9378-da85-40e1-aba4-08b1a123e2f4 200 - 347.617 ms
+[2022-09-23T21:53:06.454Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 251.298 ms
+[2022-09-23T21:53:23.273Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/65c811eb-d7d2-4348-a6f4-58a3bccb9cae 200 - 193.758 ms
+[2022-09-23T21:53:45.636Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/65c811eb-d7d2-4348-a6f4-58a3bccb9cae 200 - 424.368 ms
+[2022-09-23T21:54:00.885Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/profile 400 - 393.567 ms
+[2022-09-23T21:54:55.213Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/profile 404 - 2.158 ms
+[2022-09-23T21:55:07.967Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/profile/65c811eb-d7d2-4348-a6f4-58a3bccb9cae 200 - 173.882 ms

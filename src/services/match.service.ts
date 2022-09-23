@@ -6,6 +6,7 @@ import interestService from './interest.service';
 type userObj = {
     userId: string;
     username: string;
+    bio: string,
     commonInterests: string[];
 };
 
@@ -31,11 +32,12 @@ const findMatches = async (id: string) => {
         const userInterests = (await interestService.get(
             userId
         )) as InterestAttributes[];
-        const {username} = (await db.User.findOne({where: {id: userId}})) as User;
+        const {username,bio} = (await db.User.findOne({where: {id: userId}})) as User;
 
         const user: userObj = {
             userId,
             username,
+            bio,
             commonInterests: [],
         };
 
