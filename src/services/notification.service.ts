@@ -8,7 +8,7 @@ export const sendNotification = async (username:string, deviceId:string, message
         contents: {
             'en': `${username}: ${messageToSend}`,
         },
-        include_player_ids: [deviceId],
+        include_external_user_ids: [deviceId],
     };
 
     try {
