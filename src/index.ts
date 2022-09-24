@@ -20,6 +20,7 @@ import likeRoutes from "./routes/like.routes";
 import {logger} from "./logger/logger";
 import {morganMiddleware} from "./middleware/morganMiddleware";
 import deleteAccountRoutes from "./routes/account.routes";
+import logsRoutes from "./routes/logs.routes";
 
 require('dotenv').config();
 require('multer')
@@ -75,6 +76,7 @@ messageRoutes(app)
 locationRoutes(app)
 likeRoutes(app);
 deleteAccountRoutes(app)
+logsRoutes(app)
 
 app.use('/api/interest', interestRouter);
 app.use('/api/conversation', conversationRouter);
