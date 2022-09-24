@@ -5,7 +5,6 @@ export type UserAttributes = {
     username: string;
     email: string;
     password: string;
-    deviceId:string;
     isEmailVerified: boolean;
     dateOfBirth: Date;
     gender: boolean;
