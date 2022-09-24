@@ -349,3 +349,39 @@
 [2022-09-23T07:19:21.536Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 109.436 ms
 [2022-09-23T07:21:17.729Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 106.968 ms
 [2022-09-23T07:25:08.269Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 67.819 ms
+[2022-09-24T22:57:13.758Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T22:57:13.762Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T22:57:14.542Z] [Orion Backend] info: Syncing Database
+[2022-09-24T22:58:37.596Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T22:58:37.599Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T22:58:38.659Z] [Orion Backend] info: Syncing Database
+[2022-09-24T22:59:03.007Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T22:59:03.009Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T22:59:03.566Z] [Orion Backend] info: Syncing Database
+[2022-09-24T23:01:53.185Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T23:01:53.188Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T23:01:53.826Z] [Orion Backend] info: Syncing Database
+[2022-09-24T23:02:22.701Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T23:02:22.707Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T23:02:25.872Z] [Orion Backend] info: Syncing Database
+[2022-09-24T23:03:32.113Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 257.244 ms
+[2022-09-24T23:04:04.165Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 147.654 ms
+[2022-09-24T23:05:09.728Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T23:05:09.730Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T23:05:10.655Z] [Orion Backend] info: Syncing Database
+[2022-09-24T23:06:15.789Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 604.939 ms
+[2022-09-24T23:06:45.813Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 152.675 ms
+[2022-09-24T23:07:36.561Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/ 200 - 202.030 ms
+[2022-09-24T23:08:27.372Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 240.280 ms
+[2022-09-24T23:11:49.610Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 122.764 ms
+[2022-09-24T23:14:53.180Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 135.989 ms
+[2022-09-24T23:15:20.552Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T23:15:20.556Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T23:15:21.835Z] [Orion Backend] info: Syncing Database
+[2022-09-24T23:15:44.913Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-24T23:15:44.915Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-24T23:15:45.694Z] [Orion Backend] info: Syncing Database
+[2022-09-24T23:16:04.915Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 373.394 ms
+[2022-09-24T23:16:43.543Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 235.384 ms
+[2022-09-24T23:17:33.054Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/ 200 - 375.967 ms
+[2022-09-24T23:18:11.284Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 112.140 ms
