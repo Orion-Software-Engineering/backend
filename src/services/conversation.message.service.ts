@@ -26,8 +26,6 @@ export const notifyMessage = async (userId:string, conversationId:string,message
 
     const messageReceivers: string[] = []
 
-
-
     if (user && conversation) {
         const conversationUser = await conversation.getUsers()
         conversationUser.forEach(conversation => {
