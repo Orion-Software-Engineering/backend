@@ -26,6 +26,9 @@ export const notifyMessage = async (userId:string, conversationId:string,message
 
     const messageReceivers: string[] = []
 
+    // remove senderId from recipients
+    await arrayRemove(messageReceivers, userId)
+
     if (user && conversation) {
         const conversationUser = await conversation.getUsers()
         conversationUser.forEach(conversation => {
@@ -75,6 +78,12 @@ const getLastMessage = async (conversationId: string) => {
     })
     if (!message) throw new Error("No message found")
     return message
+}
+
+const arrayRemove = async (arr:string[], value:string) => {
+    return arr.filter((geeks)=>{
+        return geeks != value;
+    });
 }
 
 export default {
