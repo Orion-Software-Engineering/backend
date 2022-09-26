@@ -54,28 +54,36 @@ export const createEvent = async (req: Request, res: Response) => {
 
 // Module for getting current events
 export const getEvent = async (req: Request, res: Response) => {
-    const {id} = req.params;
-    let event = await db.Event.findByPk(id);
+    try {
+        const {id} = req.params;
+        let event = await db.Event.findByPk(id);
 
-    if (!event) return res.status(404).send('Event does not exist.');
+        if (!event) return res.status(404).send('Event does not exist.');
 
-    return res.status(200).send(await generateEventWithInterests(event));
+        return res.status(200).send(await generateEventWithInterests(event));
+    } catch ({message}) {
+        res.status(400).send({message})
+    }
 };
 
 // Module for deleting events
 export const deleteEvent = async (req: Request, res: Response) => {
-    const {id} = req.params;
-    const event = await db.Event.findByPk(id);
+    try {
+        const {id} = req.params;
+        const event = await db.Event.findByPk(id);
 
-    if (!event) {
-        return res.status(404).send({
-            message: 'No such event',
+        if (!event) {
+            return res.status(404).send({
+                message: 'No such event',
+            });
+        }
+        await event.destroy();
+        return res.status(200).send({
+            message: 'Event deleted successfully.',
         });
+    }catch ({message}) {
+        res.status(400).send({message})
     }
-    await event.destroy();
-    return res.status(200).send({
-        message: 'Event deleted successfully.',
-    });
 };
 
 export const updateEvent = async (req: Request, res: Response) => {

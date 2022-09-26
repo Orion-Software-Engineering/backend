@@ -71,8 +71,12 @@ export const moderatorBoard = (req: Request, res: Response) => {
 
 // show all registered users
 export const showAll = async (req: Request, res: Response) => {
-    await User.findAll()
-        .then(users => {
-            res.status(200).send({users})
-        });
+    try {
+        await User.findAll()
+            .then(users => {
+                res.status(200).send({users})
+            });
+    } catch ({message}) {
+        res.status(400).send({message})
+    }
 };

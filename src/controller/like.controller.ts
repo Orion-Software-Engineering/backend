@@ -26,9 +26,8 @@ const unlikeEvent = async (req: Request, res: Response) => {
 const getEventLikes = async (req: Request, res: Response) => {
     const {id} = req.params
 
-    const [numberOfLikes, eventID] = await eventLikeService.getLikes(id)
-
     try {
+        const [numberOfLikes, eventID] = await eventLikeService.getLikes(id)
         console.log(eventID,numberOfLikes)
         return res.status(200).json({
             eventId: eventID,
