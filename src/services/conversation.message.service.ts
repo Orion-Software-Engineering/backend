@@ -2,6 +2,7 @@ import db from '../models';
 import {where} from "sequelize";
 import {sendNotification} from "../services/notification.service";
 import {Request, Response} from "express";
+import {logger} from "../logger/logger";
 const OneSignal = require('onesignal-node');
 
 const {Message, Conversation,User} = db
@@ -22,9 +23,11 @@ const addMessage = async (userId: string, messageText: string, conversationId: s
 export const notifyMessage = async (userId:string, message: string)=>{
     const user = await User.findByPk(userId)
     if (user) {
-        const notify = await sendNotification(user.username,userId,message)
+        logger.info("inside")
+        const notify = await sendNotification(user.username,userId, message)
         return notify
     }
+    logger.info("outside")
 }
 
 
