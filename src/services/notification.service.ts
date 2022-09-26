@@ -15,7 +15,7 @@ export const sendNotification = async (username:string, deviceId:string, message
 
     try {
         const response = await client.createNotification(notification);
-        logger.debug(response);
+        logger.info(response);
     } catch (e: any) {
         if (e instanceof OneSignal.HTTPError) {
             // When status code of HTTP response is not 2xx, HTTPError is thrown.
