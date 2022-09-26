@@ -20,6 +20,7 @@ import likeRoutes from "./routes/like.routes";
 import {logger} from "./logger/logger";
 import {morganMiddleware} from "./middleware/morganMiddleware";
 import deleteAccountRoutes from "./routes/account.routes";
+import logsRoutes from "./routes/logs.routes";
 
 require('dotenv').config();
 require('multer')
@@ -38,11 +39,11 @@ app.use(morganMiddleware)
 const {Role, Interest, Conversation, Message, INTERESTS, ROLES} = db;
 
 sequelize
-    .sync({force: true}) // force: true forces dropping and resyncing the database
+    .sync({force: false}) // force: true forces dropping and resyncing the database
     .then(() => {
         console.log('Syncing DB');
         logger.info("Syncing Database");
-        initial();
+         // initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
@@ -75,6 +76,7 @@ messageRoutes(app)
 locationRoutes(app)
 likeRoutes(app);
 deleteAccountRoutes(app)
+logsRoutes(app)
 
 app.use('/api/interest', interestRouter);
 app.use('/api/conversation', conversationRouter);
