@@ -305,6 +305,45 @@ Request Body:
     ]
 }
 ```
+### Location
+
+#### Get Location
+End Point: /api/user/location/:userId <br>
+Method: GET <br>
+No Request body:
+
+```json
+{
+  "latitude": "",
+  "longitude": ""
+}
+```
+#### Update User Location
+End Point: /api/user/location <br>
+Method: POST <br>
+Request body:
+
+```json
+{
+  "userId": "",
+  "latitude": "",
+  "longitude": ""
+}
+```
+#### Get Matches Based On Location
+
+End Point: /api/test/match/location/:id <br>
+Method: GET <br>
+No Request body:
+
+```json
+{
+  "userId": "",
+  "username": "",
+  "bio": "",
+  "proximity": ""
+}
+```
 
 ### Instant Messaging
 
@@ -530,4 +569,5 @@ Request Body: <br>
   "password": ""
 }
 ```
+
 
