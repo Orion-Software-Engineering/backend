@@ -22,7 +22,7 @@ const addMessage = async (userId: string, messageText: string, conversationId: s
 export const notifyMessage = async (userId:string, message: string)=>{
     const user = await User.findByPk(userId)
     if (user) {
-        const notify = await sendNotification(user.username,user.id,message)
+        const notify = await sendNotification(user.username,userId,message)
         return notify
     }
 }
