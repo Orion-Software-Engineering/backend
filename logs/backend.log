@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 [2022-09-23T22:12:52.173Z] [Orion Backend] info: Server is running on port 8000
 [2022-09-23T22:12:52.175Z] [Orion Backend] info: DATABASE_URL is undefined
 [2022-09-23T22:12:53.392Z] [Orion Backend] info: Syncing Database
@@ -69,4 +67,4 @@
 [2022-09-24T20:43:06.025Z] [Orion Backend] info: DATABASE_URL is undefined
 [2022-09-24T20:43:06.467Z] [Orion Backend] info: Syncing Database
 [2022-09-24T20:43:06.789Z] [Orion Backend] http: ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 1.1 GET /api/logs/download 200 - 6.916 ms
->>>>>>> e993f7b77580bf3f6ee65bcaa3939bbc3758b3ee
+
