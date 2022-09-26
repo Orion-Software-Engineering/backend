@@ -6,7 +6,7 @@ export const addMessageToConversation = async (req: Request, res: Response) => {
     try {
         const {userId, messageText, conversationId} = req.body
         res.status(200).send(await conversation.addMessage(userId, messageText, conversationId))
-        return await conversation.notifyMessage(userId, messageText)
+        return await conversation.notifyMessage(userId, conversationId,messageText)
     } catch ({message}) {
         return res.status(400).send(message)
     }
