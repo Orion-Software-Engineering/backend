@@ -20,14 +20,21 @@ const addMessage = async (userId: string, messageText: string, conversationId: s
 }
 
 
-export const notifyMessage = async (userId:string, message: string)=>{
+export const notifyMessage = async (userId:string, conversationId:string,message: string)=>{
     const user = await User.findByPk(userId)
-    if (user) {
-        logger.info("inside")
-        const notify = await sendNotification(user.username,userId, message)
+    const conversation = await Conversation.findByPk(conversationId)
+
+    const messageReceivers: string[] = []
+
+    if (user && conversation) {
+        const conversationUser = await conversation.getUsers()
+        conversationUser.forEach(conversation => {
+            messageReceivers.push(conversation.id)
+        })
+
+        const notify = await sendNotification(user.username,messageReceivers, message)
         return notify
     }
-    logger.info("outside")
 }
 
 
