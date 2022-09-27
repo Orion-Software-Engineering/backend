@@ -44,7 +44,7 @@ const getUserConversations = async (userId: string) => {
         order: [['Messages', 'createdAt', 'DESC']]
     })
 
-    const conversationsWithLastMessages: any[] = []
+    const conversationsWithLastMessages: (typeof conversations) = []
     for (const conversation of conversations) {
         const lastMessage = await getLastMessageOfConversation(conversation.id)
         const users = await User.findAll({
