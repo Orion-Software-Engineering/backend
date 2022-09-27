@@ -28,25 +28,6 @@ const getUsers = async (conversationId: string) => {
 }
 
 const getUserConversations = async (userId: string) => {
-    // return await Conversation.findAll({
-    //     include: [
-    //         {
-    //             model: User,
-    //             as: "Users",
-    //             where: {
-    //                 id: userId
-    //             },
-    //             attributes: []  // we don't need any attributes from user
-    //         },
-    //         {
-    //             model: Message,
-    //             as: "Messages",
-    //             attributes: [],
-    //         }],
-    //     attributes: ['id'],
-    //     order: [['Messages', 'createdAt', 'DESC']]
-    // })
-
     const conversations = await Conversation.findAll({
         include: [{
             model: User,
@@ -100,9 +81,7 @@ const getLastMessageOfConversation = async (conversationId: string) => {
 
     const sender = await User.findByPk(message.userId).then(user => user?.username)
 
-    // @ts-ignore
-    message.setDataValue('sender', sender)
-    return message
+    return {"text": message.text, "sender": sender}
 }
 
 export default {
