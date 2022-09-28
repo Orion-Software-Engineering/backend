@@ -2,6 +2,7 @@ import {Request, Response} from 'express';
 import db from '../models';
 import {Op} from "sequelize";
 import {generateEventsWithInterests, generateEventWithInterests} from "../services/event.service";
+import User from "../models/user";
 
 
 let {Event, Interest} = db;
@@ -150,5 +151,21 @@ export const getAllEvents = async (req: Request, res: Response) => {
         return res.status(200).send(await generateEventsWithInterests(events))
     } catch ({message}) {
         return res.status(400).send({message});
+    }
+}
+
+export const getEventsByOrganizer = async (req: Request, res: Response) => {
+    const {id} = req.params
+    try{
+        const eventsByOrganizer = await Event.findAll({
+            where: {
+                organizer: id
+            }
+        })
+
+        return res.status(200).send(eventsByOrganizer)
+
+    }catch ({message}) {
+        res.status(400).send({message})
     }
 }
