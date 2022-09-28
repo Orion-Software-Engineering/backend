@@ -14,7 +14,7 @@ export default (app: Express) => {
     });
 
     app.post('/api/event',
-        [verifyToken],
+        [verifyToken, isOrganizer],
         controller.createEvent);
 
     app.get('/api/event/:id',
