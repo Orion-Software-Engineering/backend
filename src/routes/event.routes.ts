@@ -33,4 +33,4 @@ export default (app: Express) => {
 
     app.get('/api/organizer/events/:id',
         controller.getEventsByOrganizer);
-};
+}
