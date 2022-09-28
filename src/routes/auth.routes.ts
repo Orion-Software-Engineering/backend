@@ -24,5 +24,7 @@ export default (app: Express) => {
     );
 
     // the sign in controller
-    app.post('/api/auth/signin', [isUserVerified], controller.signIn);
+    app.post('/api/auth/signin',
+        // [isUserVerified],
+        controller.signIn);
 };

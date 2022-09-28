@@ -1,6 +1,7 @@
 import {NextFunction, Request, Response, Express} from 'express';
 import {getUserLocation, updateUserLocation} from "../controller/location.controller";
 
+
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
         res.header(
@@ -15,4 +16,6 @@ export default (app: Express) => {
 
     app.post('/api/user/location',
         updateUserLocation)
+
+
 };

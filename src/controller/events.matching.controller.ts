@@ -1,13 +1,15 @@
 import {Request, Response} from "express";
 import {eventMatch} from "../services/event.matching.service";
 import db from "../models";
-import {generateEventWithInterests} from "../services/event.service";
+import {generateEventsWithExtraData, generateEventWithInterests} from "../services/event.service";
+import Event from "../models/event";
 
 export const eventsMatchingController = async (req: Request, res: Response) => {
     try {
         const {id} = req.params;
-
+        const user = await db.User.findByPk(id)
         const events: object[] = [];
+        if (!user) return res.status(404).send()
 
         const eventsAndPriorities = await eventMatch(id);
 
@@ -19,9 +21,9 @@ export const eventsMatchingController = async (req: Request, res: Response) => {
                     events.push(await generateEventWithInterests(event))
                 }
             }
-            return res.send(events)
+            return res.send(await generateEventsWithExtraData((events as Event[]), user))
         }
     } catch ({message}) {
-        return res.send({message});
+        return res.status(400).send({message})
     }
 }

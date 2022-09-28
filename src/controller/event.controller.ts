@@ -2,6 +2,7 @@ import {Request, Response} from 'express';
 import db from '../models';
 import {Op} from "sequelize";
 import {generateEventsWithInterests, generateEventWithInterests} from "../services/event.service";
+import User from "../models/user";
 
 
 let {Event, Interest} = db;
@@ -14,9 +15,9 @@ export const createEvent = async (req: Request, res: Response) => {
         try {
             const {
                 name, description, date, time,
-                venue, organizers, organizer,
+                venue, location, organizers, organizer,
                 mcs, guests, age_restriction,
-                interests, cover_image
+                interests, cover_image, ticket_price
             } = req.body
 
             const event = await Event.create({
@@ -24,13 +25,15 @@ export const createEvent = async (req: Request, res: Response) => {
                 date: date,
                 time: time,
                 venue: venue,
+                location: location,
                 organizers: organizers,
                 mcs: mcs,
                 guests: guests,
                 age_restriction: age_restriction,
                 description: description,
                 organizer: organizer,
-                cover_image: cover_image
+                cover_image: cover_image,
+                ticket_price: ticket_price,
             })
 
             const interestsData = await Interest.findAll({
@@ -52,28 +55,36 @@ export const createEvent = async (req: Request, res: Response) => {
 
 // Module for getting current events
 export const getEvent = async (req: Request, res: Response) => {
-    const {id} = req.params;
-    let event = await db.Event.findByPk(id);
+    try {
+        const {id} = req.params;
+        let event = await db.Event.findByPk(id);
 
-    if (!event) return res.status(404).send('Event does not exist.');
+        if (!event) return res.status(404).send('Event does not exist.');
 
-    return res.status(200).send(await generateEventWithInterests(event));
+        return res.status(200).send(await generateEventWithInterests(event));
+    } catch ({message}) {
+        res.status(400).send({message})
+    }
 };
 
 // Module for deleting events
 export const deleteEvent = async (req: Request, res: Response) => {
-    const {id} = req.params;
-    const event = await db.Event.findByPk(id);
+    try {
+        const {id} = req.params;
+        const event = await db.Event.findByPk(id);
 
-    if (!event) {
-        return res.status(404).send({
-            message: 'No such event',
+        if (!event) {
+            return res.status(404).send({
+                message: 'No such event',
+            });
+        }
+        await event.destroy();
+        return res.status(200).send({
+            message: 'Event deleted successfully.',
         });
+    }catch ({message}) {
+        res.status(400).send({message})
     }
-    await event.destroy();
-    return res.status(200).send({
-        message: 'Event deleted successfully.',
-    });
 };
 
 export const updateEvent = async (req: Request, res: Response) => {
@@ -83,7 +94,7 @@ export const updateEvent = async (req: Request, res: Response) => {
         name, description, date, time,
         venue, organizers, organizer,
         mcs, guests, age_restriction,
-        interests, cover_image
+        interests, cover_image, ticket_price
     } = req.body
 
     console.log(interests)
@@ -107,7 +118,8 @@ export const updateEvent = async (req: Request, res: Response) => {
                         age_restriction: age_restriction,
                         time: time,
                         cover_image: cover_image,
-                        organizer: organizer
+                        organizer: organizer,
+                        ticket_price: ticket_price,
                     }
                 ).then(async () => {
                     Interest.findAll({
@@ -139,5 +151,21 @@ export const getAllEvents = async (req: Request, res: Response) => {
         return res.status(200).send(await generateEventsWithInterests(events))
     } catch ({message}) {
         return res.status(400).send({message});
+    }
+}
+
+export const getEventsByOrganizer = async (req: Request, res: Response) => {
+    const {id} = req.params
+    try{
+        const eventsByOrganizer = await Event.findAll({
+            where: {
+                organizer: id
+            }
+        })
+
+        return res.status(200).send(eventsByOrganizer)
+
+    }catch ({message}) {
+        res.status(400).send({message})
     }
 }

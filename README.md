@@ -305,6 +305,45 @@ Request Body:
     ]
 }
 ```
+### Location
+
+#### Get Location
+End Point: /api/user/location/:userId <br>
+Method: GET <br>
+No Request body:
+
+```json
+{
+  "latitude": "",
+  "longitude": ""
+}
+```
+#### Update User Location
+End Point: /api/user/location <br>
+Method: POST <br>
+Request body:
+
+```json
+{
+  "userId": "",
+  "latitude": "",
+  "longitude": ""
+}
+```
+#### Get Matches Based On Location
+
+End Point: /api/test/match/location/:id <br>
+Method: GET <br>
+No Request body:
+
+```json
+{
+  "userId": "",
+  "username": "",
+  "bio": "",
+  "proximity": ""
+}
+```
 
 ### Instant Messaging
 
@@ -408,6 +447,7 @@ Request Body: <br>
     "description": "",
     "organizer": "",
     "cover_image": "",
+    "ticket_price": decimal,
     "interests": [
         "",
         "",
@@ -451,6 +491,7 @@ Request Body: <br>
     "description": "",
     "organizer": "",
     "cover-image": "",
+    "ticket_price": decimal,
     "interests": [
         "",
         "",
@@ -463,6 +504,33 @@ Request Body: <br>
 End Point: /api/events/:id <br>
 Method: GET <br>
 No Request Body.
+
+## Like an event
+End Point: /api/event/like <br>
+Method: POST <br>
+Request Body: <br>
+```json
+{
+  "eventId": "",
+  "userId": ""
+}
+```
+
+## Unlike and event
+End Point: /api/event/unlike <br>
+Method: POST <br>
+Request Body: <br>
+```json
+{
+  "eventId": "",
+  "userId": ""
+}
+```
+
+## Get number of likes for an event
+End Point: /api/event/likes/:id <br>
+Method: GET <br>
+No Request Body
 
 #### Remove User From Conversation
 
@@ -488,4 +556,18 @@ Request Body: null <br>
 End Point: /api/conversation/user/all/ID <br>
 Method: GET <br>
 Request Body: null <br>
+
+#### Delete user Account
+
+End Point: /api/account/delete <br>
+Method: POST <br>
+Request Body: <br>
+```json
+{
+  "usedId" : "",
+  "username": "",
+  "password": ""
+}
+```
+
 

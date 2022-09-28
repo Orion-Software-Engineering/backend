@@ -30,7 +30,7 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 
 
 //user info
-var Info:(string|number)[]
+let Info: (string | number)[];
 
 
 export const sortByLocation = async (userId: string) => {
@@ -45,7 +45,9 @@ export const sortByLocation = async (userId: string) => {
         .map(i => Number(i))
 
     // store userId,bio and name with relative distance
-    const userDistance = new Map< number,[string, string, string, number]>()
+    const userDistance = new Map<number, [string, string, string, number]>()
+
+    const userDistanceArray: { userId: string, username: string, bio: string, commonInterests: string[], proximity: number }[] = []
 
     const interests = await interestService.get(userId);
     const interestNames = new Set();
@@ -62,68 +64,71 @@ export const sortByLocation = async (userId: string) => {
 
     // get details about matches from matched users
     for (const {userId} of records) {
+        let mUser = {}
         // a matched user based on interest
         const matchedUser = await User.findByPk(userId)
         if (!matchedUser) continue
         const matchedUserConversations = await matchedUser.getConversations()
             .then(conversations => conversations.map(convo => convo.id))
 
-        console.log(matchedUserConversations)
-        console.log(userConversations)
         let breakFlag = false
 
         // if user has convo with main user, skip
-        matchedUserConversations.forEach(cv => {
+        for (const cv of matchedUserConversations) {
             if (userConversations.includes(cv)) breakFlag = true
-        })
+        }
         if (breakFlag) continue
 
-        var matchedUsername = matchedUser.username
-        var userBio = matchedUser.bio
+        const matchedUsername = matchedUser.username;
+        const userBio = matchedUser.bio;
 
+        const userInterests = (await interestService.get(
+            userId
+        ))
+
+        const commonInterests = []
+
+        for (const {name} of userInterests) {
+            if (interestNames.has(name)) {
+                commonInterests.push(name);
+            }
+        }
 
         let proximity: number = 0;
 
-
         const {location} = matchedUser
-        var [latitude, longitude] = location.split(' ', 2)
+        const [latitude, longitude] = location.split(' ', 2)
             .map(i => Number(i));
 
         if (calculateDistance(userLatitude, userLongitude, latitude, longitude) < 1000) {
             proximity = 0  // very close
         }
         if (calculateDistance(userLatitude, userLongitude, latitude, longitude) >= 1000
-            && calculateDistance(userLatitude, userLongitude, latitude, longitude) <= 3000) {
+            && calculateDistance(userLatitude, userLongitude, latitude, longitude) < 3000) {
             proximity = 1   //close
         }
         if (calculateDistance(userLatitude, userLongitude, latitude, longitude) >= 3000
-            && calculateDistance(userLatitude, userLongitude, latitude, longitude) <= 5000) {
+            && calculateDistance(userLatitude, userLongitude, latitude, longitude) < 5000) {
             proximity = 2    //quite close
         }
-        if (calculateDistance(userLatitude, userLongitude, latitude, longitude) > 5000) {
+        if (calculateDistance(userLatitude, userLongitude, latitude, longitude) >= 5000) {
             proximity = 3    //far
         }
 
-
-        userDistance.set(calculateDistance(userLatitude, userLongitude, latitude, longitude),[userId, matchedUsername, userBio, proximity])
-
+        // userDistance.set(calculateDistance(userLatitude, userLongitude, latitude, longitude), [userId, matchedUsername, userBio, proximity])
+        mUser = {
+            userId: userId,
+            username: matchedUsername,
+            bio: userBio,
+            commonInterests: commonInterests,
+            proximity: proximity
+        }
+        userDistanceArray.push((mUser as unknown as { userId: string, username: string, bio: string, commonInterests: string[], proximity: number }))
 
     }
-    console.log(userDistance)
-    //const sortedmap = new Map([...userDistance.entries()]
-        //.sort((a, b) => a[1] - b[1]))
-    const sortedmap = new Map([...userDistance.entries()]
-        .sort())
+    // console.log(userDistance)
 
-    //const values = Array.from(sortedmap.values());
-    //const userInfo =Object.values(sortedmap).flat()
-    //return values
-    console.log(sortedmap)
-    return sortedmap.values()
-
-    //return getKey(sortedmap,calculateDistance(userLatitude, userLongitude, latitude, longitude))
-    //console.log(userInfo)
-    //return userInfo
-
-
+    // console.log(sortedmap)
+    // return sortedmap.values()
+    return userDistanceArray
 }

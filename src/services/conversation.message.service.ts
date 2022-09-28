@@ -1,7 +1,11 @@
 import db from '../models';
 import {where} from "sequelize";
+import {sendNotification} from "../services/notification.service";
+import {Request, Response} from "express";
+import {logger} from "../logger/logger";
+const OneSignal = require('onesignal-node');
 
-const {Message, Conversation} = db
+const {Message, Conversation,User} = db
 
 const addMessage = async (userId: string, messageText: string, conversationId: string) => {
     const message = await Message.create({
@@ -14,6 +18,27 @@ const addMessage = async (userId: string, messageText: string, conversationId: s
     conversation?.addMessage([message])
     return message
 }
+
+
+export const notifyMessage = async (userId:string, conversationId:string,message: string)=>{
+    const user = await User.findByPk(userId)
+    const conversation = await Conversation.findByPk(conversationId)
+
+    const messageReceivers: string[] = []
+
+    if (user && conversation) {
+        const conversationUser = await conversation.getUsers()
+        conversationUser.forEach(conversation => {
+            if (conversation.id != userId) {
+                messageReceivers.push(conversation.id)
+            }
+        })
+
+        const notify = await sendNotification(user.username,messageReceivers, message)
+        return notify
+    }
+}
+
 
 const removeMessage = async (messageId: string) => {
     return await Message.destroy({
@@ -56,6 +81,7 @@ const getLastMessage = async (conversationId: string) => {
 
 export default {
     addMessage,
+    notifyMessage,
     removeMessage,
     getMessage,
     getMessages,
