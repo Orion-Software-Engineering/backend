@@ -37,5 +37,6 @@ export default (app: Express) => {
         [verifyToken],
         eventsMatchingController);
 
-    app.get('/api/organizer/events/:id', controller.getEventsByOrganizer);
-};
+    app.get('/api/organizer/events/:id',
+        controller.getEventsByOrganizer);
+}
