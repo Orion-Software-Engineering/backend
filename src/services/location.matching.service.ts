@@ -30,7 +30,7 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 
 
 //user info
-var Info:(string|number)[]
+let Info: (string | number)[];
 
 
 export const sortByLocation = async (userId: string) => {
@@ -45,7 +45,9 @@ export const sortByLocation = async (userId: string) => {
         .map(i => Number(i))
 
     // store userId,bio and name with relative distance
-    const userDistance = new Map< number,[string, string, string, number]>()
+    const userDistance = new Map<number, [string, string, string, number]>()
+
+    const userDistanceArray: { id: string, username: string, bio: string, proximity: number }[] = []
 
     const interests = await interestService.get(userId);
     const interestNames = new Set();
@@ -62,31 +64,29 @@ export const sortByLocation = async (userId: string) => {
 
     // get details about matches from matched users
     for (const {userId} of records) {
+        let mUser = {}
         // a matched user based on interest
         const matchedUser = await User.findByPk(userId)
         if (!matchedUser) continue
         const matchedUserConversations = await matchedUser.getConversations()
             .then(conversations => conversations.map(convo => convo.id))
 
-        console.log(matchedUserConversations)
-        console.log(userConversations)
         let breakFlag = false
 
         // if user has convo with main user, skip
-        matchedUserConversations.forEach(cv => {
+        for (const cv of matchedUserConversations) {
             if (userConversations.includes(cv)) breakFlag = true
-        })
+        }
         if (breakFlag) continue
 
-        var matchedUsername = matchedUser.username
-        var userBio = matchedUser.bio
+        const matchedUsername = matchedUser.username;
+        const userBio = matchedUser.bio;
 
 
         let proximity: number = 0;
 
-
         const {location} = matchedUser
-        var [latitude, longitude] = location.split(' ', 2)
+        const [latitude, longitude] = location.split(' ', 2)
             .map(i => Number(i));
 
         if (calculateDistance(userLatitude, userLongitude, latitude, longitude) < 1000) {
@@ -105,18 +105,16 @@ export const sortByLocation = async (userId: string) => {
         }
 
 
-        userDistance.set(calculateDistance(userLatitude, userLongitude, latitude, longitude),[userId, matchedUsername, userBio, proximity])
-
+        userDistance.set(calculateDistance(userLatitude, userLongitude, latitude, longitude), [userId, matchedUsername, userBio, proximity])
+        mUser = {id: userId, username: matchedUsername, bio: userBio, proximity: proximity}
+        userDistanceArray.push((mUser as unknown as { id: string, username: string, bio: string, proximity: number }))
 
     }
-    console.log(userDistance)
-    const sortedmap = new Map([...userDistance.entries()]
-        .sort())
+    // console.log(userDistance)
+    const sortedmap = new Map([...userDistance.entries()].sort())
 
 
-    console.log(sortedmap)
-    return sortedmap.values()
-
-
-
+    // console.log(sortedmap)
+    // return sortedmap.values()
+    return userDistanceArray
 }
