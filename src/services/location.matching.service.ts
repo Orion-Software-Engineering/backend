@@ -93,14 +93,14 @@ export const sortByLocation = async (userId: string) => {
             proximity = 0  // very close
         }
         if (calculateDistance(userLatitude, userLongitude, latitude, longitude) >= 1000
-            && calculateDistance(userLatitude, userLongitude, latitude, longitude) <= 3000) {
+            && calculateDistance(userLatitude, userLongitude, latitude, longitude) < 3000) {
             proximity = 1   //close
         }
         if (calculateDistance(userLatitude, userLongitude, latitude, longitude) >= 3000
-            && calculateDistance(userLatitude, userLongitude, latitude, longitude) <= 5000) {
+            && calculateDistance(userLatitude, userLongitude, latitude, longitude) < 5000) {
             proximity = 2    //quite close
         }
-        if (calculateDistance(userLatitude, userLongitude, latitude, longitude) > 5000) {
+        if (calculateDistance(userLatitude, userLongitude, latitude, longitude) >= 5000) {
             proximity = 3    //far
         }
 
