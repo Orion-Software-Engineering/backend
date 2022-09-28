@@ -50,11 +50,12 @@ export default (app: Express) => {
         matchController.find);
 
     app.get('/api/test/match/location/:id',
+        [verifyToken],
         matchController.findWithLocation)
 
     app.get(
         '/api/test/users',
-        // [verifyToken, isAdmin],
+        [verifyToken, isAdmin],
         controller.showAll
     );
 };
