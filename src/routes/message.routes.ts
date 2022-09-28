@@ -4,10 +4,8 @@ import {
     getMessageFromConversation,
     getMessagesFromConversation, removeMessageFromConversation
 } from "../controller/chat/conversation.message.controller";
-// import messageController from '../controller/chat/message.controller';
-import {notifyMessage} from "../services/conversation.message.service";
+import verifyToken from "../middleware/authentication/verifyToken";
 
-// const router = Router();
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: NextFunction) => {
         res.header(
@@ -18,18 +16,23 @@ export default (app: Express) => {
     });
 
     app.get('/api/message/:messageId',
+        [verifyToken],
         getMessageFromConversation)
 
     app.get('/api/message/last/:conversationId',
+        [verifyToken],
         getLastMessageFromConversation)
 
     app.get('/api/messages/:conversationId',
+        [verifyToken],
         getMessagesFromConversation)
 
     app.put('/api/message',
+        [verifyToken],
         addMessageToConversation)
 
     app.delete('/api/message',
+        [verifyToken],
         removeMessageFromConversation)
 
 }
