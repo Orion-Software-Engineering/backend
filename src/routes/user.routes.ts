@@ -18,15 +18,19 @@ export default (app: Express) => {
     });
 
     app.get('/api/user/:userId',
+        [verifyToken],
         controller.getUsername)
 
     app.post('/api/user/bio',
+        [verifyToken],
         controller.updateUserBio)
 
     app.get('/api/user/profile/:userId',
+        [verifyToken],
         controller.getUserProfile)
 
-    app.get('/api/test/all', controller.allAccess);
+    app.get('/api/test/all',
+        controller.allAccess);
 
     app.get('/api/test/user',
         [verifyToken],
@@ -38,18 +42,25 @@ export default (app: Express) => {
         controller.moderatorBoard
     );
 
-    app.get('/api/test/all', controller.allAccess);
+    app.get('/api/test/all',
+        controller.allAccess);
 
 
-    app.get('/api/test/admin', [verifyToken, isAdmin], controller.adminBoard);
+    app.get('/api/test/admin',
+        [verifyToken, isAdmin],
+        controller.adminBoard);
 
-    app.get('/api/test/matches/:id', matchController.find);
+    app.get('/api/test/matches/:id',
+        [verifyToken],
+        matchController.find);
 
-    app.get('/api/test/match/location/:id', matchController.findWithLocation)
+    app.get('/api/test/match/location/:id',
+        [verifyToken],
+        matchController.findWithLocation)
 
     app.get(
         '/api/test/users',
-        // [verifyToken, isAdmin],
+        [verifyToken, isAdmin],
         controller.showAll
     );
 };
