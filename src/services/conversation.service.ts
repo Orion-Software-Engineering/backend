@@ -25,8 +25,15 @@ const add = async (userId: string) => {
 };
 
 const remove = async (userId: string, conversationId: string) => {
-    const user = await User.findByPk(userId)
-    await user?.removeConversations([conversationId])
+    // const user = await User.findByPk(userId)
+    const conversation = await Conversation.findByPk(conversationId)
+    // await user?.removeConversations([conversationId])
+    if (!conversation) return
+    const conversationUsers = await conversation.getUsers()
+    for (const cUser of conversationUsers) {
+        const user = await User.findByPk(cUser.id)
+        user?.removeConversations([conversationId])
+    }
 }
 
 export default {get, add, remove};
