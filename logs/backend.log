@@ -614,3 +614,149 @@
 [2022-09-28T14:26:07.343Z] [Orion Backend] info: Server is running on port 8000
 [2022-09-28T14:26:07.344Z] [Orion Backend] info: DATABASE_URL is undefined
 [2022-09-28T14:26:07.741Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:30:57.501Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 96.583 ms
+[2022-09-28T14:31:05.668Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 400 - 2.276 ms
+[2022-09-28T14:31:37.885Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 500 - 176.902 ms
+[2022-09-28T14:31:47.581Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 25.413 ms
+[2022-09-28T14:32:47.680Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 500 - 59.578 ms
+[2022-09-28T14:33:38.742Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 65.286 ms
+[2022-09-28T14:33:56.420Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 404 - 150.382 ms
+[2022-09-28T14:34:15.949Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 403 - 39.029 ms
+[2022-09-28T14:34:32.834Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 403 - 38.293 ms
+[2022-09-28T14:39:12.790Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-28T14:39:12.794Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-28T14:39:13.883Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:40:35.995Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-28T14:40:36.002Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-28T14:40:37.222Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:43:35.867Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-28T14:43:35.871Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-28T14:43:37.016Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:44:03.492Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-28T14:44:03.495Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-28T14:44:04.623Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:45:20.329Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-28T14:45:20.332Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-28T14:45:21.568Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:46:01.194Z] [Orion Backend] info: Server is running on port 8000
+[2022-09-28T14:46:01.197Z] [Orion Backend] info: DATABASE_URL is undefined
+[2022-09-28T14:46:02.293Z] [Orion Backend] info: Syncing Database
+[2022-09-28T14:46:06.403Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/verify/?tag08d527d5-7851-4b69-9b5d-45421e27a42a 404 - 4.593 ms
+[2022-09-28T14:46:27.498Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 404 - 246.675 ms
+[2022-09-28T14:47:29.132Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 406.004 ms
+[2022-09-28T14:47:43.685Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 400 - 169.560 ms
+[2022-09-28T14:48:06.980Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 403 - 203.875 ms
+[2022-09-28T14:48:19.071Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/verify/?taga9913d76-04a9-4b7a-811c-3b0108c94662 404 - 0.559 ms
+[2022-09-28T14:48:32.218Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 403 - 156.765 ms
+[2022-09-28T14:48:44.722Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 403 - 164.695 ms
+[2022-09-28T14:49:24.248Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/a9913d76-04a9-4b7a-811c-3b0108c94662 403 - 1.064 ms
+[2022-09-28T14:50:39.115Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 274.710 ms
+[2022-09-28T14:52:08.485Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 262.188 ms
+[2022-09-28T14:52:44.131Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/verify/?tagd0835215-4620-44e6-9095-334e061595fe 404 - 0.692 ms
+[2022-09-28T14:55:03.445Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/7497b32c-98bb-4767-adea-86b6b6ff35b4 403 - 2.816 ms
+[2022-09-28T14:56:37.732Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/7497b32c-98bb-4767-adea-86b6b6ff35b4 400 - 69.321 ms
+[2022-09-28T14:57:24.051Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/7497b32c-98bb-4767-adea-86b6b6ff35b4%22 400 - 68.881 ms
+[2022-09-28T14:57:31.813Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/7497b32c-98bb-4767-adea-86b6b6ff35b4 400 - 4.488 ms
+[2022-09-28T14:58:11.062Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/users 401 - 0.596 ms
+[2022-09-28T14:58:55.002Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 88.259 ms
+[2022-09-28T14:59:16.975Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 85.674 ms
+[2022-09-28T14:59:39.036Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 85.882 ms
+[2022-09-28T15:00:09.524Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 90.157 ms
+[2022-09-28T15:00:42.454Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 403 - 0.302 ms
+[2022-09-28T15:01:37.244Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 401 - 0.367 ms
+[2022-09-28T15:01:55.818Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 81.234 ms
+[2022-09-28T15:02:36.313Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/d0835215-4620-44e6-9095-334e061595fe 403 - 0.335 ms
+[2022-09-28T15:03:04.327Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/d0835215-4620-44e6-9095-334e061595fe 401 - 0.449 ms
+[2022-09-28T15:03:35.374Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 201.036 ms
+[2022-09-28T15:04:47.733Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/interest/d0835215-4620-44e6-9095-334e061595fe 403 - 0.357 ms
+[2022-09-28T15:05:18.627Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 85.906 ms
+[2022-09-28T15:05:38.127Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 74.511 ms
+[2022-09-28T15:06:13.506Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 72.252 ms
+[2022-09-28T15:06:47.761Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 86.834 ms
+[2022-09-28T15:07:03.267Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 211.381 ms
+[2022-09-28T15:07:09.997Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 8.351 ms
+[2022-09-28T15:07:47.422Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 403 - 0.585 ms
+[2022-09-28T15:08:18.061Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 200 - 78.419 ms
+[2022-09-28T15:08:33.861Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 400 - 66.112 ms
+[2022-09-28T15:08:40.734Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 200 - 6.177 ms
+[2022-09-28T15:08:56.619Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/location/d0835215-4620-44e6-9095-334e061595fe 403 - 0.358 ms
+[2022-09-28T15:09:28.569Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/location/d0835215-4620-44e6-9095-334e061595fe 200 - 71.067 ms
+[2022-09-28T15:10:16.992Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 74.607 ms
+[2022-09-28T15:10:26.414Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 8.278 ms
+[2022-09-28T15:10:55.911Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 80.432 ms
+[2022-09-28T15:11:02.793Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/users 401 - 1.156 ms
+[2022-09-28T15:11:29.467Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/verify/?tagd0835215-4620-44e6-9095-334e061595fe 404 - 0.257 ms
+[2022-09-28T15:11:57.299Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/profile/d0835215-4620-44e6-9095-334e061595fe 403 - 0.331 ms
+[2022-09-28T15:12:23.916Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/profile/d0835215-4620-44e6-9095-334e061595fe 200 - 76.120 ms
+[2022-09-28T15:13:12.995Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 68.437 ms
+[2022-09-28T15:13:25.625Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/7497b32c-98bb-4767-adea-86b6b6ff35b4%22 400 - 69.213 ms
+[2022-09-28T15:13:29.328Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/7497b32c-98bb-4767-adea-86b6b6ff35b4 404 - 4.577 ms
+[2022-09-28T15:14:01.400Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/08d527d5-7851-4b69-9b5d-45421e27a42a 404 - 191.614 ms
+[2022-09-28T15:14:11.120Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/d0835215-4620-44e6-9095-334e061595fe 200 - 1.906 ms
+[2022-09-28T15:14:33.672Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/d0835215-4620-44e6-9095-334e061595fe 403 - 0.247 ms
+[2022-09-28T15:15:06.457Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/d0835215-4620-44e6-9095-334e061595fe 200 - 89.070 ms
+[2022-09-28T15:15:41.476Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 74.271 ms
+[2022-09-28T15:16:18.138Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 84.909 ms
+[2022-09-28T15:16:46.532Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 81.208 ms
+[2022-09-28T15:16:59.347Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/d0835215-4620-44e6-9095-334e061595fe 200 - 202.422 ms
+[2022-09-28T15:17:23.874Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/match/location/a9913d76-04a9-4b7a-811c-3b0108c94662 403 - 0.282 ms
+[2022-09-28T15:17:57.944Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/match/location/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 92.030 ms
+[2022-09-28T15:18:45.840Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 200 - 199.132 ms
+[2022-09-28T15:18:50.809Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/match/location/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 20.821 ms
+[2022-09-28T15:19:35.367Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/bio 403 - 0.236 ms
+[2022-09-28T15:20:00.434Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/bio 200 - 72.992 ms
+[2022-09-28T15:20:17.834Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/bio 400 - 69.705 ms
+[2022-09-28T15:20:25.988Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/bio 200 - 8.434 ms
+[2022-09-28T15:22:25.286Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/ 200 - 82.870 ms
+[2022-09-28T15:23:20.903Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/conversation/d0835215-4620-44e6-9095-334e061595fe 403 - 0.401 ms
+[2022-09-28T15:23:49.047Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/conversation/d0835215-4620-44e6-9095-334e061595fe 200 - 70.512 ms
+[2022-09-28T15:25:22.135Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/conversation/4bc54029-ee65-46e4-aa29-4c3dfb99104a 200 - 200.947 ms
+[2022-09-28T15:27:54.193Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 403 - 0.285 ms
+[2022-09-28T15:28:17.852Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 401 - 0.365 ms
+[2022-09-28T15:28:46.591Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 77.600 ms
+[2022-09-28T15:29:23.207Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/messages/4bc54029-ee65-46e4-aa29-4c3dfb99104a 403 - 0.442 ms
+[2022-09-28T15:29:51.885Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/messages/4bc54029-ee65-46e4-aa29-4c3dfb99104a 200 - 193.117 ms
+[2022-09-28T15:30:45.551Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/message 200 - 77.403 ms
+[2022-09-28T15:30:52.601Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/messages/4bc54029-ee65-46e4-aa29-4c3dfb99104a 200 - 4.166 ms
+[2022-09-28T15:32:41.145Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/message 403 - 0.247 ms
+[2022-09-28T15:33:06.445Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/message 200 - 73.911 ms
+[2022-09-28T15:33:56.053Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/message/last/4bc54029-ee65-46e4-aa29-4c3dfb99104a 403 - 0.273 ms
+[2022-09-28T15:34:24.437Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/message/last/4bc54029-ee65-46e4-aa29-4c3dfb99104a 200 - 72.401 ms
+[2022-09-28T15:34:36.212Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/messages/4bc54029-ee65-46e4-aa29-4c3dfb99104a 200 - 68.763 ms
+[2022-09-28T15:38:43.936Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 226.130 ms
+[2022-09-28T15:40:07.755Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 110.122 ms
+[2022-09-28T15:40:23.599Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 78.262 ms
+[2022-09-28T15:41:02.891Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 86.153 ms
+[2022-09-28T15:41:18.082Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 81.255 ms
+[2022-09-28T15:45:22.172Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 79.908 ms
+[2022-09-28T15:45:42.723Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 82.185 ms
+[2022-09-28T15:46:06.586Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 79.996 ms
+[2022-09-28T15:46:35.798Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 87.336 ms
+[2022-09-28T15:46:58.534Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 212.273 ms
+[2022-09-28T15:48:14.851Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 83.885 ms
+[2022-09-28T15:48:43.205Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 206.309 ms
+[2022-09-28T15:49:01.054Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 85.078 ms
+[2022-09-28T15:49:22.355Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 80.875 ms
+[2022-09-28T15:49:55.778Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 79.645 ms
+[2022-09-28T15:50:18.880Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 83.399 ms
+[2022-09-28T16:01:45.919Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 85.020 ms
+[2022-09-28T16:02:20.329Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 DELETE /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 77.627 ms
+[2022-09-28T16:03:03.872Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/interest/d0835215-4620-44e6-9095-334e061595fe 200 - 74.973 ms
+[2022-09-28T16:03:40.088Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/users 401 - 0.409 ms
+[2022-09-28T16:04:27.232Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 67.266 ms
+[2022-09-28T16:04:59.612Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signup 201 - 100.754 ms
+[2022-09-28T16:05:39.797Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/537169d2-9915-4cdf-ace5-9b3fc9378f5c 200 - 68.420 ms
+[2022-09-28T16:06:58.433Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/537169d2-9915-4cdf-ace5-9b3fc9378f5c 200 - 77.775 ms
+[2022-09-28T16:08:06.149Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/user/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 67.313 ms
+[2022-09-28T16:09:01.710Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/interest/f92646b4-0fba-43cb-9245-fb0dd6311254 200 - 203.856 ms
+[2022-09-28T16:09:40.298Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 200 - 68.879 ms
+[2022-09-28T16:10:25.060Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 400 - 65.740 ms
+[2022-09-28T16:10:42.674Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/user/location 200 - 78.029 ms
+[2022-09-28T16:10:57.634Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/match/location/a9913d76-04a9-4b7a-811c-3b0108c94662 200 - 228.163 ms
+[2022-09-28T16:11:35.185Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/match/location/d0835215-4620-44e6-9095-334e061595fe 200 - 242.998 ms
+[2022-09-28T16:11:45.907Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 GET /api/test/matches/d0835215-4620-44e6-9095-334e061595fe 200 - 108.853 ms
+[2022-09-28T16:13:16.628Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/user 401 - 0.463 ms
+[2022-09-28T16:13:27.654Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/user 401 - 0.498 ms
+[2022-09-28T16:13:29.460Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/user 401 - 0.543 ms
+[2022-09-28T16:15:29.736Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 PUT /api/conversation/user 401 - 0.489 ms
+[2022-09-28T16:16:40.270Z] [Orion Backend] http: ::1 PostmanRuntime/7.29.2 1.1 POST /api/auth/signin 403 - 65.757 ms
