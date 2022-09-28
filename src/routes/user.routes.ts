@@ -29,12 +29,12 @@ export default (app: Express) => {
     app.get('/api/test/all', controller.allAccess);
 
     app.get('/api/test/user',
-        [verifyToken],
+        // [verifyToken],
         controller.userBoard);
 
     app.get(
         '/api/test/mod',
-        [verifyToken, isModerator],
+        // [verifyToken, isModerator],
         controller.moderatorBoard
     );
 
@@ -43,19 +43,19 @@ export default (app: Express) => {
 
 
     app.get('/api/test/admin',
-        [verifyToken, isAdmin],
+        // [verifyToken, isAdmin],
         controller.adminBoard);
 
     app.get('/api/test/matches/:id',
         matchController.find);
 
     app.get('/api/test/match/location/:id',
-        [verifyToken],
+        // [verifyToken],
         matchController.findWithLocation)
 
     app.get(
         '/api/test/users',
-        [verifyToken, isAdmin],
+        // [verifyToken, isAdmin],
         controller.showAll
     );
 };
