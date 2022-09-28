@@ -43,7 +43,7 @@ sequelize
     .then(() => {
         console.log('Syncing DB');
         logger.info("Syncing Database");
-         // initial();
+        // initial();
     });
 
 // this function initializes the roles, run only once on a new database else there'll be errors
