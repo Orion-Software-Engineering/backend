@@ -12,16 +12,31 @@ import {
     getUsersOfConversation,
     removeUserFromConversation
 } from "../controller/chat/user.conversation.controller";
+import verifyToken from "../middleware/authentication/verifyToken";
 
 const router = Router();
 
-router.get('/:id', conversationController.get);
-router.put('/', conversationController.add);
-router.delete('/', conversationController.remove);
+router.use([verifyToken])
 
-router.put('/user', addUserToConversation)
-router.delete('/user', removeUserFromConversation)
-router.get('/users/all/:conversationId', getUsersOfConversation)
-router.get('/user/all/:userId', getConversationsOfUser)
+router.get('/:id',
+    conversationController.get);
+
+router.put('/',
+    conversationController.add);
+
+router.delete('/',
+    conversationController.remove);
+
+router.put('/user',
+    addUserToConversation)
+
+router.delete('/user',
+    removeUserFromConversation)
+
+router.get('/users/all/:conversationId',
+    getUsersOfConversation)
+
+router.get('/user/all/:userId',
+    getConversationsOfUser)
 
 export default router;
