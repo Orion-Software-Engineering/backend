@@ -4,9 +4,11 @@ import db from "../../models";
 
 const {User} = db;
 
-const isOrganizer = (req: Request, res: Response, next: Function) => {
-    User.findByPk((req as UserRequest).userId).then(user => {
-        user?.getRoles().then(roles => {
+const isOrganizer = async (req: Request, res: Response, next: Function) => {
+    try {
+        const user = await User.findByPk(req.body.organizer)
+        if (!user) return res.status(404).send('Not a user')
+        user.getRoles().then(roles => {
             for (let i = 0; i < roles.length; i++) {
                 if (roles[i].name === "organizer") {
                     next();
@@ -18,7 +20,10 @@ const isOrganizer = (req: Request, res: Response, next: Function) => {
             });
             return;
         });
-    });
+    } catch ({message}) {
+        console.log(message)
+        return res.status(500).send(message)
+    }
 };
 
 export default isOrganizer

@@ -1,5 +1,6 @@
 import {Express, Request, Response, Router} from 'express';
 import likeController from '../controller/like.controller';
+import verifyToken from "../middleware/authentication/verifyToken";
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: Function) => {
@@ -11,10 +12,16 @@ export default (app: Express) => {
     });
 
 
-    app.post('/api/event/like', likeController.likeEvent);
+    app.post('/api/event/like',
+        [verifyToken],
+        likeController.likeEvent);
 
-    app.get('/api/event/likes/:id', likeController.getEventLikes);
+    app.get('/api/event/likes/:id',
+        [verifyToken],
+        likeController.getEventLikes);
 
-    app.post('/api/event/unlike', likeController.unlikeEvent);
+    app.post('/api/event/unlike',
+        [verifyToken],
+        likeController.unlikeEvent);
 
 }

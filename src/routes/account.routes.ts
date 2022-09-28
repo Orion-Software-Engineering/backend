@@ -1,5 +1,6 @@
 import {Express, Request, Response} from 'express';
 import accountController from "../controller/account.controller";
+import verifyToken from "../middleware/authentication/verifyToken";
 
 // routes for account related functions
 export default (app: Express) => {
@@ -12,5 +13,7 @@ export default (app: Express) => {
     });
 
     // delete account controller
-    app.post('/api/account/delete', accountController.deleteAccount);
+    app.post('/api/account/delete',
+        [verifyToken],
+        accountController.deleteAccount);
 };

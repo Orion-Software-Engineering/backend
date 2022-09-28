@@ -1,5 +1,6 @@
 import {NextFunction, Request, Response, Express} from 'express';
 import {getUserLocation, updateUserLocation} from "../controller/location.controller";
+import verifyToken from "../middleware/authentication/verifyToken";
 
 
 export default (app: Express) => {
@@ -12,10 +13,11 @@ export default (app: Express) => {
     });
 
     app.get('/api/user/location/:userId',
+        [verifyToken],
         getUserLocation)
 
     app.post('/api/user/location',
+        [verifyToken],
         updateUserLocation)
-
 
 };
