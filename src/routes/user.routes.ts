@@ -38,14 +38,19 @@ export default (app: Express) => {
         controller.moderatorBoard
     );
 
-    app.get('/api/test/all', controller.allAccess);
+    app.get('/api/test/all',
+        controller.allAccess);
 
 
-    app.get('/api/test/admin', [verifyToken, isAdmin], controller.adminBoard);
+    app.get('/api/test/admin',
+        [verifyToken, isAdmin],
+        controller.adminBoard);
 
-    app.get('/api/test/matches/:id', matchController.find);
+    app.get('/api/test/matches/:id',
+        matchController.find);
 
-    app.get('/api/test/match/location/:id', matchController.findWithLocation)
+    app.get('/api/test/match/location/:id',
+        matchController.findWithLocation)
 
     app.get(
         '/api/test/users',
