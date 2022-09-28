@@ -47,7 +47,7 @@ export const sortByLocation = async (userId: string) => {
     // store userId,bio and name with relative distance
     const userDistance = new Map<number, [string, string, string, number]>()
 
-    const userDistanceArray: { id: string, username: string, bio: string, proximity: number }[] = []
+    const userDistanceArray: { userId: string, username: string, bio: string, commonInterests: string[], proximity: number }[] = []
 
     const interests = await interestService.get(userId);
     const interestNames = new Set();
@@ -82,6 +82,17 @@ export const sortByLocation = async (userId: string) => {
         const matchedUsername = matchedUser.username;
         const userBio = matchedUser.bio;
 
+        const userInterests = (await interestService.get(
+            userId
+        ))
+
+        const commonInterests = []
+
+        for (const {name} of userInterests) {
+            if (interestNames.has(name)) {
+                commonInterests.push(name);
+            }
+        }
 
         let proximity: number = 0;
 
@@ -104,15 +115,18 @@ export const sortByLocation = async (userId: string) => {
             proximity = 3    //far
         }
 
-
-        userDistance.set(calculateDistance(userLatitude, userLongitude, latitude, longitude), [userId, matchedUsername, userBio, proximity])
-        mUser = {id: userId, username: matchedUsername, bio: userBio, proximity: proximity}
-        userDistanceArray.push((mUser as unknown as { id: string, username: string, bio: string, proximity: number }))
+        // userDistance.set(calculateDistance(userLatitude, userLongitude, latitude, longitude), [userId, matchedUsername, userBio, proximity])
+        mUser = {
+            userId: userId,
+            username: matchedUsername,
+            bio: userBio,
+            commonInterests: commonInterests,
+            proximity: proximity
+        }
+        userDistanceArray.push((mUser as unknown as { userId: string, username: string, bio: string, commonInterests: string[], proximity: number }))
 
     }
     // console.log(userDistance)
-    const sortedmap = new Map([...userDistance.entries()].sort())
-
 
     // console.log(sortedmap)
     // return sortedmap.values()
