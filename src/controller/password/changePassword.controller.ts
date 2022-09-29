@@ -9,7 +9,7 @@ export const changePassword = async (req: Request, res: Response) => {
         await User.findOne({
             where: {
                 id: req.body.id,
-                isEmailVerified: true
+                // isEmailVerified: true
             }
         }).then(user => {
             if (user) {
