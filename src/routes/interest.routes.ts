@@ -3,7 +3,7 @@ import interestController from '../controller/interest.controller';
 import verifyToken from "../middleware/authentication/verifyToken";
 
 const router = Router();
-router.use([verifyToken])
+// router.use([verifyToken])
 
 router.get('/:id', interestController.get);
 router.post('/:id', interestController.set);
