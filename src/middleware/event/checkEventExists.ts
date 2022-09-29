@@ -3,7 +3,7 @@ import db from '../../models';
 
 const {Event} = db;
 
-const checkDuplicatedUsernameOrEmail = async (
+const checkEventExists = async (
     req: Request,
     res: Response,
     next: Function
@@ -24,4 +24,4 @@ const checkDuplicatedUsernameOrEmail = async (
     }
 };
 
-export default checkDuplicatedUsernameOrEmail
+export default checkEventExists

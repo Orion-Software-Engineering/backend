@@ -3,6 +3,7 @@ import * as controller from '../controller/event.controller';
 import {eventsMatchingController} from "../controller/events.matching.controller";
 import verifyToken from "../middleware/authentication/verifyToken";
 import isOrganizer from "../middleware/authentication/isOrganizer";
+import checkEventExists from "../middleware/event/checkEventExists";
 
 export default (app: Express) => {
     app.use((req: Request, res: Response, next: Function) => {
@@ -14,7 +15,7 @@ export default (app: Express) => {
     });
 
     app.post('/api/event',
-        [verifyToken, isOrganizer],
+        [verifyToken, isOrganizer, checkEventExists],
         controller.createEvent);
 
     app.get('/api/event/:id',
