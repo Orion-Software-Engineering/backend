@@ -14,7 +14,7 @@ export const resetPassword = async (req: Request, res: Response) => {
         where: {
             // id: req.params.id,
             email: req.body.email,
-            isEmailVerified: true
+            // isEmailVerified: true
         },
     }).then(user => {
         if (user) {
